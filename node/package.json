@@ -1,0 +1,22 @@
+{
+  "name": "astrum",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "tsc -w -p .",
+    "build": "tsc -p .",
+    "start": "node ."
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^2.7.2"
+  },
+  "dependencies": {
+    "@cityofzion/neon-js": "^3.3.0",
+    "@types/node": "^9.4.6",
+    "neon-js": "^1.1.2"
+  }
+}

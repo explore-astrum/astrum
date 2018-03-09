@@ -1,0 +1,6 @@
+[submodule "python/monitor"]
+	path = python/monitor
+	url = git@github.com:CityOfZion/neo-python.git
+[submodule "python/monitor/neo-python"]
+	path = python/monitor/neo-python
+	url = git@github.com:CityOfZion/neo-python.git

@@ -1,0 +1,15 @@
+body {
+	/* font-family: 'Karla', sans-serif; */
+}
+
+img {
+	width: 100%;
+	height: auto;
+}
+
+:root {
+	--light-blue: #43CDCF;
+	--purple: #4957B8;
+	--dark-gray: #212424;
+	--green: #1abc9c;
+}

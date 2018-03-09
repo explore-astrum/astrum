@@ -1,0 +1,56 @@
+@import '../../variables/colors';
+
+.input {
+	font-family: 'Montserrat';
+	font-size: 0.85rem;
+	letter-spacing: 0.03em;
+	border: 0;
+	outline: 0;
+	width: 100%;
+	line-height: 1.4rem;
+}
+
+.input:disabled {
+	color: gray;
+}
+
+.input.error {
+	color: var(--red);
+}
+
+textarea.input {
+	line-height: 1.5;
+}
+
+.input-select {
+	margin-left: -3px;
+}
+
+.pac-container {
+	margin-top: 1rem;
+	margin-left: -1rem;
+	border-top: 1px solid #dbdbdb;
+	border-bottom: 1px solid #dbdbdb;
+	width: 30rem !important;
+	background: whitesmoke;
+	box-shadow: initial;
+}
+
+.pac-container::after {
+	display: none;
+}
+
+.pac-item {
+	cursor: pointer;
+	padding: 0.75rem 1.25rem;
+	border: 0;
+}
+
+.pac-icon {
+	display: none
+}
+
+select:-moz-focusring {
+	color: transparent;
+	text-shadow: 0 0 0 #000; 
+}
