@@ -15,6 +15,17 @@
 /**
  * 
  */
+
+USTRUCT(BlueprintType)
+struct FRelic {
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FString mesh;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FString material;
+};
+
 UCLASS()
 class ASTRUM_API USpawningWidget : public UUserWidget
 {
@@ -29,7 +40,7 @@ public:
 	FString ExtendedWidget;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "options")
-	TArray<FString> options;
+	TArray<FRelic> options;
 	
 	
 	

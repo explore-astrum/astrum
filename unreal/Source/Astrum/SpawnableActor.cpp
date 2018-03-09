@@ -83,6 +83,14 @@ void ASpawnableActor::SetMesh(FString type)
 	SphereVisual->SetWorldScale3D(FVector(1.0f));
 }
 
+void ASpawnableActor::SetMaterial(FString type)
+{
+	const TCHAR* ctype = *type;
+	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, type);
+	Material = LoadObject<UMaterial>(nullptr, ctype);
+	SphereVisual->SetMaterial(0, Material);
+}
+
 void ASpawnableActor::RotateX() {
 	rotating = !rotating;
 }

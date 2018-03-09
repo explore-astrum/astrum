@@ -23,10 +23,13 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = Mesh)
 	UStaticMesh* SphereVisualAsset;
+	UMaterial* Material;
 
 	void SetMesh(int type);
 	UFUNCTION(BlueprintCallable)
 	void SetMesh(FString type);
+	UFUNCTION(BlueprintCallable)
+	void SetMaterial(FString type);
 
 	ACharacter* MainCharacter;
 	APlayerController* controller;
