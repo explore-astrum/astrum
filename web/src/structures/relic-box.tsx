@@ -17,7 +17,7 @@ export default function (props: Props & React.HTMLAttributes<HTMLDivElement>) {
 	return (
 		<Container {...rest} key={info.name} pad-h4 pad-v4 flex-third>
 			<Container bg-white radius-4 overflow-hidden style={{
-					boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)'
+				boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)'
 			}}>
 				<Container pad-4 style={{
 					paddingBottom: '60%',
