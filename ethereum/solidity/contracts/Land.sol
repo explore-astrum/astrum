@@ -8,7 +8,7 @@ contract Land is Ownable {
     mapping (string => uint) sale;
 
     event SaleSet(string key, uint amount);
-    event Transferred(string key, address from, address to);
+    event Transfer(string key, address from, address to);
 
     function owner_of(string _key) public view returns (address _owner) {
         _owner = ownership[_key];
@@ -22,9 +22,9 @@ contract Land is Ownable {
         _;
     }
 
-    function set_sale(string _key, uint _amount) public only_owner_of(_key) {
-        SaleSet(_key, _amount);
-        sale[_key] = _amount;
+    function set_sale(string _key, uint _price) public only_owner_of(_key) {
+        sale[_key] = _price;
+        SaleSet(_key, _price);
     }
 
     function get_sale(string _key) public view returns (uint) {
@@ -32,7 +32,11 @@ contract Land is Ownable {
     }
 
     function buy(string _key) public {
-        // TODO: Transfer token
+        uint _cost = get_sale(_key);
+        require(_cost > 0);
+        address _owner = owner_of(_key);
+        transfer(_key, _owner, msg.sender);
+        set_sale(_key, 0);
     }
 
     function transfer(string _key, address _to) public only_owner_of(_key) {
@@ -40,10 +44,10 @@ contract Land is Ownable {
     }
 
     function transfer(string _key, address _from, address _to) private {
-        owner = owner_of(_key);
-        require(owner == _from);
+        address _owner = owner_of(_key);
+        require(_owner == _from);
         ownership[_key] = _to;
-        Transferred(_key, _from, _to);
+        Transfer(_key, _from, _to);
     }
 
 }
