@@ -34,7 +34,7 @@ contract Relic is Asset {
     }
 
     function is_child(string _parent, string _child) public view returns (bool) {
-        return children[_parent][_child]
+        return children[_parent][_child];
     }
 
     
