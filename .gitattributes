@@ -11,4 +11,6 @@ unreal/Content/RiverShader/Textures/SoftWater_N.uasset filter=lfs diff=lfs merge
 unreal/Content/Ocean/Textures/** filter=lfs diff=lfs merge=lfs -text
 unreal/Content/Sky/Textures/** filter=lfs diff=lfs merge=lfs -text
 unreal/Content/ShipsAndExamples/** filter=lfs diff=lfs merge=lfs -text
+unreal/Content/FirstPersonBP/Maps/height/** filter=lfs diff=lfs merge=lfs -text
+unreal/Content/FirstPersonBP/Maps/MapTextures/** filter=lfs diff=lfs merge=lfs -text
 unreal\Content\FirstPersonBP\Maps\height\** filter=lfs diff=lfs merge=lfs -text
