@@ -8,3 +8,6 @@ unreal/Content/RiverShader/Textures/WaveWater_N.uasset filter=lfs diff=lfs merge
 unreal/Content/RiverShader/Textures/FlowWater_N.uasset filter=lfs diff=lfs merge=lfs -text
 unreal/Content/RiverShader/Textures/Mist_D.uasset filter=lfs diff=lfs merge=lfs -text
 unreal/Content/RiverShader/Textures/SoftWater_N.uasset filter=lfs diff=lfs merge=lfs -text
+unreal/Content/Ocean/Textures/** filter=lfs diff=lfs merge=lfs -text
+unreal/Content/Sky/Textures/** filter=lfs diff=lfs merge=lfs -text
+unreal/Content/ShipsAndExamples/** filter=lfs diff=lfs merge=lfs -text
