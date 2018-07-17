@@ -16,5 +16,6 @@ geth \
 --rpc \
 --rpcapi 'eth,shh,web3,net' \
 --rpccorsdomain="*" \
+--rpcvhosts '*' \
 --rpcaddr 'localhost' \
 --rpcport 8545
