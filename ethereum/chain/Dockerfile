@@ -1,4 +1,4 @@
 FROM ethereum/client-go
 
-WORKDIR /network
+WORKDIR /chain
 ADD . .
