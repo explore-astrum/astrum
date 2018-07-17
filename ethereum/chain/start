@@ -9,7 +9,7 @@ geth \
 --datadir data \
 --syncmode 'full' \
 --port $ETHEREUM_PORT \
---networkid 27611 \
+--networkid 51132 \
 --gasprice '0' \
 --unlock $ETHEREUM_ADDRESS \
 --password=password.txt \
