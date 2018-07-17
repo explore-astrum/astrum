@@ -4,4 +4,17 @@ geth --datadir data init $ETHEREUM_GENESIS
 echo $ETHEREUM_WALLET > data/keystore/wallet
 echo $ETHEREUM_PASSWORD > password.txt
 echo "Starting mining"
-geth --datadir data --syncmode 'full' --port $ETHEREUM_PORT --networkid 27611 --gasprice '0' --unlock $ETHEREUM_ADDRESS --password=password.txt --mine
+geth \
+--mine \
+--datadir data \
+--syncmode 'full' \
+--port $ETHEREUM_PORT \
+--networkid 27611 \
+--gasprice '0' \
+--unlock $ETHEREUM_ADDRESS \
+--password=password.txt \
+--rpc \
+--rpcapi 'eth,shh,web3,net' \
+--rpccorsdomain="*" \
+--rpcaddr 'localhost' \
+--rpcport 8545
