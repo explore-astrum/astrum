@@ -42,7 +42,8 @@ void ASpawnableActor::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	if (selected) {
-		FVector facing = controller->GetActorForwardVector();
+		FRotator Rotation = controller->GetControlRotation();
+		FVector facing = FRotationMatrix(Rotation).GetScaledAxis(EAxis::X);
 		FVector actor_loc = MainCharacter->GetActorLocation() + FVector(0, 0, 0);
 		FVector to_from = actor_loc - GetActorLocation();
 		facing.Normalize();
@@ -97,7 +98,8 @@ void ASpawnableActor::RotateX() {
 
 void ASpawnableActor::PickUp() {
 	if (!selected) {
-		FVector facing = controller->GetActorForwardVector();
+		FRotator Rotation = controller->GetControlRotation();
+		FVector facing = FRotationMatrix(Rotation).GetScaledAxis(EAxis::X);
 		FVector actor_loc = MainCharacter->GetActorLocation() + FVector(0, 0, 0);
 		FVector to_from = actor_loc - GetActorLocation();
 		facing.Normalize();

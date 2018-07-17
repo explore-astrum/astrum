@@ -1,0 +1,6 @@
+[bigstore]
+	backend = gs
+[bigstore "gs"]
+	key = GOOGR3U7U53M6VCER43DMCPM
+	secret = gm0QYjiDScrkEYbpeDA7qchTcoPBMEoMg7Z5W+JI
+	bucket = ironbay-test
