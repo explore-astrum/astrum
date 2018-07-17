@@ -1,0 +1,5 @@
+#!/bin/sh
+geth --datadir data init $ETHEREUM_GENESIS
+echo $ETHEREUM_WALLET > data/keystore/wallet
+echo $ETHEREUM_PASSWORD > password.txt
+geth --datadir data --syncmode 'full' --port $ETHEREUM_PORT --networkid 27611 --gasprice '0' --unlock $ETHEREUM_ADDRESS --mine --rpccorsdomain="*" --password=password.txt
