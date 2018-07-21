@@ -3,7 +3,7 @@
 #include "LoadLevelActor.h"
 
 ALoadLevelActor::ALoadLevelActor(const FObjectInitializer &fobj) : Super(fobj) {
-	SpawnedActors.Add(LoadedObj(FString("/Game/StarterContent/Shapes/Shape_Sphere.Shape_Sphere"), FVector(0, 0, 300)));
+	//SpawnedActors.Add(LoadedObj(FString("/Game/StarterContent/Shapes/Shape_Sphere.Shape_Sphere"), FVector(0, 0, 300)));
 }
 
 void ALoadLevelActor::LoadObjects() {

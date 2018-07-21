@@ -16,7 +16,7 @@ ASpawnableActor::ASpawnableActor()
 	SphereVisual = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("VisualRepresentation"));
 	SphereVisual->SetupAttachment(RootComponent);
 
-	selected = false;
+	selected = true;
 	rotating = false;
 
 }
@@ -61,7 +61,7 @@ void ASpawnableActor::Tick(float DeltaTime)
 
 void ASpawnableActor::SetMesh(int type)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, FString::SanitizeFloat(type));
+	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, FString::SanitizeFloat(type));
 
 	if (type == 1) {
 		SphereVisualAsset = LoadObject<UStaticMesh>(nullptr, TEXT("/Game/StarterContent/Shapes/Shape_Sphere.Shape_Sphere"));
@@ -77,7 +77,7 @@ void ASpawnableActor::SetMesh(int type)
 void ASpawnableActor::SetMesh(FString type)
 {
 	const TCHAR* ctype = *type;
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, type);
+	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, type);
 	SphereVisualAsset = LoadObject<UStaticMesh>(nullptr, ctype);
 	SphereVisual->SetStaticMesh(SphereVisualAsset);
 	SphereVisual->SetRelativeLocation(FVector(0.0f, 0.0f, 0.0f));
@@ -87,7 +87,7 @@ void ASpawnableActor::SetMesh(FString type)
 void ASpawnableActor::SetMaterial(FString type)
 {
 	const TCHAR* ctype = *type;
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, type);
+	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, type);
 	Material = LoadObject<UMaterial>(nullptr, ctype);
 	SphereVisual->SetMaterial(0, Material);
 }
@@ -117,4 +117,8 @@ void ASpawnableActor::PickUp() {
 		selected = false;
 	}
 
+}
+
+bool ASpawnableActor::isSelected() {
+	return selected;
 }

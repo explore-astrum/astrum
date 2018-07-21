@@ -36,6 +36,9 @@ public:
 	bool selected;
 	bool rotating;
 
+	UFUNCTION(BlueprintCallable)
+	bool isSelected();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
