@@ -24,6 +24,8 @@ struct FRelic {
 	FString mesh;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FString material;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UTexture2D *icon;
 };
 
 UCLASS()
@@ -39,7 +41,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ExtendedWidget")
 	FString ExtendedWidget;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "options")
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "options")
 	TArray<FRelic> options;
 
 	UFUNCTION(BlueprintCallable)
