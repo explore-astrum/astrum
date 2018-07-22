@@ -92,7 +92,7 @@ void ASpawnableActor::SetIntermediateMaterial()
 void ASpawnableActor::SetMaterial(FString type)
 {
 	const TCHAR* ctype = *type;
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, type);
+	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, type);
 	Material = LoadObject<UMaterial>(nullptr, ctype);
 	//SphereVisual->SetMaterial(0, Material);
 }

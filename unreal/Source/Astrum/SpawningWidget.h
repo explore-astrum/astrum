@@ -41,6 +41,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "options")
 	TArray<FRelic> options;
+
+	UFUNCTION(BlueprintCallable)
+	TArray<FRelic> GetOptions();
 	
 	
 	

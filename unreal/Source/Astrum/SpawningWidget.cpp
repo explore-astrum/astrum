@@ -35,3 +35,7 @@ void USpawningWidget::ButtonClick() {
 	FActorSpawnParameters SpawnInfo;
 	auto actor = GetWorld()->SpawnActor<ASpawnableActor>(Location, Rotation, SpawnInfo);
 }
+
+TArray<FRelic> USpawningWidget::GetOptions() {
+	return options;
+}
