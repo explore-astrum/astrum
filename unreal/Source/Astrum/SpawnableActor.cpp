@@ -29,10 +29,12 @@ void ASpawnableActor::BeginPlay()
 	controller = UGameplayStatics::GetPlayerController(GetWorld(), 0);
 	EnableInput(controller);
 
-	controller->InputComponent->BindAction("RotateObj", IE_Pressed, this, &ASpawnableActor::RotateX);
-	controller->InputComponent->BindAction("RotateObj", IE_Released, this, &ASpawnableActor::RotateX);
+	UInputComponent* InputComponent = controller->InputComponent;
+
+	InputComponent->BindAction("RotateObj", IE_Pressed, this, &ASpawnableActor::RotateX);
+	InputComponent->BindAction("RotateObj", IE_Released, this, &ASpawnableActor::RotateX);
 	
-	controller->InputComponent->BindAction("SelectObj", IE_Pressed, this, &ASpawnableActor::PickUp);
+	InputComponent->BindAction("SelectObj", IE_Pressed, this, &ASpawnableActor::PickUp).bConsumeInput = false;
 	
 }
 
