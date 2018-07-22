@@ -84,12 +84,17 @@ void ASpawnableActor::SetMesh(FString type)
 	SphereVisual->SetWorldScale3D(FVector(1.0f));
 }
 
+void ASpawnableActor::SetIntermediateMaterial()
+{
+	SphereVisual->SetMaterial(0, LoadObject<UMaterial>(nullptr, TEXT("/Game/FirstPersonBP/Blueprints/ObjectPlacing.ObjectPlacing")));
+}
+
 void ASpawnableActor::SetMaterial(FString type)
 {
 	const TCHAR* ctype = *type;
-	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, type);
+	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, type);
 	Material = LoadObject<UMaterial>(nullptr, ctype);
-	SphereVisual->SetMaterial(0, Material);
+	//SphereVisual->SetMaterial(0, Material);
 }
 
 void ASpawnableActor::RotateX() {
@@ -115,6 +120,7 @@ void ASpawnableActor::PickUp() {
 	}
 	else {
 		selected = false;
+		SphereVisual->SetMaterial(0, Material);
 	}
 
 }

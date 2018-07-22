@@ -8,7 +8,7 @@ USpawningWidget::USpawningWidget(const FObjectInitializer& ObjectInitializer)
 
 	FRelic a;
 	a.mesh = FString("/Game/StarterContent/Shapes/Shape_Sphere.Shape_Sphere");
-	a.material = FString("/Game/StarterContent/Materials/M_CobbleStone_Pebble");
+	a.material = FString("/Game/FirstPersonBP/Blueprints/ObjectTestMaterial.ObjectTestMaterial");
 	options.Add(a);
 
 	FRelic b;

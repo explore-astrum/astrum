@@ -29,6 +29,8 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void SetMesh(FString type);
 	UFUNCTION(BlueprintCallable)
+	void SetIntermediateMaterial();
+	UFUNCTION(BlueprintCallable)
 	void SetMaterial(FString type);
 
 	ACharacter* MainCharacter;
