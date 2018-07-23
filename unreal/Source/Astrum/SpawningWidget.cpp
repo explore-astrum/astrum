@@ -39,5 +39,10 @@ void USpawningWidget::ButtonClick() {
 }
 
 TArray<FRelic> USpawningWidget::GetOptions() {
+	FRelic c;
+	c.mesh = FString("/Game/Sky/Meshes/SM_RotatorCube.SM_RotatorCube");
+	c.material = FString("/Game/FirstPersonBP/Blueprints/ObjectTestMaterial.ObjectTestMaterial");
+	c.icon = Cast<UTexture2D>(StaticLoadObject(UTexture2D::StaticClass(), NULL, TEXT("/Game/FirstPersonBP/Maps/MapTextures/Beach_Sand_Normal.Beach_Sand_Normal")));
+	options.Add(c);
 	return options;
 }

@@ -41,7 +41,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ExtendedWidget")
 	FString ExtendedWidget;
 
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "options")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "options")
 	TArray<FRelic> options;
 
 	UFUNCTION(BlueprintCallable)
