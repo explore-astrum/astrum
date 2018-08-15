@@ -13,3 +13,8 @@ unreal/Content/ShipsAndExamples/** filter=lfs diff=lfs merge=lfs -text
 unreal/Content/FirstPersonBP/Maps/height/** filter=lfs diff=lfs merge=lfs -text
 unreal/Content/FirstPersonBP/Maps/MapTextures/** filter=lfs diff=lfs merge=lfs -text
 unreal\Content\FirstPersonBP\Maps\height\** filter=lfs diff=lfs merge=lfs -text
+unreal/Content/FirstPersonBP/FloorFoliage/* filter=lfs diff=lfs merge=lfs -text
+unreal/Content/FirstPersonBP/Maps/FloorFoliage/* filter=lfs diff=lfs merge=lfs -text
+unreal/Content/FirstPersonBP/Maps/trees/* filter=lfs diff=lfs merge=lfs -text
+unreal/Content/FirstPersonBP/Maps/FloorFoliage/** filter=lfs diff=lfs merge=lfs -text
+unreal/Content/FirstPersonBP/Maps/trees/** filter=lfs diff=lfs merge=lfs -text
