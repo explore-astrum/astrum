@@ -1,0 +1,86 @@
+
+Ð<
+;improbable/unreal/generated/UnrealAstrumGameStateBase.proto6schema.improbable.unreal.generated.astrumgamestatebaseimprobable/entity_state.proto&improbable/unreal/gdk/core_types.proto",
+*AstrumGameStateBaseSingleClientRepDataData"œ
+)AstrumGameStateBaseMultiClientRepDataDataF
+field1_field_bhidden0 (BÂófield_bhidden0Rfield1FieldBhidden0g
+ field2_field_breplicatemovement0 (BÂófield_breplicatemovement0Rfield2FieldBreplicatemovement0I
+field3_field_btearoff0 (BÂófield_btearoff0Rfield3FieldBtearoff0X
+field4_field_bcanbedamaged0 (BÂófield_bcanbedamaged0Rfield4FieldBcanbedamaged0O
+field5_field_remoterole0 (BÂófield_remoterole0Rfield5FieldRemoterole0g
+ field6_field_replicatedmovement0 (BÂófield_replicatedmovement0Rfield6FieldReplicatedmovement0Ä
+1field7_field_attachmentreplication0_attachparent0 (2).schema.improbable.unreal.UnrealObjectRefB.Âó*field_attachmentreplication0_attachparent0R.field7FieldAttachmentreplication0Attachparent0Ÿ
+3field8_field_attachmentreplication0_locationoffset0 (B0Âó,field_attachmentreplication0_locationoffset0R0field8FieldAttachmentreplication0Locationoffset0¢
+4field9_field_attachmentreplication0_relativescale3d0	 (B1Âó-field_attachmentreplication0_relativescale3d0R1field9FieldAttachmentreplication0Relativescale3d0¡
+4field10_field_attachmentreplication0_rotationoffset0
+ (B0Âó,field_attachmentreplication0_rotationoffset0R1field10FieldAttachmentreplication0Rotationoffset0›
+2field11_field_attachmentreplication0_attachsocket0 (	B.Âó*field_attachmentreplication0_attachsocket0R/field11FieldAttachmentreplication0Attachsocket0Ï
+5field12_field_attachmentreplication0_attachcomponent0 (2).schema.improbable.unreal.UnrealObjectRefB1Âó-field_attachmentreplication0_attachcomponent0R2field12FieldAttachmentreplication0Attachcomponent0m
+field13_field_owner0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_owner0Rfield13FieldOwner0?
+field14_field_role0 (BÂófield_role0Rfield14FieldRole0|
+field15_field_instigator0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_instigator0Rfield15FieldInstigator0…
+field16_field_gamemodeclass0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_gamemodeclass0Rfield16FieldGamemodeclass0ˆ
+field17_field_spectatorclass0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_spectatorclass0Rfield17FieldSpectatorclass0x
+&field18_field_breplicatedhasbegunplay0 (B"Âófield_breplicatedhasbegunplay0R$field18FieldBreplicatedhasbegunplay0
+)field19_field_replicatedworldtimeseconds0 (B%Âó!field_replicatedworldtimeseconds0R'field19FieldReplicatedworldtimeseconds0"%
+#AstrumGameStateBaseHandoverDataData"#
+!AstrumGameStateBaseClientRPCsData"#
+!AstrumGameStateBaseServerRPCsData"(
+&AstrumGameStateBaseCrossServerRPCsData")
+'AstrumGameStateBaseNetMulticastRPCsData"Æ
+&AstrumGameStateBaseSingleClientRepData
+Events
+
+Commands2µ
+component_extension.schema.improbable.EntityState¿ (2b.schema.improbable.unreal.generated.astrumgamestatebase.AstrumGameStateBaseSingleClientRepDataDataRcomponentExtension2°
+event_extension.schema.improbable.EntityEvent¿ (2e.schema.improbable.unreal.generated.astrumgamestatebase.AstrumGameStateBaseSingleClientRepData.EventsReventExtension2¸
+command_extension .schema.improbable.EntityCommand¿ (2g.schema.improbable.unreal.generated.astrumgamestatebase.AstrumGameStateBaseSingleClientRepData.CommandsRcommandExtension:`Âó\
+Vimprobable.unreal.generated.astrumgamestatebase.AstrumGameStateBaseSingleClientRepData¿"Á
+%AstrumGameStateBaseMultiClientRepData
+Events
+
+Commands2´
+component_extension.schema.improbable.EntityStateÀ (2a.schema.improbable.unreal.generated.astrumgamestatebase.AstrumGameStateBaseMultiClientRepDataDataRcomponentExtension2¯
+event_extension.schema.improbable.EntityEventÀ (2d.schema.improbable.unreal.generated.astrumgamestatebase.AstrumGameStateBaseMultiClientRepData.EventsReventExtension2·
+command_extension .schema.improbable.EntityCommandÀ (2f.schema.improbable.unreal.generated.astrumgamestatebase.AstrumGameStateBaseMultiClientRepData.CommandsRcommandExtension:_Âó[
+Uimprobable.unreal.generated.astrumgamestatebase.AstrumGameStateBaseMultiClientRepDataÀ"£
+AstrumGameStateBaseHandoverData
+Events
+
+Commands2®
+component_extension.schema.improbable.EntityStateÁ (2[.schema.improbable.unreal.generated.astrumgamestatebase.AstrumGameStateBaseHandoverDataDataRcomponentExtension2©
+event_extension.schema.improbable.EntityEventÁ (2^.schema.improbable.unreal.generated.astrumgamestatebase.AstrumGameStateBaseHandoverData.EventsReventExtension2±
+command_extension .schema.improbable.EntityCommandÁ (2`.schema.improbable.unreal.generated.astrumgamestatebase.AstrumGameStateBaseHandoverData.CommandsRcommandExtension:YÂóU
+Oimprobable.unreal.generated.astrumgamestatebase.AstrumGameStateBaseHandoverDataÁ"™
+AstrumGameStateBaseClientRPCs
+Events
+
+Commands2¬
+component_extension.schema.improbable.EntityStateÂ (2Y.schema.improbable.unreal.generated.astrumgamestatebase.AstrumGameStateBaseClientRPCsDataRcomponentExtension2§
+event_extension.schema.improbable.EntityEventÂ (2\.schema.improbable.unreal.generated.astrumgamestatebase.AstrumGameStateBaseClientRPCs.EventsReventExtension2¯
+command_extension .schema.improbable.EntityCommandÂ (2^.schema.improbable.unreal.generated.astrumgamestatebase.AstrumGameStateBaseClientRPCs.CommandsRcommandExtension:WÂóS
+Mimprobable.unreal.generated.astrumgamestatebase.AstrumGameStateBaseClientRPCsÂ"™
+AstrumGameStateBaseServerRPCs
+Events
+
+Commands2¬
+component_extension.schema.improbable.EntityStateÃ (2Y.schema.improbable.unreal.generated.astrumgamestatebase.AstrumGameStateBaseServerRPCsDataRcomponentExtension2§
+event_extension.schema.improbable.EntityEventÃ (2\.schema.improbable.unreal.generated.astrumgamestatebase.AstrumGameStateBaseServerRPCs.EventsReventExtension2¯
+command_extension .schema.improbable.EntityCommandÃ (2^.schema.improbable.unreal.generated.astrumgamestatebase.AstrumGameStateBaseServerRPCs.CommandsRcommandExtension:WÂóS
+Mimprobable.unreal.generated.astrumgamestatebase.AstrumGameStateBaseServerRPCsÃ"²
+"AstrumGameStateBaseCrossServerRPCs
+Events
+
+Commands2±
+component_extension.schema.improbable.EntityStateÄ (2^.schema.improbable.unreal.generated.astrumgamestatebase.AstrumGameStateBaseCrossServerRPCsDataRcomponentExtension2¬
+event_extension.schema.improbable.EntityEventÄ (2a.schema.improbable.unreal.generated.astrumgamestatebase.AstrumGameStateBaseCrossServerRPCs.EventsReventExtension2´
+command_extension .schema.improbable.EntityCommandÄ (2c.schema.improbable.unreal.generated.astrumgamestatebase.AstrumGameStateBaseCrossServerRPCs.CommandsRcommandExtension:\ÂóX
+Rimprobable.unreal.generated.astrumgamestatebase.AstrumGameStateBaseCrossServerRPCsÄ"·
+#AstrumGameStateBaseNetMulticastRPCs
+Events
+
+Commands2²
+component_extension.schema.improbable.EntityStateÅ (2_.schema.improbable.unreal.generated.astrumgamestatebase.AstrumGameStateBaseNetMulticastRPCsDataRcomponentExtension2­
+event_extension.schema.improbable.EntityEventÅ (2b.schema.improbable.unreal.generated.astrumgamestatebase.AstrumGameStateBaseNetMulticastRPCs.EventsReventExtension2µ
+command_extension .schema.improbable.EntityCommandÅ (2d.schema.improbable.unreal.generated.astrumgamestatebase.AstrumGameStateBaseNetMulticastRPCs.CommandsRcommandExtension:]ÂóY
+Simprobable.unreal.generated.astrumgamestatebase.AstrumGameStateBaseNetMulticastRPCsÅB%B#UnrealAstrumGameStateBaseOuterClass

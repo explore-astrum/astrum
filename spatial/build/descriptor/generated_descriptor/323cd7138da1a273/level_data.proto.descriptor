@@ -1,0 +1,12 @@
+
+ó
+&improbable/unreal/gdk/level_data.protoschema.improbable.unrealimprobable/entity_state.proto"
+UnrealLevelPlaceholderData"˛
+UnrealLevelPlaceholder
+Events
+
+Commands2á
+component_extension.schema.improbable.EntityState¶ç (24.schema.improbable.unreal.UnrealLevelPlaceholderDataRcomponentExtension2Ç
+event_extension.schema.improbable.EntityEvent¶ç (27.schema.improbable.unreal.UnrealLevelPlaceholder.EventsReventExtension2ä
+command_extension .schema.improbable.EntityCommand¶ç (29.schema.improbable.unreal.UnrealLevelPlaceholder.CommandsRcommandExtension:2¬Û.
+(improbable.unreal.UnrealLevelPlaceholder¶çBBLevelDataOuterClass

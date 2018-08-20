@@ -1,0 +1,11 @@
+package improbable.unreal;
+
+import "improbable/unreal/gdk/core_types.schema";
+
+component UnrealMetadata
+{
+    id = 100004;
+    option<string> static_path = 1;
+    option<string> owner_worker_id = 2;
+    map<string, uint32> subobject_name_to_offset = 3;
+}

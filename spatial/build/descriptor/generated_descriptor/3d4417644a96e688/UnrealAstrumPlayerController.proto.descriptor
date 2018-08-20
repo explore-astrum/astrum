@@ -1,0 +1,233 @@
+
+êÒ
+>improbable/unreal/generated/UnrealAstrumPlayerController.proto9schema.improbable.unreal.generated.astrumplayercontrollerimprobable/entity_state.proto&improbable/unreal/gdk/core_types.proto=improbable/unreal/generated/UnrealPlayerControllerTypes.proto7improbable/unreal/generated/UnrealControllerTypes.proto"Ú
+-AstrumPlayerControllerSingleClientRepDataDatag
+ field1_field_targetviewrotation0 (B¬Ûfield_targetviewrotation0Rfield1FieldTargetviewrotation0X
+field2_field_spawnlocation0 (B¬Ûfield_spawnlocation0Rfield2FieldSpawnlocation0"˚
+,AstrumPlayerControllerMultiClientRepDataDataF
+field1_field_bhidden0 (B¬Ûfield_bhidden0Rfield1FieldBhidden0g
+ field2_field_breplicatemovement0 (B¬Ûfield_breplicatemovement0Rfield2FieldBreplicatemovement0I
+field3_field_btearoff0 (B¬Ûfield_btearoff0Rfield3FieldBtearoff0X
+field4_field_bcanbedamaged0 (B¬Ûfield_bcanbedamaged0Rfield4FieldBcanbedamaged0O
+field5_field_remoterole0 (B¬Ûfield_remoterole0Rfield5FieldRemoterole0g
+ field6_field_replicatedmovement0 (B¬Ûfield_replicatedmovement0Rfield6FieldReplicatedmovement0ƒ
+1field7_field_attachmentreplication0_attachparent0 (2).schema.improbable.unreal.UnrealObjectRefB.¬Û*field_attachmentreplication0_attachparent0R.field7FieldAttachmentreplication0Attachparent0ü
+3field8_field_attachmentreplication0_locationoffset0 (B0¬Û,field_attachmentreplication0_locationoffset0R0field8FieldAttachmentreplication0Locationoffset0¢
+4field9_field_attachmentreplication0_relativescale3d0	 (B1¬Û-field_attachmentreplication0_relativescale3d0R1field9FieldAttachmentreplication0Relativescale3d0°
+4field10_field_attachmentreplication0_rotationoffset0
+ (B0¬Û,field_attachmentreplication0_rotationoffset0R1field10FieldAttachmentreplication0Rotationoffset0õ
+2field11_field_attachmentreplication0_attachsocket0 (	B.¬Û*field_attachmentreplication0_attachsocket0R/field11FieldAttachmentreplication0Attachsocket0œ
+5field12_field_attachmentreplication0_attachcomponent0 (2).schema.improbable.unreal.UnrealObjectRefB1¬Û-field_attachmentreplication0_attachcomponent0R2field12FieldAttachmentreplication0Attachcomponent0m
+field13_field_owner0 (2).schema.improbable.unreal.UnrealObjectRefB¬Ûfield_owner0Rfield13FieldOwner0?
+field14_field_role0 (B¬Ûfield_role0Rfield14FieldRole0|
+field15_field_instigator0 (2).schema.improbable.unreal.UnrealObjectRefB¬Ûfield_instigator0Rfield15FieldInstigator0
+field16_field_playerstate0 (2).schema.improbable.unreal.UnrealObjectRefB¬Ûfield_playerstate0Rfield16FieldPlayerstate0j
+field17_field_pawn0 (2).schema.improbable.unreal.UnrealObjectRefB¬Ûfield_pawn0Rfield17FieldPawn0"∑
+&AstrumPlayerControllerHandoverDataDataå
+field1_field_acknowledgedpawn0 (2).schema.improbable.unreal.UnrealObjectRefB¬Ûfield_acknowledgedpawn0Rfield1FieldAcknowledgedpawn0"&
+$AstrumPlayerControllerClientRPCsData"&
+$AstrumPlayerControllerServerRPCsData"+
+)AstrumPlayerControllerCrossServerRPCsData",
+*AstrumPlayerControllerNetMulticastRPCsData"·
+)AstrumPlayerControllerSingleClientRepData
+Events
+
+Commands2ª
+component_extension.schema.improbable.EntityState±ç (2h.schema.improbable.unreal.generated.astrumplayercontroller.AstrumPlayerControllerSingleClientRepDataDataRcomponentExtension2∂
+event_extension.schema.improbable.EntityEvent±ç (2k.schema.improbable.unreal.generated.astrumplayercontroller.AstrumPlayerControllerSingleClientRepData.EventsReventExtension2æ
+command_extension .schema.improbable.EntityCommand±ç (2m.schema.improbable.unreal.generated.astrumplayercontroller.AstrumPlayerControllerSingleClientRepData.CommandsRcommandExtension:f¬Ûb
+\improbable.unreal.generated.astrumplayercontroller.AstrumPlayerControllerSingleClientRepData±ç"‹
+(AstrumPlayerControllerMultiClientRepData
+Events
+
+Commands2∫
+component_extension.schema.improbable.EntityState≤ç (2g.schema.improbable.unreal.generated.astrumplayercontroller.AstrumPlayerControllerMultiClientRepDataDataRcomponentExtension2µ
+event_extension.schema.improbable.EntityEvent≤ç (2j.schema.improbable.unreal.generated.astrumplayercontroller.AstrumPlayerControllerMultiClientRepData.EventsReventExtension2Ω
+command_extension .schema.improbable.EntityCommand≤ç (2l.schema.improbable.unreal.generated.astrumplayercontroller.AstrumPlayerControllerMultiClientRepData.CommandsRcommandExtension:e¬Ûa
+[improbable.unreal.generated.astrumplayercontroller.AstrumPlayerControllerMultiClientRepData≤ç"æ
+"AstrumPlayerControllerHandoverData
+Events
+
+Commands2¥
+component_extension.schema.improbable.EntityState≥ç (2a.schema.improbable.unreal.generated.astrumplayercontroller.AstrumPlayerControllerHandoverDataDataRcomponentExtension2Ø
+event_extension.schema.improbable.EntityEvent≥ç (2d.schema.improbable.unreal.generated.astrumplayercontroller.AstrumPlayerControllerHandoverData.EventsReventExtension2∑
+command_extension .schema.improbable.EntityCommand≥ç (2f.schema.improbable.unreal.generated.astrumplayercontroller.AstrumPlayerControllerHandoverData.CommandsRcommandExtension:_¬Û[
+Uimprobable.unreal.generated.astrumplayercontroller.AstrumPlayerControllerHandoverData≥ç"ìÑ
+ AstrumPlayerControllerClientRPCs
+EventsË~
+Commands∑
++command_onserverstartedvisuallogger_request (2W.schema.improbable.unreal.generated.playercontroller.OnServerStartedVisualLoggerRequestR)commandOnserverstartedvisualloggerRequestî
+,command_onserverstartedvisuallogger_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR*commandOnserverstartedvisualloggerResponseì
+command_clientwaskicked_request (2K.schema.improbable.unreal.generated.playercontroller.ClientWasKickedRequestRcommandClientwaskickedRequest|
+ command_clientwaskicked_response (22.schema.improbable.unreal.UnrealRPCCommandResponseRcommandClientwaskickedResponse∫
+,command_clientvoicehandshakecomplete_request (2X.schema.improbable.unreal.generated.playercontroller.ClientVoiceHandshakeCompleteRequestR*commandClientvoicehandshakecompleteRequestñ
+-command_clientvoicehandshakecomplete_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR+commandClientvoicehandshakecompleteResponse·
+9command_clientupdatemultiplelevelsstreamingstatus_request (2e.schema.improbable.unreal.generated.playercontroller.ClientUpdateMultipleLevelsStreamingStatusRequestR7commandClientupdatemultiplelevelsstreamingstatusRequest∞
+:command_clientupdatemultiplelevelsstreamingstatus_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR8commandClientupdatemultiplelevelsstreamingstatusResponse∆
+0command_clientupdatelevelstreamingstatus_request	 (2\.schema.improbable.unreal.generated.playercontroller.ClientUpdateLevelStreamingStatusRequestR.commandClientupdatelevelstreamingstatusRequestû
+1command_clientupdatelevelstreamingstatus_response
+ (22.schema.improbable.unreal.UnrealRPCCommandResponseR/commandClientupdatelevelstreamingstatusResponseú
+"command_clientunmuteplayer_request (2N.schema.improbable.unreal.generated.playercontroller.ClientUnmutePlayerRequestR commandClientunmuteplayerRequestÇ
+#command_clientunmuteplayer_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR!commandClientunmuteplayerResponse¢
+$command_clienttravelinternal_request (2P.schema.improbable.unreal.generated.playercontroller.ClientTravelInternalRequestR"commandClienttravelinternalRequestÜ
+%command_clienttravelinternal_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR#commandClienttravelinternalResponseô
+!command_clientteammessage_request (2M.schema.improbable.unreal.generated.playercontroller.ClientTeamMessageRequestRcommandClientteammessageRequestÄ
+"command_clientteammessage_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR commandClientteammessageResponse´
+'command_clientstopforcefeedback_request (2S.schema.improbable.unreal.generated.playercontroller.ClientStopForceFeedbackRequestR%commandClientstopforcefeedbackRequestå
+(command_clientstopforcefeedback_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR&commandClientstopforcefeedbackResponse•
+%command_clientstopcamerashake_request (2Q.schema.improbable.unreal.generated.playercontroller.ClientStopCameraShakeRequestR#commandClientstopcamerashakeRequestà
+&command_clientstopcamerashake_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR$commandClientstopcamerashakeResponse¢
+$command_clientstopcameraanim_request (2P.schema.improbable.unreal.generated.playercontroller.ClientStopCameraAnimRequestR"commandClientstopcameraanimRequestÜ
+%command_clientstopcameraanim_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR#commandClientstopcameraanimResponseÆ
+(command_clientstartonlinesession_request (2T.schema.improbable.unreal.generated.playercontroller.ClientStartOnlineSessionRequestR&commandClientstartonlinesessionRequesté
+)command_clientstartonlinesession_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR'commandClientstartonlinesessionResponse∑
++command_clientspawncameralenseffect_request (2W.schema.improbable.unreal.generated.playercontroller.ClientSpawnCameraLensEffectRequestR)commandClientspawncameralenseffectRequestî
+,command_clientspawncameralenseffect_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR*commandClientspawncameralenseffectResponseü
+#command_clientsetviewtarget_request (2O.schema.improbable.unreal.generated.playercontroller.ClientSetViewTargetRequestR!commandClientsetviewtargetRequestÑ
+$command_clientsetviewtarget_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR"commandClientsetviewtargetResponse±
+)command_clientsetspectatorwaiting_request (2U.schema.improbable.unreal.generated.playercontroller.ClientSetSpectatorWaitingRequestR'commandClientsetspectatorwaitingRequestê
+*command_clientsetspectatorwaiting_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR(commandClientsetspectatorwaitingResponseä
+command_clientsethud_request (2H.schema.improbable.unreal.generated.playercontroller.ClientSetHUDRequestRcommandClientsethudRequestv
+command_clientsethud_response  (22.schema.improbable.unreal.UnrealRPCCommandResponseRcommandClientsethudResponseœ
+3command_clientsetforcemiplevelstoberesident_request! (2_.schema.improbable.unreal.generated.playercontroller.ClientSetForceMipLevelsToBeResidentRequestR1commandClientsetforcemiplevelstoberesidentRequest§
+4command_clientsetforcemiplevelstoberesident_response" (22.schema.improbable.unreal.UnrealRPCCommandResponseR2commandClientsetforcemiplevelstoberesidentResponse®
+&command_clientsetcinematicmode_request# (2R.schema.improbable.unreal.generated.playercontroller.ClientSetCinematicModeRequestR$commandClientsetcinematicmodeRequestä
+'command_clientsetcinematicmode_response$ (22.schema.improbable.unreal.UnrealRPCCommandResponseR%commandClientsetcinematicmodeResponseü
+#command_clientsetcameramode_request% (2O.schema.improbable.unreal.generated.playercontroller.ClientSetCameraModeRequestR!commandClientsetcameramodeRequestÑ
+$command_clientsetcameramode_response& (22.schema.improbable.unreal.UnrealRPCCommandResponseR"commandClientsetcameramodeResponseü
+#command_clientsetcamerafade_request' (2O.schema.improbable.unreal.generated.playercontroller.ClientSetCameraFadeRequestR!commandClientsetcamerafadeRequestÑ
+$command_clientsetcamerafade_response( (22.schema.improbable.unreal.UnrealRPCCommandResponseR"commandClientsetcamerafadeResponse∫
+,command_clientsetblockonasyncloading_request) (2X.schema.improbable.unreal.generated.playercontroller.ClientSetBlockOnAsyncLoadingRequestR*commandClientsetblockonasyncloadingRequestñ
+-command_clientsetblockonasyncloading_response* (22.schema.improbable.unreal.UnrealRPCCommandResponseR+commandClientsetblockonasyncloadingResponse“
+4command_clientreturntomainmenuwithtextreason_request+ (2`.schema.improbable.unreal.generated.playercontroller.ClientReturnToMainMenuWithTextReasonRequestR2commandClientreturntomainmenuwithtextreasonRequest¶
+5command_clientreturntomainmenuwithtextreason_response, (22.schema.improbable.unreal.UnrealRPCCommandResponseR3commandClientreturntomainmenuwithtextreasonResponse®
+&command_clientreturntomainmenu_request- (2R.schema.improbable.unreal.generated.playercontroller.ClientReturnToMainMenuRequestR$commandClientreturntomainmenuRequestä
+'command_clientreturntomainmenu_response. (22.schema.improbable.unreal.UnrealRPCCommandResponseR%commandClientreturntomainmenuResponseÆ
+(command_clientretryclientrestart_request/ (2T.schema.improbable.unreal.generated.playercontroller.ClientRetryClientRestartRequestR&commandClientretryclientrestartRequesté
+)command_clientretryclientrestart_response0 (22.schema.improbable.unreal.UnrealRPCCommandResponseR'commandClientretryclientrestartResponseç
+command_clientrestart_request1 (2I.schema.improbable.unreal.generated.playercontroller.ClientRestartRequestRcommandClientrestartRequestx
+command_clientrestart_response2 (22.schema.improbable.unreal.UnrealRPCCommandResponseRcommandClientrestartResponseá
+command_clientreset_request3 (2G.schema.improbable.unreal.generated.playercontroller.ClientResetRequestRcommandClientresetRequestt
+command_clientreset_response4 (22.schema.improbable.unreal.UnrealRPCCommandResponseRcommandClientresetResponseì
+command_clientrepobjref_request5 (2K.schema.improbable.unreal.generated.playercontroller.ClientRepObjRefRequestRcommandClientrepobjrefRequest|
+ command_clientrepobjref_response6 (22.schema.improbable.unreal.UnrealRPCCommandResponseRcommandClientrepobjrefResponseΩ
+-command_clientreceivelocalizedmessage_request7 (2Y.schema.improbable.unreal.generated.playercontroller.ClientReceiveLocalizedMessageRequestR+commandClientreceivelocalizedmessageRequestò
+.command_clientreceivelocalizedmessage_response8 (22.schema.improbable.unreal.UnrealRPCCommandResponseR,commandClientreceivelocalizedmessageResponse´
+'command_clientprestreamtextures_request9 (2S.schema.improbable.unreal.generated.playercontroller.ClientPrestreamTexturesRequestR%commandClientprestreamtexturesRequestå
+(command_clientprestreamtextures_response: (22.schema.improbable.unreal.UnrealRPCCommandResponseR&commandClientprestreamtexturesResponse®
+&command_clientpreparemapchange_request; (2R.schema.improbable.unreal.generated.playercontroller.ClientPrepareMapChangeRequestR$commandClientpreparemapchangeRequestä
+'command_clientpreparemapchange_response< (22.schema.improbable.unreal.UnrealRPCCommandResponseR%commandClientpreparemapchangeResponse±
+)command_clientplaysoundatlocation_request= (2U.schema.improbable.unreal.generated.playercontroller.ClientPlaySoundAtLocationRequestR'commandClientplaysoundatlocationRequestê
+*command_clientplaysoundatlocation_response> (22.schema.improbable.unreal.UnrealRPCCommandResponseR(commandClientplaysoundatlocationResponseì
+command_clientplaysound_request? (2K.schema.improbable.unreal.generated.playercontroller.ClientPlaySoundRequestRcommandClientplaysoundRequest|
+ command_clientplaysound_response@ (22.schema.improbable.unreal.UnrealRPCCommandResponseRcommandClientplaysoundResponse´
+'command_clientplayforcefeedback_requestA (2S.schema.improbable.unreal.generated.playercontroller.ClientPlayForceFeedbackRequestR%commandClientplayforcefeedbackRequestå
+(command_clientplayforcefeedback_responseB (22.schema.improbable.unreal.UnrealRPCCommandResponseR&commandClientplayforcefeedbackResponse•
+%command_clientplaycamerashake_requestC (2Q.schema.improbable.unreal.generated.playercontroller.ClientPlayCameraShakeRequestR#commandClientplaycamerashakeRequestà
+&command_clientplaycamerashake_responseD (22.schema.improbable.unreal.UnrealRPCCommandResponseR$commandClientplaycamerashakeResponse¢
+$command_clientplaycameraanim_requestE (2P.schema.improbable.unreal.generated.playercontroller.ClientPlayCameraAnimRequestR"commandClientplaycameraanimRequestÜ
+%command_clientplaycameraanim_responseF (22.schema.improbable.unreal.UnrealRPCCommandResponseR#commandClientplaycameraanimResponseñ
+ command_clientmuteplayer_requestG (2L.schema.improbable.unreal.generated.playercontroller.ClientMutePlayerRequestRcommandClientmuteplayerRequest~
+!command_clientmuteplayer_responseH (22.schema.improbable.unreal.UnrealRPCCommandResponseRcommandClientmuteplayerResponseç
+command_clientmessage_requestI (2I.schema.improbable.unreal.generated.playercontroller.ClientMessageRequestRcommandClientmessageRequestx
+command_clientmessage_responseJ (22.schema.improbable.unreal.UnrealRPCCommandResponseRcommandClientmessageResponse•
+%command_clientignoremoveinput_requestK (2Q.schema.improbable.unreal.generated.playercontroller.ClientIgnoreMoveInputRequestR#commandClientignoremoveinputRequestà
+&command_clientignoremoveinput_responseL (22.schema.improbable.unreal.UnrealRPCCommandResponseR$commandClientignoremoveinputResponse•
+%command_clientignorelookinput_requestM (2Q.schema.improbable.unreal.generated.playercontroller.ClientIgnoreLookInputRequestR#commandClientignorelookinputRequestà
+&command_clientignorelookinput_responseN (22.schema.improbable.unreal.UnrealRPCCommandResponseR$commandClientignorelookinputResponseì
+command_clientgotostate_requestO (2K.schema.improbable.unreal.generated.playercontroller.ClientGotoStateRequestRcommandClientgotostateRequest|
+ command_clientgotostate_responseP (22.schema.improbable.unreal.UnrealRPCCommandResponseRcommandClientgotostateResponseì
+command_clientgameended_requestQ (2K.schema.improbable.unreal.generated.playercontroller.ClientGameEndedRequestRcommandClientgameendedRequest|
+ command_clientgameended_responseR (22.schema.improbable.unreal.UnrealRPCCommandResponseRcommandClientgameendedResponse∫
+,command_clientforcegarbagecollection_requestS (2X.schema.improbable.unreal.generated.playercontroller.ClientForceGarbageCollectionRequestR*commandClientforcegarbagecollectionRequestñ
+-command_clientforcegarbagecollection_responseT (22.schema.improbable.unreal.UnrealRPCCommandResponseR+commandClientforcegarbagecollectionResponse±
+)command_clientflushlevelstreaming_requestU (2U.schema.improbable.unreal.generated.playercontroller.ClientFlushLevelStreamingRequestR'commandClientflushlevelstreamingRequestê
+*command_clientflushlevelstreaming_responseV (22.schema.improbable.unreal.UnrealRPCCommandResponseR(commandClientflushlevelstreamingResponse®
+&command_clientendonlinesession_requestW (2R.schema.improbable.unreal.generated.playercontroller.ClientEndOnlineSessionRequestR$commandClientendonlinesessionRequestä
+'command_clientendonlinesession_responseX (22.schema.improbable.unreal.UnrealRPCCommandResponseR%commandClientendonlinesessionResponseÆ
+(command_clientenablenetworkvoice_requestY (2T.schema.improbable.unreal.generated.playercontroller.ClientEnableNetworkVoiceRequestR&commandClientenablenetworkvoiceRequesté
+)command_clientenablenetworkvoice_responseZ (22.schema.improbable.unreal.UnrealRPCCommandResponseR'commandClientenablenetworkvoiceResponse•
+%command_clientcommitmapchange_request[ (2Q.schema.improbable.unreal.generated.playercontroller.ClientCommitMapChangeRequestR#commandClientcommitmapchangeRequestà
+&command_clientcommitmapchange_response\ (22.schema.improbable.unreal.UnrealRPCCommandResponseR$commandClientcommitmapchangeResponse∫
+,command_clientclearcameralenseffects_request] (2X.schema.improbable.unreal.generated.playercontroller.ClientClearCameraLensEffectsRequestR*commandClientclearcameralenseffectsRequestñ
+-command_clientclearcameralenseffects_response^ (22.schema.improbable.unreal.UnrealRPCCommandResponseR+commandClientclearcameralenseffectsResponseú
+"command_clientcapbandwidth_request_ (2N.schema.improbable.unreal.generated.playercontroller.ClientCapBandwidthRequestR commandClientcapbandwidthRequestÇ
+#command_clientcapbandwidth_response` (22.schema.improbable.unreal.UnrealRPCCommandResponseR!commandClientcapbandwidthResponse∫
+,command_clientcancelpendingmapchange_requesta (2X.schema.improbable.unreal.generated.playercontroller.ClientCancelPendingMapChangeRequestR*commandClientcancelpendingmapchangeRequestñ
+-command_clientcancelpendingmapchange_responseb (22.schema.improbable.unreal.UnrealRPCCommandResponseR+commandClientcancelpendingmapchangeResponse∫
+,command_clientaddtexturestreamingloc_requestc (2X.schema.improbable.unreal.generated.playercontroller.ClientAddTextureStreamingLocRequestR*commandClientaddtexturestreaminglocRequestñ
+-command_clientaddtexturestreamingloc_responsed (22.schema.improbable.unreal.UnrealRPCCommandResponseR+commandClientaddtexturestreaminglocResponseì
+!command_clientsetrotation_requeste (2G.schema.improbable.unreal.generated.controller.ClientSetRotationRequestRcommandClientsetrotationRequestÄ
+"command_clientsetrotation_responsef (22.schema.improbable.unreal.UnrealRPCCommandResponseR commandClientsetrotationResponseì
+!command_clientsetlocation_requestg (2G.schema.improbable.unreal.generated.controller.ClientSetLocationRequestRcommandClientsetlocationRequestÄ
+"command_clientsetlocation_responseh (22.schema.improbable.unreal.UnrealRPCCommandResponseR commandClientsetlocationResponse2≤
+component_extension.schema.improbable.EntityState¥ç (2_.schema.improbable.unreal.generated.astrumplayercontroller.AstrumPlayerControllerClientRPCsDataRcomponentExtension2≠
+event_extension.schema.improbable.EntityEvent¥ç (2b.schema.improbable.unreal.generated.astrumplayercontroller.AstrumPlayerControllerClientRPCs.EventsReventExtension2µ
+command_extension .schema.improbable.EntityCommand¥ç (2d.schema.improbable.unreal.generated.astrumplayercontroller.AstrumPlayerControllerClientRPCs.CommandsRcommandExtension:]¬ÛY
+Simprobable.unreal.generated.astrumplayercontroller.AstrumPlayerControllerClientRPCs¥ç"ë8
+ AstrumPlayerControllerServerRPCs
+EventsÊ2
+Commandsê
+command_serverviewself_request (2J.schema.improbable.unreal.generated.playercontroller.ServerViewSelfRequestRcommandServerviewselfRequestz
+command_serverviewself_response (22.schema.improbable.unreal.UnrealRPCCommandResponseRcommandServerviewselfResponse¢
+$command_serverviewprevplayer_request (2P.schema.improbable.unreal.generated.playercontroller.ServerViewPrevPlayerRequestR"commandServerviewprevplayerRequestÜ
+%command_serverviewprevplayer_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR#commandServerviewprevplayerResponse¢
+$command_serverviewnextplayer_request (2P.schema.improbable.unreal.generated.playercontroller.ServerViewNextPlayerRequestR"commandServerviewnextplayerRequestÜ
+%command_serverviewnextplayer_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR#commandServerviewnextplayerResponse®
+&command_serververifyviewtarget_request (2R.schema.improbable.unreal.generated.playercontroller.ServerVerifyViewTargetRequestR$commandSerververifyviewtargetRequestä
+'command_serververifyviewtarget_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR%commandSerververifyviewtargetResponse“
+4command_serverupdatemultiplelevelsvisibility_request	 (2`.schema.improbable.unreal.generated.playercontroller.ServerUpdateMultipleLevelsVisibilityRequestR2commandServerupdatemultiplelevelsvisibilityRequest¶
+5command_serverupdatemultiplelevelsvisibility_response
+ (22.schema.improbable.unreal.UnrealRPCCommandResponseR3commandServerupdatemultiplelevelsvisibilityResponse∑
++command_serverupdatelevelvisibility_request (2W.schema.improbable.unreal.generated.playercontroller.ServerUpdateLevelVisibilityRequestR)commandServerupdatelevelvisibilityRequestî
+,command_serverupdatelevelvisibility_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR*commandServerupdatelevelvisibilityResponseú
+"command_serverupdatecamera_request (2N.schema.improbable.unreal.generated.playercontroller.ServerUpdateCameraRequestR commandServerupdatecameraRequestÇ
+#command_serverupdatecamera_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR!commandServerupdatecameraResponseú
+"command_serverunmuteplayer_request (2N.schema.improbable.unreal.generated.playercontroller.ServerUnmutePlayerRequestR commandServerunmuteplayerRequestÇ
+#command_serverunmuteplayer_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR!commandServerunmuteplayerResponse•
+%command_servertoggleailogging_request (2Q.schema.improbable.unreal.generated.playercontroller.ServerToggleAILoggingRequestR#commandServertoggleailoggingRequestà
+&command_servertoggleailogging_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR$commandServertoggleailoggingResponseú
+"command_servershorttimeout_request (2N.schema.improbable.unreal.generated.playercontroller.ServerShortTimeoutRequestR commandServershorttimeoutRequestÇ
+#command_servershorttimeout_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR!commandServershorttimeoutResponse±
+)command_serversetspectatorwaiting_request (2U.schema.improbable.unreal.generated.playercontroller.ServerSetSpectatorWaitingRequestR'commandServersetspectatorwaitingRequestê
+*command_serversetspectatorwaiting_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR(commandServersetspectatorwaitingResponse¥
+*command_serversetspectatorlocation_request (2V.schema.improbable.unreal.generated.playercontroller.ServerSetSpectatorLocationRequestR(commandServersetspectatorlocationRequestí
++command_serversetspectatorlocation_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR)commandServersetspectatorlocationResponseü
+#command_serverrestartplayer_request (2O.schema.improbable.unreal.generated.playercontroller.ServerRestartPlayerRequestR!commandServerrestartplayerRequestÑ
+$command_serverrestartplayer_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR"commandServerrestartplayerResponseá
+command_serverpause_request (2G.schema.improbable.unreal.generated.playercontroller.ServerPauseRequestRcommandServerpauseRequestt
+command_serverpause_response (22.schema.improbable.unreal.UnrealRPCCommandResponseRcommandServerpauseResponse´
+'command_servernotifyloadedworld_request (2S.schema.improbable.unreal.generated.playercontroller.ServerNotifyLoadedWorldRequestR%commandServernotifyloadedworldRequestå
+(command_servernotifyloadedworld_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR&commandServernotifyloadedworldResponseñ
+ command_servermuteplayer_request (2L.schema.improbable.unreal.generated.playercontroller.ServerMutePlayerRequestRcommandServermuteplayerRequest~
+!command_servermuteplayer_response  (22.schema.improbable.unreal.UnrealRPCCommandResponseRcommandServermuteplayerResponseœ
+3command_servercheckclientpossessionreliable_request! (2_.schema.improbable.unreal.generated.playercontroller.ServerCheckClientPossessionReliableRequestR1commandServercheckclientpossessionreliableRequest§
+4command_servercheckclientpossessionreliable_response" (22.schema.improbable.unreal.UnrealRPCCommandResponseR2commandServercheckclientpossessionreliableResponse∑
++command_servercheckclientpossession_request# (2W.schema.improbable.unreal.generated.playercontroller.ServerCheckClientPossessionRequestR)commandServercheckclientpossessionRequestî
+,command_servercheckclientpossession_response$ (22.schema.improbable.unreal.UnrealRPCCommandResponseR*commandServercheckclientpossessionResponseñ
+ command_serverchangename_request% (2L.schema.improbable.unreal.generated.playercontroller.ServerChangeNameRequestRcommandServerchangenameRequest~
+!command_serverchangename_response& (22.schema.improbable.unreal.UnrealRPCCommandResponseRcommandServerchangenameResponseä
+command_servercamera_request' (2H.schema.improbable.unreal.generated.playercontroller.ServerCameraRequestRcommandServercameraRequestv
+command_servercamera_response( (22.schema.improbable.unreal.UnrealRPCCommandResponseRcommandServercameraResponse∑
++command_serveracknowledgepossession_request) (2W.schema.improbable.unreal.generated.playercontroller.ServerAcknowledgePossessionRequestR)commandServeracknowledgepossessionRequestî
+,command_serveracknowledgepossession_response* (22.schema.improbable.unreal.UnrealRPCCommandResponseR*commandServeracknowledgepossessionResponse2≤
+component_extension.schema.improbable.EntityStateµç (2_.schema.improbable.unreal.generated.astrumplayercontroller.AstrumPlayerControllerServerRPCsDataRcomponentExtension2≠
+event_extension.schema.improbable.EntityEventµç (2b.schema.improbable.unreal.generated.astrumplayercontroller.AstrumPlayerControllerServerRPCs.EventsReventExtension2µ
+command_extension .schema.improbable.EntityCommandµç (2d.schema.improbable.unreal.generated.astrumplayercontroller.AstrumPlayerControllerServerRPCs.CommandsRcommandExtension:]¬ÛY
+Simprobable.unreal.generated.astrumplayercontroller.AstrumPlayerControllerServerRPCsµç"Õ
+%AstrumPlayerControllerCrossServerRPCs
+Events
+
+Commands2∑
+component_extension.schema.improbable.EntityState∂ç (2d.schema.improbable.unreal.generated.astrumplayercontroller.AstrumPlayerControllerCrossServerRPCsDataRcomponentExtension2≤
+event_extension.schema.improbable.EntityEvent∂ç (2g.schema.improbable.unreal.generated.astrumplayercontroller.AstrumPlayerControllerCrossServerRPCs.EventsReventExtension2∫
+command_extension .schema.improbable.EntityCommand∂ç (2i.schema.improbable.unreal.generated.astrumplayercontroller.AstrumPlayerControllerCrossServerRPCs.CommandsRcommandExtension:b¬Û^
+Ximprobable.unreal.generated.astrumplayercontroller.AstrumPlayerControllerCrossServerRPCs∂ç"“
+&AstrumPlayerControllerNetMulticastRPCs
+Events
+
+Commands2∏
+component_extension.schema.improbable.EntityState∑ç (2e.schema.improbable.unreal.generated.astrumplayercontroller.AstrumPlayerControllerNetMulticastRPCsDataRcomponentExtension2≥
+event_extension.schema.improbable.EntityEvent∑ç (2h.schema.improbable.unreal.generated.astrumplayercontroller.AstrumPlayerControllerNetMulticastRPCs.EventsReventExtension2ª
+command_extension .schema.improbable.EntityCommand∑ç (2j.schema.improbable.unreal.generated.astrumplayercontroller.AstrumPlayerControllerNetMulticastRPCs.CommandsRcommandExtension:c¬Û_
+Yimprobable.unreal.generated.astrumplayercontroller.AstrumPlayerControllerNetMulticastRPCs∑çB(B&UnrealAstrumPlayerControllerOuterClass

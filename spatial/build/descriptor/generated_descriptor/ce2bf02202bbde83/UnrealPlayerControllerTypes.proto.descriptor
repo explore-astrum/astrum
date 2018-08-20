@@ -1,0 +1,272 @@
+
+Û¤
+=improbable/unreal/generated/UnrealPlayerControllerTypes.proto3schema.improbable.unreal.generated.playercontrollerimprobable/entity_state.proto&improbable/unreal/gdk/core_types.proto"×
+"OnServerStartedVisualLoggerRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetO
+field2_field_bislogging0 (BÂófield_bislogging0Rfield2FieldBislogging0"Ë
+ClientWasKickedRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetO
+field2_field_kickreason0 (	BÂófield_kickreason0Rfield2FieldKickreason0"‡
+#ClientVoiceHandshakeCompleteRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset"î
+0ClientUpdateMultipleLevelsStreamingStatusRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetX
+field2_field_levelstatuses0 (BÂófield_levelstatuses0Rfield2FieldLevelstatuses0"ñ
+'ClientUpdateLevelStreamingStatusRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetR
+field2_field_packagename0 (	BÂófield_packagename0Rfield2FieldPackagename0g
+ field3_field_bnewshouldbeloaded0 (BÂófield_bnewshouldbeloaded0Rfield3FieldBnewshouldbeloaded0j
+!field4_field_bnewshouldbevisible0 (BÂófield_bnewshouldbevisible0Rfield4FieldBnewshouldbevisible0p
+#field5_field_bnewshouldblockonload0 (B Âófield_bnewshouldblockonload0R!field5FieldBnewshouldblockonload0I
+field6_field_lodindex0 (BÂófield_lodindex0Rfield6FieldLodindex0"È
+ClientUnmutePlayerRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetI
+field2_field_playerid0 (BÂófield_playerid0Rfield2FieldPlayerid0"î
+ClientTravelInternalRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset:
+field2_field_url0 (	BÂó
+field_url0Rfield2FieldUrl0O
+field3_field_traveltype0 (BÂófield_traveltype0Rfield3FieldTraveltype0L
+field4_field_bseamless0 (BÂófield_bseamless0Rfield4FieldBseamless0c
+field5_field_mappackageguid0_a0 (BÂófield_mappackageguid0_a0Rfield5FieldMappackageguid0A0c
+field6_field_mappackageguid0_b0 (BÂófield_mappackageguid0_b0Rfield6FieldMappackageguid0B0c
+field7_field_mappackageguid0_c0 (BÂófield_mappackageguid0_c0Rfield7FieldMappackageguid0C0c
+field8_field_mappackageguid0_d0 (BÂófield_mappackageguid0_d0Rfield8FieldMappackageguid0D0"×
+ClientTeamMessageRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset
+field2_field_senderplayerstate0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_senderplayerstate0Rfield2FieldSenderplayerstate04
+field3_field_s0 (	BÂófield_s0Rfield3FieldS0=
+field4_field_type0 (	BÂófield_type0Rfield4FieldType0R
+field5_field_msglifetime0 (BÂófield_msglifetime0Rfield5FieldMsglifetime0"Ö
+ClientStopForceFeedbackRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset•
+!field2_field_forcefeedbackeffect0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_forcefeedbackeffect0Rfield2FieldForcefeedbackeffect0:
+field3_field_tag0 (	BÂó
+field_tag0Rfield3FieldTag0"Ä
+ClientStopCameraShakeRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetk
+field2_field_shake0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_shake0Rfield2FieldShake0U
+field3_field_bimmediately0 (BÂófield_bimmediately0Rfield3FieldBimmediately0"û
+ClientStopCameraAnimRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetz
+field2_field_animtostop0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_animtostop0Rfield2FieldAnimtostop0"ƒ
+ClientStartOnlineSessionRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset"§
+"ClientSpawnCameraLensEffectRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset
+$field2_field_lenseffectemitterclass0 (2).schema.improbable.unreal.UnrealObjectRefB!Âófield_lenseffectemitterclass0R"field2FieldLenseffectemitterclass0"ƒ
+ClientSetViewTargetRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset_
+field2_field_a0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_a0Rfield2FieldA0
+)field3_field_transitionparams0_blendtime0 (B&Âó"field_transitionparams0_blendtime0R&field3FieldTransitionparams0Blendtime0
+-field4_field_transitionparams0_blendfunction0 (B*Âó&field_transitionparams0_blendfunction0R*field4FieldTransitionparams0Blendfunction0~
+(field5_field_transitionparams0_blendexp0 (B%Âó!field_transitionparams0_blendexp0R%field5FieldTransitionparams0Blendexp0
+-field6_field_transitionparams0_blockoutgoing0 (B*Âó&field_transitionparams0_blockoutgoing0R*field6FieldTransitionparams0Blockoutgoing0"Ï
+ ClientSetSpectatorWaitingRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetI
+field2_field_bwaiting0 (BÂófield_bwaiting0Rfield2FieldBwaiting0"ö
+ClientSetHUDRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset}
+field2_field_newhudclass0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_newhudclass0Rfield2FieldNewhudclass0"Ó
+*ClientSetForceMipLevelsToBeResidentRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsett
+field2_field_material0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_material0Rfield2FieldMaterial0X
+field3_field_forceduration0 (BÂófield_forceduration0Rfield3FieldForceduration0s
+$field4_field_cinematictexturegroups0 (B!Âófield_cinematictexturegroups0R"field4FieldCinematictexturegroups0"û
+ClientSetCinematicModeRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffseta
+field2_field_bincinematicmode0 (BÂófield_bincinematicmode0Rfield2FieldBincinematicmode0a
+field3_field_baffectsmovement0 (BÂófield_baffectsmovement0Rfield3FieldBaffectsmovement0^
+field4_field_baffectsturning0 (BÂófield_baffectsturning0Rfield4FieldBaffectsturning0R
+field5_field_baffectshud0 (BÂófield_baffectshud0Rfield5FieldBaffectshud0"Ï
+ClientSetCameraModeRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetO
+field2_field_newcammode0 (	BÂófield_newcammode0Rfield2FieldNewcammode0"š
+ClientSetCameraFadeRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetX
+field2_field_benablefading0 (BÂófield_benablefading0Rfield2FieldBenablefading0T
+field3_field_fadecolor0_b0 (BÂófield_fadecolor0_b0Rfield3FieldFadecolor0B0T
+field4_field_fadecolor0_g0 (BÂófield_fadecolor0_g0Rfield4FieldFadecolor0G0T
+field5_field_fadecolor0_r0 (BÂófield_fadecolor0_r0Rfield5FieldFadecolor0R0T
+field6_field_fadecolor0_a0 (BÂófield_fadecolor0_a0Rfield6FieldFadecolor0A0L
+field7_field_fadealpha0 (BÂófield_fadealpha0Rfield7FieldFadealpha0I
+field8_field_fadetime0 (BÂófield_fadetime0Rfield8FieldFadetime0O
+field9_field_bfadeaudio0	 (BÂófield_bfadeaudio0Rfield9FieldBfadeaudio0"‡
+#ClientSetBlockOnAsyncLoadingRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset"æ
++ClientReturnToMainMenuWithTextReasonRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetU
+field2_field_returnreason0 (	BÂófield_returnreason0Rfield2FieldReturnreason0"Ø
+ClientReturnToMainMenuRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetU
+field2_field_returnreason0 (	BÂófield_returnreason0Rfield2FieldReturnreason0"ö
+ClientRetryClientRestartRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetq
+field2_field_newpawn0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_newpawn0Rfield2FieldNewpawn0"ë
+ClientRestartRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetq
+field2_field_newpawn0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_newpawn0Rfield2FieldNewpawn0"v
+ClientResetRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset"ê
+ClientRepObjRefRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetn
+field2_field_object0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_object0Rfield2FieldObject0"ù
+$ClientReceiveLocalizedMessageRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetq
+field2_field_message0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_message0Rfield2FieldMessage0C
+field3_field_switch0 (BÂófield_switch0Rfield3FieldSwitch0•
+!field4_field_relatedplayerstate10 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_relatedplayerstate10Rfield4FieldRelatedplayerstate10•
+!field5_field_relatedplayerstate20 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_relatedplayerstate20Rfield5FieldRelatedplayerstate20†
+field6_field_optionalobject0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_optionalobject0Rfield6FieldOptionalobject0"³
+ClientPrestreamTexturesRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset}
+field2_field_forcedactor0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_forcedactor0Rfield2FieldForcedactor0X
+field3_field_forceduration0 (BÂófield_forceduration0Rfield3FieldForceduration0a
+field4_field_benablestreaming0 (BÂófield_benablestreaming0Rfield4FieldBenablestreaming0s
+$field5_field_cinematictexturegroups0 (B!Âófield_cinematictexturegroups0R"field5FieldCinematictexturegroups0"Ö
+ClientPrepareMapChangeRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetL
+field2_field_levelname0 (	BÂófield_levelname0Rfield2FieldLevelname0C
+field3_field_bfirst0 (BÂófield_bfirst0Rfield3FieldBfirst0@
+field4_field_blast0 (BÂófield_blast0Rfield4FieldBlast0"ÿ
+ ClientPlaySoundAtLocationRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetk
+field2_field_sound0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_sound0Rfield2FieldSound0I
+field3_field_location0 (BÂófield_location0Rfield3FieldLocation0a
+field4_field_volumemultiplier0 (BÂófield_volumemultiplier0Rfield4FieldVolumemultiplier0^
+field5_field_pitchmultiplier0 (BÂófield_pitchmultiplier0Rfield5FieldPitchmultiplier0"ª
+ClientPlaySoundRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetk
+field2_field_sound0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_sound0Rfield2FieldSound0a
+field3_field_volumemultiplier0 (BÂófield_volumemultiplier0Rfield3FieldVolumemultiplier0^
+field4_field_pitchmultiplier0 (BÂófield_pitchmultiplier0Rfield4FieldPitchmultiplier0"
+ClientPlayForceFeedbackRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset•
+!field2_field_forcefeedbackeffect0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_forcefeedbackeffect0Rfield2FieldForcefeedbackeffect0I
+field3_field_blooping0 (BÂófield_blooping0Rfield3FieldBlooping0j
+!field4_field_bignoretimedilation0 (BÂófield_bignoretimedilation0Rfield4FieldBignoretimedilation0:
+field5_field_tag0 (	BÂó
+field_tag0Rfield5FieldTag0"à
+ClientPlayCameraShakeRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetk
+field2_field_shake0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_shake0Rfield2FieldShake0@
+field3_field_scale0 (BÂófield_scale0Rfield3FieldScale0L
+field4_field_playspace0 (BÂófield_playspace0Rfield4FieldPlayspace0a
+field5_field_userplayspacerot0 (BÂófield_userplayspacerot0Rfield5FieldUserplayspacerot0"ğ
+ClientPlayCameraAnimRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetz
+field2_field_animtoplay0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_animtoplay0Rfield2FieldAnimtoplay0@
+field3_field_scale0 (BÂófield_scale0Rfield3FieldScale0=
+field4_field_rate0 (BÂófield_rate0Rfield4FieldRate0R
+field5_field_blendintime0 (BÂófield_blendintime0Rfield5FieldBlendintime0U
+field6_field_blendouttime0 (BÂófield_blendouttime0Rfield6FieldBlendouttime0@
+field7_field_bloop0 (BÂófield_bloop0Rfield7FieldBloop0a
+field8_field_brandomstarttime0 (BÂófield_brandomstarttime0Rfield8FieldBrandomstarttime0@
+field9_field_space0	 (BÂófield_space0Rfield9FieldSpace0`
+field10_field_customplayspace0
+ (BÂófield_customplayspace0Rfield10FieldCustomplayspace0"Æ
+ClientMutePlayerRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetI
+field2_field_playerid0 (BÂófield_playerid0Rfield2FieldPlayerid0"Á
+ClientMessageRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset4
+field2_field_s0 (	BÂófield_s0Rfield2FieldS0=
+field3_field_type0 (	BÂófield_type0Rfield3FieldType0R
+field4_field_msglifetime0 (BÂófield_msglifetime0Rfield4FieldMsglifetime0"È
+ClientIgnoreMoveInputRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetF
+field2_field_bignore0 (BÂófield_bignore0Rfield2FieldBignore0"È
+ClientIgnoreLookInputRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetF
+field2_field_bignore0 (BÂófield_bignore0Rfield2FieldBignore0"Å
+ClientGotoStateRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetI
+field2_field_newstate0 (	BÂófield_newstate0Rfield2FieldNewstate0"Ë
+ClientGameEndedRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset€
+field2_field_endgamefocus0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_endgamefocus0Rfield2FieldEndgamefocus0L
+field3_field_biswinner0 (BÂófield_biswinner0Rfield3FieldBiswinner0"‡
+#ClientForceGarbageCollectionRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset"„
+ ClientFlushLevelStreamingRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset"
+ClientEndOnlineSessionRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset"Ë
+ClientEnableNetworkVoiceRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetF
+field2_field_benable0 (BÂófield_benable0Rfield2FieldBenable0"€
+ClientCommitMapChangeRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset"‡
+#ClientClearCameraLensEffectsRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset"¹
+ClientCapBandwidthRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset:
+field2_field_cap0 (BÂó
+field_cap0Rfield2FieldCap0"‡
+#ClientCancelPendingMapChangeRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset"ú
+#ClientAddTextureStreamingLocRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset@
+field2_field_inloc0 (BÂófield_inloc0Rfield2FieldInloc0I
+field3_field_duration0 (BÂófield_duration0Rfield3FieldDuration0d
+field4_field_boverridelocation0 (BÂófield_boverridelocation0Rfield4FieldBoverridelocation0"
+ServerViewSelfRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset
+)field2_field_transitionparams0_blendtime0 (B&Âó"field_transitionparams0_blendtime0R&field2FieldTransitionparams0Blendtime0
+-field3_field_transitionparams0_blendfunction0 (B*Âó&field_transitionparams0_blendfunction0R*field3FieldTransitionparams0Blendfunction0~
+(field4_field_transitionparams0_blendexp0 (B%Âó!field_transitionparams0_blendexp0R%field4FieldTransitionparams0Blendexp0
+-field5_field_transitionparams0_blockoutgoing0 (B*Âó&field_transitionparams0_blockoutgoing0R*field5FieldTransitionparams0Blockoutgoing0"
+ServerViewPrevPlayerRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset"
+ServerViewNextPlayerRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset"
+ServerVerifyViewTargetRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset"õ
++ServerUpdateMultipleLevelsVisibilityRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetd
+field2_field_levelvisibilities0 (BÂófield_levelvisibilities0Rfield2FieldLevelvisibilities0"«
+"ServerUpdateLevelVisibilityRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetR
+field2_field_packagename0 (	BÂófield_packagename0Rfield2FieldPackagename0O
+field3_field_bisvisible0 (BÂófield_bisvisible0Rfield3FieldBisvisible0"Ÿ
+ServerUpdateCameraRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetC
+field2_field_camloc0 (BÂófield_camloc0Rfield2FieldCamloc0[
+field3_field_campitchandyaw0 (BÂófield_campitchandyaw0Rfield3FieldCampitchandyaw0"È
+ServerUnmutePlayerRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetI
+field2_field_playerid0 (BÂófield_playerid0Rfield2FieldPlayerid0"€
+ServerToggleAILoggingRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset"}
+ServerShortTimeoutRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset"Ï
+ ServerSetSpectatorWaitingRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetI
+field2_field_bwaiting0 (BÂófield_bwaiting0Rfield2FieldBwaiting0"
+!ServerSetSpectatorLocationRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetC
+field2_field_newloc0 (BÂófield_newloc0Rfield2FieldNewloc0C
+field3_field_newrot0 (BÂófield_newrot0Rfield3FieldNewrot0"~
+ServerRestartPlayerRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset"v
+ServerPauseRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset"å
+ServerNotifyLoadedWorldRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffseta
+field2_field_worldpackagename0 (	BÂófield_worldpackagename0Rfield2FieldWorldpackagename0"Æ
+ServerMutePlayerRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetI
+field2_field_playerid0 (BÂófield_playerid0Rfield2FieldPlayerid0"
+*ServerCheckClientPossessionReliableRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset"†
+"ServerCheckClientPossessionRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset"±
+ServerChangeNameRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset4
+field2_field_s0 (	BÂófield_s0Rfield2FieldS0"¿
+ServerCameraRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetF
+field2_field_newmode0 (	BÂófield_newmode0Rfield2FieldNewmode0"ç
+"ServerAcknowledgePossessionRequest`
+field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset_
+field2_field_p0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_p0Rfield2FieldP0B'B%UnrealPlayerControllerTypesOuterClass
