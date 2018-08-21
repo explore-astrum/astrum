@@ -1,0 +1,12 @@
+
+˝
+"improbable/unreal/gdk/player.protoschema.improbable.unrealimprobable/entity_state.proto"
+PlayerControlClientData"Ó
+PlayerControlClient
+Events
+
+Commands2Ñ
+component_extension.schema.improbable.EntityState•ç (21.schema.improbable.unreal.PlayerControlClientDataRcomponentExtension2
+event_extension.schema.improbable.EntityEvent•ç (24.schema.improbable.unreal.PlayerControlClient.EventsReventExtension2á
+command_extension .schema.improbable.EntityCommand•ç (26.schema.improbable.unreal.PlayerControlClient.CommandsRcommandExtension:/¬Û+
+%improbable.unreal.PlayerControlClient•çBBPlayerOuterClass

@@ -1,0 +1,21 @@
+
+ˆ
+
+0improbable/unreal/gdk/global_state_manager.protoschema.improbable.unrealimprobable/entity_state.proto"
+GlobalStateManagerDataÉ
+"field1_singleton_name_to_entity_id (2Y.schema.improbable.unreal.GlobalStateManagerData.singleton_name_to_entity_id_KeyValuePairB#Âósingleton_name_to_entity_idøóRfield1SingletonNameToEntityIdÔ
+%field2_stably_named_path_to_entity_id (2\.schema.improbable.unreal.GlobalStateManagerData.stably_named_path_to_entity_id_KeyValuePairB&Âóstably_named_path_to_entity_idøóRfield2StablyNamedPathToEntityIdf
+(singleton_name_to_entity_id_KeyValuePair
+key (	BÂókeyRkey
+value (B	ÂóvalueRvaluei
++stably_named_path_to_entity_id_KeyValuePair
+key (	BÂókeyRkey
+value (B	ÂóvalueRvalue"é
+GlobalStateManager
+Events
+
+Commands2ƒ
+component_extension.schema.improbable.EntityState§ (20.schema.improbable.unreal.GlobalStateManagerDataRcomponentExtension2~
+event_extension.schema.improbable.EntityEvent§ (23.schema.improbable.unreal.GlobalStateManager.EventsReventExtension2†
+command_extension .schema.improbable.EntityCommand§ (25.schema.improbable.unreal.GlobalStateManager.CommandsRcommandExtension:.Âó*
+$improbable.unreal.GlobalStateManager§BBGlobalStateManagerOuterClass

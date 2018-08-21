@@ -1,0 +1,18 @@
+
+«
++improbable/unreal/gdk/unreal_metadata.protoschema.improbable.unrealimprobable/entity_state.proto&improbable/unreal/gdk/core_types.proto"√
+UnrealMetadataDataA
+field1_static_path (	B¬Ûstatic_path‡ÛRfield1StaticPathL
+field2_owner_worker_id (	B¬Ûowner_worker_id‡ÛRfield2OwnerWorkerId∂
+field3_subobject_name_to_offset (2R.schema.improbable.unreal.UnrealMetadataData.subobject_name_to_offset_KeyValuePairB¬Ûsubobject_name_to_offsetRfield3SubobjectNameToOffsetc
+%subobject_name_to_offset_KeyValuePair
+key (	B¬ÛkeyRkey
+value (B	¬ÛvalueRvalue"‘
+UnrealMetadata
+Events
+
+Commands2
+component_extension.schema.improbable.EntityState§ç (2,.schema.improbable.unreal.UnrealMetadataDataRcomponentExtension2z
+event_extension.schema.improbable.EntityEvent§ç (2/.schema.improbable.unreal.UnrealMetadata.EventsReventExtension2Ç
+command_extension .schema.improbable.EntityCommand§ç (21.schema.improbable.unreal.UnrealMetadata.CommandsRcommandExtension:*¬Û&
+ improbable.unreal.UnrealMetadata§çBBUnrealMetadataOuterClass
