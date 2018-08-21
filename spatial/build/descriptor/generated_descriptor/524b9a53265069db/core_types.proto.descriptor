@@ -1,11 +1,0 @@
-
-š
-&improbable/unreal/gdk/core_types.protoschema.improbable.unrealimprobable/entity_state.proto"ƒ
-UnrealObjectRef3
-field1_entity (BÂóentityèóRfield1Entity/
-field2_offset (B
-ÂóoffsetRfield2Offset-
-field3_path (	BÂópathàóR
-field3Path[
-field4_outer (2).schema.improbable.unreal.UnrealObjectRefBÂóouteràóRfield4Outer"
-UnrealRPCCommandResponseBBCoreTypesOuterClass

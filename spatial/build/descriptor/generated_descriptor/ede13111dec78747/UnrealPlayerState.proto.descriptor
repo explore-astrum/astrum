@@ -1,93 +1,0 @@
-
-ë;
-3improbable/unreal/generated/UnrealPlayerState.proto.schema.improbable.unreal.generated.playerstateimprobable/entity_state.proto&improbable/unreal/gdk/core_types.proto"$
-"PlayerStateSingleClientRepDataData"ù
-!PlayerStateMultiClientRepDataDataF
-field1_field_bhidden0 (B¬Ûfield_bhidden0Rfield1FieldBhidden0g
- field2_field_breplicatemovement0 (B¬Ûfield_breplicatemovement0Rfield2FieldBreplicatemovement0I
-field3_field_btearoff0 (B¬Ûfield_btearoff0Rfield3FieldBtearoff0X
-field4_field_bcanbedamaged0 (B¬Ûfield_bcanbedamaged0Rfield4FieldBcanbedamaged0O
-field5_field_remoterole0 (B¬Ûfield_remoterole0Rfield5FieldRemoterole0g
- field6_field_replicatedmovement0 (B¬Ûfield_replicatedmovement0Rfield6FieldReplicatedmovement0ƒ
-1field7_field_attachmentreplication0_attachparent0 (2).schema.improbable.unreal.UnrealObjectRefB.¬Û*field_attachmentreplication0_attachparent0R.field7FieldAttachmentreplication0Attachparent0ü
-3field8_field_attachmentreplication0_locationoffset0 (B0¬Û,field_attachmentreplication0_locationoffset0R0field8FieldAttachmentreplication0Locationoffset0¢
-4field9_field_attachmentreplication0_relativescale3d0	 (B1¬Û-field_attachmentreplication0_relativescale3d0R1field9FieldAttachmentreplication0Relativescale3d0°
-4field10_field_attachmentreplication0_rotationoffset0
- (B0¬Û,field_attachmentreplication0_rotationoffset0R1field10FieldAttachmentreplication0Rotationoffset0õ
-2field11_field_attachmentreplication0_attachsocket0 (	B.¬Û*field_attachmentreplication0_attachsocket0R/field11FieldAttachmentreplication0Attachsocket0œ
-5field12_field_attachmentreplication0_attachcomponent0 (2).schema.improbable.unreal.UnrealObjectRefB1¬Û-field_attachmentreplication0_attachcomponent0R2field12FieldAttachmentreplication0Attachcomponent0m
-field13_field_owner0 (2).schema.improbable.unreal.UnrealObjectRefB¬Ûfield_owner0Rfield13FieldOwner0?
-field14_field_role0 (B¬Ûfield_role0Rfield14FieldRole0|
-field15_field_instigator0 (2).schema.improbable.unreal.UnrealObjectRefB¬Ûfield_instigator0Rfield15FieldInstigator0B
-field16_field_score0 (B¬Ûfield_score0Rfield16FieldScore0?
-field17_field_ping0 (B¬Ûfield_ping0Rfield17FieldPing0K
-field18_field_playerid0 (B¬Ûfield_playerid0Rfield18FieldPlayerid0i
-!field19_field_bfrompreviouslevel0 (B¬Ûfield_bfrompreviouslevel0Rfield19FieldBfrompreviouslevel0H
-field20_field_bisabot0 (B¬Ûfield_bisabot0Rfield20FieldBisabot0T
-field21_field_bisinactive0 (B¬Ûfield_bisinactive0Rfield21FieldBisinactive0W
-field22_field_bisspectator0 (B¬Ûfield_bisspectator0Rfield22FieldBisspectator0]
-field23_field_bonlyspectator0 (B¬Ûfield_bonlyspectator0Rfield23FieldBonlyspectator0N
-field24_field_starttime0 (B¬Ûfield_starttime0Rfield24FieldStarttime0K
-field25_field_uniqueid0 (B¬Ûfield_uniqueid0Rfield25FieldUniqueid0f
- field26_field_playernameprivate0 (	B¬Ûfield_playernameprivate0Rfield26FieldPlayernameprivate0"
-PlayerStateHandoverDataData"
-PlayerStateClientRPCsData"
-PlayerStateServerRPCsData" 
-PlayerStateCrossServerRPCsData"!
-PlayerStateNetMulticastRPCsData"˛
-PlayerStateSingleClientRepData
-Events
-
-Commands2•
-component_extension.schema.improbable.EntityState∏ç (2R.schema.improbable.unreal.generated.playerstate.PlayerStateSingleClientRepDataDataRcomponentExtension2†
-event_extension.schema.improbable.EntityEvent∏ç (2U.schema.improbable.unreal.generated.playerstate.PlayerStateSingleClientRepData.EventsReventExtension2®
-command_extension .schema.improbable.EntityCommand∏ç (2W.schema.improbable.unreal.generated.playerstate.PlayerStateSingleClientRepData.CommandsRcommandExtension:P¬ÛL
-Fimprobable.unreal.generated.playerstate.PlayerStateSingleClientRepData∏ç"˘
-PlayerStateMultiClientRepData
-Events
-
-Commands2§
-component_extension.schema.improbable.EntityStateπç (2Q.schema.improbable.unreal.generated.playerstate.PlayerStateMultiClientRepDataDataRcomponentExtension2ü
-event_extension.schema.improbable.EntityEventπç (2T.schema.improbable.unreal.generated.playerstate.PlayerStateMultiClientRepData.EventsReventExtension2ß
-command_extension .schema.improbable.EntityCommandπç (2V.schema.improbable.unreal.generated.playerstate.PlayerStateMultiClientRepData.CommandsRcommandExtension:O¬ÛK
-Eimprobable.unreal.generated.playerstate.PlayerStateMultiClientRepDataπç"€
-PlayerStateHandoverData
-Events
-
-Commands2û
-component_extension.schema.improbable.EntityState∫ç (2K.schema.improbable.unreal.generated.playerstate.PlayerStateHandoverDataDataRcomponentExtension2ô
-event_extension.schema.improbable.EntityEvent∫ç (2N.schema.improbable.unreal.generated.playerstate.PlayerStateHandoverData.EventsReventExtension2°
-command_extension .schema.improbable.EntityCommand∫ç (2P.schema.improbable.unreal.generated.playerstate.PlayerStateHandoverData.CommandsRcommandExtension:I¬ÛE
-?improbable.unreal.generated.playerstate.PlayerStateHandoverData∫ç"—
-PlayerStateClientRPCs
-Events
-
-Commands2ú
-component_extension.schema.improbable.EntityStateªç (2I.schema.improbable.unreal.generated.playerstate.PlayerStateClientRPCsDataRcomponentExtension2ó
-event_extension.schema.improbable.EntityEventªç (2L.schema.improbable.unreal.generated.playerstate.PlayerStateClientRPCs.EventsReventExtension2ü
-command_extension .schema.improbable.EntityCommandªç (2N.schema.improbable.unreal.generated.playerstate.PlayerStateClientRPCs.CommandsRcommandExtension:G¬ÛC
-=improbable.unreal.generated.playerstate.PlayerStateClientRPCsªç"—
-PlayerStateServerRPCs
-Events
-
-Commands2ú
-component_extension.schema.improbable.EntityStateºç (2I.schema.improbable.unreal.generated.playerstate.PlayerStateServerRPCsDataRcomponentExtension2ó
-event_extension.schema.improbable.EntityEventºç (2L.schema.improbable.unreal.generated.playerstate.PlayerStateServerRPCs.EventsReventExtension2ü
-command_extension .schema.improbable.EntityCommandºç (2N.schema.improbable.unreal.generated.playerstate.PlayerStateServerRPCs.CommandsRcommandExtension:G¬ÛC
-=improbable.unreal.generated.playerstate.PlayerStateServerRPCsºç"Í
-PlayerStateCrossServerRPCs
-Events
-
-Commands2°
-component_extension.schema.improbable.EntityStateΩç (2N.schema.improbable.unreal.generated.playerstate.PlayerStateCrossServerRPCsDataRcomponentExtension2ú
-event_extension.schema.improbable.EntityEventΩç (2Q.schema.improbable.unreal.generated.playerstate.PlayerStateCrossServerRPCs.EventsReventExtension2§
-command_extension .schema.improbable.EntityCommandΩç (2S.schema.improbable.unreal.generated.playerstate.PlayerStateCrossServerRPCs.CommandsRcommandExtension:L¬ÛH
-Bimprobable.unreal.generated.playerstate.PlayerStateCrossServerRPCsΩç"Ô
-PlayerStateNetMulticastRPCs
-Events
-
-Commands2¢
-component_extension.schema.improbable.EntityStateæç (2O.schema.improbable.unreal.generated.playerstate.PlayerStateNetMulticastRPCsDataRcomponentExtension2ù
-event_extension.schema.improbable.EntityEventæç (2R.schema.improbable.unreal.generated.playerstate.PlayerStateNetMulticastRPCs.EventsReventExtension2•
-command_extension .schema.improbable.EntityCommandæç (2T.schema.improbable.unreal.generated.playerstate.PlayerStateNetMulticastRPCs.CommandsRcommandExtension:M¬ÛI
-Cimprobable.unreal.generated.playerstate.PlayerStateNetMulticastRPCsæçBBUnrealPlayerStateOuterClass

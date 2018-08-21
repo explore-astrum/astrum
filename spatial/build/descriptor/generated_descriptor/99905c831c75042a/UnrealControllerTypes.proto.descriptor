@@ -1,11 +1,0 @@
-
-£
-7improbable/unreal/generated/UnrealControllerTypes.proto-schema.improbable.unreal.generated.controllerimprobable/entity_state.proto&improbable/unreal/gdk/core_types.proto"§
-ClientSetRotationRequest`
-field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetR
-field2_field_newrotation0 (BÂófield_newrotation0Rfield2FieldNewrotation0U
-field3_field_bresetcamera0 (BÂófield_bresetcamera0Rfield3FieldBresetcamera0"¤
-ClientSetLocationRequest`
-field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetR
-field2_field_newlocation0 (BÂófield_newlocation0Rfield2FieldNewlocation0R
-field3_field_newrotation0 (BÂófield_newrotation0Rfield3FieldNewrotation0B!BUnrealControllerTypesOuterClass

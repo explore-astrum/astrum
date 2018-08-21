@@ -1,20 +1,0 @@
-
-ß
-#improbable/unreal/gdk/spawner.protoschema.improbable.unrealimprobable/entity_state.proto"<
-SpawnPlayerRequest&
-
-field1_url (	BÂóurlR	field1Url"â
-SpawnPlayerResponse2
-field1_success (BÂósuccessRfield1SuccessC
-field2_error_message (	BÂóerror_messageRfield2ErrorMessageR
-field3_created_entity_id (BÂócreated_entity_idèóRfield3CreatedEntityId"
-PlayerSpawnerData"±
-PlayerSpawner
-Eventsë
-Commandsm
-command_spawn_player_request (2,.schema.improbable.unreal.SpawnPlayerRequestRcommandSpawnPlayerRequestp
-command_spawn_player_response (2-.schema.improbable.unreal.SpawnPlayerResponseRcommandSpawnPlayerResponse2~
-component_extension.schema.improbable.EntityState¢ (2+.schema.improbable.unreal.PlayerSpawnerDataRcomponentExtension2y
-event_extension.schema.improbable.EntityEvent¢ (2..schema.improbable.unreal.PlayerSpawner.EventsReventExtension2
-command_extension .schema.improbable.EntityCommand¢ (20.schema.improbable.unreal.PlayerSpawner.CommandsRcommandExtension:)Âó%
-improbable.unreal.PlayerSpawner¢BBSpawnerOuterClass

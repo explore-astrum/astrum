@@ -1,135 +1,0 @@
-
-’S
-6improbable/unreal/generated/UnrealCharacterTypes.proto,schema.improbable.unreal.generated.characterimprobable/entity_state.proto&improbable/unreal/gdk/core_types.proto"Ø
-)RootMotionDebugClientPrintOnScreenRequest`
-field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetI
-field2_field_instring0 (	BÂófield_instring0Rfield2FieldInstring0"”
-$ClientVeryShortAdjustPositionRequest`
-field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetL
-field2_field_timestamp0 (BÂófield_timestamp0Rfield2FieldTimestamp0C
-field3_field_newloc0 (BÂófield_newloc0Rfield3FieldNewloc0q
-field4_field_newbase0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_newbase0Rfield4FieldNewbase0^
-field5_field_newbasebonename0 (	BÂófield_newbasebonename0Rfield5FieldNewbasebonename0I
-field6_field_bhasbase0 (BÂófield_bhasbase0Rfield6FieldBhasbase0p
-#field7_field_bbaserelativeposition0 (B Âófield_bbaserelativeposition0R!field7FieldBbaserelativeposition0g
- field8_field_servermovementmode0 (BÂófield_servermovementmode0Rfield8FieldServermovementmode0"z
-ClientCheatWalkRequest`
-field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset"{
-ClientCheatGhostRequest`
-field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset"y
-ClientCheatFlyRequest`
-field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffset"­
-
-+ClientAdjustRootMotionSourcePositionRequest`
-field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetL
-field2_field_timestamp0 (BÂófield_timestamp0Rfield2FieldTimestamp0a
-field3_field_serverrootmotion0 (BÂófield_serverrootmotion0Rfield3FieldServerrootmotion0g
- field4_field_bhasanimrootmotion0 (BÂófield_bhasanimrootmotion0Rfield4FieldBhasanimrootmotion0
-(field5_field_servermontagetrackposition0 (B%Âó!field_servermontagetrackposition0R&field5FieldServermontagetrackposition0L
-field6_field_serverloc0 (BÂófield_serverloc0Rfield6FieldServerloc0[
-field7_field_serverrotation0 (BÂófield_serverrotation0Rfield7FieldServerrotation0O
-field8_field_servervelz0 (BÂófield_servervelz0Rfield8FieldServervelz0z
-field9_field_serverbase0	 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_serverbase0Rfield9FieldServerbase0]
-field10_field_serverbonename0
- (	BÂófield_serverbonename0Rfield10FieldServerbonename0K
-field11_field_bhasbase0 (BÂófield_bhasbase0Rfield11FieldBhasbase0r
-$field12_field_bbaserelativeposition0 (B Âófield_bbaserelativeposition0R"field12FieldBbaserelativeposition0i
-!field13_field_servermovementmode0 (BÂófield_servermovementmode0Rfield13FieldServermovementmode0"×
-%ClientAdjustRootMotionPositionRequest`
-field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetL
-field2_field_timestamp0 (BÂófield_timestamp0Rfield2FieldTimestamp0
-(field3_field_servermontagetrackposition0 (B%Âó!field_servermontagetrackposition0R&field3FieldServermontagetrackposition0L
-field4_field_serverloc0 (BÂófield_serverloc0Rfield4FieldServerloc0[
-field5_field_serverrotation0 (BÂófield_serverrotation0Rfield5FieldServerrotation0O
-field6_field_servervelz0 (BÂófield_servervelz0Rfield6FieldServervelz0z
-field7_field_serverbase0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_serverbase0Rfield7FieldServerbase0[
-field8_field_serverbonename0 (	BÂófield_serverbonename0Rfield8FieldServerbonename0I
-field9_field_bhasbase0	 (BÂófield_bhasbase0Rfield9FieldBhasbase0r
-$field10_field_bbaserelativeposition0
- (B Âófield_bbaserelativeposition0R"field10FieldBbaserelativeposition0i
-!field11_field_servermovementmode0 (BÂófield_servermovementmode0Rfield11FieldServermovementmode0"Ð
-ClientAdjustPositionRequest`
-field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetL
-field2_field_timestamp0 (BÂófield_timestamp0Rfield2FieldTimestamp0C
-field3_field_newloc0 (BÂófield_newloc0Rfield3FieldNewloc0C
-field4_field_newvel0 (BÂófield_newvel0Rfield4FieldNewvel0q
-field5_field_newbase0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_newbase0Rfield5FieldNewbase0^
-field6_field_newbasebonename0 (	BÂófield_newbasebonename0Rfield6FieldNewbasebonename0I
-field7_field_bhasbase0 (BÂófield_bhasbase0Rfield7FieldBhasbase0p
-#field8_field_bbaserelativeposition0 (B Âófield_bbaserelativeposition0R!field8FieldBbaserelativeposition0g
- field9_field_servermovementmode0	 (BÂófield_servermovementmode0Rfield9FieldServermovementmode0"Ê
-ClientAckGoodMoveRequest`
-field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetL
-field2_field_timestamp0 (BÂófield_timestamp0Rfield2FieldTimestamp0"ñ
-ServerMoveOldRequest`
-field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetU
-field2_field_oldtimestamp0 (BÂófield_oldtimestamp0Rfield2FieldOldtimestamp0I
-field3_field_oldaccel0 (BÂófield_oldaccel0Rfield3FieldOldaccel0U
-field4_field_oldmoveflags0 (BÂófield_oldmoveflags0Rfield4FieldOldmoveflags0"Ä
-ServerMoveNoBaseRequest`
-field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetL
-field2_field_timestamp0 (BÂófield_timestamp0Rfield2FieldTimestamp0F
-field3_field_inaccel0 (BÂófield_inaccel0Rfield3FieldInaccel0L
-field4_field_clientloc0 (BÂófield_clientloc0Rfield4FieldClientloc0j
-!field5_field_compressedmoveflags0 (BÂófield_compressedmoveflags0Rfield5FieldCompressedmoveflags0O
-field6_field_clientroll0 (BÂófield_clientroll0Rfield6FieldClientroll0=
-field7_field_view0 (BÂófield_view0Rfield7FieldView0g
- field8_field_clientmovementmode0 (BÂófield_clientmovementmode0Rfield8FieldClientmovementmode0"â
-ServerMoveDualNoBaseRequest`
-field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetO
-field2_field_timestamp00 (BÂófield_timestamp00Rfield2FieldTimestamp00I
-field3_field_inaccel00 (BÂófield_inaccel00Rfield3FieldInaccel00U
-field4_field_pendingflags0 (BÂófield_pendingflags0Rfield4FieldPendingflags0@
-field5_field_view00 (BÂófield_view00Rfield5FieldView00L
-field6_field_timestamp0 (BÂófield_timestamp0Rfield6FieldTimestamp0F
-field7_field_inaccel0 (BÂófield_inaccel0Rfield7FieldInaccel0L
-field8_field_clientloc0 (BÂófield_clientloc0Rfield8FieldClientloc0I
-field9_field_newflags0	 (BÂófield_newflags0Rfield9FieldNewflags0Q
-field10_field_clientroll0
- (BÂófield_clientroll0Rfield10FieldClientroll0?
-field11_field_view0 (BÂófield_view0Rfield11FieldView0i
-!field12_field_clientmovementmode0 (BÂófield_clientmovementmode0Rfield12FieldClientmovementmode0"î	
-%ServerMoveDualHybridRootMotionRequest`
-field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetO
-field2_field_timestamp00 (BÂófield_timestamp00Rfield2FieldTimestamp00I
-field3_field_inaccel00 (BÂófield_inaccel00Rfield3FieldInaccel00U
-field4_field_pendingflags0 (BÂófield_pendingflags0Rfield4FieldPendingflags0@
-field5_field_view00 (BÂófield_view00Rfield5FieldView00L
-field6_field_timestamp0 (BÂófield_timestamp0Rfield6FieldTimestamp0F
-field7_field_inaccel0 (BÂófield_inaccel0Rfield7FieldInaccel0L
-field8_field_clientloc0 (BÂófield_clientloc0Rfield8FieldClientloc0I
-field9_field_newflags0	 (BÂófield_newflags0Rfield9FieldNewflags0Q
-field10_field_clientroll0
- (BÂófield_clientroll0Rfield10FieldClientroll0?
-field11_field_view0 (BÂófield_view0Rfield11FieldView0”
-!field12_field_clientmovementbase0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_clientmovementbase0Rfield12FieldClientmovementbase0i
-!field13_field_clientbasebonename0 (	BÂófield_clientbasebonename0Rfield13FieldClientbasebonename0i
-!field14_field_clientmovementmode0 (BÂófield_clientmovementmode0Rfield14FieldClientmovementmode0"Þ	
-ServerMoveDualRequest`
-field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetO
-field2_field_timestamp00 (BÂófield_timestamp00Rfield2FieldTimestamp00I
-field3_field_inaccel00 (BÂófield_inaccel00Rfield3FieldInaccel00U
-field4_field_pendingflags0 (BÂófield_pendingflags0Rfield4FieldPendingflags0@
-field5_field_view00 (BÂófield_view00Rfield5FieldView00L
-field6_field_timestamp0 (BÂófield_timestamp0Rfield6FieldTimestamp0F
-field7_field_inaccel0 (BÂófield_inaccel0Rfield7FieldInaccel0L
-field8_field_clientloc0 (BÂófield_clientloc0Rfield8FieldClientloc0I
-field9_field_newflags0	 (BÂófield_newflags0Rfield9FieldNewflags0Q
-field10_field_clientroll0
- (BÂófield_clientroll0Rfield10FieldClientroll0?
-field11_field_view0 (BÂófield_view0Rfield11FieldView0”
-!field12_field_clientmovementbase0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_clientmovementbase0Rfield12FieldClientmovementbase0i
-!field13_field_clientbasebonename0 (	BÂófield_clientbasebonename0Rfield13FieldClientbasebonename0i
-!field14_field_clientmovementmode0 (BÂófield_clientmovementmode0Rfield14FieldClientmovementmode0"¾
-ServerMoveRequest`
-field1_target_subobject_offset (BÂótarget_subobject_offsetRfield1TargetSubobjectOffsetL
-field2_field_timestamp0 (BÂófield_timestamp0Rfield2FieldTimestamp0F
-field3_field_inaccel0 (BÂófield_inaccel0Rfield3FieldInaccel0L
-field4_field_clientloc0 (BÂófield_clientloc0Rfield4FieldClientloc0j
-!field5_field_compressedmoveflags0 (BÂófield_compressedmoveflags0Rfield5FieldCompressedmoveflags0O
-field6_field_clientroll0 (BÂófield_clientroll0Rfield6FieldClientroll0=
-field7_field_view0 (BÂófield_view0Rfield7FieldView0’
- field8_field_clientmovementbase0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_clientmovementbase0Rfield8FieldClientmovementbase0g
- field9_field_clientbasebonename0	 (	BÂófield_clientbasebonename0Rfield9FieldClientbasebonename0i
-!field10_field_clientmovementmode0
- (BÂófield_clientmovementmode0Rfield10FieldClientmovementmode0B BUnrealCharacterTypesOuterClass

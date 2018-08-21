@@ -1,143 +1,0 @@
-
-ºy
-1improbable/unreal/generated/UnrealCharacter.proto,schema.improbable.unreal.generated.characterimprobable/entity_state.proto&improbable/unreal/gdk/core_types.proto6improbable/unreal/generated/UnrealCharacterTypes.proto""
- CharacterSingleClientRepDataData"À.
-CharacterMultiClientRepDataDataF
-field1_field_bhidden0 (BÂófield_bhidden0Rfield1FieldBhidden0g
- field2_field_breplicatemovement0 (BÂófield_breplicatemovement0Rfield2FieldBreplicatemovement0I
-field3_field_btearoff0 (BÂófield_btearoff0Rfield3FieldBtearoff0X
-field4_field_bcanbedamaged0 (BÂófield_bcanbedamaged0Rfield4FieldBcanbedamaged0O
-field5_field_remoterole0 (BÂófield_remoterole0Rfield5FieldRemoterole0g
- field6_field_replicatedmovement0 (BÂófield_replicatedmovement0Rfield6FieldReplicatedmovement0Ä
-1field7_field_attachmentreplication0_attachparent0 (2).schema.improbable.unreal.UnrealObjectRefB.Âó*field_attachmentreplication0_attachparent0R.field7FieldAttachmentreplication0Attachparent0Ÿ
-3field8_field_attachmentreplication0_locationoffset0 (B0Âó,field_attachmentreplication0_locationoffset0R0field8FieldAttachmentreplication0Locationoffset0¢
-4field9_field_attachmentreplication0_relativescale3d0	 (B1Âó-field_attachmentreplication0_relativescale3d0R1field9FieldAttachmentreplication0Relativescale3d0¡
-4field10_field_attachmentreplication0_rotationoffset0
- (B0Âó,field_attachmentreplication0_rotationoffset0R1field10FieldAttachmentreplication0Rotationoffset0›
-2field11_field_attachmentreplication0_attachsocket0 (	B.Âó*field_attachmentreplication0_attachsocket0R/field11FieldAttachmentreplication0Attachsocket0Ï
-5field12_field_attachmentreplication0_attachcomponent0 (2).schema.improbable.unreal.UnrealObjectRefB1Âó-field_attachmentreplication0_attachcomponent0R2field12FieldAttachmentreplication0Attachcomponent0m
-field13_field_owner0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_owner0Rfield13FieldOwner0?
-field14_field_role0 (BÂófield_role0Rfield14FieldRole0|
-field15_field_instigator0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_instigator0Rfield15FieldInstigator0
-field16_field_playerstate0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_playerstate0Rfield16FieldPlayerstate0`
-field17_field_remoteviewpitch0 (BÂófield_remoteviewpitch0Rfield17FieldRemoteviewpitch0|
-field18_field_controller0 (2).schema.improbable.unreal.UnrealObjectRefBÂófield_controller0Rfield18FieldController0Ì
-4field19_field_replicatedbasedmovement0_movementbase0 (2).schema.improbable.unreal.UnrealObjectRefB0Âó,field_replicatedbasedmovement0_movementbase0R1field19FieldReplicatedbasedmovement0Movementbase0•
-0field20_field_replicatedbasedmovement0_bonename0 (	B,Âó(field_replicatedbasedmovement0_bonename0R-field20FieldReplicatedbasedmovement0Bonename0•
-0field21_field_replicatedbasedmovement0_location0 (B,Âó(field_replicatedbasedmovement0_location0R-field21FieldReplicatedbasedmovement0Location0•
-0field22_field_replicatedbasedmovement0_rotation0 (B,Âó(field_replicatedbasedmovement0_rotation0R-field22FieldReplicatedbasedmovement0Rotation0Â
-?field23_field_replicatedbasedmovement0_bserverhasbasecomponent0 (B;Âó7field_replicatedbasedmovement0_bserverhasbasecomponent0R<field23FieldReplicatedbasedmovement0Bserverhasbasecomponent0°
-9field24_field_replicatedbasedmovement0_brelativerotation0 (B5Âó1field_replicatedbasedmovement0_brelativerotation0R6field24FieldReplicatedbasedmovement0Brelativerotation0³
-:field25_field_replicatedbasedmovement0_bserverhasvelocity0 (B6Âó2field_replicatedbasedmovement0_bserverhasvelocity0R7field25FieldReplicatedbasedmovement0Bserverhasvelocity0
--field26_field_animrootmotiontranslationscale0 (B)Âó%field_animrootmotiontranslationscale0R+field26FieldAnimrootmotiontranslationscale0·
-;field27_field_replicatedserverlasttransformupdatetimestamp0 (B7Âó3field_replicatedserverlasttransformupdatetimestamp0R9field27FieldReplicatedserverlasttransformupdatetimestamp0u
-%field28_field_replicatedmovementmode0 (B!Âófield_replicatedmovementmode0R#field28FieldReplicatedmovementmode0T
-field29_field_biscrouched0 (BÂófield_biscrouched0Rfield29FieldBiscrouched0`
-field30_field_jumpmaxholdtime0 (BÂófield_jumpmaxholdtime0Rfield30FieldJumpmaxholdtime0W
-field31_field_jumpmaxcount0 (BÂófield_jumpmaxcount0Rfield31FieldJumpmaxcount0z
-'field32_field_reprootmotion0_bisactive0  (B#Âófield_reprootmotion0_bisactive0R$field32FieldReprootmotion0Bisactive0«
-)field33_field_reprootmotion0_animmontage0! (2).schema.improbable.unreal.UnrealObjectRefB%Âó!field_reprootmotion0_animmontage0R&field33FieldReprootmotion0Animmontage0w
-&field34_field_reprootmotion0_position0" (B"Âófield_reprootmotion0_position0R#field34FieldReprootmotion0Position0w
-&field35_field_reprootmotion0_location0# (B"Âófield_reprootmotion0_location0R#field35FieldReprootmotion0Location0w
-&field36_field_reprootmotion0_rotation0$ (B"Âófield_reprootmotion0_rotation0R#field36FieldReprootmotion0Rotation0®
-*field37_field_reprootmotion0_movementbase0% (2).schema.improbable.unreal.UnrealObjectRefB&Âó"field_reprootmotion0_movementbase0R'field37FieldReprootmotion0Movementbase0›
-2field38_field_reprootmotion0_movementbasebonename0& (	B.Âó*field_reprootmotion0_movementbasebonename0R/field38FieldReprootmotion0Movementbasebonename0’
-/field39_field_reprootmotion0_brelativeposition0' (B+Âó'field_reprootmotion0_brelativeposition0R,field39FieldReprootmotion0Brelativeposition0’
-/field40_field_reprootmotion0_brelativerotation0( (B+Âó'field_reprootmotion0_brelativerotation0R,field40FieldReprootmotion0Brelativerotation0¤
-5field41_field_reprootmotion0_authoritativerootmotion0) (B1Âó-field_reprootmotion0_authoritativerootmotion0R2field41FieldReprootmotion0Authoritativerootmotion0ƒ
-*field42_field_reprootmotion0_acceleration0* (B&Âó"field_reprootmotion0_acceleration0R'field42FieldReprootmotion0Acceleration0‰
-,field43_field_reprootmotion0_linearvelocity0+ (B(Âó$field_reprootmotion0_linearvelocity0R)field43FieldReprootmotion0Linearvelocity0"ï
-CharacterHandoverDataData
--field1_field_charactermovement0_movementmode0 (B*Âó&field_charactermovement0_movementmode0R*field1FieldCharactermovement0Movementmode0Ÿ
-3field2_field_charactermovement0_custommovementmode0 (B0Âó,field_charactermovement0_custommovementmode0R0field2FieldCharactermovement0Custommovementmode0Ÿ
-3field3_field_charactermovement0_groundmovementmode0 (B0Âó,field_charactermovement0_groundmovementmode0R0field3FieldCharactermovement0Groundmovementmode0"
-CharacterClientRPCsData"
-CharacterServerRPCsData"
-CharacterCrossServerRPCsData"
-CharacterNetMulticastRPCsData"ì
-CharacterSingleClientRepData
-Events
-
-Commands2¡
-component_extension.schema.improbable.EntityStateª (2N.schema.improbable.unreal.generated.character.CharacterSingleClientRepDataDataRcomponentExtension2œ
-event_extension.schema.improbable.EntityEventª (2Q.schema.improbable.unreal.generated.character.CharacterSingleClientRepData.EventsReventExtension2¤
-command_extension .schema.improbable.EntityCommandª (2S.schema.improbable.unreal.generated.character.CharacterSingleClientRepData.CommandsRcommandExtension:LÂóH
-Bimprobable.unreal.generated.character.CharacterSingleClientRepDataª"ç
-CharacterMultiClientRepData
-Events
-
-Commands2 
-component_extension.schema.improbable.EntityState« (2M.schema.improbable.unreal.generated.character.CharacterMultiClientRepDataDataRcomponentExtension2›
-event_extension.schema.improbable.EntityEvent« (2P.schema.improbable.unreal.generated.character.CharacterMultiClientRepData.EventsReventExtension2£
-command_extension .schema.improbable.EntityCommand« (2R.schema.improbable.unreal.generated.character.CharacterMultiClientRepData.CommandsRcommandExtension:KÂóG
-Aimprobable.unreal.generated.character.CharacterMultiClientRepData«"É
-CharacterHandoverData
-Events
-
-Commands2š
-component_extension.schema.improbable.EntityState¬ (2G.schema.improbable.unreal.generated.character.CharacterHandoverDataDataRcomponentExtension2•
-event_extension.schema.improbable.EntityEvent¬ (2J.schema.improbable.unreal.generated.character.CharacterHandoverData.EventsReventExtension2
-command_extension .schema.improbable.EntityCommand¬ (2L.schema.improbable.unreal.generated.character.CharacterHandoverData.CommandsRcommandExtension:EÂóA
-;improbable.unreal.generated.character.CharacterHandoverData¬"·
-CharacterClientRPCs
-Events
-CommandsÅ
-2command_rootmotiondebugclientprintonscreen_request (2W.schema.improbable.unreal.generated.character.RootMotionDebugClientPrintOnScreenRequestR0commandRootmotiondebugclientprintonscreenRequest¢
-3command_rootmotiondebugclientprintonscreen_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR1commandRootmotiondebugclientprintonscreenResponse¶
--command_clientveryshortadjustposition_request (2R.schema.improbable.unreal.generated.character.ClientVeryShortAdjustPositionRequestR+commandClientveryshortadjustpositionRequest˜
-.command_clientveryshortadjustposition_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR,commandClientveryshortadjustpositionResponseŒ
-command_clientcheatwalk_request (2D.schema.improbable.unreal.generated.character.ClientCheatWalkRequestRcommandClientcheatwalkRequest|
- command_clientcheatwalk_response (22.schema.improbable.unreal.UnrealRPCCommandResponseRcommandClientcheatwalkResponse
- command_clientcheatghost_request (2E.schema.improbable.unreal.generated.character.ClientCheatGhostRequestRcommandClientcheatghostRequest~
-!command_clientcheatghost_response (22.schema.improbable.unreal.UnrealRPCCommandResponseRcommandClientcheatghostResponse‰
-command_clientcheatfly_request	 (2C.schema.improbable.unreal.generated.character.ClientCheatFlyRequestRcommandClientcheatflyRequestz
-command_clientcheatfly_response
- (22.schema.improbable.unreal.UnrealRPCCommandResponseRcommandClientcheatflyResponseË
-4command_clientadjustrootmotionsourceposition_request (2Y.schema.improbable.unreal.generated.character.ClientAdjustRootMotionSourcePositionRequestR2commandClientadjustrootmotionsourcepositionRequest¦
-5command_clientadjustrootmotionsourceposition_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR3commandClientadjustrootmotionsourcepositionResponse¹
-.command_clientadjustrootmotionposition_request (2S.schema.improbable.unreal.generated.character.ClientAdjustRootMotionPositionRequestR,commandClientadjustrootmotionpositionRequestš
-/command_clientadjustrootmotionposition_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR-commandClientadjustrootmotionpositionResponse›
-$command_clientadjustposition_request (2I.schema.improbable.unreal.generated.character.ClientAdjustPositionRequestR"commandClientadjustpositionRequest†
-%command_clientadjustposition_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR#commandClientadjustpositionResponse’
-!command_clientackgoodmove_request (2F.schema.improbable.unreal.generated.character.ClientAckGoodMoveRequestRcommandClientackgoodmoveRequest€
-"command_clientackgoodmove_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR commandClientackgoodmoveResponse2˜
-component_extension.schema.improbable.EntityState­ (2E.schema.improbable.unreal.generated.character.CharacterClientRPCsDataRcomponentExtension2“
-event_extension.schema.improbable.EntityEvent­ (2H.schema.improbable.unreal.generated.character.CharacterClientRPCs.EventsReventExtension2›
-command_extension .schema.improbable.EntityCommand­ (2J.schema.improbable.unreal.generated.character.CharacterClientRPCs.CommandsRcommandExtension:CÂó?
-9improbable.unreal.generated.character.CharacterClientRPCs­"Ğ
-CharacterServerRPCs
-Eventsš
-Commands†
-command_servermoveold_request (2B.schema.improbable.unreal.generated.character.ServerMoveOldRequestRcommandServermoveoldRequestx
-command_servermoveold_response (22.schema.improbable.unreal.UnrealRPCCommandResponseRcommandServermoveoldResponse
- command_servermovenobase_request (2E.schema.improbable.unreal.generated.character.ServerMoveNoBaseRequestRcommandServermovenobaseRequest~
-!command_servermovenobase_response (22.schema.improbable.unreal.UnrealRPCCommandResponseRcommandServermovenobaseResponse›
-$command_servermovedualnobase_request (2I.schema.improbable.unreal.generated.character.ServerMoveDualNoBaseRequestR"commandServermovedualnobaseRequest†
-%command_servermovedualnobase_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR#commandServermovedualnobaseResponse¹
-.command_servermovedualhybridrootmotion_request (2S.schema.improbable.unreal.generated.character.ServerMoveDualHybridRootMotionRequestR,commandServermovedualhybridrootmotionRequestš
-/command_servermovedualhybridrootmotion_response (22.schema.improbable.unreal.UnrealRPCCommandResponseR-commandServermovedualhybridrootmotionResponse‰
-command_servermovedual_request	 (2C.schema.improbable.unreal.generated.character.ServerMoveDualRequestRcommandServermovedualRequestz
-command_servermovedual_response
- (22.schema.improbable.unreal.UnrealRPCCommandResponseRcommandServermovedualResponse}
-command_servermove_request (2?.schema.improbable.unreal.generated.character.ServerMoveRequestRcommandServermoveRequestr
-command_servermove_response (22.schema.improbable.unreal.UnrealRPCCommandResponseRcommandServermoveResponse2˜
-component_extension.schema.improbable.EntityState® (2E.schema.improbable.unreal.generated.character.CharacterServerRPCsDataRcomponentExtension2“
-event_extension.schema.improbable.EntityEvent® (2H.schema.improbable.unreal.generated.character.CharacterServerRPCs.EventsReventExtension2›
-command_extension .schema.improbable.EntityCommand® (2J.schema.improbable.unreal.generated.character.CharacterServerRPCs.CommandsRcommandExtension:CÂó?
-9improbable.unreal.generated.character.CharacterServerRPCs®"Ø
-CharacterCrossServerRPCs
-Events
-
-Commands2
-component_extension.schema.improbable.EntityState¯ (2J.schema.improbable.unreal.generated.character.CharacterCrossServerRPCsDataRcomponentExtension2˜
-event_extension.schema.improbable.EntityEvent¯ (2M.schema.improbable.unreal.generated.character.CharacterCrossServerRPCs.EventsReventExtension2 
-command_extension .schema.improbable.EntityCommand¯ (2O.schema.improbable.unreal.generated.character.CharacterCrossServerRPCs.CommandsRcommandExtension:HÂóD
->improbable.unreal.generated.character.CharacterCrossServerRPCs¯"İ
-CharacterNetMulticastRPCs
-Events
-
-Commands2
-component_extension.schema.improbable.EntityState° (2K.schema.improbable.unreal.generated.character.CharacterNetMulticastRPCsDataRcomponentExtension2™
-event_extension.schema.improbable.EntityEvent° (2N.schema.improbable.unreal.generated.character.CharacterNetMulticastRPCs.EventsReventExtension2¡
-command_extension .schema.improbable.EntityCommand° (2P.schema.improbable.unreal.generated.character.CharacterNetMulticastRPCs.CommandsRcommandExtension:IÂóE
-?improbable.unreal.generated.character.CharacterNetMulticastRPCs°BBUnrealCharacterOuterClass
