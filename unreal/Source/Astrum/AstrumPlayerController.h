@@ -9,7 +9,7 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(SpatialType)
 class ASTRUM_API AAstrumPlayerController : public APlayerController
 {
 	GENERATED_BODY()

@@ -10,7 +10,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "SpawnableActor.generated.h"
 
-UCLASS()
+UCLASS(SpatialType)
 class ASTRUM_API ASpawnableActor : public AActor
 {
 	GENERATED_BODY()
@@ -23,6 +23,7 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = Mesh)
 	UStaticMesh* SphereVisualAsset;
+	//UPROPERTY(Replicated)
 	UMaterial* Material;
 
 	void SetMesh(int type);

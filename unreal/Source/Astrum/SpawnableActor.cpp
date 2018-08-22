@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "SpawnableActor.h"
+//#include "UnrealNetwork.h"
 
 
 // Sets default values
@@ -19,6 +20,9 @@ ASpawnableActor::ASpawnableActor()
 	selected = true;
 	rotating = false;
 
+	//replication
+	//bReplicates = true;
+
 }
 
 // Called when the game starts or when spawned
@@ -35,7 +39,6 @@ void ASpawnableActor::BeginPlay()
 	InputComponent->BindAction("RotateObj", IE_Released, this, &ASpawnableActor::RotateX);
 	
 	InputComponent->BindAction("SelectObj", IE_Pressed, this, &ASpawnableActor::PickUp).bConsumeInput = false;
-	
 }
 
 // Called every frame
@@ -63,7 +66,6 @@ void ASpawnableActor::Tick(float DeltaTime)
 
 void ASpawnableActor::SetMesh(int type)
 {
-	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, FString::SanitizeFloat(type));
 
 	if (type == 1) {
 		SphereVisualAsset = LoadObject<UStaticMesh>(nullptr, TEXT("/Game/StarterContent/Shapes/Shape_Sphere.Shape_Sphere"));
@@ -130,3 +132,11 @@ void ASpawnableActor::PickUp() {
 bool ASpawnableActor::isSelected() {
 	return selected;
 }
+
+/*void ASpawnableActor::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(ASpawnableActor, SphereVisualAsset);
+	DOREPLIFETIME(ASpawnableActor, Material);
+}*/
