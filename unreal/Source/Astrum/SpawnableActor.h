@@ -21,26 +21,38 @@ public:
 	USphereComponent* sphere;
 	UStaticMeshComponent* SphereVisual;
 
-	UPROPERTY(EditAnywhere, Category = Mesh)
+	UPROPERTY(EditAnywhere, ReplicatedUsing = OnRep_SetMesh, Category = Mesh)
 	UStaticMesh* SphereVisualAsset;
-	//UPROPERTY(Replicated)
+	UPROPERTY(EditAnywhere, ReplicatedUsing = OnRep_SetMaterial)
 	UMaterial* Material;
 
 	void SetMesh(int type);
-	UFUNCTION(BlueprintCallable)
-	void SetMesh(FString type);
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
+	void SetMesh(const FString &type);
+	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
 	void SetIntermediateMaterial();
+	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
+	void SetMaterial(const FString &type);
+
 	UFUNCTION(BlueprintCallable)
-	void SetMaterial(FString type);
+	void AssignToPlayer();
 
 	ACharacter* MainCharacter;
 	APlayerController* controller;
 	bool selected;
 	bool rotating;
+	bool assigned = false;
 
 	UFUNCTION(BlueprintCallable)
 	bool isSelected();
+
+	UFUNCTION()
+	virtual void OnRep_SetMaterial();
+	UFUNCTION()
+	virtual void OnRep_SetMesh();
+
+	UFUNCTION(Server, Reliable, WithValidation)
+	void SetLocation(FVector location);
 
 protected:
 	// Called when the game starts or when spawned
