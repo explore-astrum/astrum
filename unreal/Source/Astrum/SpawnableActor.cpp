@@ -22,7 +22,7 @@ ASpawnableActor::ASpawnableActor()
 
 	//replication
 	bReplicates = true;
-	bReplicateMovement = true;
+	//bReplicateMovement = true;
 
 }
 
@@ -66,6 +66,7 @@ void ASpawnableActor::AssignToPlayer() {
 void ASpawnableActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
 	if (assigned && controller != NULL && controller->IsLocalController()) {
 
 		if (selected) {
@@ -77,7 +78,8 @@ void ASpawnableActor::Tick(float DeltaTime)
 			to_from.Normalize();
 			float dot = FVector::DotProduct(facing, to_from);
 			SetLocation(actor_loc + facing * 300);
-			//SetActorLocation(location);
+			if(IsOwnedBy(controller))
+				SetActorLocation(actor_loc + facing * 300);
 		}
 
 		if (selected && rotating) {
@@ -85,17 +87,37 @@ void ASpawnableActor::Tick(float DeltaTime)
 			AddActorLocalRotation(rotation);
 		}
 	}
+	else if (last_seen_time > 0) {
+		//FVector predicted_location = GetActorLocation() + velocity * DeltaTime;
+		//FVector new_position = (predicted_location - last_seen_location) * DeltaTime;
+		//SetActorLocation(new_position);
+		//AddActorLocalOffset(velocity * DeltaTime);
+		//last_seen_location = GetActorLocation();
+	}
 
 }
 
 void ASpawnableActor::SetLocation_Implementation(FVector location)
 {
-	SetActorLocation(location);
+	//SetActorLocation(location);
+	SetLocationMulticast(location);
 }
 
 bool ASpawnableActor::SetLocation_Validate(FVector location)
 {
 	return true;
+}
+
+void ASpawnableActor::SetLocationMulticast_Implementation(FVector location)
+{
+	if (!IsOwnedBy(controller)) {
+		//SetActorLocation(location);
+		float time_now = UGameplayStatics::GetRealTimeSeconds(GetWorld());
+		if (last_seen_time > 0)
+			velocity = (location - GetActorLocation()) / (time_now - last_seen_time);
+		last_seen_location = location;
+		last_seen_time = time_now;
+	}
 }
 
 void ASpawnableActor::SetMesh(int type)

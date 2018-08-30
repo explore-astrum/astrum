@@ -54,6 +54,16 @@ public:
 	UFUNCTION(Server, Reliable, WithValidation)
 	void SetLocation(FVector location);
 
+	UFUNCTION(NetMulticast, Unreliable)
+	void SetLocationMulticast(FVector location);
+
+	UPROPERTY()
+	float last_seen_time = -1;
+	UPROPERTY()
+	FVector last_seen_location;
+	UPROPERTY()
+	FVector velocity;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
