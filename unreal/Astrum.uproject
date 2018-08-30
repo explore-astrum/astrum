@@ -13,11 +13,5 @@
 				"UMG"
 			]
 		}
-	],
-	"Plugins": [
-		{
-			"Name": "UnrealEnginePython",
-			"Enabled": false
-		}
 	]
 }
