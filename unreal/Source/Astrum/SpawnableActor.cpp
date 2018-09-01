@@ -88,11 +88,8 @@ void ASpawnableActor::Tick(float DeltaTime)
 		}
 	}
 	else if (last_seen_time > 0) {
-		//FVector predicted_location = GetActorLocation() + velocity * DeltaTime;
-		//FVector new_position = (predicted_location - last_seen_location) * DeltaTime;
-		//SetActorLocation(new_position);
-		//AddActorLocalOffset(velocity * DeltaTime);
-		//last_seen_location = GetActorLocation();
+		FVector predicted_location = GetActorLocation() + velocity * DeltaTime;
+		SetActorLocation(predicted_location);
 	}
 
 }
@@ -113,8 +110,15 @@ void ASpawnableActor::SetLocationMulticast_Implementation(FVector location)
 	if (!IsOwnedBy(controller)) {
 		//SetActorLocation(location);
 		float time_now = UGameplayStatics::GetRealTimeSeconds(GetWorld());
-		if (last_seen_time > 0)
-			velocity = (location - GetActorLocation()) / (time_now - last_seen_time);
+		if (last_seen_time > 0) {
+			if (time_now - last_seen_time > 0) {
+				velocity = ((location - GetActorLocation()) / (time_now - last_seen_time) + velocity) / 2;
+			}
+		}
+		else {
+			velocity = FVector(0, 0, 0);
+			SetActorLocation(location);
+		}
 		last_seen_location = location;
 		last_seen_time = time_now;
 	}
