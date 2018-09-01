@@ -25,6 +25,10 @@ public:
 	UStaticMesh* SphereVisualAsset;
 	UPROPERTY(EditAnywhere, ReplicatedUsing = OnRep_SetMaterial)
 	UMaterial* Material;
+	UPROPERTY(EditAnywhere, Replicated)
+	FString MaterialToBe;
+	UPROPERTY(EditAnywhere, Replicated)
+	bool server_selected;
 
 	void SetMesh(int type);
 	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
@@ -33,6 +37,8 @@ public:
 	void SetIntermediateMaterial();
 	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
 	void SetMaterial(const FString &type);
+	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
+	void PlaceObject(const FString &material_type);
 
 	UFUNCTION(BlueprintCallable)
 	void AssignToPlayer();

@@ -19,6 +19,7 @@ ASpawnableActor::ASpawnableActor()
 
 	selected = true;
 	rotating = false;
+	server_selected = true;
 
 	//replication
 	bReplicates = true;
@@ -47,7 +48,6 @@ void ASpawnableActor::AssignToPlayer() {
 	MainCharacter = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);
 	controller = UGameplayStatics::GetPlayerController(GetWorld(), 0);
 	if(controller != NULL && controller->IsLocalController()) {
-		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, "here");
 		EnableInput(controller);
 
 		SetOwner(controller);
@@ -89,7 +89,10 @@ void ASpawnableActor::Tick(float DeltaTime)
 	}
 	else if (last_seen_time > 0) {
 		FVector predicted_location = GetActorLocation() + velocity * DeltaTime;
-		SetActorLocation(predicted_location);
+		if (server_selected)
+			SetActorLocation(predicted_location);
+		else
+			SetActorLocation(last_seen_location);
 	}
 
 }
@@ -141,7 +144,6 @@ void ASpawnableActor::SetMesh(int type)
 void ASpawnableActor::SetMesh_Implementation(const FString &type)
 {
 	const TCHAR* ctype = *type;
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, type);
 	SphereVisualAsset = LoadObject<UStaticMesh>(nullptr, ctype);
 	//SetActorLocation(location);
 	/*SphereVisual->SetStaticMesh(SphereVisualAsset);
@@ -163,7 +165,8 @@ void ASpawnableActor::OnRep_SetMesh()
 
 void ASpawnableActor::SetIntermediateMaterial_Implementation()
 {
-	SphereVisual->SetMaterial(0, LoadObject<UMaterial>(nullptr, TEXT("/Game/FirstPersonBP/Blueprints/ObjectPlacing.ObjectPlacing")));
+	Material = LoadObject<UMaterial>(nullptr, TEXT("/Game/FirstPersonBP/Blueprints/ObjectPlacing.ObjectPlacing"));
+	//SphereVisual->SetMaterial(0, LoadObject<UMaterial>(nullptr, TEXT("/Game/FirstPersonBP/Blueprints/ObjectPlacing.ObjectPlacing")));
 }
 
 bool ASpawnableActor::SetIntermediateMaterial_Validate()
@@ -174,13 +177,23 @@ bool ASpawnableActor::SetIntermediateMaterial_Validate()
 void ASpawnableActor::SetMaterial_Implementation(const FString &type)
 {
 	const TCHAR* ctype = *type;
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, type);
-	Material = LoadObject<UMaterial>(nullptr, ctype);
+	MaterialToBe = type;
 	//SphereVisual->SetMaterial(0, Material);
 }
 
 bool ASpawnableActor::SetMaterial_Validate(const FString &type)
 {
+	return true;
+}
+
+void ASpawnableActor::PlaceObject_Implementation(const FString &material_type)
+{
+	const TCHAR* ctype = *material_type;
+	Material = LoadObject<UMaterial>(nullptr, ctype);
+	server_selected = false;
+}
+
+bool ASpawnableActor::PlaceObject_Validate(const FString &type) {
 	return true;
 }
 
@@ -212,7 +225,9 @@ void ASpawnableActor::PickUp() {
 	}
 	else {
 		selected = false;
-		SphereVisual->SetMaterial(0, Material);
+		const TCHAR* ctype = *MaterialToBe;
+		PlaceObject(MaterialToBe);
+		//SphereVisual->SetMaterial(0, Material);
 	}
 
 }
@@ -227,4 +242,6 @@ void ASpawnableActor::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & O
 
 	DOREPLIFETIME(ASpawnableActor, SphereVisualAsset);
 	DOREPLIFETIME(ASpawnableActor, Material);
+	DOREPLIFETIME(ASpawnableActor, MaterialToBe);
+	DOREPLIFETIME(ASpawnableActor, server_selected);
 }
