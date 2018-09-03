@@ -29,6 +29,8 @@ public:
 	FString MaterialToBe;
 	UPROPERTY(EditAnywhere, Replicated)
 	bool server_selected;
+	UPROPERTY(Replicated)
+	FString id;
 
 	void SetMesh(int type);
 	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
@@ -39,6 +41,8 @@ public:
 	void SetMaterial(const FString &type);
 	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
 	void PlaceObject(const FString &material_type);
+	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
+	void SetID(const FString &_id);
 
 	UFUNCTION(BlueprintCallable)
 	void AssignToPlayer();

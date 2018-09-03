@@ -197,6 +197,14 @@ bool ASpawnableActor::PlaceObject_Validate(const FString &type) {
 	return true;
 }
 
+void ASpawnableActor::SetID_Implementation(const FString &_id) {
+	id = _id;
+}
+
+bool ASpawnableActor::SetID_Validate(const FString &_id) {
+	return true;
+}
+
 void ASpawnableActor::OnRep_SetMaterial()
 {
 	SphereVisual->SetMaterial(0, Material);
@@ -244,4 +252,5 @@ void ASpawnableActor::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & O
 	DOREPLIFETIME(ASpawnableActor, Material);
 	DOREPLIFETIME(ASpawnableActor, MaterialToBe);
 	DOREPLIFETIME(ASpawnableActor, server_selected);
+	DOREPLIFETIME(ASpawnableActor, id);
 }

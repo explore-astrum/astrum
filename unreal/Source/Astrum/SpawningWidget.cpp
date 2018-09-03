@@ -7,12 +7,14 @@ USpawningWidget::USpawningWidget(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer) {
 
 	FRelic a;
+	a.id = "1";
 	a.mesh = FString("/Game/StarterContent/Shapes/Shape_Sphere.Shape_Sphere");
 	a.material = FString("/Game/FirstPersonBP/Blueprints/ObjectTestMaterial.ObjectTestMaterial");
 	a.icon = ConstructorHelpers::FObjectFinder<UTexture2D>(TEXT("/Game/FirstPersonBP/Maps/MapTextures/Desert_Rock_Albedo.Desert_Rock_Albedo")).Object;
 	options.Add(a);
 
 	FRelic b;
+	b.id = "2";
 	b.mesh = FString("/Game/Sky/Meshes/SM_RotatorCube.SM_RotatorCube");
 	b.material = FString("/Game/FirstPersonBP/Blueprints/ObjectTestMaterial.ObjectTestMaterial");
 	b.icon = ConstructorHelpers::FObjectFinder<UTexture2D>(TEXT("/Game/FirstPersonBP/Maps/MapTextures/Beach_Sand_Normal.Beach_Sand_Normal")).Object;
@@ -39,10 +41,9 @@ void USpawningWidget::ButtonClick() {
 }
 
 TArray<FRelic> USpawningWidget::GetOptions() {
-	FRelic c;
-	c.mesh = FString("/Game/Sky/Meshes/SM_RotatorCube.SM_RotatorCube");
-	c.material = FString("/Game/FirstPersonBP/Blueprints/ObjectTestMaterial.ObjectTestMaterial");
-	c.icon = Cast<UTexture2D>(StaticLoadObject(UTexture2D::StaticClass(), NULL, TEXT("/Game/FirstPersonBP/Maps/MapTextures/Beach_Sand_Normal.Beach_Sand_Normal")));
-	options.Add(c);
 	return options;
+}
+
+void USpawningWidget::AddToOptions(FRelic relic) {
+	options.Add(relic);
 }

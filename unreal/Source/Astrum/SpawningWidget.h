@@ -20,6 +20,8 @@ USTRUCT(BlueprintType)
 struct FRelic {
 	GENERATED_BODY()
 
+	UPROPERTY(BlueprintReadWrite)
+	FString id;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FString mesh;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -46,6 +48,9 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	TArray<FRelic> GetOptions();
+
+	UFUNCTION(BlueprintCallable)
+	void AddToOptions(FRelic relic);
 	
 	
 	
