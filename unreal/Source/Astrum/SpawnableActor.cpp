@@ -86,7 +86,6 @@ void ASpawnableActor::Tick(float DeltaTime)
 			to_from.Normalize();
 			float dot = FVector::DotProduct(facing, to_from);
 			SetLocation(actor_loc + facing * 300);
-			//if(IsOwnedBy(controller))
 			SetActorLocation(actor_loc + facing * 300);
 		}
 
@@ -107,7 +106,6 @@ void ASpawnableActor::Tick(float DeltaTime)
 
 void ASpawnableActor::SetLocation_Implementation(FVector location)
 {
-	//SetActorLocation(location);
 	SetLocationMulticast(location);
 }
 
@@ -119,7 +117,6 @@ bool ASpawnableActor::SetLocation_Validate(FVector location)
 void ASpawnableActor::SetLocationMulticast_Implementation(FVector location)
 {
 	if (!IsOwnedBy(controller)) {
-		//SetActorLocation(location);
 		float time_now = UGameplayStatics::GetRealTimeSeconds(GetWorld());
 		if (last_seen_time > 0) {
 			if (time_now - last_seen_time > 0) {
@@ -153,10 +150,6 @@ void ASpawnableActor::SetMesh_Implementation(const FString &type)
 {
 	const TCHAR* ctype = *type;
 	SphereVisualAsset = LoadObject<UStaticMesh>(nullptr, ctype);
-	//SetActorLocation(location);
-	/*SphereVisual->SetStaticMesh(SphereVisualAsset);
-	SphereVisual->SetRelativeLocation(FVector(0.0f, 0.0f, 0.0f));
-	SphereVisual->SetWorldScale3D(FVector(1.0f));*/
 }
 
 bool ASpawnableActor::SetMesh_Validate(const FString &type)
@@ -174,7 +167,6 @@ void ASpawnableActor::OnRep_SetMesh()
 void ASpawnableActor::SetIntermediateMaterial_Implementation()
 {
 	Material = LoadObject<UMaterial>(nullptr, TEXT("/Game/FirstPersonBP/Blueprints/ObjectPlacing.ObjectPlacing"));
-	//SphereVisual->SetMaterial(0, LoadObject<UMaterial>(nullptr, TEXT("/Game/FirstPersonBP/Blueprints/ObjectPlacing.ObjectPlacing")));
 }
 
 bool ASpawnableActor::SetIntermediateMaterial_Validate()
@@ -186,7 +178,6 @@ void ASpawnableActor::SetMaterial_Implementation(const FString &type)
 {
 	const TCHAR* ctype = *type;
 	MaterialToBe = type;
-	//SphereVisual->SetMaterial(0, Material);
 }
 
 bool ASpawnableActor::SetMaterial_Validate(const FString &type)
@@ -230,47 +221,11 @@ bool ASpawnableActor::SetServerSelected_Validate(bool _selected) {
 	return true;
 }
 
-/*void ASpawnableActor::SetServerOwner_Implementation(AAstrumPlayerController* new_controller) {
-	if (new_controller != NULL) {
-		SetOwner(new_controller);
-	}
-}
-
-bool ASpawnableActor::SetServerOwner_Validate(AAstrumPlayerController* new_controller) {
-	return true;
-}*/
-
 FString ASpawnableActor::GetID() {
 	return id;
 }
 
-void ASpawnableActor::PickUp() {
-	if (!server_selected) {
-		/*FRotator Rotation = controller->GetControlRotation();
-		FVector facing = FRotationMatrix(Rotation).GetScaledAxis(EAxis::X);
-		FVector actor_loc = MainCharacter->GetActorLocation() + FVector(0, 0, 0);
-		FVector to_from = actor_loc - GetActorLocation();
-		facing.Normalize();
-		to_from.Normalize();
-		float dot = FVector::DotProduct(facing, to_from);
-
-		if (dot < -0.99 && Cast<AAstrumPlayerController>(controller)->userID == id) {
-			AssignToPlayer();
-			//SetServerOwner();
-			SetActorLocation(actor_loc + facing * 300);
-			SetServerSelected(true);
-			selected = true;
-			//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, FString::SanitizeFloat(dot));
-		}*/
-	}
-	else {
-		//selected = false;
-		//const TCHAR* ctype = *MaterialToBe;
-		//PlaceObject(MaterialToBe);
-		//SphereVisual->SetMaterial(0, Material);
-	}
-
-}
+void ASpawnableActor::PickUp() {}
 
 bool ASpawnableActor::isSelected() {
 	return selected;

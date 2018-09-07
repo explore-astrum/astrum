@@ -77,9 +77,6 @@ public:
 	UFUNCTION(BlueprintCallable)
 	bool GetServerSelected();
 
-	/*UFUNCTION(Server, Reliable, WithValidation)
-	void SetServerOwner(AAstrumPlayerController* new_controller);*/
-
 	UFUNCTION(BlueprintCallable)
 	FString GetID();
 
