@@ -42,6 +42,14 @@ void ASpawnableActor::BeginPlay()
 	
 	InputComponent->BindAction("SelectObj", IE_Pressed, this, &ASpawnableActor::PickUp).bConsumeInput = false;
 	*/
+
+	MainCharacter = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);
+	controller = UGameplayStatics::GetPlayerController(GetWorld(), 0);
+	if (controller != NULL && controller->IsLocalController()) {
+		EnableInput(controller);
+		UInputComponent* InputComponent = controller->InputComponent;
+		InputComponent->BindAction("SelectObj", IE_Pressed, this, &ASpawnableActor::PickUp).bConsumeInput = false;
+	}
 }
 
 void ASpawnableActor::AssignToPlayer() {
@@ -67,7 +75,7 @@ void ASpawnableActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (assigned && controller != NULL && controller->IsLocalController()) {
+	if (assigned && controller != NULL && controller->IsLocalController() && IsOwnedBy(controller)) {
 
 		if (selected) {
 			FRotator Rotation = controller->GetControlRotation();
@@ -78,8 +86,8 @@ void ASpawnableActor::Tick(float DeltaTime)
 			to_from.Normalize();
 			float dot = FVector::DotProduct(facing, to_from);
 			SetLocation(actor_loc + facing * 300);
-			if(IsOwnedBy(controller))
-				SetActorLocation(actor_loc + facing * 300);
+			//if(IsOwnedBy(controller))
+			SetActorLocation(actor_loc + facing * 300);
 		}
 
 		if (selected && rotating) {
@@ -186,14 +194,14 @@ bool ASpawnableActor::SetMaterial_Validate(const FString &type)
 	return true;
 }
 
-void ASpawnableActor::PlaceObject_Implementation(const FString &material_type)
+void ASpawnableActor::PlaceObject_Implementation()
 {
-	const TCHAR* ctype = *material_type;
+	const TCHAR* ctype = *MaterialToBe;
 	Material = LoadObject<UMaterial>(nullptr, ctype);
 	server_selected = false;
 }
 
-bool ASpawnableActor::PlaceObject_Validate(const FString &type) {
+bool ASpawnableActor::PlaceObject_Validate() {
 	return true;
 }
 
@@ -214,9 +222,31 @@ void ASpawnableActor::RotateX() {
 	rotating = !rotating;
 }
 
+void ASpawnableActor::SetServerSelected_Implementation(bool _selected) {
+	server_selected = _selected;
+}
+
+bool ASpawnableActor::SetServerSelected_Validate(bool _selected) {
+	return true;
+}
+
+/*void ASpawnableActor::SetServerOwner_Implementation(AAstrumPlayerController* new_controller) {
+	if (new_controller != NULL) {
+		SetOwner(new_controller);
+	}
+}
+
+bool ASpawnableActor::SetServerOwner_Validate(AAstrumPlayerController* new_controller) {
+	return true;
+}*/
+
+FString ASpawnableActor::GetID() {
+	return id;
+}
+
 void ASpawnableActor::PickUp() {
-	if (!selected) {
-		FRotator Rotation = controller->GetControlRotation();
+	if (!server_selected) {
+		/*FRotator Rotation = controller->GetControlRotation();
 		FVector facing = FRotationMatrix(Rotation).GetScaledAxis(EAxis::X);
 		FVector actor_loc = MainCharacter->GetActorLocation() + FVector(0, 0, 0);
 		FVector to_from = actor_loc - GetActorLocation();
@@ -224,17 +254,19 @@ void ASpawnableActor::PickUp() {
 		to_from.Normalize();
 		float dot = FVector::DotProduct(facing, to_from);
 
-
-		if (dot < -0.99) {
+		if (dot < -0.99 && Cast<AAstrumPlayerController>(controller)->userID == id) {
+			AssignToPlayer();
+			//SetServerOwner();
 			SetActorLocation(actor_loc + facing * 300);
+			SetServerSelected(true);
 			selected = true;
 			//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, FString::SanitizeFloat(dot));
-		}
+		}*/
 	}
 	else {
-		selected = false;
-		const TCHAR* ctype = *MaterialToBe;
-		PlaceObject(MaterialToBe);
+		//selected = false;
+		//const TCHAR* ctype = *MaterialToBe;
+		//PlaceObject(MaterialToBe);
 		//SphereVisual->SetMaterial(0, Material);
 	}
 
@@ -242,6 +274,14 @@ void ASpawnableActor::PickUp() {
 
 bool ASpawnableActor::isSelected() {
 	return selected;
+}
+
+void ASpawnableActor::SetSelected(bool _selected) {
+	selected = _selected;
+}
+
+bool ASpawnableActor::GetServerSelected() {
+	return server_selected;
 }
 
 void ASpawnableActor::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const

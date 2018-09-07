@@ -8,6 +8,7 @@
 #include "GameFramework/Character.h"
 #include "Runtime/CoreUObject/Public/UObject/ConstructorHelpers.h"
 #include "Kismet/GameplayStatics.h"
+#include "AstrumPlayerController.h"
 #include "SpawnableActor.generated.h"
 
 UCLASS(SpatialType)
@@ -40,7 +41,7 @@ public:
 	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
 	void SetMaterial(const FString &type);
 	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
-	void PlaceObject(const FString &material_type);
+	void PlaceObject();
 	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
 	void SetID(const FString &_id);
 
@@ -66,6 +67,21 @@ public:
 
 	UFUNCTION(NetMulticast, Unreliable)
 	void SetLocationMulticast(FVector location);
+
+	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
+	void SetServerSelected(bool _selected);
+
+	UFUNCTION(BlueprintCallable)
+	void SetSelected(bool _selected);
+
+	UFUNCTION(BlueprintCallable)
+	bool GetServerSelected();
+
+	/*UFUNCTION(Server, Reliable, WithValidation)
+	void SetServerOwner(AAstrumPlayerController* new_controller);*/
+
+	UFUNCTION(BlueprintCallable)
+	FString GetID();
 
 	UPROPERTY()
 	float last_seen_time = -1;

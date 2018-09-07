@@ -7,14 +7,14 @@ USpawningWidget::USpawningWidget(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer) {
 
 	FRelic a;
-	a.id = "1";
-	a.mesh = FString("/Game/StarterContent/Shapes/Shape_Sphere.Shape_Sphere");
+	a.id = "2";
+	a.mesh = FString("/Game/Flowers_Plants_Part2/Meshes/SM_Cannabis_01");
 	a.material = FString("/Game/FirstPersonBP/Blueprints/ObjectTestMaterial.ObjectTestMaterial");
 	a.icon = ConstructorHelpers::FObjectFinder<UTexture2D>(TEXT("/Game/FirstPersonBP/Maps/MapTextures/Desert_Rock_Albedo.Desert_Rock_Albedo")).Object;
 	options.Add(a);
 
 	FRelic b;
-	b.id = "2";
+	b.id = "1";
 	b.mesh = FString("/Game/Sky/Meshes/SM_RotatorCube.SM_RotatorCube");
 	b.material = FString("/Game/FirstPersonBP/Blueprints/ObjectTestMaterial.ObjectTestMaterial");
 	b.icon = ConstructorHelpers::FObjectFinder<UTexture2D>(TEXT("/Game/FirstPersonBP/Maps/MapTextures/Beach_Sand_Normal.Beach_Sand_Normal")).Object;

@@ -23,3 +23,7 @@ void AAstrumPlayerController::InitPlayerState()
 
 	Super::InitPlayerState();
 }
+
+FString AAstrumPlayerController::GetUserID() {
+	return userID;
+}
