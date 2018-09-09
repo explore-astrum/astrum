@@ -9,6 +9,17 @@
 /**
  * 
  */
+
+USTRUCT(BlueprintType)
+struct FLand {
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FVector2D min;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FVector2D max;
+};
+
 UCLASS(SpatialType)
 class ASTRUM_API AAstrumPlayerController : public APlayerController
 {
@@ -22,6 +33,15 @@ class ASTRUM_API AAstrumPlayerController : public APlayerController
 
 		UFUNCTION(BlueprintCallable)
 		FString GetUserID();
+
+		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "properties")
+		TArray<FLand> properties;
+
+		UFUNCTION(BlueprintCallable)
+		void SetProperties();
+
+		UFUNCTION(BlueprintCallable)
+		TArray<FLand> GetProperties();
 	
 	
 	
