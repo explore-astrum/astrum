@@ -25,8 +25,6 @@ class ASTRUM_API AAstrumPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 
-	virtual void InitPlayerState() override;
-
 	public:
 		UPROPERTY(EditAnywhere)
 		FString userID = "1";
