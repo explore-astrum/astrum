@@ -157,6 +157,37 @@ bool ASpawnableActor::SetMesh_Validate(const FString &type)
 	return true;
 }
 
+void ASpawnableActor::SetPawnClass_Implementation(UClass* type)
+{
+	pawnClass = type;
+}
+
+bool ASpawnableActor::SetPawnClass_Validate(UClass* type)
+{
+	return true;
+}
+
+void ASpawnableActor::SetIsPawn_Implementation(const bool is_pawn)
+{
+	isPawn = is_pawn;
+}
+
+bool ASpawnableActor::SetIsPawn_Validate(const bool is_pawn)
+{
+	return true;
+}
+
+bool ASpawnableActor::GetIsPawn()
+{
+	return isPawn;
+}
+
+UClass* ASpawnableActor::GetPawn()
+{
+	return pawnClass;
+}
+
+
 void ASpawnableActor::OnRep_SetMesh()
 {
 	SphereVisual->SetStaticMesh(SphereVisualAsset);
@@ -206,7 +237,9 @@ bool ASpawnableActor::SetID_Validate(const FString &_id) {
 
 void ASpawnableActor::OnRep_SetMaterial()
 {
-	SphereVisual->SetMaterial(0, Material);
+	for (int i = 0; i < SphereVisual->GetNumMaterials(); i++) {
+		SphereVisual->SetMaterial(i, Material);
+	}
 }
 
 void ASpawnableActor::RotateX() {
@@ -248,4 +281,6 @@ void ASpawnableActor::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & O
 	DOREPLIFETIME(ASpawnableActor, MaterialToBe);
 	DOREPLIFETIME(ASpawnableActor, server_selected);
 	DOREPLIFETIME(ASpawnableActor, id);
+	DOREPLIFETIME(ASpawnableActor, pawnClass);
+	DOREPLIFETIME(ASpawnableActor, isPawn);
 }

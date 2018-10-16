@@ -28,6 +28,10 @@ struct FRelic {
 	FString material;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UTexture2D *icon;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UClass *pawnClass;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool isPawn;
 };
 
 UCLASS()

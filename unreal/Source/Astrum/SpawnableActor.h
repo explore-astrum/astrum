@@ -33,6 +33,11 @@ public:
 	UPROPERTY(Replicated)
 	FString id;
 
+	UPROPERTY(Replicated)
+	UClass* pawnClass;
+	UPROPERTY(Replicated)
+	bool isPawn;
+
 	void SetMesh(int type);
 	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
 	void SetMesh(const FString &type);
@@ -44,6 +49,15 @@ public:
 	void PlaceObject();
 	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
 	void SetID(const FString &_id);
+
+	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
+	void SetPawnClass(UClass* type);
+	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
+	void SetIsPawn(const bool is_pawn);
+	UFUNCTION(BlueprintCallable)
+	bool GetIsPawn();
+	UFUNCTION(BlueprintCallable)
+	UClass* GetPawn();
 
 	UFUNCTION(BlueprintCallable)
 	void AssignToPlayer();
