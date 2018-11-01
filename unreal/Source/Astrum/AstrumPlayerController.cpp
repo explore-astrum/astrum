@@ -17,3 +17,8 @@ FString AAstrumPlayerController::GetUserID() {
 TArray<FLand> AAstrumPlayerController::GetProperties() {
 	return properties;
 }
+
+void AAstrumPlayerController::GoToServer() {
+	FString TravelURL = TEXT("127.0.0.1:7777/Astrum");
+	ClientTravel(TravelURL, TRAVEL_Absolute, false /*bSeamless*/);
+}

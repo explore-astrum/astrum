@@ -40,6 +40,9 @@ class ASTRUM_API AAstrumPlayerController : public APlayerController
 
 		UFUNCTION(BlueprintCallable)
 		TArray<FLand> GetProperties();
+
+		UFUNCTION(BlueprintCallable)
+		void GoToServer();
 	
 	
 	

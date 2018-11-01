@@ -67,6 +67,7 @@ void ASpawnableActor::AssignToPlayer() {
 
 		InputComponent->BindAction("SelectObj", IE_Pressed, this, &ASpawnableActor::PickUp).bConsumeInput = false;
 	}
+
 	assigned = true;
 }
 
@@ -74,6 +75,9 @@ void ASpawnableActor::AssignToPlayer() {
 void ASpawnableActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	//if(assigned)
+	//	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("1"));
 
 	if (assigned && controller != NULL && controller->IsLocalController() && IsOwnedBy(controller)) {
 
