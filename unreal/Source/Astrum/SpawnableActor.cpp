@@ -69,15 +69,13 @@ void ASpawnableActor::AssignToPlayer() {
 	}
 
 	assigned = true;
+
 }
 
 // Called every frame
 void ASpawnableActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
-	//if(assigned)
-	//	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("1"));
 
 	if (assigned && controller != NULL && controller->IsLocalController() && IsOwnedBy(controller)) {
 
@@ -120,7 +118,7 @@ bool ASpawnableActor::SetLocation_Validate(FVector location)
 
 void ASpawnableActor::SetLocationMulticast_Implementation(FVector location)
 {
-	if (!IsOwnedBy(controller)) {
+	if (!IsOwnedBy(controller) || !controller->IsLocalController()) {
 		float time_now = UGameplayStatics::GetRealTimeSeconds(GetWorld());
 		if (last_seen_time > 0) {
 			if (time_now - last_seen_time > 0) {

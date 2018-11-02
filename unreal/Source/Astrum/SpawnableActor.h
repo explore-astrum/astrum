@@ -11,7 +11,7 @@
 #include "AstrumPlayerController.h"
 #include "SpawnableActor.generated.h"
 
-UCLASS(SpatialType)
+UCLASS()
 class ASTRUM_API ASpawnableActor : public AActor
 {
 	GENERATED_BODY()
