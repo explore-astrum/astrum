@@ -22,13 +22,9 @@ public:
 	USphereComponent* sphere;
 	UStaticMeshComponent* SphereVisual;
 
-	UPROPERTY(EditAnywhere, ReplicatedUsing = OnRep_SetMesh, Category = Mesh)
+	UPROPERTY(EditAnywhere, Replicated, Category = Mesh)
 	UStaticMesh* SphereVisualAsset;
-	UPROPERTY(EditAnywhere, ReplicatedUsing = OnRep_SetMaterial)
-	UMaterial* Material;
-	UPROPERTY(EditAnywhere, Replicated)
-	FString MaterialToBe;
-	UPROPERTY(EditAnywhere, Replicated)
+	UPROPERTY(EditAnywhere, ReplicatedUsing = OnRep_ChangeMaterial)
 	bool server_selected;
 	UPROPERTY(Replicated)
 	FString id;
@@ -38,13 +34,6 @@ public:
 	UPROPERTY(Replicated)
 	bool isPawn;
 
-	void SetMesh(int type);
-	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
-	void SetMesh(const FString &type);
-	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
-	void SetIntermediateMaterial();
-	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
-	void SetMaterial(const FString &type);
 	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
 	void PlaceObject();
 	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
@@ -72,9 +61,7 @@ public:
 	bool isSelected();
 
 	UFUNCTION()
-	virtual void OnRep_SetMaterial();
-	UFUNCTION()
-	virtual void OnRep_SetMesh();
+	virtual void OnRep_ChangeMaterial();
 
 	UFUNCTION(Server, Reliable, WithValidation)
 	void SetLocation(FVector location);

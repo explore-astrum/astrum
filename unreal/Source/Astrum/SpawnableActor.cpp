@@ -134,31 +134,6 @@ void ASpawnableActor::SetLocationMulticast_Implementation(FVector location)
 	}
 }
 
-void ASpawnableActor::SetMesh(int type)
-{
-
-	if (type == 1) {
-		SphereVisualAsset = LoadObject<UStaticMesh>(nullptr, TEXT("/Game/StarterContent/Shapes/Shape_Sphere.Shape_Sphere"));
-	}
-	else if (type == 2) {
-		SphereVisualAsset = LoadObject<UStaticMesh>(nullptr, TEXT("/Game/StarterContent/Shapes/Shape_Torus.Shape_Torus"));
-	}
-	SphereVisual->SetStaticMesh(SphereVisualAsset);
-	SphereVisual->SetRelativeLocation(FVector(0.0f, 0.0f, 0.0f));
-	SphereVisual->SetWorldScale3D(FVector(1.0f));
-}
-
-void ASpawnableActor::SetMesh_Implementation(const FString &type)
-{
-	const TCHAR* ctype = *type;
-	SphereVisualAsset = LoadObject<UStaticMesh>(nullptr, ctype);
-}
-
-bool ASpawnableActor::SetMesh_Validate(const FString &type)
-{
-	return true;
-}
-
 void ASpawnableActor::SetPawnClass_Implementation(UClass* type)
 {
 	pawnClass = type;
@@ -189,39 +164,8 @@ UClass* ASpawnableActor::GetPawn()
 	return pawnClass;
 }
 
-
-void ASpawnableActor::OnRep_SetMesh()
-{
-	SphereVisual->SetStaticMesh(SphereVisualAsset);
-	SphereVisual->SetRelativeLocation(FVector(0.0f, 0.0f, 0.0f));
-	SphereVisual->SetWorldScale3D(FVector(1.0f));
-}
-
-void ASpawnableActor::SetIntermediateMaterial_Implementation()
-{
-	Material = LoadObject<UMaterial>(nullptr, TEXT("/Game/FirstPersonBP/Blueprints/ObjectPlacing.ObjectPlacing"));
-}
-
-bool ASpawnableActor::SetIntermediateMaterial_Validate()
-{
-	return true;
-}
-
-void ASpawnableActor::SetMaterial_Implementation(const FString &type)
-{
-	const TCHAR* ctype = *type;
-	MaterialToBe = type;
-}
-
-bool ASpawnableActor::SetMaterial_Validate(const FString &type)
-{
-	return true;
-}
-
 void ASpawnableActor::PlaceObject_Implementation()
 {
-	const TCHAR* ctype = *MaterialToBe;
-	Material = LoadObject<UMaterial>(nullptr, ctype);
 	server_selected = false;
 }
 
@@ -235,13 +179,6 @@ void ASpawnableActor::SetID_Implementation(const FString &_id) {
 
 bool ASpawnableActor::SetID_Validate(const FString &_id) {
 	return true;
-}
-
-void ASpawnableActor::OnRep_SetMaterial()
-{
-	for (int i = 0; i < SphereVisual->GetNumMaterials(); i++) {
-		SphereVisual->SetMaterial(i, Material);
-	}
 }
 
 void ASpawnableActor::RotateX() {
@@ -274,13 +211,35 @@ bool ASpawnableActor::GetServerSelected() {
 	return server_selected;
 }
 
+void ASpawnableActor::OnRep_ChangeMaterial() {
+	auto components = GetComponents();
+	for (auto component : components)
+	{
+		if (component->GetFName() == "Object")
+		{
+			USceneComponent* sc = CastChecked<USceneComponent>(component);
+			if (server_selected)
+				sc->SetVisibility(false);
+			else
+				sc->SetVisibility(true);
+		}
+
+		if (component->GetFName() == "TempObject")
+		{
+			USceneComponent* sc = CastChecked<USceneComponent>(component);
+			if (server_selected)
+				sc->SetVisibility(true);
+			else
+				sc->SetVisibility(false);
+		}
+	}
+}
+
 void ASpawnableActor::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(ASpawnableActor, SphereVisualAsset);
-	DOREPLIFETIME(ASpawnableActor, Material);
-	DOREPLIFETIME(ASpawnableActor, MaterialToBe);
 	DOREPLIFETIME(ASpawnableActor, server_selected);
 	DOREPLIFETIME(ASpawnableActor, id);
 	DOREPLIFETIME(ASpawnableActor, pawnClass);
