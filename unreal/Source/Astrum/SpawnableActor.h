@@ -11,7 +11,7 @@
 #include "AstrumPlayerController.h"
 #include "SpawnableActor.generated.h"
 
-UCLASS(SpatialType)
+UCLASS()
 class ASTRUM_API ASpawnableActor : public AActor
 {
 	GENERATED_BODY()
@@ -22,28 +22,31 @@ public:
 	USphereComponent* sphere;
 	UStaticMeshComponent* SphereVisual;
 
-	UPROPERTY(EditAnywhere, ReplicatedUsing = OnRep_SetMesh, Category = Mesh)
+	UPROPERTY(EditAnywhere, Replicated, Category = Mesh)
 	UStaticMesh* SphereVisualAsset;
-	UPROPERTY(EditAnywhere, ReplicatedUsing = OnRep_SetMaterial)
-	UMaterial* Material;
-	UPROPERTY(EditAnywhere, Replicated)
-	FString MaterialToBe;
-	UPROPERTY(EditAnywhere, Replicated)
+	UPROPERTY(EditAnywhere, ReplicatedUsing = OnRep_ChangeMaterial)
 	bool server_selected;
 	UPROPERTY(Replicated)
 	FString id;
 
-	void SetMesh(int type);
-	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
-	void SetMesh(const FString &type);
-	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
-	void SetIntermediateMaterial();
-	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
-	void SetMaterial(const FString &type);
+	UPROPERTY(Replicated)
+	UClass* pawnClass;
+	UPROPERTY(Replicated)
+	bool isPawn;
+
 	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
 	void PlaceObject();
 	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
 	void SetID(const FString &_id);
+
+	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
+	void SetPawnClass(UClass* type);
+	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
+	void SetIsPawn(const bool is_pawn);
+	UFUNCTION(BlueprintCallable)
+	bool GetIsPawn();
+	UFUNCTION(BlueprintCallable)
+	UClass* GetPawn();
 
 	UFUNCTION(BlueprintCallable)
 	void AssignToPlayer();
@@ -58,9 +61,7 @@ public:
 	bool isSelected();
 
 	UFUNCTION()
-	virtual void OnRep_SetMaterial();
-	UFUNCTION()
-	virtual void OnRep_SetMesh();
+	virtual void OnRep_ChangeMaterial();
 
 	UFUNCTION(Server, Reliable, WithValidation)
 	void SetLocation(FVector location);

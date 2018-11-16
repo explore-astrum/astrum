@@ -23,11 +23,13 @@ struct FRelic {
 	UPROPERTY(BlueprintReadWrite)
 	FString id;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FString mesh;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FString material;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UTexture2D *icon;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UClass *pawnClass;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool isPawn;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UClass *blueprint;
 };
 
 UCLASS()

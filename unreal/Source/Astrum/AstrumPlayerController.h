@@ -25,8 +25,6 @@ class ASTRUM_API AAstrumPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 
-	virtual void InitPlayerState() override;
-
 	public:
 		UPROPERTY(EditAnywhere)
 		FString userID = "1";
@@ -42,6 +40,9 @@ class ASTRUM_API AAstrumPlayerController : public APlayerController
 
 		UFUNCTION(BlueprintCallable)
 		TArray<FLand> GetProperties();
+
+		UFUNCTION(BlueprintCallable)
+		void GoToServer();
 	
 	
 	
