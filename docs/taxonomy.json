@@ -1,0 +1,34 @@
+{
+    "all": {
+        "inorganic": {
+            "vehicle": {
+                "air_vehicle": {
+                    "plane": {},
+                    "helicopter": {},
+                    "airship": {}
+                },
+                "water_vehicle": {
+                    "boat": {}
+                },
+                "land_vehicle": {
+                    "automobile": {
+                        "car": {},
+                        "truck": {},
+                        "suv": {},
+                        "bus": {}
+                    }
+                }
+            },
+            "building": {
+                "house": {}
+            }
+        },
+        "organic": {
+            "plant": {
+                "tree": {},
+                "bush": {},
+                "flower": {}
+            }
+        }
+    }
+}
