@@ -1,0 +1,22 @@
+package astrum;
+
+component Ownable {
+    id = 200001;
+    EntityId owner = 1;
+}
+
+component Item {
+    id = 200002;
+    uint64 type = 1;
+    bool visible;
+}
+
+type ItemPointer {
+    EntityId entity = 1;
+    string type = 2;
+}
+
+component Inventory {
+    id = 200003;
+    map<EntityId, ItemPointer> items = 1;
+}

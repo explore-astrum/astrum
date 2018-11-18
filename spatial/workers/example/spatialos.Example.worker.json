@@ -1,0 +1,94 @@
+{
+  "build": {
+    "tasks_filename": "spatialos.csharp.build.json",
+    "generated_build_scripts_type": "csharp_msbuild"
+  },
+  "bridge": {
+    "worker_attribute_set": {
+      "attributes": []
+    },
+    "entity_interest": {
+      "range_entity_interest": {
+        "radius": 2
+      }
+    },
+    "component_delivery": {
+      "default": "RELIABLE_ORDERED",
+      "checkout_all_initially": true
+    }
+  },
+  "managed": {
+    "windows": {
+      "artifact_name": "Example@Windows.zip",
+      "command": "mono",
+      "arguments": [
+        "./Example.exe",
+        "receptionist",
+        "${IMPROBABLE_RECEPTIONIST_HOST}",
+        "${IMPROBABLE_RECEPTIONIST_PORT}",
+        "${IMPROBABLE_WORKER_ID}"
+      ]
+    },
+    "linux": {
+      "artifact_name": "Example@Linux.zip",
+      "command": "mono",
+      "arguments": [
+        "./Example.exe",
+        "receptionist",
+        "${IMPROBABLE_RECEPTIONIST_HOST}",
+        "${IMPROBABLE_RECEPTIONIST_PORT}",
+        "${IMPROBABLE_WORKER_ID}"
+      ]
+    },
+    "macos": {
+      "artifact_name": "Example@Mac.zip",
+      "command": "mono",
+      "arguments": [
+        "./Example.exe",
+        "receptionist",
+        "${IMPROBABLE_RECEPTIONIST_HOST}",
+        "${IMPROBABLE_RECEPTIONIST_PORT}",
+        "${IMPROBABLE_WORKER_ID}"
+      ]
+    }
+  },
+  "external": {
+    "local": {
+      "run_type": "EXECUTABLE_ZIP",
+      "windows": {
+        "artifact_name": "Example@Windows.zip",
+        "command": "mono",
+        "arguments": [
+          "./Example.exe",
+          "receptionist",
+          "localhost",
+          "7777",
+          "ExampleLocalWindows"
+        ]
+      },
+      "linux": {
+        "artifact_name": "Example@Linux.zip",
+        "command": "mono",
+        "arguments": [
+          "./Example.exe",
+          "receptionist",
+          "localhost",
+          "7777",
+          "ExampleLocalLinux"
+        ]
+      },
+      "macos": {
+        "artifact_name": "Example@Mac.zip",
+        "command": "mono",
+        "arguments": [
+          "--arch=64",
+          "./Example.exe",
+          "receptionist",
+          "localhost",
+          "7777",
+          "ExampleLocalMac"
+        ]
+      }
+    }
+  }
+}
