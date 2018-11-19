@@ -1,4 +1,4 @@
-package astrum.tags;
+package astrum.schema.tags;
 
 component Flammable {
     id = 300001;

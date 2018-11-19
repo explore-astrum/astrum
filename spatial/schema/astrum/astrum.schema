@@ -1,4 +1,4 @@
-package astrum;
+package astrum.schema;
 
 component Ownable {
     id = 200001;
@@ -8,7 +8,6 @@ component Ownable {
 component Item {
     id = 200002;
     uint64 type = 1;
-    bool visible = 2;
 }
 
 type ItemPointer {
