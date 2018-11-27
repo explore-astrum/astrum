@@ -1,0 +1,6 @@
+package astrum.schema.tags;
+
+component Flammable {
+    id = 300001;
+    bool fire = 1;
+}

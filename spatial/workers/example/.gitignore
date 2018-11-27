@@ -1,0 +1,15 @@
+bin
+obj
+package
+.vs
+.spatialos
+improbable
+*.user
+
+# C# worker auto-generated project files
+spatialos.csharp.build.json
+spatialos_worker_packages.json
+BuildTargets.targets
+CsharpWorker.sln
+CsharpWorker.targets
+GeneratedCode.csproj
