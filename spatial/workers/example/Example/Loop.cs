@@ -9,7 +9,7 @@ namespace Example
     public class Loop
     {
 
-        private ConcurrentBag<Action<Dispatcher, Connection>> actions = new ConcurrentBag<Action<Dispatcher, Connection>>();
+        private ConcurrentBag<Action<View, Connection>> actions = new ConcurrentBag<Action<View, Connection>>();
         public Loop()
         {
         }
@@ -28,17 +28,17 @@ namespace Example
 
             using (var future = Connection.ConnectAsync(hostname, port, Guid.NewGuid().ToString(), connectionParameters))
             using (var connection = future.Get())
-            using (var dispatcher = new Dispatcher())
+            using (var view = new View())
             {
                 var isConnected = true;
 
-                dispatcher.OnDisconnect(op =>
+                view.OnDisconnect(op =>
                 {
                     Console.Error.WriteLine("[disconnect] " + op.Reason);
                     isConnected = false;
                 });
 
-                dispatcher.OnLogMessage(op =>
+                view.OnLogMessage(op =>
                 {
                     if (op.Level == LogLevel.Fatal)
                     {
@@ -51,13 +51,13 @@ namespace Example
                 {
                     using (var opList = connection.GetOpList(100))
                     {
-                        dispatcher.Process(opList);
+                        view.Process(opList);
                     }
-                    Action<Dispatcher, Connection> action;
+                    Action<View, Connection> action;
                     while (!this.actions.IsEmpty)
                     {
                         this.actions.TryTake(out action);
-                        action(dispatcher, connection);
+                        action(view, connection);
                     }
 
                 }
