@@ -25,7 +25,7 @@ namespace Astrum.Item
         {
             var t = new TaskCompletionSource<CreateEntityResponseOp>();
             ulong cb = 0;
-            loop.Dispatch((view, connection) =>
+            loop.Execute((view, connection) =>
             {
                 var req = connection.SendCreateEntityRequest(e, null, 100);
                 cb = view.OnCreateEntityResponse(op =>
@@ -36,7 +36,7 @@ namespace Astrum.Item
             });
             var result = await t.Task;
             Console.WriteLine("Entity published " + result.EntityId);
-            loop.Dispatch((view, conn) => view.Remove(cb));
+            loop.Execute((view, conn) => view.Remove(cb));
             return result;
         }
     }
