@@ -4,11 +4,26 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
+
+#include "Interop/Connection/SpatialWorkerConnection.h"
+#include "Interop/SpatialStaticComponentView.h"
+#include "EngineClasses/SpatialGameInstance.h"
+#include "EngineClasses/SpatialNetDriver.h"
+#include "Schema/Component.h"
+#include "Schema/DynamicComponent.h"
+#include "Schema/StandardLibrary.h"
+#include "Interop/SpatialDispatcher.h"
+
+#include <WorkerSDK/improbable/c_schema.h>
+#include <WorkerSDK/improbable/c_worker.h>
+
 #include "AstrumPlayerController.generated.h"
 
 /**
  * 
  */
+
+struct Worker_OpList;
 
 USTRUCT(BlueprintType)
 struct FLand {
@@ -43,6 +58,15 @@ class ASTRUM_API AAstrumPlayerController : public APlayerController
 
 		UFUNCTION(BlueprintCallable)
 		void GoToServer();
+
+		UPROPERTY()
+		USpatialNetDriver* NetDriver;
+
+		virtual void BeginPlay() override;
+		//virtual void Tick(float DeltaTime) override;
+
+		UFUNCTION()
+		void GetProcessOps(struct FOpList OpList);
 	
 	
 	
