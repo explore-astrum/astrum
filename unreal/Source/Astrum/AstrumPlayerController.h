@@ -17,6 +17,8 @@
 #include <WorkerSDK/improbable/c_schema.h>
 #include <WorkerSDK/improbable/c_worker.h>
 
+#include "AstrumComponentView.h"
+
 #include "AstrumPlayerController.generated.h"
 
 /**
@@ -67,6 +69,9 @@ class ASTRUM_API AAstrumPlayerController : public APlayerController
 
 		UFUNCTION()
 		void GetProcessOps(struct FOpList OpList);
+
+		UPROPERTY()
+		UAstrumComponentView* ComponentView;
 	
 	
 	
