@@ -30,7 +30,7 @@ void AAstrumPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 	NetDriver = Cast<USpatialNetDriver>(GetWorld()->GetNetDriver());
-	NetDriver->Dispatcher->ProcessedOps.AddDynamic(this, &AAstrumPlayerController::GetProcessOps);
+	//NetDriver->Dispatcher->ProcessedOps.AddDynamic(this, &AAstrumPlayerController::GetProcessOps);
 	ComponentView = NewObject<UAstrumComponentView>();
 }
 
