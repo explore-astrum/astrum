@@ -45,7 +45,8 @@ void AAstrumGameModeBase::GetProcessOps(FOpList OpList)
 					return;
 				
 				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::FromInt(ric->RelicType));
-				GetWorld()->SpawnActor<ASpawnableActor>(StaticLoadClass(UObject::StaticClass(), nullptr, TEXT("/Game/FirstPersonBP/AI/Sofa/SofaTry.SofaTry_C"), nullptr, LOAD_None, nullptr));
+				ASpawnableActor* new_relic = GetWorld()->SpawnActor<ASpawnableActor>(StaticLoadClass(UObject::StaticClass(), nullptr, TEXT("/Game/FirstPersonBP/AI/Sofa/CarTry.CarTry_C"), nullptr, LOAD_None, nullptr));
+				new_relic->id = FString::FromInt(Op->add_component.entity_id);
 			}
 		}
 
