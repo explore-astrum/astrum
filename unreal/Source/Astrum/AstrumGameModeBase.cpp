@@ -46,7 +46,12 @@ void AAstrumGameModeBase::GetProcessOps(FOpList OpList)
 				
 				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::FromInt(ric->RelicType));
 				ASpawnableActor* new_relic = GetWorld()->SpawnActor<ASpawnableActor>(StaticLoadClass(UObject::StaticClass(), nullptr, TEXT("/Game/FirstPersonBP/AI/Sofa/CarTry.CarTry_C"), nullptr, LOAD_None, nullptr));
-				new_relic->id = FString::FromInt(Op->add_component.entity_id);
+				FString::FromInt(Op->add_component.entity_id);
+				/* testing relics
+				new_relic->id = FString::FromInt(1);
+				new_relic->isPawn = true;
+				new_relic->pawnClass = StaticLoadClass(UObject::StaticClass(), nullptr, TEXT("/Game/VehicleBP/Sedan/Sedan.Sedan_C"), nullptr, LOAD_None, nullptr);
+				*/
 			}
 		}
 

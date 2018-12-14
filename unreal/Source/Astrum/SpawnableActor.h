@@ -63,7 +63,7 @@ public:
 	UFUNCTION()
 	virtual void OnRep_ChangeMaterial();
 
-	UFUNCTION(Server, Reliable, WithValidation)
+	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
 	void SetLocation(FVector location);
 
 	UFUNCTION(NetMulticast, Unreliable)
