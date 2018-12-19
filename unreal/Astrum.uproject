@@ -18,10 +18,6 @@
 		{
 			"Name": "SpatialGDK",
 			"Enabled": true
-		},
-		{
-			"Name": "SpatialGDKEditorToolbar",
-			"Enabled": true
 		}
 	]
 }
