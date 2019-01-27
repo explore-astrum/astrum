@@ -8,8 +8,8 @@ using namespace improbable;
 void AAstrumPlayerController::SetProperties() {
 	//manually set them for now
 	FLand a;
-	a.min = FVector2D(-1000, -1000);
-	a.max = FVector2D(1000, 1000);
+	a.min = FVector2D(650590-1000, 605530 - 1000);
+	a.max = FVector2D(650590 + 1000, 605530 + 1000);
 	properties.Add(a);
 }
 
@@ -29,7 +29,9 @@ void AAstrumPlayerController::GoToServer() {
 void AAstrumPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
-	NetDriver = Cast<USpatialNetDriver>(GetWorld()->GetNetDriver());
+
+	UWorld* World = GetWorld();
+	NetDriver = Cast<USpatialNetDriver>(World->GetNetDriver());
 	//NetDriver->Dispatcher->ProcessedOps.AddDynamic(this, &AAstrumPlayerController::GetProcessOps);
 	ComponentView = NewObject<UAstrumComponentView>();
 }

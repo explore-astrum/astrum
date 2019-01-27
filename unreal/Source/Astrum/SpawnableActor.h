@@ -81,12 +81,17 @@ public:
 	UFUNCTION(BlueprintCallable)
 	FString GetID();
 
+	UFUNCTION(BlueprintCallable)
+	void MakePlaceable(bool place);
+
 	UPROPERTY()
 	float last_seen_time = -1;
 	UPROPERTY()
 	FVector last_seen_location;
 	UPROPERTY()
 	FVector velocity;
+	UPROPERTY()
+	bool can_place;
 
 protected:
 	// Called when the game starts or when spawned

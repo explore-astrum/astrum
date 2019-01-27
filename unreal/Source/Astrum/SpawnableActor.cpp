@@ -89,6 +89,23 @@ void ASpawnableActor::Tick(float DeltaTime)
 			float dot = FVector::DotProduct(facing, to_from);
 			SetLocation(actor_loc + facing * 300);
 			SetActorLocation(actor_loc + facing * 300);
+
+			//check if in owned land
+			TArray<FLand> owned_lands = Cast<AAstrumPlayerController>(controller)->GetProperties();
+			for (int i = 0; i < owned_lands.Num(); i++) {
+				FLand owned_land = owned_lands[i];
+				FVector current_loc = GetActorLocation();
+				if (!can_place &&
+					current_loc.X > owned_land.min.X
+					&& current_loc.X < owned_land.max.X
+					&& current_loc.Y > owned_land.min.Y
+					&& current_loc.Y < owned_land.max.Y) {
+					MakePlaceable(true);
+				}
+				else if(can_place && i >= owned_lands.Num() - 1){
+					MakePlaceable(false);
+				}
+			}
 		}
 
 		if (selected && rotating) {
@@ -104,6 +121,28 @@ void ASpawnableActor::Tick(float DeltaTime)
 			SetActorLocation(last_seen_location);
 	}
 
+}
+
+void ASpawnableActor::MakePlaceable(bool place) {
+	can_place = place;
+
+	auto components = GetComponents();
+	for (auto component : components)
+	{
+		if (component->GetFName() == "TempObject")
+		{
+			UStaticMeshComponent* sc = Cast<UStaticMeshComponent>(component);
+			
+			for (int i = 0; i < sc->GetNumMaterials(); i++)
+			{
+				UMaterialInterface * m = sc->GetMaterial(i);
+				UMaterialInstanceDynamic* matInstance = sc->CreateDynamicMaterialInstance(i, m);
+
+				if (matInstance != nullptr)
+					matInstance->SetVectorParameterValue("TColor", can_place ? FVector(0.0, 0.0, 1.0) : FVector(1.0, 0.0, 0.0));
+			}
+		}
+	}
 }
 
 void ASpawnableActor::SetLocation_Implementation(FVector location)

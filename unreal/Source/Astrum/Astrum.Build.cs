@@ -8,7 +8,7 @@ public class Astrum : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "UMG", "Slate", "SlateCore", "SpatialGDK" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "UMG", "Slate", "SlateCore", "SpatialGDK", "MoviePlayer" });
 
 
         PrivateDependencyModuleNames.AddRange(new string[] {  });

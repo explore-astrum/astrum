@@ -3,14 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/GameStateBase.h"
+#include "GameFramework/GameState.h"
 #include "AstrumGameStateBase.generated.h"
 
 /**
  * 
  */
 UCLASS(SpatialType=Singleton)
-class ASTRUM_API AAstrumGameStateBase : public AGameStateBase
+class ASTRUM_API AAstrumGameStateBase : public AGameState
 {
 	GENERATED_BODY()
 	

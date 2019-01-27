@@ -15,7 +15,13 @@ class ASTRUM_API UAstrumGameInstance : public USpatialGameInstance
 {
 	GENERATED_BODY()
 	
-	
+	public:
+		virtual void Init() override;
+
+		UFUNCTION()
+		virtual void BeginLoadingScreen(const FString& MapName);
+		UFUNCTION()
+		virtual void EndLoadingScreen(UWorld* InLoadedWorld);
 	
 	
 };

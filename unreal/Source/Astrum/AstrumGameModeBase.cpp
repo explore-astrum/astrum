@@ -7,9 +7,15 @@
 void AAstrumGameModeBase::HandleMatchHasStarted() //kick this init off from game mode for now
 {
 	Super::HandleMatchHasStarted();
-	NetDriver = Cast<USpatialNetDriver>(GetWorld()->GetNetDriver());
-	NetDriver->Dispatcher->ProcessedOps.AddDynamic(this, &AAstrumGameModeBase::GetProcessOps);
-	ComponentView = NewObject<UAstrumComponentView>();
+
+	UWorld* World = GetWorld();
+	FString CurrentMapName = World->GetMapName().Mid(GetWorld()->StreamingLevelsPrefix.Len());
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, CurrentMapName);
+	if (CurrentMapName == "Astrum") {
+		NetDriver = Cast<USpatialNetDriver>(GetWorld()->GetNetDriver());
+		NetDriver->Dispatcher->ProcessedOps.AddDynamic(this, &AAstrumGameModeBase::GetProcessOps);
+		ComponentView = NewObject<UAstrumComponentView>();
+	}
 }
 
 void AAstrumGameModeBase::GetProcessOps(FOpList OpList)
@@ -47,11 +53,10 @@ void AAstrumGameModeBase::GetProcessOps(FOpList OpList)
 				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::FromInt(ric->RelicType));
 				ASpawnableActor* new_relic = GetWorld()->SpawnActor<ASpawnableActor>(StaticLoadClass(UObject::StaticClass(), nullptr, TEXT("/Game/FirstPersonBP/AI/Sofa/CarTry.CarTry_C"), nullptr, LOAD_None, nullptr));
 				FString::FromInt(Op->add_component.entity_id);
-				/* testing relics
+				/* testing relics */
 				new_relic->id = FString::FromInt(1);
 				new_relic->isPawn = true;
 				new_relic->pawnClass = StaticLoadClass(UObject::StaticClass(), nullptr, TEXT("/Game/VehicleBP/Sedan/Sedan.Sedan_C"), nullptr, LOAD_None, nullptr);
-				*/
 			}
 		}
 

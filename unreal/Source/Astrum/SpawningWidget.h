@@ -53,7 +53,21 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void AddToOptions(FRelic relic);
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void GetNewOptions();
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void ScrollLeft();
 	
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void ScrollRight();
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void ToggleInventory();
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void PlaceObject();
 	
 	
 	
