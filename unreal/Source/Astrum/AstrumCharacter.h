@@ -8,6 +8,7 @@
 #include "Runtime/UMG/Public/Components/WidgetComponent.h"
 #include "Runtime/UMG/Public/Blueprint/UserWidget.h"
 #include "SpawningWidget.h"
+#include "Runtime/Engine/Classes/Sound/SoundCue.h"
 #include "AstrumCharacter.generated.h"
 
 UCLASS()
@@ -22,6 +23,7 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	virtual void PostInitializeComponents() override;
 
 public:	
 	// Called every frame
@@ -39,6 +41,7 @@ public:
 	virtual void PutActorDown(ASpawnableActor* actor);
 	virtual void MoveRelicToDefault();
 	virtual void GoToServer();
+	virtual void CheckMusic();
 
 	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
 	virtual void ServerChangeOwner(ASpawnableActor* actor);
@@ -76,6 +79,9 @@ public:
 
 	UPROPERTY(EditAnywhere)
 	UUserWidget* CurrentWidget;
+
+	TArray<UAudioComponent*> songs;
+	TArray<USoundCue*> soundCues;
 
 	
 	

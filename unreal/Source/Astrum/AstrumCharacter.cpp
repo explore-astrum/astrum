@@ -22,9 +22,30 @@ AAstrumCharacter::AAstrumCharacter()
 	MainMenuWidgetClass = mainMenuWidgetClass.Class;
 	//MainMenu = mmc.GetUserWidgetObject();
 
+	//add sounds
+	static ConstructorHelpers::FObjectFinder<USoundCue> astrum2CueObj(TEXT("'/Game/FirstPersonBP/Sounds/Astrum2.Astrum2'"));
+	USoundCue* astrum2Cue = astrum2CueObj.Object;
+	UAudioComponent* astrum2AudioComponent = CreateDefaultSubobject<UAudioComponent>(TEXT("AudioComp"));
+	astrum2AudioComponent->bAutoActivate = false;
+	astrum2AudioComponent->SetupAttachment(RootComponent);
+	astrum2AudioComponent->SetRelativeLocation(FVector(100.0f, 0.0f, 0.0f));
+	songs.Add(astrum2AudioComponent);
+	soundCues.Add(astrum2Cue);
+
 	bReplicateMovement = true;
 	bReplicates = true;
 
+}
+
+void AAstrumCharacter::PostInitializeComponents()
+{
+	Super::PostInitializeComponents();
+
+	for (int i = 0; i < songs.Num(); i++) {
+		if (songs.Num() > i && soundCues.Num() > i && songs[i]->IsValidLowLevelFast()) {
+			songs[i]->SetSound(soundCues[i]);
+		}
+	}
 }
 
 // Called when the game starts or when spawned
@@ -42,6 +63,31 @@ void AAstrumCharacter::Tick(float DeltaTime)
 		SetupInventory();
 		MovePlayerToStartingPosition();
 	}
+	
+	//play sounds if far away
+	if (init) {
+		CheckMusic();
+	}
+}
+
+void AAstrumCharacter::CheckMusic()
+{
+	TArray<FLand> ownedLand = owner->GetProperties();
+	FVector2D currentLocation = FVector2D(GetActorLocation().X, GetActorLocation().Y);
+	bool farFromHome = false;
+	for (int i = 0; i < ownedLand.Num(); i++) {
+		FLand land = ownedLand[i];
+		FVector2D midpoint = FVector2D((land.max.X + land.min.X) / 2.0, (land.min.X + land.min.Y) / 2.0);
+		float distFromHome = midpoint.Distance(midpoint, currentLocation);
+
+		if (distFromHome > 25000) {
+			farFromHome = true;
+			break;
+		}
+	}
+
+	if (farFromHome && songs.Num() > 0 && !songs[0]->IsPlaying())
+		songs[0]->Play();
 }
 
 // Called to bind functionality to input

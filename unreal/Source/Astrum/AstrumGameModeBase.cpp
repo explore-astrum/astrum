@@ -11,8 +11,9 @@ void AAstrumGameModeBase::HandleMatchHasStarted() //kick this init off from game
 	UWorld* World = GetWorld();
 	FString CurrentMapName = World->GetMapName().Mid(GetWorld()->StreamingLevelsPrefix.Len());
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, CurrentMapName);
-	if (CurrentMapName == "Astrum") {
-		NetDriver = Cast<USpatialNetDriver>(GetWorld()->GetNetDriver());
+	NetDriver = Cast<USpatialNetDriver>(GetWorld()->GetNetDriver());
+	if (CurrentMapName == "Astrum" && NetDriver) {
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "got net driver");
 		NetDriver->Dispatcher->ProcessedOps.AddDynamic(this, &AAstrumGameModeBase::GetProcessOps);
 		ComponentView = NewObject<UAstrumComponentView>();
 	}
