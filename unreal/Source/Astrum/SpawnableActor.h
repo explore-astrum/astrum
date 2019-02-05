@@ -11,6 +11,30 @@
 #include "AstrumPlayerController.h"
 #include "SpawnableActor.generated.h"
 
+
+UENUM(BlueprintType)
+enum class EAction : uint8 
+{	TURN_ON UMETA(DisplayName = "Turn On"),
+	PAINT UMETA(DisplayName = "Paint"),
+	EVOLVE UMETA(DisplayName = "Evolve"),
+	CUSTOM UMETA(DisplayName = "Custom")
+}; //example of action enums for each relic
+
+UENUM(BlueprintType)
+enum class ERelicProcess : uint8 
+{	PRE UMETA(DisplayName = "Hasn't Started"),
+	DURING UMETA(DisplayName = "In Process"),
+	POST UMETA(DisplayName = "Done")
+};
+
+USTRUCT()
+struct FRelicState {
+	GENERATED_BODY()
+
+	ASpawnableActor* relic;
+	ERelicProcess state;
+};
+
 UCLASS()
 class ASTRUM_API ASpawnableActor : public AActor
 {
@@ -63,6 +87,9 @@ public:
 	UFUNCTION()
 	virtual void OnRep_ChangeMaterial();
 
+	UFUNCTION()
+	virtual void OnRep_ChangeCombinations();
+
 	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
 	void SetLocation(FVector location);
 
@@ -84,6 +111,22 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void MakePlaceable(bool place);
 
+	//combined actions
+	UFUNCTION()
+	void TurnMeOn();
+
+	UFUNCTION()
+	void PaintMe(ASpawnableActor* actor);
+
+	UFUNCTION()
+	void EvolveMe(ASpawnableActor* actor);
+
+	UFUNCTION()
+	void StartEvolution();
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void CustomComboAction(ASpawnableActor* actor);
+
 	UPROPERTY()
 	float last_seen_time = -1;
 	UPROPERTY()
@@ -92,6 +135,17 @@ public:
 	FVector velocity;
 	UPROPERTY()
 	bool can_place;
+
+
+	UPROPERTY(EditAnywhere, Replicated)
+	TMap<FString, EAction> possibleCombinationTypes;
+	UPROPERTY(EditAnywhere, ReplicatedUsing = OnRep_ChangeCombinations)
+	TArray<FRelicState> combinedRelics;
+
+	UPROPERTY(EditAnywhere, Replicated)
+	FString category;
+	UPROPERTY(Replicated)
+	bool turnedOn = false; // can use pawn
 
 protected:
 	// Called when the game starts or when spawned

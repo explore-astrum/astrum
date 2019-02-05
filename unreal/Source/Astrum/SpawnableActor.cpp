@@ -274,6 +274,48 @@ void ASpawnableActor::OnRep_ChangeMaterial() {
 	}
 }
 
+void ASpawnableActor::OnRep_ChangeCombinations() {
+	for (int i = 0; i < combinedRelics.Num(); i++) { // just use all current combos for now
+		FRelicState combinedRelic = combinedRelics[i];
+		if (combinedRelic.state == ERelicProcess::PRE) {
+			EAction action = possibleCombinationTypes.FindRef(combinedRelic.relic->category);
+			switch (action) {
+				case EAction::TURN_ON:
+					TurnMeOn();
+					break;
+				case EAction::PAINT:
+					PaintMe(combinedRelic.relic);
+					break;
+				case EAction::EVOLVE:
+					EvolveMe(combinedRelic.relic);
+					break;
+				case EAction::CUSTOM:
+					CustomComboAction(combinedRelic.relic);
+				default:
+					break;
+			}
+		}
+
+	}
+}
+
+void ASpawnableActor::TurnMeOn() {
+	turnedOn = true;
+}
+
+void ASpawnableActor::PaintMe(ASpawnableActor* actor) {
+	//to do
+}
+
+void ASpawnableActor::EvolveMe(ASpawnableActor* actor) {
+	//to do
+	actor->StartEvolution();
+}
+
+void ASpawnableActor::StartEvolution() {
+	//to do... kick off animation?
+}
+
 void ASpawnableActor::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
