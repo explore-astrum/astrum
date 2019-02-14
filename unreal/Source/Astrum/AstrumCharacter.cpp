@@ -67,6 +67,8 @@ void AAstrumCharacter::Tick(float DeltaTime)
 	//play sounds if far away
 	if (init) {
 		CheckMusic();
+		if(inventoryOn)
+			CheckForUpgrades();
 	}
 }
 
@@ -98,12 +100,13 @@ void AAstrumCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	PlayerInputComponent->BindAction("ToggleInventory", IE_Pressed, this, &AAstrumCharacter::ToggleInventory);
 	PlayerInputComponent->BindAction("SelectLeft", IE_Pressed, this, &AAstrumCharacter::ScrollLeft);
 	PlayerInputComponent->BindAction("SelectRight", IE_Pressed, this, &AAstrumCharacter::ScrollRight);
+	PlayerInputComponent->BindAction("SelectObj", IE_Pressed, this, &AAstrumCharacter::CheckForObjectHit);
 
 }
 
 void AAstrumCharacter::SetupInventory()
 {
-	if (owner->IsLocalController()) {
+	if (owner && owner->IsLocalController()) {
 		init = true;
 		GetCharacterMovement()->bOrientRotationToMovement = false;
 		CreateMyWidget();
@@ -173,6 +176,11 @@ bool AAstrumCharacter::SetCharacterLocation_Validate(FVector location)
 
 void AAstrumCharacter::CheckForObjectHit()
 {
+	if (ApplyUpgrades()) {
+		//destroy lastspawned object in some way
+		return;
+	}
+
 	TArray<FLand> ownedLand = owner->GetProperties();
 	FVector currentLocation = GetActorLocation();
 	FVector forwardVector = GetActorForwardVector();
@@ -248,7 +256,7 @@ bool AAstrumCharacter::ReplacePawn_Validate(ASpawnableActor* actor)
 
 void AAstrumCharacter::ServerChangeOwner_Implementation(ASpawnableActor* actor)
 {
-	if (actor->GetID() == owner->GetUserID()) {
+	if (actor->GetUserID() == owner->GetUserID()) {
 		actor->SetOwner(owner);
 		AssignToLocalController(actor);
 	}
@@ -280,7 +288,7 @@ void AAstrumCharacter::AssignToLocalController_Implementation(ASpawnableActor* a
 	actor->AssignToPlayer();
 	actor->SetSelected(true);
 	actor->SetServerSelected(true);
-	lastSpawned = actor;
+	//lastSpawned = actor;
 }
 
 void AAstrumCharacter::MoveRelicToMe_Implementation(UClass* actorType, const FString &relicID)
@@ -303,18 +311,113 @@ bool AAstrumCharacter::MoveRelicToMe_Validate(UClass* actorType, const FString &
 	return true;
 }
 
-void AAstrumCharacter::MoveRelicToDefault()
+void AAstrumCharacter::MoveRelicToDefault_Implementation()
 {
-	lastSpawned->SetSelected(false);
-	lastSpawned->PlaceObject();
-	lastSpawned->SetLocation(defaultLocation);
-	SetActorLocation(defaultLocation);
-	RemoveMyselfAsOwner(lastSpawned);
+	if (lastSpawned) {
+		lastSpawned->SetSelected(false);
+		lastSpawned->PlaceObject();
+		lastSpawned->SetLocation(defaultLocation);
+		lastSpawned->SetActorLocation(defaultLocation);
+		RemoveMyselfAsOwner(lastSpawned);
+	}
+}
+
+bool AAstrumCharacter::MoveRelicToDefault_Validate()
+{
+	return true;
 }
 
 void AAstrumCharacter::GoToServer()
 {
 	owner->GoToServer();
+}
+
+bool AAstrumCharacter::ApplyUpgrades()
+{
+	FVector currentLocation = GetActorLocation();
+	FVector forwardVector = GetActorForwardVector();
+
+	FCollisionQueryParams TraceParams(FName(TEXT("Trace Params")), true, this); //ignore self
+	TraceParams.bTraceComplex = true;
+
+	FHitResult HitOut = FHitResult(ForceInit);
+
+	GetWorld()->LineTraceSingleByChannel(
+		HitOut,		//result
+		currentLocation,	//start
+		currentLocation + forwardVector * pickupDistance, //end
+		ECC_WorldDynamic, //collision channel
+		TraceParams
+	);
+
+	//Hit any Actor?
+	if (HitOut.GetActor() != NULL) {
+		auto actor = Cast<ASpawnableActor>(HitOut.GetActor());
+		if (actor && actor != lastSpawned) { // check if spawnable actor
+			TMap<FString, EAction> pct = actor->possibleCombinationTypes;
+			for (auto combo : pct)
+			{
+				if (combo.Key == lastSpawned->category)
+				{
+					FRelicState rs;
+					rs.relic = lastSpawned;
+					rs.state = ERelicProcess::PRE;
+					AddToActorCombos(actor, rs);
+					return true;
+				}
+			}
+		}
+
+	}
+	return false;
+}
+
+void AAstrumCharacter::AddToActorCombos_Implementation(ASpawnableActor* actor, FRelicState rs)
+{
+	if (actor->GetUserID() == owner->GetUserID()) {
+		actor->SetOwner(owner);
+		actor->AddCombinationRelic(rs);
+		RemoveMyselfAsOwner(actor);
+	}
+}
+
+bool AAstrumCharacter::AddToActorCombos_Validate(ASpawnableActor* actor, FRelicState rs)
+{
+	return true;
+}
+
+void AAstrumCharacter::CheckForUpgrades()
+{
+	FVector currentLocation = GetActorLocation();
+	FVector forwardVector = GetActorForwardVector();
+
+	FCollisionQueryParams TraceParams(FName(TEXT("Trace Params")), true, this); //ignore self
+	TraceParams.bTraceComplex = true;
+
+	FHitResult HitOut = FHitResult(ForceInit);
+
+	GetWorld()->LineTraceSingleByChannel(
+		HitOut,		//result
+		currentLocation,	//start
+		currentLocation + forwardVector * pickupDistance, //end
+		ECC_WorldDynamic, //collision channel
+		TraceParams
+	);
+
+	//Hit any Actor?
+	if (HitOut.GetActor() != NULL) {
+		auto actor = Cast<ASpawnableActor>(HitOut.GetActor());
+		if (actor && actor != lastSpawned) { // check if spawnable actor
+			TMap<FString, EAction> pct = actor->possibleCombinationTypes;
+			auto SpawnableWidget = Cast<USpawningWidget>(CurrentWidget);
+			SpawnableWidget->SetValidCombos(pct);
+			return;
+		}
+
+	}
+
+	auto SpawnableWidget = Cast<USpawningWidget>(CurrentWidget);
+	SpawnableWidget->ClearValidCombos();
 }
 
 void AAstrumCharacter::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const

@@ -2,6 +2,7 @@
 
 #include "SpawnableActor.h"
 #include "UnrealNetwork.h"
+#include "DrawDebugHelpers.h"
 
 
 // Sets default values
@@ -24,6 +25,8 @@ ASpawnableActor::ASpawnableActor()
 	//replication
 	bReplicates = true;
 	//bReplicateMovement = true;
+
+	OnActorBeginOverlap.AddDynamic(this, &ASpawnableActor::OnOverlap);
 
 }
 
@@ -92,20 +95,26 @@ void ASpawnableActor::Tick(float DeltaTime)
 
 			//check if in owned land
 			TArray<FLand> owned_lands = Cast<AAstrumPlayerController>(controller)->GetProperties();
+			bool placeable = false;
 			for (int i = 0; i < owned_lands.Num(); i++) {
 				FLand owned_land = owned_lands[i];
 				FVector current_loc = GetActorLocation();
-				if (!can_place &&
-					current_loc.X > owned_land.min.X
+				if (current_loc.X > owned_land.min.X
 					&& current_loc.X < owned_land.max.X
 					&& current_loc.Y > owned_land.min.Y
 					&& current_loc.Y < owned_land.max.Y) {
-					MakePlaceable(true);
+					placeable = true;
+					break;
 				}
-				else if(can_place && i >= owned_lands.Num() - 1){
-					MakePlaceable(false);
+				else if(i >= owned_lands.Num() - 1){
+					placeable = false;
 				}
 			}
+
+			if (placeable && !can_place)
+				MakePlaceable(true);
+			if (!placeable && can_place)
+				MakePlaceable(false);
 		}
 
 		if (selected && rotating) {
@@ -236,6 +245,10 @@ FString ASpawnableActor::GetID() {
 	return id;
 }
 
+FString ASpawnableActor::GetUserID() {
+	return userid;
+}
+
 void ASpawnableActor::PickUp() {}
 
 bool ASpawnableActor::isSelected() {
@@ -275,6 +288,7 @@ void ASpawnableActor::OnRep_ChangeMaterial() {
 }
 
 void ASpawnableActor::OnRep_ChangeCombinations() {
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("CHANGED"));
 	for (int i = 0; i < combinedRelics.Num(); i++) { // just use all current combos for now
 		FRelicState combinedRelic = combinedRelics[i];
 		if (combinedRelic.state == ERelicProcess::PRE) {
@@ -304,7 +318,7 @@ void ASpawnableActor::TurnMeOn() {
 }
 
 void ASpawnableActor::PaintMe(ASpawnableActor* actor) {
-	//to do
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("painting"));
 }
 
 void ASpawnableActor::EvolveMe(ASpawnableActor* actor) {
@@ -316,6 +330,20 @@ void ASpawnableActor::StartEvolution() {
 	//to do... kick off animation?
 }
 
+void ASpawnableActor::OnOverlap(AActor* OverlappedActor, AActor* OtherActor)
+{
+}
+
+void ASpawnableActor::AddCombinationRelic_Implementation(FRelicState relicState)
+{
+	combinedRelics.Add(relicState);
+}
+
+bool ASpawnableActor::AddCombinationRelic_Validate(FRelicState relicState)
+{
+	return true;
+}
+
 void ASpawnableActor::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
@@ -325,4 +353,5 @@ void ASpawnableActor::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & O
 	DOREPLIFETIME(ASpawnableActor, id);
 	DOREPLIFETIME(ASpawnableActor, pawnClass);
 	DOREPLIFETIME(ASpawnableActor, isPawn);
+	//DOREPLIFETIME(ASpawnableActor, combinedRelics); need to work on TArray replication
 }

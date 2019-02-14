@@ -50,12 +50,14 @@ public:
 	UStaticMesh* SphereVisualAsset;
 	UPROPERTY(EditAnywhere, ReplicatedUsing = OnRep_ChangeMaterial)
 	bool server_selected;
-	UPROPERTY(Replicated)
+	UPROPERTY(EditAnywhere, Replicated)
 	FString id;
+	UPROPERTY(EditAnywhere, Replicated)
+	FString userid;
 
-	UPROPERTY(Replicated)
+	UPROPERTY(EditAnywhere, Replicated)
 	UClass* pawnClass;
-	UPROPERTY(Replicated)
+	UPROPERTY(EditAnywhere, Replicated)
 	bool isPawn;
 
 	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
@@ -109,6 +111,9 @@ public:
 	FString GetID();
 
 	UFUNCTION(BlueprintCallable)
+	FString GetUserID();
+
+	UFUNCTION(BlueprintCallable)
 	void MakePlaceable(bool place);
 
 	//combined actions
@@ -137,7 +142,7 @@ public:
 	bool can_place;
 
 
-	UPROPERTY(EditAnywhere, Replicated)
+	UPROPERTY(EditAnywhere)
 	TMap<FString, EAction> possibleCombinationTypes;
 	UPROPERTY(EditAnywhere, ReplicatedUsing = OnRep_ChangeCombinations)
 	TArray<FRelicState> combinedRelics;
@@ -146,6 +151,11 @@ public:
 	FString category;
 	UPROPERTY(Replicated)
 	bool turnedOn = false; // can use pawn
+
+	UFUNCTION()
+	void OnOverlap(AActor* OverlappedActor, AActor* OtherActor);
+	UFUNCTION(Server, Reliable, WithValidation)
+	void AddCombinationRelic(FRelicState relicState);
 
 protected:
 	// Called when the game starts or when spawned

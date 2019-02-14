@@ -27,10 +27,20 @@ USpawningWidget::USpawningWidget(const FObjectInitializer& ObjectInitializer)
 	FRelic c;
 	c.id = "1";
 	c.icon = ConstructorHelpers::FObjectFinder<UTexture2D>(TEXT("/Game/FirstPersonBP/Maps/MapTextures/Beach_Sand_Normal.Beach_Sand_Normal")).Object;
-	c.isPawn = true;
-	c.pawnClass = StaticLoadClass(UObject::StaticClass(), nullptr, TEXT("/Game/VehicleBP/Sedan/Sedan.Sedan_C"), nullptr, LOAD_None, nullptr);
-	c.blueprint = StaticLoadClass(UObject::StaticClass(), nullptr, TEXT("/Game/FirstPersonBP/AI/Sofa/CarTry.CarTry_C"), nullptr, LOAD_None, nullptr);
+	c.isPawn = false;
+	c.pawnClass = StaticLoadClass(UObject::StaticClass(), nullptr, TEXT("/Game/FirstPersonBP/AI/Sofa/SofaTry.SofaTry_C"), nullptr, LOAD_None, nullptr);
+	c.blueprint = StaticLoadClass(UObject::StaticClass(), nullptr, TEXT("/Game/FirstPersonBP/AI/Sofa/SofaTry.SofaTry_C"), nullptr, LOAD_None, nullptr);
+	c.category = "thing";
 	options.Add(c);
+
+	FRelic d;
+	d.id = "2";
+	d.icon = ConstructorHelpers::FObjectFinder<UTexture2D>(TEXT("/Game/FirstPersonBP/Maps/MapTextures/Beach_Sand_Normal.Beach_Sand_Normal")).Object;
+	d.isPawn = false;
+	d.pawnClass = StaticLoadClass(UObject::StaticClass(), nullptr, TEXT("/Game/VehicleBP/Sedan/Sedan.Sedan_C"), nullptr, LOAD_None, nullptr);
+	d.blueprint = StaticLoadClass(UObject::StaticClass(), nullptr, TEXT("/Game/FirstPersonBP/AI/Sofa/PaintTry.PaintTry_C"), nullptr, LOAD_None, nullptr);
+	d.category = "paint";
+	options.Add(d);
 }
 bool USpawningWidget::Initialize() {
 	bool b = Super::Initialize();
@@ -58,4 +68,13 @@ TArray<FRelic> USpawningWidget::GetOptions() {
 
 void USpawningWidget::AddToOptions(FRelic relic) {
 	options.Add(relic);
+}
+
+void USpawningWidget::SetValidCombos(TMap<FString, EAction> pct) {
+	possibleCombos.Empty();
+	for (auto combo : pct)
+	{
+		possibleCombos.Add(combo.Key);
+	}
+	ShowValidCombos();
 }

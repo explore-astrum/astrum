@@ -30,6 +30,8 @@ struct FRelic {
 	bool isPawn;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UClass *blueprint;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FString category;
 };
 
 UCLASS()
@@ -68,6 +70,18 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	void PlaceObject();
+
+	UFUNCTION(BlueprintCallable)
+	void SetValidCombos(TMap<FString, EAction> pct);
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void ShowValidCombos();
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void ClearValidCombos();
+
+	UPROPERTY(BlueprintReadWrite)
+	TArray<FString> possibleCombos;
 	
 	
 	

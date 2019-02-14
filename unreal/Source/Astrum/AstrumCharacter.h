@@ -39,7 +39,6 @@ public:
 	virtual void ScrollRight();
 	virtual void CheckForObjectHit();
 	virtual void PutActorDown(ASpawnableActor* actor);
-	virtual void MoveRelicToDefault();
 	virtual void GoToServer();
 	virtual void CheckMusic();
 
@@ -58,11 +57,23 @@ public:
 	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
 	void MoveRelicToMe(UClass* actorType, const FString &relicID);
 
+	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
+	virtual void MoveRelicToDefault();
+
 	UFUNCTION(Client, Reliable)
 	void PlaceObjectLocal();
 
 	UFUNCTION(Client, Reliable)
 	void AssignToLocalController(ASpawnableActor* actor);
+
+	UFUNCTION(Server, Reliable, WithValidation)
+	void AddToActorCombos(ASpawnableActor* actor, FRelicState rs);
+
+	UFUNCTION()
+	void CheckForUpgrades();
+
+	UFUNCTION()
+	bool ApplyUpgrades();
 
 
 	AAstrumPlayerController* owner;
