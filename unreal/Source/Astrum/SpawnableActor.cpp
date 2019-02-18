@@ -166,20 +166,20 @@ bool ASpawnableActor::SetLocation_Validate(FVector location)
 
 void ASpawnableActor::SetLocationMulticast_Implementation(FVector location)
 {
-	if (!IsOwnedBy(controller) || !controller->IsLocalController()) {
-		float time_now = UGameplayStatics::GetRealTimeSeconds(GetWorld());
-		if (last_seen_time > 0) {
-			if (time_now - last_seen_time > 0) {
-				velocity = ((location - GetActorLocation()) / (time_now - last_seen_time) + velocity) / 2;
-			}
+	//if (!IsOwnedBy(controller) || !controller->IsLocalController()) {
+	float time_now = UGameplayStatics::GetRealTimeSeconds(GetWorld());
+	if (last_seen_time > 0) {
+		if (time_now - last_seen_time > 0) {
+			velocity = ((location - GetActorLocation()) / (time_now - last_seen_time) + velocity) / 2;
 		}
-		else {
-			velocity = FVector(0, 0, 0);
-			SetActorLocation(location);
-		}
-		last_seen_location = location;
-		last_seen_time = time_now;
 	}
+	else {
+		velocity = FVector(0, 0, 0);
+		SetActorLocation(location);
+	}
+	last_seen_location = location;
+	last_seen_time = time_now;
+	//}
 }
 
 void ASpawnableActor::SetPawnClass_Implementation(UClass* type)
@@ -288,7 +288,6 @@ void ASpawnableActor::OnRep_ChangeMaterial() {
 }
 
 void ASpawnableActor::OnRep_ChangeCombinations() {
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("CHANGED"));
 	for (int i = 0; i < combinedRelics.Num(); i++) { // just use all current combos for now
 		FRelicState combinedRelic = combinedRelics[i];
 		if (combinedRelic.state == ERelicProcess::PRE) {
@@ -353,5 +352,5 @@ void ASpawnableActor::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & O
 	DOREPLIFETIME(ASpawnableActor, id);
 	DOREPLIFETIME(ASpawnableActor, pawnClass);
 	DOREPLIFETIME(ASpawnableActor, isPawn);
-	//DOREPLIFETIME(ASpawnableActor, combinedRelics); need to work on TArray replication
+	DOREPLIFETIME(ASpawnableActor, combinedRelics);
 }

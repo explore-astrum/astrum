@@ -31,7 +31,9 @@ USTRUCT()
 struct FRelicState {
 	GENERATED_BODY()
 
+	UPROPERTY()
 	ASpawnableActor* relic;
+	UPROPERTY()
 	ERelicProcess state;
 };
 
