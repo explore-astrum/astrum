@@ -11,6 +11,23 @@
 #include "AstrumPlayerController.h"
 #include "SpawnableActor.generated.h"
 
+USTRUCT(BlueprintType)
+struct FRelic {
+	GENERATED_BODY()
+
+		UPROPERTY(BlueprintReadWrite)
+		FString id;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		UTexture2D *icon;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		UClass *pawnClass;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool isPawn;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		UClass *blueprint;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		FString category;
+};
 
 UENUM(BlueprintType)
 enum class EAction : uint8 
@@ -56,6 +73,10 @@ public:
 	FString id;
 	UPROPERTY(EditAnywhere, Replicated)
 	FString userid;
+	UPROPERTY(EditAnywhere)
+	UTexture2D *icon;
+	UPROPERTY(EditAnywhere)
+	UClass *blueprint;
 
 	UPROPERTY(EditAnywhere, Replicated)
 	UClass* pawnClass;
@@ -158,6 +179,9 @@ public:
 	void OnOverlap(AActor* OverlappedActor, AActor* OtherActor);
 	UFUNCTION(Server, Reliable, WithValidation)
 	void AddCombinationRelic(FRelicState relicState);
+
+	UFUNCTION()
+	FRelic CreateRelicFromProperties();
 
 protected:
 	// Called when the game starts or when spawned

@@ -75,6 +75,9 @@ public:
 	UFUNCTION()
 	bool ApplyUpgrades();
 
+	UFUNCTION()
+	void PutBackInInventory();
+
 
 	AAstrumPlayerController* owner;
 	bool init = false;

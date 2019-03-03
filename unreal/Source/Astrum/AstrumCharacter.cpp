@@ -101,6 +101,7 @@ void AAstrumCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	PlayerInputComponent->BindAction("SelectLeft", IE_Pressed, this, &AAstrumCharacter::ScrollLeft);
 	PlayerInputComponent->BindAction("SelectRight", IE_Pressed, this, &AAstrumCharacter::ScrollRight);
 	PlayerInputComponent->BindAction("SelectObj", IE_Pressed, this, &AAstrumCharacter::CheckForObjectHit);
+	PlayerInputComponent->BindAction("PickUp", IE_Pressed, this, &AAstrumCharacter::PutBackInInventory);
 
 }
 
@@ -418,6 +419,22 @@ void AAstrumCharacter::CheckForUpgrades()
 
 	auto SpawnableWidget = Cast<USpawningWidget>(CurrentWidget);
 	SpawnableWidget->ClearValidCombos();
+}
+
+void AAstrumCharacter::PutBackInInventory()
+{
+	if (lastSpawned && lastSpawned->server_selected) {
+		auto sw = Cast<USpawningWidget>(CurrentWidget);
+		if (sw) {
+			//add to options through spatial api
+			//FRelic r = lastSpawned->CreateRelicFromProperties();
+			sw->button_to_bring_back = lastSpawned->id;
+			sw->BringBackButton();
+			sw->button_to_bring_back = FString(""); // wipe this out, TODO: better handle
+			//sw->AddToOptions(r);
+			ToggleInventory();
+		}
+	}
 }
 
 void AAstrumCharacter::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const

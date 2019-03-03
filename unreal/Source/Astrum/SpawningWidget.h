@@ -16,24 +16,6 @@
  * 
  */
 
-USTRUCT(BlueprintType)
-struct FRelic {
-	GENERATED_BODY()
-
-	UPROPERTY(BlueprintReadWrite)
-	FString id;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UTexture2D *icon;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UClass *pawnClass;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	bool isPawn;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UClass *blueprint;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FString category;
-};
-
 UCLASS()
 class ASTRUM_API USpawningWidget : public UUserWidget
 {
@@ -42,7 +24,7 @@ class ASTRUM_API USpawningWidget : public UUserWidget
 public:
 	USpawningWidget(const FObjectInitializer& ObjectInitializer);
 	bool Initialize() override;
-	void ButtonClick();
+	//void ButtonClick();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ExtendedWidget")
 	FString ExtendedWidget;
@@ -82,6 +64,15 @@ public:
 
 	UPROPERTY(BlueprintReadWrite)
 	TArray<FString> possibleCombos;
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void BringBackButton();
+
+	UPROPERTY(EditAnywhere)
+	FString button_to_bring_back;
+
+	UFUNCTION(BlueprintCallable)
+	FString GetButtonToBringBack();
 	
 	
 	

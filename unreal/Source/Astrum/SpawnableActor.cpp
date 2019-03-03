@@ -343,6 +343,18 @@ bool ASpawnableActor::AddCombinationRelic_Validate(FRelicState relicState)
 	return true;
 }
 
+FRelic ASpawnableActor::CreateRelicFromProperties()
+{
+	FRelic r;
+	r.id = id;
+	r.isPawn = isPawn;
+	r.icon = icon;
+	r.pawnClass = pawnClass;
+	r.blueprint = blueprint;
+	r.category = category;
+	return r;
+}
+
 void ASpawnableActor::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);

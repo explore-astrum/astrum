@@ -54,13 +54,13 @@ bool USpawningWidget::Initialize() {
 	return b;
 }
 
-void USpawningWidget::ButtonClick() {
+/*void USpawningWidget::ButtonClick() {
 	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, FString::SanitizeFloat(0.0));
 	FVector Location(0.0f, 0.0f, 0.0f);
 	FRotator Rotation(0.0f, 0.0f, 0.0f);
 	FActorSpawnParameters SpawnInfo;
 	auto actor = GetWorld()->SpawnActor<ASpawnableActor>(Location, Rotation, SpawnInfo);
-}
+}*/
 
 TArray<FRelic> USpawningWidget::GetOptions() {
 	return options;
@@ -77,4 +77,8 @@ void USpawningWidget::SetValidCombos(TMap<FString, EAction> pct) {
 		possibleCombos.Add(combo.Key);
 	}
 	ShowValidCombos();
+}
+
+FString USpawningWidget::GetButtonToBringBack() {
+	return button_to_bring_back;
 }
