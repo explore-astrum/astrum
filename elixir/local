@@ -1,3 +1,0 @@
-#!/bin/bash
-KORA_READ="{Kora.Store.Level, directory: \"kora.db\"}" \
-KORA_WRITES="[{Kora.Store.Level, directory: \"kora.db\"}]" $@
