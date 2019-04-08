@@ -12,15 +12,17 @@
   "license": "ISC",
   "dependencies": {
     "@ironbay/kora": "2.4.23",
+    "@ironbay/legos": "1.0.13",
     "@types/react": "16.8.8",
     "@types/react-dom": "16.8.2",
     "chroma": "0.0.1",
     "chroma-js": "2.0.3",
     "chrome": "0.1.0",
+    "classnames": "2.2.6",
+    "kora-router": "file:../../kora/kora-plugins/kora-router",
     "parcel-bundler": "1.12.2",
     "react": "16.8.4",
-    "react-dom": "16.8.4",
-    "kora-router": "file:../../kora/kora-plugins/kora-router"
+    "react-dom": "16.8.4"
   },
   "devDependencies": {
     "@types/node": "11.13.0",

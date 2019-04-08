@@ -1,12 +1,11 @@
-import './styles.css'
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { kora } from './data/kora'
+import { kora, router } from './data/kora'
 
-import LandingPage from './pages/landing-page'
-
+import RootPage from './pages/root-page'
 
 const root = document.getElementById('root')
+kora.onLocalChange.add(mut => console.log(kora.local_path([])))
 kora.onLocalChange.add(() => (
-    ReactDOM.render(<LandingPage />, root)
+    ReactDOM.render(<RootPage />, root)
 ))

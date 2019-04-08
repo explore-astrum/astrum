@@ -11,7 +11,7 @@
   "gen_state_machine": {:hex, :gen_state_machine, "2.0.5", "9ac15ec6e66acac994cc442dcc2c6f9796cf380ec4b08267223014be1c728a95", [:mix], [], "hexpm"},
   "hull": {:git, "https://github.com/ironbay/hull.git", "a78eba6e630ff826bad5c27cffbdc667632d85f9", []},
   "jason": {:hex, :jason, "1.1.2", "b03dedea67a99223a2eaf9f1264ce37154564de899fd3d8b9a21b1a6fd64afe7", [:mix], [{:decimal, "~> 1.0", [hex: :decimal, repo: "hexpm", optional: true]}], "hexpm"},
-  "kora": {:git, "https://github.com/ironbay/kora.git", "4b87423f20168eb65c68a8a0be256061ab6b4440", []},
+  "kora": {:git, "https://github.com/ironbay/kora.git", "f28d39c67ea99eec258d1d794036ab3165e9c16b", []},
   "libcluster": {:hex, :libcluster, "2.5.0", "8d2d035bce1b06c80cc644d51d0424906e7ea80fe557285af10019573598b26a", [:mix], [{:jason, "~> 1.0", [hex: :jason, repo: "hexpm", optional: false]}], "hexpm"},
   "libring": {:hex, :libring, "1.4.0", "41246ba2f3fbc76b3971f6bce83119dfec1eee17e977a48d8a9cfaaf58c2a8d6", [:mix], [], "hexpm"},
   "morphix": {:git, "https://github.com/philosodad/morphix.git", "acf2fee0d4ac8cba9934f09446fc072dad0c9405", []},
