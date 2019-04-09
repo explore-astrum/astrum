@@ -1,43 +1,20 @@
 defmodule Astrum.Config do
-	use Fig
+  use Fig
 
-	config :logger, %{
-		level: :error
-	}
+  config :kora, %{
+    interceptors: [
+      Astrum.Relic.Create,
+      Astrum.Relic.Owner,
+      Astrum.Relic.Position
+    ],
+    commands: [],
+    read: {Kora.Store.LMDB, directory: 'data'},
+    writes: [{Kora.Store.LMDB, directory: 'data'}],
+    scheduler: true,
+    format: nil
+  }
 
-	config :kora, %{
-		interceptors: [
-			Astrum.Relic.Balance,
-			Astrum.Relic.Plot,
-			Astrum.Email.Token,
-
-			Astrum.User.Email,
-			Astrum.User.Bootstrap,
-		],
-		commands: [
-			Astrum.Auth.Command
-		],
-		read: {Kora.Store.Level, directory: "kora.db"},
-		writes: [{Kora.Store.Level, directory: "kora.db"}],
-	}
-
-	config :mailgun, %{
-		api_key: nil,
-		domain: nil
-	}
-
-	config :astrum, %{
-		url: "http://localhost:3000",
-		bootstrap: "http://localhost:8000"
-	}
-
-	config :postgres, %{
-		hostname: nil,
-		port: nil,
-		username: nil,
-		password: nil,
-		database: nil,
-		ssl: true,
-	}
-
+  config :stripity_stripe, %{
+    api_key: "sk_test_6xDuznjQsIJJ7ig74W9zEwZq00jP0hDgV6"
+  }
 end
