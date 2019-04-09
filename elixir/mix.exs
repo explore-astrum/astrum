@@ -25,7 +25,6 @@ defmodule Astrum.MixProject do
       {:fig, github: "ironbay/fig"},
       {:hull, github: "ironbay/hull"},
       {:kora, github: "ironbay/kora"},
-      {:elmdb, github: "ironbay/elmdb"},
       {:gondola, github: "ironbay/gondola"},
       {:google_api_storage, "~> 0.1.0"},
       {:poison, "~> 3.1.0", override: true}

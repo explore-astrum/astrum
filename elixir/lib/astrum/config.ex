@@ -8,8 +8,8 @@ defmodule Astrum.Config do
       Astrum.Relic.Position
     ],
     commands: [],
-    read: {Kora.Store.LMDB, directory: 'data'},
-    writes: [{Kora.Store.LMDB, directory: 'data'}],
+    read: {Kora.Store.Memory, directory: "data/kora.json"},
+    writes: [{Kora.Store.Memory, directory: "data/kora.json"}],
     scheduler: true,
     format: nil
   }
