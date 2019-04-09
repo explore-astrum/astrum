@@ -19,6 +19,7 @@ export default class PlotPage extends React.Component<any, any> {
     }
     render() {
         const [_, key] = router.parts()
+        const { x, y } = Plot.key_decode(key)
         const plot = Plot.info(key)
         // if (!plot.key) return false
         const coords = Plot.key_decode(key)
@@ -83,12 +84,12 @@ export default class PlotPage extends React.Component<any, any> {
                             <Container weight-5 size-5 mgn-t8 >Neighboring Plots</Container>
                             <Container mgn-t4>
                                 <Container flex>
-                                    <Image mgn-r2 src={IMG_SAMPLE} />
-                                    <Image mgn-l2 src={IMG_SAMPLE} />
+                                    <Image mgn-r1 src={`https://public.exploreastrum.com/iso/${Plot.key_encode(x + 1, y)}sw.jpg`} />
+                                    <Image mgn-l1 src={`https://public.exploreastrum.com/iso/${Plot.key_encode(x + 1, y + 1)}sw.jpg`} />
                                 </Container>
-                                <Container flex mgn-t4>
-                                    <Image mgn-r2 src={IMG_SAMPLE} />
-                                    <Image mgn-l2 src={IMG_SAMPLE} />
+                                <Container flex mgn-t2>
+                                    <Image mgn-r1 src={`https://public.exploreastrum.com/iso/${Plot.key_encode(x, y)}sw.jpg`} />
+                                    <Image mgn-l1 src={`https://public.exploreastrum.com/iso/${Plot.key_encode(x, y + 1)}sw.jpg`} />
                                 </Container>
                             </Container>
                         </Container>

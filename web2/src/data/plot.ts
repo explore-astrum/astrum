@@ -23,3 +23,7 @@ export function key_decode(key: string) {
         y: Hex.int16(y),
     }
 }
+
+export function key_encode(x: number, y: number) {
+    return ("0000" + x.toString(16)).substr(-4).toUpperCase() + ("0000" + y.toString(16)).substr(-4).toUpperCase()
+}
