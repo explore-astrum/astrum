@@ -13,4 +13,8 @@ defmodule Astrum.Config do
     scheduler: true,
     format: nil
   }
+
+  config :stripity_stripe, %{
+    api_key: "sk_test_6xDuznjQsIJJ7ig74W9zEwZq00jP0hDgV6"
+  }
 end

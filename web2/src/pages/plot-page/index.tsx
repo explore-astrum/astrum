@@ -27,12 +27,12 @@ export default class PlotPage extends React.Component<any, any> {
                 <Header />
                 <Container flex pad-h8>
                     <Container flex flex-grow bg-light-gray pad-4 relative>
-                        <Container bg-white fill style={{ backgroundImage: `url(${IMG_SAMPLE})`, backgroundSize: 'cover' }} />
+                        <Container bg-white fill style={{ backgroundImage: `url(https://public.exploreastrum.com/iso/${key}sw.jpg)`, backgroundSize: 'cover' }} />
                     </Container>
                     <Container flex-third bg-light-gray>
                         <Container style={{ width: '100%', paddingBottom: '100%' }} relative>
                             <Container fill>
-                                {/* <iframe src="http://localhost:36213/" frameBorder="0" width="100%" height="100%" style={{ background: 'transparent', margin: 0, padding: 0, }} /> */}
+                                <iframe src="http://localhost:36213/" frameBorder="0" width="100%" height="100%" style={{ background: 'transparent', margin: 0, padding: 0, }} />
                             </Container>
                         </Container>
                     </Container>

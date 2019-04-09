@@ -1,3 +1,4 @@
+import './data/types'
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import { kora, router } from './data/kora'

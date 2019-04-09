@@ -1,4 +1,5 @@
 import { kora } from './kora'
+import * as Hex from './hex'
 
 export function info(key: string): PlotInfo {
     if (!key) schema({})
@@ -18,7 +19,7 @@ export function key_decode(key: string) {
     const x = key.substr(0, 4)
     const y = key.substr(4, 4)
     return {
-        x: Number.parseInt(x, 16),
-        y: Number.parseInt(y, 16)
+        x: Hex.int16(x),
+        y: Hex.int16(y),
     }
 }
