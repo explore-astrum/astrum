@@ -3,6 +3,19 @@
 #include <string>
 #include "TCPConnection.h"
 
+uint16 deserialize_uint16(unsigned char *buf)
+{
+	uint16 *x = (uint16*)buf;
+	return *x;
+}
+
+
+uint32 deserialize_uint32(unsigned char *buf)
+{
+	uint32 *x = (uint32*)buf;
+	return *x;
+}
+
 ATCPConnection::ATCPConnection()
 {
 	PrimaryActorTick.bCanEverTick = true;
@@ -112,30 +125,49 @@ FString ATCPConnection::StringFromBinaryArray(TArray<uint8> BinaryArray)
 	return Fixed;
 }
 
+TArray<uint8> ATCPConnection::ReadOutBinary(uint32 messageSize) {
+	TArray<uint8> ReceivedData;
+	ReceivedData.Init(0, messageSize);
+
+	int32 Read = 0;
+	ListenerSocket->Recv(ReceivedData.GetData(), ReceivedData.Num(), Read);
+	return ReceivedData;
+}
+
 void ATCPConnection::TCPSocketListener()
 {
 	if (!ListenerSocket) return;
 
-	TArray<uint8> ReceivedData;
-
 	uint32 Size;
-	while (ListenerSocket->HasPendingData(Size))
-	{
-		ReceivedData.Init(0, FMath::Min(Size, 65507u));
+	while (ListenerSocket->HasPendingData(Size)) {
+		uint32 messagetype_size = 2;
+		TArray<uint8> messageTypeBinary = ReadOutBinary(messagetype_size);
 
-		int32 Read = 0;
-		ListenerSocket->Recv(ReceivedData.GetData(), ReceivedData.Num(), Read);
+		if (messageTypeBinary.Num() <= 0)
+			return;
+
+		int message_type = deserialize_uint16(reinterpret_cast<unsigned char*>(messageTypeBinary.GetData()));
+		if (message_type == 0) {
+			uint32 message_length = 4;
+			TArray<uint8> relicTypeBinary = ReadOutBinary(4);
+			if (relicTypeBinary.Num() <= 0)
+				return;
+
+			int relic_type = deserialize_uint32(reinterpret_cast<unsigned char*>(relicTypeBinary.GetData()));
+			FString relic_type_str = FString(std::to_string(relic_type).c_str());
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString("Relic Type: " + relic_type_str));
+
+			TArray<uint8> relicKeyBinary = ReadOutBinary(16);
+			if (relicKeyBinary.Num() <= 0)
+				return;
+
+			FString relic_key = StringFromBinaryArray(relicKeyBinary);
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString("Relic Type: " + relic_key));
+
+			//new line
+			ReadOutBinary(1);
+		}
 	}
-
-	if (ReceivedData.Num() <= 0)
-	{
-		//No Data Received
-		return;
-	}
-
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Data Bytes Read ~> %d"), ReceivedData.Num()));
-
-	const FString ReceivedUE4String = StringFromBinaryArray(ReceivedData);
-
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString("As String: " + ReceivedUE4String));
+	FTimerHandle timerhandle;
+	GetWorld()->GetTimerManager().SetTimer(timerhandle, this, &ATCPConnection::TCPSocketListener, 0.01);
 }
