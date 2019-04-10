@@ -35,6 +35,8 @@ AAstrumCharacter::AAstrumCharacter()
 	bReplicateMovement = true;
 	bReplicates = true;
 
+	//tcp = new ATCPConnection();
+
 }
 
 void AAstrumCharacter::PostInitializeComponents()
@@ -69,6 +71,53 @@ void AAstrumCharacter::Tick(float DeltaTime)
 		CheckMusic();
 		if(inventoryOn)
 			CheckForUpgrades();
+
+		//SetCharacterLocation(FVector(0, 0, 500));
+		//FScreenshotRequest::RequestScreenshot(false);
+		/*if (move_on && 6300 * ind < 403200) {
+			FVector camloc = FVector(403200 * 2 - 200, 403200 * 2 - 200, 30000) - FVector(indx * 6300 + 6300, 6300 * ind, 0);
+
+			FCollisionQueryParams TraceParams(FName(TEXT("Trace Params")), true, this); //ignore self
+			TraceParams.bTraceComplex = true;
+
+			FHitResult HitOut = FHitResult(ForceInit);
+
+			GetWorld()->LineTraceSingleByChannel(
+				HitOut,		//result
+				camloc,	//start
+				camloc + FVector(0, 0, -1) * 1000000, //end
+				ECC_Visibility, //collision channel
+				TraceParams
+			);
+
+			//Hit any Actor?
+			if (HitOut.GetActor() != NULL) {
+				camloc.Z = HitOut.ImpactPoint.Z + 100;
+				//GEngine->AddOnScreenDebugMessage(-1, 25.0f, FColor::Yellow, camloc.ToString());
+				SetActorLocation(camloc);
+			}
+			last_timey = numticks;
+			move_on = false;
+		}
+
+		if (numticks > last_timey + 1 * 60 && !move_on) {
+
+			/*FRotator NewRotation = FRotator(0, 0, 90);
+			FQuat QuatRotation = FQuat(NewRotation);
+			AddActorLocalRotation(QuatRotation);
+			numrots += 1;*/
+
+		/*	FScreenshotRequest::RequestScreenshot(FString("x") + FString::FromInt(indx) + FString("y") + FString::FromInt(ind) + FString("rightforward"), false, true);
+
+			move_on = true;
+			numrots = 0;
+		}
+
+		numticks++;
+
+		if (ind * 6300 >= 403200) {
+			ind = 0;
+		}*/
 	}
 }
 
@@ -151,6 +200,10 @@ void AAstrumCharacter::ToggleInventory()
 	auto sw = Cast<USpawningWidget>(CurrentWidget);
 	sw->ToggleInventory();
 	inventoryOn = !inventoryOn;
+
+	if (!inventoryOn && lastSpawned && lastSpawned->server_selected) {
+		MoveRelicToDefault();
+	}
 }
 
 void AAstrumCharacter::ScrollLeft()

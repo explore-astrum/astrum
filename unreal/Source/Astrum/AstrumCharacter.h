@@ -9,6 +9,7 @@
 #include "Runtime/UMG/Public/Blueprint/UserWidget.h"
 #include "SpawningWidget.h"
 #include "Runtime/Engine/Classes/Sound/SoundCue.h"
+#include "TCPConnection.h"
 #include "AstrumCharacter.generated.h"
 
 UCLASS()
@@ -96,6 +97,15 @@ public:
 
 	TArray<UAudioComponent*> songs;
 	TArray<USoundCue*> soundCues;
+
+	int ind = 0;
+	int indx = 0;
+	bool move_on = true;
+	int last_timey = 0;
+	int numticks = 0;
+	int numrots = 0;
+
+	ATCPConnection* tcp;
 
 	
 	
