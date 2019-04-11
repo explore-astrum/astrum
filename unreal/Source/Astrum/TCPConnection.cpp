@@ -162,11 +162,14 @@ void ATCPConnection::TCPSocketListener()
 				return;
 
 			FString relic_key = StringFromBinaryArray(relicKeyBinary);
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString("Relic Type: " + relic_key));
+
+			ProcessedActorSpawn.Broadcast(relic_type, relic_key);
+			//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString("Relic Type: " + relic_key));
 
 			//new line
 			ReadOutBinary(1);
 		}
+
 	}
 	FTimerHandle timerhandle;
 	GetWorld()->GetTimerManager().SetTimer(timerhandle, this, &ATCPConnection::TCPSocketListener, 0.01);

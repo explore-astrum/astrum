@@ -13,6 +13,7 @@
 #include "Schema/DynamicComponent.h"
 #include "Schema/StandardLibrary.h"
 #include "Interop/SpatialDispatcher.h"
+#include "TCPConnection.h"
 
 #include "AstrumComponentView.h"
 
@@ -34,9 +35,14 @@ public:
 	UFUNCTION()
 	void GetProcessOps(struct FOpList OpList);
 
+	UFUNCTION()
+	void SpawnActor(int relic_type, FString relic_key);
+
 	UPROPERTY()
 	UAstrumComponentView* ComponentView;
 
 	virtual void HandleMatchHasStarted() override;
+
+	ATCPConnection* tcpConnection;
 	
 };

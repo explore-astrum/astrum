@@ -11,18 +11,19 @@ void AAstrumGameModeBase::HandleMatchHasStarted() //kick this init off from game
 	UWorld* World = GetWorld();
 	FString CurrentMapName = World->GetMapName().Mid(GetWorld()->StreamingLevelsPrefix.Len());
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, CurrentMapName);
-	NetDriver = Cast<USpatialNetDriver>(GetWorld()->GetNetDriver());
+	/*NetDriver = Cast<USpatialNetDriver>(GetWorld()->GetNetDriver());
 	if (CurrentMapName == "Astrum" && NetDriver) {
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "got net driver");
 		NetDriver->Dispatcher->ProcessedOps.AddDynamic(this, &AAstrumGameModeBase::GetProcessOps);
 		ComponentView = NewObject<UAstrumComponentView>();
-	}
+	}*/
+	tcpConnection = World->SpawnActor<ATCPConnection>();
+	tcpConnection->ProcessedActorSpawn.AddDynamic(this, &AAstrumGameModeBase::SpawnActor);
 }
 
 void AAstrumGameModeBase::GetProcessOps(FOpList OpList)
 {
-	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "here");
-		Worker_OpList* ops = OpList.ops;
+		/*Worker_OpList* ops = OpList.ops;
 		for (size_t i = 0; i < ops->op_count; ++i)
 		{
 			Worker_Op* Op = &ops->ops[i];
@@ -54,11 +55,23 @@ void AAstrumGameModeBase::GetProcessOps(FOpList OpList)
 				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::FromInt(ric->RelicType));
 				ASpawnableActor* new_relic = GetWorld()->SpawnActor<ASpawnableActor>(StaticLoadClass(UObject::StaticClass(), nullptr, TEXT("/Game/FirstPersonBP/AI/Sofa/CarTry.CarTry_C"), nullptr, LOAD_None, nullptr));
 				FString::FromInt(Op->add_component.entity_id);
-				/* testing relics */
+
 				new_relic->id = FString::FromInt(1);
 				new_relic->isPawn = true;
 				new_relic->pawnClass = StaticLoadClass(UObject::StaticClass(), nullptr, TEXT("/Game/VehicleBP/Sedan/Sedan.Sedan_C"), nullptr, LOAD_None, nullptr);
 			}
-		}
+		}*/
 
+}
+
+void AAstrumGameModeBase::SpawnActor(int relic_type, FString relic_key)
+{
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString("Spawning Relic ID: " + relic_key));
+	if (relic_type == 0) {
+		ASpawnableActor* new_relic = GetWorld()->SpawnActor<ASpawnableActor>(StaticLoadClass(UObject::StaticClass(), nullptr, TEXT("/Game/FirstPersonBP/AI/Sofa/CarTry.CarTry_C"), nullptr, LOAD_None, nullptr));
+
+		new_relic->id = FString::FromInt(relic_type);
+		new_relic->isPawn = true;
+		new_relic->pawnClass = StaticLoadClass(UObject::StaticClass(), nullptr, TEXT("/Game/VehicleBP/Sedan/Sedan.Sedan_C"), nullptr, LOAD_None, nullptr);
+	}
 }

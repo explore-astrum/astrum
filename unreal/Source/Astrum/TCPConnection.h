@@ -9,6 +9,8 @@
 /**
  * 
  */
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FProcessedActorSpawn, int, type, FString, relic);
+
 UCLASS()
 class ASTRUM_API ATCPConnection : public AActor
 {
@@ -50,6 +52,8 @@ public:
 
 	//Rama's StringFromBinaryArray
 	FString StringFromBinaryArray(const TArray<uint8> BinaryArray);
+
+	FProcessedActorSpawn ProcessedActorSpawn;
 };
 
 	
