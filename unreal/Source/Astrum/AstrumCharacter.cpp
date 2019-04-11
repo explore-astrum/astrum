@@ -490,6 +490,15 @@ void AAstrumCharacter::PutBackInInventory()
 	}
 }
 
+void AAstrumCharacter::PutInInventory(FRelic relic)
+{
+	auto sw = Cast<USpawningWidget>(CurrentWidget);
+	if (sw) {
+		sw->AddToOptions(relic);
+		sw->GetNewOptions();
+	}
+}
+
 void AAstrumCharacter::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);

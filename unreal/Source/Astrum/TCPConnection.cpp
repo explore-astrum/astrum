@@ -5,8 +5,8 @@
 
 uint16 deserialize_uint16(unsigned char *buf)
 {
-	uint16 *x = (uint16*)buf;
-	return *x;
+	//uint16 *x = (uint16*)buf;
+	return (buf[0] << 8) + buf[1];
 }
 
 
@@ -146,9 +146,9 @@ void ATCPConnection::TCPSocketListener()
 		if (messageTypeBinary.Num() <= 0)
 			return;
 
-		int message_type = deserialize_uint16(reinterpret_cast<unsigned char*>(messageTypeBinary.GetData()));
+		uint16 message_type = deserialize_uint16(reinterpret_cast<unsigned char*>(messageTypeBinary.GetData()));
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::FromInt(message_type));
 		if (message_type == 0) {
-			uint32 message_length = 4;
 			TArray<uint8> relicTypeBinary = ReadOutBinary(4);
 			if (relicTypeBinary.Num() <= 0)
 				return;
@@ -165,6 +165,24 @@ void ATCPConnection::TCPSocketListener()
 
 			ProcessedActorSpawn.Broadcast(relic_type, relic_key);
 			//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString("Relic Type: " + relic_key));
+
+			//new line
+			ReadOutBinary(1);
+		}
+		else if (message_type == 1) {
+			TArray<uint8> relicKeyBinary = ReadOutBinary(16);
+			if (relicKeyBinary.Num() <= 0)
+				return;
+
+			FString relic_key = StringFromBinaryArray(relicKeyBinary);
+
+			TArray<uint8> relicOwnerBinary = ReadOutBinary(20);
+			if (relicOwnerBinary.Num() <= 0)
+				return;
+
+			FString relic_owner = StringFromBinaryArray(relicOwnerBinary);
+
+			ProcessedChangeOwner.Broadcast(relic_key, relic_owner);
 
 			//new line
 			ReadOutBinary(1);

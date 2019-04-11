@@ -79,6 +79,9 @@ public:
 	UFUNCTION()
 	void PutBackInInventory();
 
+	UFUNCTION()
+	void PutInInventory(FRelic relic);
+
 
 	AAstrumPlayerController* owner;
 	bool init = false;

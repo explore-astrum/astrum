@@ -2,6 +2,8 @@
 
 #include "AstrumGameModeBase.h"
 #include "SpawnableActor.h"
+#include "AstrumCharacter.h"
+#include "SpawningWidget.h"
 
 
 void AAstrumGameModeBase::HandleMatchHasStarted() //kick this init off from game mode for now
@@ -19,6 +21,7 @@ void AAstrumGameModeBase::HandleMatchHasStarted() //kick this init off from game
 	}*/
 	tcpConnection = World->SpawnActor<ATCPConnection>();
 	tcpConnection->ProcessedActorSpawn.AddDynamic(this, &AAstrumGameModeBase::SpawnActor);
+	tcpConnection->ProcessedChangeOwner.AddDynamic(this, &AAstrumGameModeBase::ChangeRelicOwner);
 }
 
 void AAstrumGameModeBase::GetProcessOps(FOpList OpList)
@@ -70,8 +73,46 @@ void AAstrumGameModeBase::SpawnActor(int relic_type, FString relic_key)
 	if (relic_type == 0) {
 		ASpawnableActor* new_relic = GetWorld()->SpawnActor<ASpawnableActor>(StaticLoadClass(UObject::StaticClass(), nullptr, TEXT("/Game/FirstPersonBP/AI/Sofa/CarTry.CarTry_C"), nullptr, LOAD_None, nullptr));
 
-		new_relic->id = FString::FromInt(relic_type);
+		new_relic->id = relic_key;
 		new_relic->isPawn = true;
 		new_relic->pawnClass = StaticLoadClass(UObject::StaticClass(), nullptr, TEXT("/Game/VehicleBP/Sedan/Sedan.Sedan_C"), nullptr, LOAD_None, nullptr);
 	}
+}
+
+void AAstrumGameModeBase::ChangeRelicOwner(FString relic_key, FString relic_owner)
+{
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString("Changing Relic Owner: " + relic_key));
+
+	bool found = false;
+
+	FRelic relicForInventory;
+	TArray<AActor*> FoundRelics;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ASpawnableActor::StaticClass(), FoundRelics);
+	for (int i = 0; i < FoundRelics.Num(); i++) {
+		ASpawnableActor* actor = Cast<ASpawnableActor>(FoundRelics[i]);
+		if (actor) {
+			if (actor->GetID() == relic_key) {
+				actor->userid = relic_owner;
+				relicForInventory = actor->CreateRelicFromProperties();
+				found = true;
+				break;
+			}
+		}
+	}
+
+	if (found) {
+		TArray<AActor*> FoundPlayers;
+		UGameplayStatics::GetAllActorsOfClass(GetWorld(), AAstrumCharacter::StaticClass(), FoundPlayers);
+		for (int i = 0; i < FoundPlayers.Num(); i++) {
+			AAstrumCharacter* actor = Cast<AAstrumCharacter>(FoundPlayers[i]);
+			if (actor) {
+				if (actor->owner->GetUserID() == relic_owner) {
+					actor->PutInInventory(relicForInventory);
+					break;
+				}
+			}
+		}
+	}
+
+	
 }

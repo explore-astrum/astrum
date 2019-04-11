@@ -10,6 +10,7 @@
  * 
  */
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FProcessedActorSpawn, int, type, FString, relic);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FProcessedChangeOwner, FString, relic, FString, owner);
 
 UCLASS()
 class ASTRUM_API ATCPConnection : public AActor
@@ -54,6 +55,7 @@ public:
 	FString StringFromBinaryArray(const TArray<uint8> BinaryArray);
 
 	FProcessedActorSpawn ProcessedActorSpawn;
+	FProcessedChangeOwner ProcessedChangeOwner;
 };
 
 	

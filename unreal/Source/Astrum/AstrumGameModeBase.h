@@ -38,6 +38,9 @@ public:
 	UFUNCTION()
 	void SpawnActor(int relic_type, FString relic_key);
 
+	UFUNCTION()
+	void ChangeRelicOwner(FString relic_key, FString relic_owner);
+
 	UPROPERTY()
 	UAstrumComponentView* ComponentView;
 
