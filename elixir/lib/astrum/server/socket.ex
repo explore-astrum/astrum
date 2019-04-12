@@ -8,6 +8,7 @@ defmodule Astrum.Server.Socket do
 
   def init([socket]) do
     Logger.info("Starting socket")
+    Logger.info(:inet.peername(socket) |> inspect())
 
     send(self(), :bootstrap)
 

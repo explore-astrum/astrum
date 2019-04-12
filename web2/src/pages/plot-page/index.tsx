@@ -2,6 +2,8 @@ import * as React from 'react'
 import { Container, Wrap, Image } from '../../components'
 import Header from '../../structures/header'
 import { router } from '../../data/kora'
+
+import Link from '../../structures/link'
 import * as Plot from '../../data/plot'
 
 interface Props {
@@ -80,18 +82,32 @@ export default class PlotPage extends React.Component<any, any> {
                                 </Container>
                             </Container>
                         </Container>
-                        <Container flex-5>
-                            <Container weight-5 size-5 mgn-t8 >Neighboring Plots</Container>
-                            <Container mgn-t4>
-                                <Container flex>
-                                    <Image mgn-r1 src={`https://public.exploreastrum.com/iso/${Plot.key_encode(x + 1, y)}sw.jpg`} />
-                                    <Image mgn-l1 src={`https://public.exploreastrum.com/iso/${Plot.key_encode(x + 1, y + 1)}sw.jpg`} />
-                                </Container>
-                                <Container flex mgn-t2>
-                                    <Image mgn-r1 src={`https://public.exploreastrum.com/iso/${Plot.key_encode(x, y)}sw.jpg`} />
-                                    <Image mgn-l1 src={`https://public.exploreastrum.com/iso/${Plot.key_encode(x, y + 1)}sw.jpg`} />
-                                </Container>
-                            </Container>
+                    </Container>
+
+                    <Container flex-5>
+                        <Container weight-5 size-5 mgn-t8 >Neighboring Plots</Container>
+                        <Container mgn-t4 flex>
+                            {
+                                [
+                                    [1, 0],
+                                    [0, 1],
+                                    [0, -1],
+                                    [-1, 0],
+                                ]
+                                    .map(([dx, dy]) => {
+                                        const key = Plot.key_encode(x + dx, y + dy)
+                                        const direction = ['sw', 'nw', 'se', 'sw'][Math.floor(Math.random() * 4)]
+                                        return (
+                                            <Container flex pad-h1>
+                                                <Link href={`/plot/${key}`}>
+                                                    <Image src={`https://public.exploreastrum.com/iso/${key}${direction}.jpg`} />
+                                                </Link>
+                                            </Container>
+
+
+                                        )
+                                    })
+                            }
                         </Container>
                     </Container>
                 </Container>
