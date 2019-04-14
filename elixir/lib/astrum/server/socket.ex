@@ -10,7 +10,7 @@ defmodule Astrum.Server.Socket do
     Logger.info("Starting socket")
     Logger.info(:inet.peername(socket) |> inspect())
 
-    send(self(), :bootstrap)
+    Astrum.Server.Handler.trigger({:bootstrap, {}}, "master", self(), socket)
 
     {:ok, socket}
   end
@@ -20,17 +20,6 @@ defmodule Astrum.Server.Socket do
   end
 
   def handle_info(:bootstrap, socket) do
-    ["relic:info"]
-    |> Kora.stream_path()
-    |> Enum.each(fn {key, relic} ->
-      [
-        Astrum.Relic.Create,
-        Astrum.Relic.Owner,
-        Astrum.Relic.Position
-      ]
-      |> Kora.Interceptor.effect(Mutation.merge(["relic:info", key], relic), "kora-master")
-    end)
-
     {:noreply, socket}
   end
 
@@ -38,21 +27,22 @@ defmodule Astrum.Server.Socket do
     {:stop, :normal, state}
   end
 
-  def handle_info({:send, data}, state) do
+  def handle_info({:line, data}, state) do
     # Logger.info("Sent #{inspect(data)}")
     line(state, data)
     {:noreply, state}
   end
 
   def handle_info({:tcp, _, data}, socket) do
-    result = Astrum.Packet.decode(String.trim_trailing(data))
-    Logger.info("Got #{inspect(result)}")
+    msg = Astrum.Packet.decode(String.trim_trailing(data))
+    Logger.info("Got #{inspect(msg)}")
+    pid = self()
+    Task.start_link(fn -> Astrum.Server.Handler.trigger(msg, "master", pid, socket) end)
     :inet.setopts(socket, active: :once)
     {:noreply, socket}
   end
 
-  def handle_info(msg, socket) do
-    IO.inspect(msg)
+  def handle_info(_msg, socket) do
     {:noreply, socket}
   end
 end

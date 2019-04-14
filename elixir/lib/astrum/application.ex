@@ -7,6 +7,7 @@ defmodule Astrum.Application do
 
   def start(_type, _args) do
     Astrum.Config.load(Fig.Loader.Env)
+    Application.put_env(:astrum, :handlers, Astrum.Server.Handler.all())
     # List all child processes to be supervised
     children = [
       # Starts a worker by calling: Astrum.Worker.start_link(arg)

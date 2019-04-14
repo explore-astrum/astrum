@@ -18,7 +18,7 @@ defmodule Astrum.Relic.Create do
 
   def effect(["relic:info", relic], %{merge: %{"key" => _}}, _mut, _user) do
     {type, _key} = Relic.key_decode(relic)
-    Astrum.Server.broadcast({:relic_create, {type, relic}})
+    Astrum.Server.broadcast(Astrum.Packet.relic_create(type, relic))
     nil
   end
 end

@@ -17,4 +17,8 @@ defmodule Astrum.Config do
   config :stripity_stripe, %{
     api_key: "sk_test_6xDuznjQsIJJ7ig74W9zEwZq00jP0hDgV6"
   }
+
+  config :astrum, %{
+    handlers: []
+  }
 end
