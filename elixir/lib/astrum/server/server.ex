@@ -29,6 +29,7 @@ defmodule Astrum.Server do
     {:ok, client} = :gen_tcp.accept(listen)
     {:ok, pid} = Astrum.Server.Socket.start_link(client)
     :pg2.join(:clients, pid)
+    send(pid, :bootstrap)
     :gen_tcp.controlling_process(client, pid)
     loop(listen)
   end
