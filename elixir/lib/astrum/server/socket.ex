@@ -10,8 +10,7 @@ defmodule Astrum.Server.Socket do
     Logger.info("Starting socket")
     Logger.info(:inet.peername(socket) |> inspect())
 
-    Astrum.Server.Handler.trigger({:bootstrap, {}}, "master", self(), socket)
-
+    send(self(), :bootstrap)
     {:ok, socket}
   end
 
@@ -20,6 +19,7 @@ defmodule Astrum.Server.Socket do
   end
 
   def handle_info(:bootstrap, socket) do
+    Astrum.Server.Handler.trigger({:bootstrap, {}}, "master", self(), socket)
     {:noreply, socket}
   end
 
@@ -27,10 +27,10 @@ defmodule Astrum.Server.Socket do
     {:stop, :normal, state}
   end
 
-  def handle_info({:line, data}, state) do
+  def handle_info({:line, data}, socket) do
     # Logger.info("Sent #{inspect(data)}")
-    line(state, data)
-    {:noreply, state}
+    line(socket, data)
+    {:noreply, socket}
   end
 
   def handle_info({:tcp, _, data}, socket) do

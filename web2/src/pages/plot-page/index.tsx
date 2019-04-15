@@ -11,10 +11,13 @@ interface Props {
 }
 
 interface State {
-
+    direction: string
 }
 const IMG_SAMPLE = require('./sample.png')
-export default class PlotPage extends React.Component<any, any> {
+export default class PlotPage extends React.Component<Props, State> {
+    state = {
+        direction: 'nw'
+    }
     componentWillMount() {
         const [_, plot] = router.parts()
         Plot.refresh(plot)
@@ -25,17 +28,28 @@ export default class PlotPage extends React.Component<any, any> {
         const plot = Plot.info(key)
         // if (!plot.key) return false
         const coords = Plot.key_decode(key)
+        const { direction } = this.state
         return (
             <Container>
                 <Header />
-                <Container flex pad-h8>
-                    <Container flex flex-grow bg-light-gray pad-4 relative>
-                        <Container bg-white fill style={{ backgroundImage: `url(https://public.exploreastrum.com/iso/${key}sw.jpg)`, backgroundSize: 'cover' }} />
+                <Container flex>
+                    <Container flex-2>
+                        <Image src={`https://public.exploreastrum.com/iso/${key}nw.jpg`} />
+                        <Image src={`https://public.exploreastrum.com/iso/${key}sw.jpg`} />
+                        <Image src={`https://public.exploreastrum.com/iso/${key}ne.jpg`} />
+                        <Image src={`https://public.exploreastrum.com/iso/${key}se.jpg`} />
                     </Container>
-                    <Container flex-third bg-light-gray>
-                        <Container style={{ width: '100%', paddingBottom: '100%' }} relative>
-                            <Container fill>
-                                <iframe src="http://localhost:36213/" frameBorder="0" width="100%" height="100%" style={{ background: 'transparent', margin: 0, padding: 0, }} />
+                    <Container flex-grow style={{
+                        backgroundImage: `url(https://public.exploreastrum.com/iso/${key}${direction}.jpg)`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                    }}>
+                        <Container flex justify-end>
+                            <Container pad-8 flex fg-white align-center justify-center bg-black size-6 weight-6 uppercase>
+                                <Container>
+                                    <Container text-center>Plot</Container>
+                                    <Container mgn-t2>{x} x {y}</Container>
+                                </Container>
                             </Container>
                         </Container>
                     </Container>
@@ -98,7 +112,7 @@ export default class PlotPage extends React.Component<any, any> {
                                         const key = Plot.key_encode(x + dx, y + dy)
                                         const direction = ['sw', 'nw', 'se', 'sw'][Math.floor(Math.random() * 4)]
                                         return (
-                                            <Container flex pad-h1>
+                                            <Container flex pad-h1 flex-2>
                                                 <Link href={`/plot/${key}`}>
                                                     <Image src={`https://public.exploreastrum.com/iso/${key}${direction}.jpg`} />
                                                 </Link>

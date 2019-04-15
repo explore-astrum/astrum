@@ -59,7 +59,7 @@ img {
 }
 
 html {
-	font-family: 'Montserrat';
+	font-family: 'Roboto Slab';
 }
 
 :root {
@@ -69,6 +69,6 @@ html {
 	--pink: #E6C8B4;
 }
 
-:link, :visited, :active {
+a:link, a:visited, a:active {
 	color: inherit;
 }
