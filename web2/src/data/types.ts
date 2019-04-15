@@ -10,3 +10,8 @@ interface Activity {
     target: string
     data: any
 }
+
+interface RelicType {
+    key?: string
+    name?: string
+}

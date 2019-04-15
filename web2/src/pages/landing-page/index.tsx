@@ -1,11 +1,6 @@
 import * as React from 'react'
-import * as THREE from 'three'
-import * as Chroma from 'chroma-js'
+import { Container, Image, Wrap } from '../../components'
 
-const IMG_HILL = require('./img/hill.png')
-const IMG_MOUNTAINS = require('./img/mountains.png')
-const IMG_SKY = require('./img/sky.png')
-const IMG_TREES = require('./img/trees.png')
 
 
 
@@ -20,54 +15,68 @@ export default class LandingPage extends React.Component<any, any> {
     componentDidMount() { }
     render() {
         const scroll = this.state.scroll
-        return (
-            <div>
-                <div style={{ position: 'fixed', width: '100%', paddingBottom: '52.1%', overflow: 'hidden', background: '#746080' }}>
-                    {
-                        [
-                            require('./img/layer-8.png'),
-                            require('./img/layer-7.png'),
-                            require('./img/layer-6.png'),
-                            require('./img/layer-5.png'),
-                            require('./img/layer-4.png'),
-                            require('./img/layer-3.png'),
-                            require('./img/layer-2.png'),
-                            // require('./img/layer-1.png'),
-                            require('./img/layer-0.png')
-                            // IMG_SKY,
-                            // IMG_MOUNTAINS,
-                            // IMG_TREES,
-                            // IMG_HILL,
-                        ]
-                            .map((layer, index) => (
-                                <div style={{
-                                    position: 'absolute',
-                                    top: 0,
-                                    left: 0,
-                                    right: 0,
-                                    bottom: 0,
-                                    backgroundImage: `url(${layer})`,
-                                    backgroundSize: '100% auto',
-                                    backgroundPosition: 'center 0',
-                                    backgroundRepeat: 'repeat-x',
-                                    transform: `translate3d(0, ${scroll * -((ease(index / 8)))}px, 0)`,
-                                }} />
 
-                            ))
-                    }
-                </div>
-                <div style={{ width: '100%', paddingBottom: '52.1%' }} />
-                <div style={{ position: 'relative', top: '-5px', height: '3000px', background: '#746080', }} >
-                    <canvas id="canvas" style={{ width: '100%', height: '500px' }} />
-                </div>
-            </div>
+        const LAYERS = [
+            require('./img/layer-7.png'),
+            require('./img/layer-6.png'),
+            require('./img/layer-5.png'),
+            require('./img/layer-4.png'),
+            require('./img/layer-3.png'),
+            require('./img/layer-2.png'),
+            require('./img/layer-1.png'),
+            // require('./img/layer-0.png'),
+        ]
+        const FRONT = require('./img/layer-0.png')
+        return (
+            <Container style={{ background: '#1a1e17' }}>
+                {
+                    LAYERS.map((item, index) => (
+                        <Container fill overflow-hidden style={{
+                            position: 'fixed',
+                        }}>
+                            <Image src={item} style={{
+                                transform: `translate3d(0, ${scroll * (ease(index / LAYERS.length) * -1)}px, 0)`,
+                            }} />
+                        </Container>
+                    ))
+                }
+                <Container>
+                    <Image src={FRONT} relative />
+                </Container>
+                <Container relative style={{ background: '#1a1e17', zIndex: 1000 }}>
+                    <Wrap>
+                        <Container >
+                            <Container
+                                pad-v8
+                                m-mgn-v8
+                                style={{ fontFamily: 'Thruster', letterSpacing: '4px' }}
+                                uppercase
+                                fg-white
+                                size-6
+                                s-size-8
+                                m-size-10
+                                text-center>
+                                Welcome to Astrum
+                            </Container>
+                            <Container>
+                                <video
+                                    controls
+                                    style={{ width: '100%', height: 'auto' }}
+                                    src={require('./img/trailer.webm')} />
+                            </Container>
+                            <Container flex flex-column align-center pad-v8 mgn-h6>
+                                <Container fg-white size-4 m-size-5 weight-5 line-8 text-center>
+                                    Astrum is an experiment in building a singular world owned and operated entirely by its players. Claim your piece to engage in 100% player driven trade, exploration, politics and work together to determine this future of this new world
+                                </Container>
+                                <Container mgn-t4 fg-black bg-white pad-h6 pad-v4 uppercase radius-4 weight-6 size-3-5>Browse Available Plots</Container>
+                            </Container>
+                        </Container>
+                    </Wrap>
+                </Container>
+            </Container>
         )
     }
-    private handle_keydown = (e: KeyboardEvent) => {
-        if (e.which === 38) this.scroll(1)
-        if (e.which === 40) this.scroll(-1)
-    }
-    private handle_scroll = (e: WheelEvent) => {
+    private handle_scroll = () => {
         this.setState({ scroll: window.scrollY })
     }
     private scroll(direction: number) {
@@ -85,5 +94,5 @@ export default class LandingPage extends React.Component<any, any> {
 }
 
 function ease(t) {
-    return t
+    return t * 0.8
 }

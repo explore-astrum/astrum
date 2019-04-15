@@ -2,7 +2,7 @@ defmodule Astrum.Server.Handler do
   @callback handle(msg :: any, user :: any, from :: any, socket :: any) :: any
 
   def trigger(msg, user, from, socket) do
-    Enum.each(Astrum.Config.astrum_handlers(), fn mod ->
+    Enum.map(Astrum.Config.astrum_handlers(), fn mod ->
       :ok = mod.handle(msg, user, from, socket)
     end)
   end
