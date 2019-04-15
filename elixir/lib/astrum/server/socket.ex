@@ -18,6 +18,7 @@ defmodule Astrum.Server.Socket do
   end
 
   def handle_info(:bootstrap, socket) do
+    IO.inspect("bbooty")
     Astrum.Server.Handler.trigger({:bootstrap, {}}, "master", self(), socket)
     {:noreply, socket}
   end
