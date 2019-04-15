@@ -35,7 +35,7 @@ defmodule Astrum.Server.Socket do
 
   def handle_info({:tcp, _, data}, socket) do
     msg = Astrum.Packet.decode(String.trim_trailing(data))
-    Logger.info("Got #{inspect(msg)}")
+    Logger.info("Got #{inspect(msg)} from #{inspect(data)}")
     pid = self()
     Task.start_link(fn -> Astrum.Server.Handler.trigger(msg, "master", pid, socket) end)
     :inet.setopts(socket, active: :once)
