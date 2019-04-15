@@ -19,6 +19,10 @@ defmodule Astrum.Config do
   }
 
   config :astrum, %{
-    handlers: []
+    handlers: [
+      Astrum.Server.Bootstrap,
+      Astrum.Server.Ping,
+      Astrum.Server.Relic.Position
+    ]
   }
 end
