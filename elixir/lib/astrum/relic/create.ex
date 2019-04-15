@@ -13,12 +13,12 @@ defmodule Astrum.Relic.Create do
        "created" => :os.system_time(:millisecond),
        "type" => type
      })
-     |> Mutation.merge(["relic:type", type, "instances"], relic)}
+     |> Mutation.merge(["relic:type", type, "instances", relic], :os.system_time(:millisecond))}
   end
 
   def effect(["relic:info", relic], %{merge: %{"key" => _}}, _mut, _user) do
     {type, _key} = Relic.key_decode(relic)
-    Astrum.Server.broadcast({:relic_create, {type, relic}})
+    Astrum.Server.broadcast(Astrum.Packet.relic_create(type, relic))
     nil
   end
 end

@@ -7,14 +7,6 @@ const IMG_MOUNTAINS = require('./img/mountains.png')
 const IMG_SKY = require('./img/sky.png')
 const IMG_TREES = require('./img/trees.png')
 
-require('./img/layer-0.png')
-require('./img/layer-1.png')
-require('./img/layer-2.png')
-require('./img/layer-3.png')
-require('./img/layer-4.png')
-require('./img/layer-5.png')
-require('./img/layer-6.png')
-require('./img/layer-7.png')
 
 
 export default class LandingPage extends React.Component<any, any> {
@@ -30,17 +22,18 @@ export default class LandingPage extends React.Component<any, any> {
         const scroll = this.state.scroll
         return (
             <div>
-                <div style={{ position: 'fixed', width: '100%', paddingBottom: '56.2%', overflow: 'hidden' }}>
+                <div style={{ position: 'fixed', width: '100%', paddingBottom: '52.1%', overflow: 'hidden', background: '#746080' }}>
                     {
                         [
-                            require('./img/layer-0.png'),
-                            require('./img/layer-1.png'),
-                            require('./img/layer-2.png'),
-                            require('./img/layer-3.png'),
-                            require('./img/layer-4.png'),
-                            require('./img/layer-5.png'),
+                            require('./img/layer-8.png'),
+                            require('./img/layer-7.png'),
                             require('./img/layer-6.png'),
-                            require('./img/layer-7.png')
+                            require('./img/layer-5.png'),
+                            require('./img/layer-4.png'),
+                            require('./img/layer-3.png'),
+                            require('./img/layer-2.png'),
+                            // require('./img/layer-1.png'),
+                            require('./img/layer-0.png')
                             // IMG_SKY,
                             // IMG_MOUNTAINS,
                             // IMG_TREES,
@@ -57,14 +50,14 @@ export default class LandingPage extends React.Component<any, any> {
                                     backgroundSize: '100% auto',
                                     backgroundPosition: 'center 0',
                                     backgroundRepeat: 'repeat-x',
-                                    transform: `translate3d(0, ${scroll * -((index / 7))}px, 0)`,
+                                    transform: `translate3d(0, ${scroll * -((ease(index / 8)))}px, 0)`,
                                 }} />
 
                             ))
                     }
                 </div>
-                <div style={{ width: '100%', paddingBottom: '33.47%' }} />
-                <div style={{ position: 'relative', height: '3000px', background: '#282328', }} >
+                <div style={{ width: '100%', paddingBottom: '52.1%' }} />
+                <div style={{ position: 'relative', top: '-5px', height: '3000px', background: '#746080', }} >
                     <canvas id="canvas" style={{ width: '100%', height: '500px' }} />
                 </div>
             </div>
@@ -89,4 +82,8 @@ export default class LandingPage extends React.Component<any, any> {
 
     }
 
+}
+
+function ease(t) {
+    return t
 }

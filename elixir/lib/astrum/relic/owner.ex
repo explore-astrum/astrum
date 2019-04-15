@@ -23,7 +23,7 @@ defmodule Astrum.Relic.Owner do
   end
 
   def effect(["relic:info", relic], %{merge: %{"owner" => owner}}, _mut, _user) do
-    Astrum.Server.broadcast({:relic_owner, {relic, owner}})
+    Astrum.Server.broadcast(Astrum.Packet.relic_owner(relic, owner))
     nil
   end
 end

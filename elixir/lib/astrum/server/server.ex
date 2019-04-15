@@ -33,9 +33,8 @@ defmodule Astrum.Server do
     loop(listen)
   end
 
-  def broadcast(msg) do
+  def broadcast(data) do
     members = :pg2.get_members(:clients)
-    data = Astrum.Packet.encode(msg)
-    Enum.each(members, fn member -> send(member, {:send, data}) end)
+    Enum.each(members, fn member -> send(member, {:line, data}) end)
   end
 end
