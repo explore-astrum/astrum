@@ -17,6 +17,8 @@
 
 #include "AstrumComponentView.h"
 
+#include "SpawnableActor.h"
+
 #include "AstrumGameModeBase.generated.h"
 
 /**
@@ -41,11 +43,16 @@ public:
 	UFUNCTION()
 	void ChangeRelicOwner(FString relic_key, FString relic_owner);
 
+	UFUNCTION()
+	void UpdateRelicLocation(FString relic_key, FVector location);
+
 	UPROPERTY()
 	UAstrumComponentView* ComponentView;
 
 	virtual void HandleMatchHasStarted() override;
 
 	ATCPConnection* tcpConnection;
+
+	TArray<ASpawnableActor*> all_relics;
 	
 };

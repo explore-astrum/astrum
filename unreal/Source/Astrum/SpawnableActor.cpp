@@ -124,10 +124,18 @@ void ASpawnableActor::Tick(float DeltaTime)
 	}
 	else if (last_seen_time > 0) {
 		FVector predicted_location = GetActorLocation() + velocity * DeltaTime;
-		if (server_selected)
+		if (server_selected) {
 			SetActorLocation(predicted_location);
-		else
+			if (HasAuthority()) {
+				ProcessedLocationChange.Broadcast(id, predicted_location);
+			}
+		}
+		else {
 			SetActorLocation(last_seen_location);
+			if (HasAuthority()) {
+				ProcessedLocationChange.Broadcast(id, last_seen_location);
+			}
+		}
 	}
 
 }

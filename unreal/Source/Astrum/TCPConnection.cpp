@@ -1,7 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include <string>
+
 #include "TCPConnection.h"
+#include <string>
 
 uint16 deserialize_uint16(unsigned char *buf)
 {
@@ -16,6 +17,20 @@ uint32 deserialize_uint32(unsigned char *buf)
 	return *x;
 }
 
+uint8* serialize_float(float &f)
+{
+	uint8 *bytef = reinterpret_cast<uint8*>(&f);
+	return bytef;
+}
+
+uint8* serialize_int16(uint16 i)
+{
+	static uint8 ibytes[2];
+	ibytes[1] = (uint8)(i >> 8);
+	ibytes[0] = (uint8)i;
+	return ibytes;
+}
+
 ATCPConnection::ATCPConnection()
 {
 	PrimaryActorTick.bCanEverTick = true;
@@ -28,7 +43,15 @@ ATCPConnection::~ATCPConnection()
 void ATCPConnection::BeginPlay()
 {
 	Super::BeginPlay();
-	Launch();
+}
+
+void ATCPConnection::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	if (!init) {
+		Launch();
+		init = true;
+	}
 }
 
 
@@ -46,7 +69,6 @@ bool ATCPConnection::StartTCPReceiver(
 	const FString& TheIP,
 	const int32 ThePort
 ) {
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString("HERE"));
 	ListenerSocket = CreateTCPConnectionListener(YourChosenSocketName, TheIP, ThePort);
 
 	if (!ListenerSocket)
@@ -147,7 +169,6 @@ void ATCPConnection::TCPSocketListener()
 			return;
 
 		uint16 message_type = deserialize_uint16(reinterpret_cast<unsigned char*>(messageTypeBinary.GetData()));
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::FromInt(message_type));
 		if (message_type == 0) {
 			TArray<uint8> relicTypeBinary = ReadOutBinary(4);
 			if (relicTypeBinary.Num() <= 0)
@@ -187,8 +208,48 @@ void ATCPConnection::TCPSocketListener()
 			//new line
 			ReadOutBinary(1);
 		}
+		else if (message_type == 2) {
+			ReadOutBinary(29);
+		}
 
 	}
 	FTimerHandle timerhandle;
 	GetWorld()->GetTimerManager().SetTimer(timerhandle, this, &ATCPConnection::TCPSocketListener, 0.01);
+}
+
+void ATCPConnection::SendRelicLocation(FString relic_key, FVector location)
+{
+	uint16 type = 2;
+	uint8 *serializedChar = (uint8*)TCHAR_TO_UTF8(relic_key.GetCharArray().GetData());
+	uint8 *f1 = serialize_float(location.X);
+	uint8 *f2 = serialize_float(location.Y);
+	uint8 *f3 = serialize_float(location.Z);
+
+	static uint8 to_send[31];
+
+	uint8 *typeArr = serialize_int16(type);
+	for (int i = 0; i < 2; i++) {
+		to_send[i] = typeArr[1 - i];
+	}
+	for (int i = 0; i < 16; i++) {
+		to_send[i + 2] = serializedChar[i];
+	}
+	for (int i = 0; i < 4; i++) {
+		to_send[i + 18] = f1[3 - i];
+	}
+	for (int i = 0; i < 4; i++) {
+		to_send[i + 22] = f2[3 - i];
+	}
+	for (int i = 0; i < 4; i++) {
+		to_send[i + 26] = f3[3 - i];
+	}
+
+	uint8 *newlineChar = (uint8*)TCHAR_TO_UTF8(FString("\n").GetCharArray().GetData());
+
+	to_send[30] = newlineChar[0];
+
+	int32 size = 31;
+	int32 sent = 0;
+	bool successful = ListenerSocket->Send(to_send, size, sent);
+
 }

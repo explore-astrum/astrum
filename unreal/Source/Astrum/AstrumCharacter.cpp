@@ -64,6 +64,8 @@ void AAstrumCharacter::Tick(float DeltaTime)
 		owner = Cast<AAstrumPlayerController>(GetController());
 		SetupInventory();
 		MovePlayerToStartingPosition();
+		UpdateInventory();
+		init = true;
 	}
 	
 	//play sounds if far away
@@ -157,7 +159,6 @@ void AAstrumCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 void AAstrumCharacter::SetupInventory()
 {
 	if (owner && owner->IsLocalController()) {
-		init = true;
 		GetCharacterMovement()->bOrientRotationToMovement = false;
 		CreateMyWidget();
 		owner->SetProperties();
@@ -490,12 +491,24 @@ void AAstrumCharacter::PutBackInInventory()
 	}
 }
 
-void AAstrumCharacter::PutInInventory(FRelic relic)
+void AAstrumCharacter::UpdateInventory()
 {
 	auto sw = Cast<USpawningWidget>(CurrentWidget);
 	if (sw) {
-		sw->AddToOptions(relic);
-		sw->GetNewOptions();
+		for (int i = 0; i < pendingInventory.Num(); i++) {
+			sw->AddToOptions(pendingInventory[i]);
+			sw->GetNewOptions();
+		}
+		pendingInventory.Empty();
+	}
+}
+
+void AAstrumCharacter::PutInInventoryClient_Implementation(FRelic relic)
+{
+	pendingInventory.Add(relic);
+	auto sw = Cast<USpawningWidget>(CurrentWidget);
+	if (sw) {
+		UpdateInventory();
 	}
 }
 

@@ -1,7 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "AstrumGameModeBase.h"
-#include "SpawnableActor.h"
 #include "AstrumCharacter.h"
 #include "SpawningWidget.h"
 
@@ -76,6 +75,10 @@ void AAstrumGameModeBase::SpawnActor(int relic_type, FString relic_key)
 		new_relic->id = relic_key;
 		new_relic->isPawn = true;
 		new_relic->pawnClass = StaticLoadClass(UObject::StaticClass(), nullptr, TEXT("/Game/VehicleBP/Sedan/Sedan.Sedan_C"), nullptr, LOAD_None, nullptr);
+
+		new_relic->ProcessedLocationChange.AddDynamic(this, &AAstrumGameModeBase::UpdateRelicLocation);
+
+		all_relics.Add(new_relic);
 	}
 }
 
@@ -107,7 +110,8 @@ void AAstrumGameModeBase::ChangeRelicOwner(FString relic_key, FString relic_owne
 			AAstrumCharacter* actor = Cast<AAstrumCharacter>(FoundPlayers[i]);
 			if (actor) {
 				if (actor->owner->GetUserID() == relic_owner) {
-					actor->PutInInventory(relicForInventory);
+					GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, FString("found owner"));
+					actor->PutInInventoryClient(relicForInventory);
 					break;
 				}
 			}
@@ -115,4 +119,9 @@ void AAstrumGameModeBase::ChangeRelicOwner(FString relic_key, FString relic_owne
 	}
 
 	
+}
+
+void AAstrumGameModeBase::UpdateRelicLocation(FString relic_key, FVector location)
+{
+	tcpConnection->SendRelicLocation(relic_key, location);
 }

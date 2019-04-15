@@ -80,7 +80,10 @@ public:
 	void PutBackInInventory();
 
 	UFUNCTION()
-	void PutInInventory(FRelic relic);
+	void UpdateInventory();
+
+	UFUNCTION(Client, Reliable)
+	void PutInInventoryClient(FRelic relic);
 
 
 	AAstrumPlayerController* owner;
@@ -108,7 +111,7 @@ public:
 	int numticks = 0;
 	int numrots = 0;
 
-	ATCPConnection* tcp;
+	TArray<FRelic> pendingInventory;
 
 	
 	

@@ -11,6 +11,8 @@
 #include "AstrumPlayerController.h"
 #include "SpawnableActor.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FProcessedLocationChange, FString, relic_key, FVector, location);
+
 USTRUCT(BlueprintType)
 struct FRelic {
 	GENERATED_BODY()
@@ -192,6 +194,8 @@ public:
 	virtual void Tick(float DeltaTime) override;
 	void RotateX();
 	void PickUp();
+
+	FProcessedLocationChange ProcessedLocationChange;
 
 	
 	

@@ -21,6 +21,7 @@ public:
 	~ATCPConnection();
 
 	virtual void BeginPlay() override;
+	virtual void Tick(float DeltaTime) override;
 
 	FSocket* ListenerSocket;
 	FSocket* ConnectionSocket;
@@ -53,9 +54,12 @@ public:
 
 	//Rama's StringFromBinaryArray
 	FString StringFromBinaryArray(const TArray<uint8> BinaryArray);
+	void SendRelicLocation(FString relic_key, FVector location);
 
 	FProcessedActorSpawn ProcessedActorSpawn;
 	FProcessedChangeOwner ProcessedChangeOwner;
+
+	bool init = false;
 };
 
 	
