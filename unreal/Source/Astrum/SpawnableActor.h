@@ -73,6 +73,8 @@ public:
 	bool server_selected;
 	UPROPERTY(EditAnywhere, Replicated)
 	FString id;
+	UPROPERTY(EditAnywhere, Replicated, AssetRegistrySearchable)
+	FString relic_type;
 	UPROPERTY(EditAnywhere, Replicated)
 	FString userid;
 	UPROPERTY(EditAnywhere)

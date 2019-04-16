@@ -18,6 +18,8 @@
 #include "AstrumComponentView.h"
 
 #include "SpawnableActor.h"
+#include "Engine/ObjectLibrary.h"
+#include "Engine/StreamableManager.h"
 
 #include "AstrumGameModeBase.generated.h"
 
@@ -41,6 +43,9 @@ public:
 	void SpawnActor(int relic_type, FString relic_key);
 
 	UFUNCTION()
+	void AsyncSpawn();
+
+	UFUNCTION()
 	void ChangeRelicOwner(FString relic_key, FString relic_owner);
 
 	UFUNCTION()
@@ -54,5 +59,7 @@ public:
 	ATCPConnection* tcpConnection;
 
 	TArray<ASpawnableActor*> all_relics;
-	
+
+	UObjectLibrary* ObjectLibrary;
+	TArray<FAssetData> actors_to_spawn;
 };

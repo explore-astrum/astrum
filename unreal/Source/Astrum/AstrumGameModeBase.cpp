@@ -21,6 +21,16 @@ void AAstrumGameModeBase::HandleMatchHasStarted() //kick this init off from game
 	tcpConnection = World->SpawnActor<ATCPConnection>();
 	tcpConnection->ProcessedActorSpawn.AddDynamic(this, &AAstrumGameModeBase::SpawnActor);
 	tcpConnection->ProcessedChangeOwner.AddDynamic(this, &AAstrumGameModeBase::ChangeRelicOwner);
+
+	if (!ObjectLibrary)
+	{
+		ObjectLibrary = UObjectLibrary::CreateLibrary(TSubclassOf<ASpawnableActor>(), false, GIsEditor);
+		ObjectLibrary->AddToRoot();
+	}
+
+	int asset_amount = ObjectLibrary->LoadAssetDataFromPath(TEXT("/Game/Relics"));
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString("loading assets...") + FString::FromInt(asset_amount));
+	ObjectLibrary->LoadAssetsFromAssetData();
 }
 
 void AAstrumGameModeBase::GetProcessOps(FOpList OpList)
@@ -68,17 +78,36 @@ void AAstrumGameModeBase::GetProcessOps(FOpList OpList)
 
 void AAstrumGameModeBase::SpawnActor(int relic_type, FString relic_key)
 {
+	TArray<FAssetData> AssetDatas;
+	ObjectLibrary->GetAssetDataList(AssetDatas);
+
+	for (int32 i = 0; i < AssetDatas.Num(); ++i) {
+		FAssetData& AssetData = AssetDatas[i];
+
+		FString FoundType;
+		AssetData.GetTagValue(FName(TEXT("relic_type")), FoundType);
+
+		if (FCString::Atoi(*FoundType) == uint32(relic_type)) {
+			//TArray<FSoftObjectPath> ItemsToStream;
+			//actors_to_spawn.Add(AssetData);
+			UBlueprint* loaded = Cast<UBlueprint>(AssetData.GetAsset());
+			ASpawnableActor* new_relic = GetWorld()->SpawnActor<ASpawnableActor>(loaded->GeneratedClass);
+			new_relic->SetID(relic_key);
+			new_relic->ProcessedLocationChange.AddDynamic(this, &AAstrumGameModeBase::UpdateRelicLocation);
+			all_relics.Add(new_relic);
+			//ItemsToStream.AddUnique(AssetData.ToSoftObjectPath());
+			//StreamableManager.RequestAsyncLoad(ItemsToStream, FStreamableDelegate::CreateUObject(this, &AAstrumGameModeBase::AsyncSpawn));
+		}
+	}
+
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString("Spawning Relic ID: " + relic_key));
-	if (relic_type == 0) {
-		ASpawnableActor* new_relic = GetWorld()->SpawnActor<ASpawnableActor>(StaticLoadClass(UObject::StaticClass(), nullptr, TEXT("/Game/FirstPersonBP/AI/Sofa/CarTry.CarTry_C"), nullptr, LOAD_None, nullptr));
+}
 
-		new_relic->id = relic_key;
-		new_relic->isPawn = true;
-		new_relic->pawnClass = StaticLoadClass(UObject::StaticClass(), nullptr, TEXT("/Game/VehicleBP/Sedan/Sedan.Sedan_C"), nullptr, LOAD_None, nullptr);
-
-		new_relic->ProcessedLocationChange.AddDynamic(this, &AAstrumGameModeBase::UpdateRelicLocation);
-
-		all_relics.Add(new_relic);
+void AAstrumGameModeBase::AsyncSpawn()
+{
+	//for async
+	if (actors_to_spawn.Num() > 0) {
+		actors_to_spawn.RemoveAt(0);
 	}
 }
 
