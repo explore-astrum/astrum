@@ -90,7 +90,7 @@ void AAstrumGameModeBase::SpawnActor(int relic_type, FString relic_key)
 		if (FCString::Atoi(*FoundType) == uint32(relic_type)) {
 			//TArray<FSoftObjectPath> ItemsToStream;
 			//actors_to_spawn.Add(AssetData);
-			UBlueprint* loaded = Cast<UBlueprint>(AssetData.GetAsset());
+			UBlueprint* loaded = Cast<UBlueprint>(AssetData.GetAsset()); //uobject auto-garbage collected
 			ASpawnableActor* new_relic = GetWorld()->SpawnActor<ASpawnableActor>(loaded->GeneratedClass);
 			new_relic->SetID(relic_key);
 			new_relic->ProcessedLocationChange.AddDynamic(this, &AAstrumGameModeBase::UpdateRelicLocation);

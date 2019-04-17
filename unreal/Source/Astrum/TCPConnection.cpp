@@ -169,47 +169,52 @@ void ATCPConnection::TCPSocketListener()
 			return;
 
 		uint16 message_type = deserialize_uint16(reinterpret_cast<unsigned char*>(messageTypeBinary.GetData()));
-		if (message_type == 0) {
-			TArray<uint8> relicTypeBinary = ReadOutBinary(4);
-			if (relicTypeBinary.Num() <= 0)
-				return;
+		switch (message_type) {
+			case 0: {
+				TArray<uint8> relicTypeBinary = ReadOutBinary(4);
+				if (relicTypeBinary.Num() <= 0)
+					return;
 
-			int relic_type = deserialize_uint32(reinterpret_cast<unsigned char*>(relicTypeBinary.GetData()));
-			FString relic_type_str = FString(std::to_string(relic_type).c_str());
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString("Relic Type: " + relic_type_str));
+				int relic_type = deserialize_uint32(reinterpret_cast<unsigned char*>(relicTypeBinary.GetData()));
+				FString relic_type_str = FString(std::to_string(relic_type).c_str());
+				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString("Relic Type: " + relic_type_str));
 
-			TArray<uint8> relicKeyBinary = ReadOutBinary(16);
-			if (relicKeyBinary.Num() <= 0)
-				return;
+				TArray<uint8> relicKeyBinary = ReadOutBinary(16);
+				if (relicKeyBinary.Num() <= 0)
+					return;
 
-			FString relic_key = StringFromBinaryArray(relicKeyBinary);
+				FString relic_key = StringFromBinaryArray(relicKeyBinary);
 
-			ProcessedActorSpawn.Broadcast(relic_type, relic_key);
-			//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString("Relic Type: " + relic_key));
+				ProcessedActorSpawn.Broadcast(relic_type, relic_key);
+				//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString("Relic Type: " + relic_key));
 
-			//new line
-			ReadOutBinary(1);
-		}
-		else if (message_type == 1) {
-			TArray<uint8> relicKeyBinary = ReadOutBinary(16);
-			if (relicKeyBinary.Num() <= 0)
-				return;
+				//new line
+				ReadOutBinary(1);
+				break;
+			}
+			case 1: {
+				TArray<uint8> relicKeyBinary = ReadOutBinary(16);
+				if (relicKeyBinary.Num() <= 0)
+					return;
 
-			FString relic_key = StringFromBinaryArray(relicKeyBinary);
+				FString relic_key = StringFromBinaryArray(relicKeyBinary);
 
-			TArray<uint8> relicOwnerBinary = ReadOutBinary(20);
-			if (relicOwnerBinary.Num() <= 0)
-				return;
+				TArray<uint8> relicOwnerBinary = ReadOutBinary(20);
+				if (relicOwnerBinary.Num() <= 0)
+					return;
 
-			FString relic_owner = StringFromBinaryArray(relicOwnerBinary);
+				FString relic_owner = StringFromBinaryArray(relicOwnerBinary);
 
-			ProcessedChangeOwner.Broadcast(relic_key, relic_owner);
+				ProcessedChangeOwner.Broadcast(relic_key, relic_owner);
 
-			//new line
-			ReadOutBinary(1);
-		}
-		else if (message_type == 2) {
-			ReadOutBinary(29);
+				//new line
+				ReadOutBinary(1);
+				break;
+			}
+			case 2: {
+				ReadOutBinary(29);
+				break;
+			}
 		}
 
 	}
