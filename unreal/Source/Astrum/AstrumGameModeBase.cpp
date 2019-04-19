@@ -91,7 +91,7 @@ void AAstrumGameModeBase::SpawnActor(int relic_type, FString relic_key)
 			//TArray<FSoftObjectPath> ItemsToStream;
 			//actors_to_spawn.Add(AssetData);
 			UBlueprint* loaded = Cast<UBlueprint>(AssetData.GetAsset()); //uobject auto-garbage collected
-			ASpawnableActor* new_relic = GetWorld()->SpawnActor<ASpawnableActor>(loaded->GeneratedClass);
+			ASpawnableActor* new_relic = GetWorld()->SpawnActor<ASpawnableActor>(loaded->GeneratedClass, FVector(5000, 5000, -50000) /*random location thats within reach of players*/, FRotator::ZeroRotator);
 			new_relic->SetID(relic_key);
 			new_relic->ProcessedLocationChange.AddDynamic(this, &AAstrumGameModeBase::UpdateRelicLocation);
 			all_relics.Add(new_relic);

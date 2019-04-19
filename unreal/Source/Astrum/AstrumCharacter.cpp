@@ -169,7 +169,7 @@ void AAstrumCharacter::CreateMyWidget()
 {
 	FString levelname = GetWorld()->GetMapName();
 	levelname.RemoveFromStart(GetWorld()->StreamingLevelsPrefix);
-	if (levelname == "Astrum" || levelname == "Tester") {
+	if (levelname == "Astrum" || levelname == "Tester" || levelname == "height_x3_y0") {
 		CurrentWidget = CreateWidget<UUserWidget>(owner, HUDWidgetClass);
 		owner->bShowMouseCursor = false;
 		EnableInput(owner);
@@ -340,9 +340,11 @@ void AAstrumCharacter::PlaceObjectLocal_Implementation()
 
 void AAstrumCharacter::AssignToLocalController_Implementation(ASpawnableActor* actor)
 {
-	actor->AssignToPlayer();
-	actor->SetSelected(true);
-	actor->SetServerSelected(true);
+	if (actor) {
+		actor->AssignToPlayer();
+		actor->SetSelected(true);
+		actor->SetServerSelected(true);
+	}
 	//lastSpawned = actor;
 }
 

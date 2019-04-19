@@ -90,7 +90,7 @@ public:
 	bool init = false;
 	bool inventoryOn = false;
 	float pickupDistance = 300.0;
-	FVector defaultLocation = FVector(0, 0, 0);
+	FVector defaultLocation = FVector(5000, 5000, -40000);
 
 	UPROPERTY(EditAnywhere, Replicated)
 	ASpawnableActor* lastSpawned;
