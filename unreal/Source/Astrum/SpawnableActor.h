@@ -83,12 +83,15 @@ public:
 	UClass *blueprint;
 
 	UPROPERTY(EditAnywhere, Replicated)
+	bool placed = false;
+
+	UPROPERTY(EditAnywhere, Replicated)
 	UClass* pawnClass;
 	UPROPERTY(EditAnywhere, Replicated)
 	bool isPawn;
 
 	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
-	void PlaceObject();
+	void PlaceObject(bool _placed);
 	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
 	void SetID(const FString &_id);
 
@@ -100,6 +103,9 @@ public:
 	bool GetIsPawn();
 	UFUNCTION(BlueprintCallable)
 	UClass* GetPawn();
+
+	UFUNCTION(BlueprintCallable)
+	bool GetIsPlaced();
 
 	UFUNCTION(BlueprintCallable)
 	void AssignToPlayer();

@@ -290,7 +290,7 @@ void AAstrumCharacter::PutActorDown(ASpawnableActor* actor)
 		ReplacePawn(actor); // replace with real pawn
 	}
 	else {
-		actor->PlaceObject(); // put it down
+		actor->PlaceObject(true); // put it down
 		RemoveMyselfAsOwner(actor);
 		PlaceObjectLocal();
 	}
@@ -372,7 +372,7 @@ void AAstrumCharacter::MoveRelicToDefault_Implementation()
 {
 	if (lastSpawned) {
 		lastSpawned->SetSelected(false);
-		lastSpawned->PlaceObject();
+		lastSpawned->PlaceObject(false);
 		lastSpawned->SetLocation(defaultLocation);
 		lastSpawned->SetActorLocation(defaultLocation);
 		RemoveMyselfAsOwner(lastSpawned);

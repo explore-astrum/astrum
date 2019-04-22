@@ -55,6 +55,7 @@ public:
 	UAstrumComponentView* ComponentView;
 
 	virtual void HandleMatchHasStarted() override;
+	virtual void PostLogin(APlayerController* NewPlayer) override;
 
 	ATCPConnection* tcpConnection;
 

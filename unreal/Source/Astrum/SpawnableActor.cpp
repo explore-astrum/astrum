@@ -220,13 +220,18 @@ UClass* ASpawnableActor::GetPawn()
 	return pawnClass;
 }
 
-void ASpawnableActor::PlaceObject_Implementation()
+void ASpawnableActor::PlaceObject_Implementation(bool _placed)
 {
 	server_selected = false;
+	placed = _placed;
 }
 
-bool ASpawnableActor::PlaceObject_Validate() {
+bool ASpawnableActor::PlaceObject_Validate(bool _placed) {
 	return true;
+}
+
+bool ASpawnableActor::GetIsPlaced() {
+	return placed;
 }
 
 void ASpawnableActor::SetID_Implementation(const FString &_id) {
@@ -373,4 +378,5 @@ void ASpawnableActor::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & O
 	DOREPLIFETIME(ASpawnableActor, pawnClass);
 	DOREPLIFETIME(ASpawnableActor, isPawn);
 	DOREPLIFETIME(ASpawnableActor, combinedRelics);
+	DOREPLIFETIME(ASpawnableActor, placed);
 }

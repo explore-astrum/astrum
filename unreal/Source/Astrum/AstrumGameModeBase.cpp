@@ -154,3 +154,17 @@ void AAstrumGameModeBase::UpdateRelicLocation(FString relic_key, FVector locatio
 {
 	tcpConnection->SendRelicLocation(relic_key, location);
 }
+
+void AAstrumGameModeBase::PostLogin(APlayerController* NewPlayer)
+{
+	Super::PostLogin(NewPlayer);
+	auto player = Cast<AAstrumPlayerController>(NewPlayer);
+	auto character = Cast<AAstrumCharacter>(player->GetPawn());
+	for (int i = 0; i < all_relics.Num(); i++) {
+		TSharedPtr<ASpawnableActor> relic = MakeShareable(all_relics[i]);
+		if (!relic->GetIsPlaced() && relic->userid == player->GetUserID()) {
+			FRelic relicForInventory = relic->CreateRelicFromProperties();
+			character->PutInInventoryClient(relicForInventory);
+		}
+	}
+}

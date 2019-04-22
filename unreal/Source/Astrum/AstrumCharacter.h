@@ -40,6 +40,8 @@ public:
 	virtual void ScrollRight();
 	virtual void CheckForObjectHit();
 	virtual void PutActorDown(ASpawnableActor* actor);
+
+	UFUNCTION(BlueprintCallable)
 	virtual void GoToServer();
 	virtual void CheckMusic();
 

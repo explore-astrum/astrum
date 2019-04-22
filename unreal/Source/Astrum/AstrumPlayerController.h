@@ -72,6 +72,7 @@ class ASTRUM_API AAstrumPlayerController : public APlayerController
 
 		UPROPERTY()
 		UAstrumComponentView* ComponentView;
+
 	
 	
 	
