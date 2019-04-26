@@ -21,6 +21,7 @@ void AAstrumGameModeBase::HandleMatchHasStarted() //kick this init off from game
 	tcpConnection = World->SpawnActor<ATCPConnection>();
 	tcpConnection->ProcessedActorSpawn.AddDynamic(this, &AAstrumGameModeBase::SpawnActor);
 	tcpConnection->ProcessedChangeOwner.AddDynamic(this, &AAstrumGameModeBase::ChangeRelicOwner);
+	tcpConnection->ProcessedChangeLocation.AddDynamic(this, &AAstrumGameModeBase::MoveRelic);
 
 	if (!ObjectLibrary)
 	{
@@ -103,6 +104,17 @@ void AAstrumGameModeBase::SpawnActor(int relic_type, FString relic_key)
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString("Spawning Relic ID: " + relic_key));
 }
 
+void AAstrumGameModeBase::MoveRelic(FString relic_key, FVector location)
+{
+	for (int i = 0; i < all_relics.Num(); i++) {
+		ASpawnableActor* relic = all_relics[i];
+		if (relic->GetID() == relic_key && !relic->GetIsPlaced()) {
+			relic->SetLocation(location);
+			relic->PlaceObject(true);
+		}
+	}
+}
+
 void AAstrumGameModeBase::AsyncSpawn()
 {
 	//for async
@@ -161,7 +173,7 @@ void AAstrumGameModeBase::PostLogin(APlayerController* NewPlayer)
 	auto player = Cast<AAstrumPlayerController>(NewPlayer);
 	auto character = Cast<AAstrumCharacter>(player->GetPawn());
 	for (int i = 0; i < all_relics.Num(); i++) {
-		TSharedPtr<ASpawnableActor> relic = MakeShareable(all_relics[i]);
+		ASpawnableActor* relic = all_relics[i];
 		if (!relic->GetIsPlaced() && relic->userid == player->GetUserID()) {
 			FRelic relicForInventory = relic->CreateRelicFromProperties();
 			character->PutInInventoryClient(relicForInventory);

@@ -43,6 +43,9 @@ public:
 	void SpawnActor(int relic_type, FString relic_key);
 
 	UFUNCTION()
+	void MoveRelic(FString relic_key, FVector location);
+
+	UFUNCTION()
 	void AsyncSpawn();
 
 	UFUNCTION()

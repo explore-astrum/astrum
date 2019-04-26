@@ -23,6 +23,22 @@ uint8* serialize_float(float &f)
 	return bytef;
 }
 
+float deserialize_float(unsigned char *buf)
+{
+	float f1 = *(float*)buf;
+	
+	float retf;
+	char *floatToConvert = (char*)& f1;
+	char *returnFloat = (char*)& retf;
+
+	returnFloat[0] = floatToConvert[3];
+	returnFloat[1] = floatToConvert[2];
+	returnFloat[2] = floatToConvert[1];
+	returnFloat[3] = floatToConvert[0];
+
+	return retf;
+}
+
 uint8* serialize_int16(uint16 i)
 {
 	static uint8 ibytes[2];
@@ -212,7 +228,26 @@ void ATCPConnection::TCPSocketListener()
 				break;
 			}
 			case 2: {
-				ReadOutBinary(29);
+				//ReadOutBinary(29);
+
+				TArray<uint8> relicKeyBinary = ReadOutBinary(16);
+				if (relicKeyBinary.Num() <= 0)
+					return;
+
+				FString relic_key = StringFromBinaryArray(relicKeyBinary);
+
+				TArray<uint8> xBinary = ReadOutBinary(4);
+				float x = deserialize_float(reinterpret_cast<unsigned char*>(xBinary.GetData()));
+
+				TArray<uint8> yBinary = ReadOutBinary(4);
+				float y = deserialize_float(reinterpret_cast<unsigned char*>(yBinary.GetData()));
+
+				TArray<uint8> zBinary = ReadOutBinary(4);
+				float z = deserialize_float(reinterpret_cast<unsigned char*>(zBinary.GetData()));
+
+				ProcessedChangeLocation.Broadcast(relic_key, FVector(x, y, z));
+
+				ReadOutBinary(1);
 				break;
 			}
 		}
