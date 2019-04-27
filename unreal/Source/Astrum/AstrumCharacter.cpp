@@ -162,6 +162,7 @@ void AAstrumCharacter::SetupInventory()
 		GetCharacterMovement()->bOrientRotationToMovement = false;
 		CreateMyWidget();
 		owner->SetProperties();
+		GEngine->AddOnScreenDebugMessage(-1, 25.0f, FColor::Yellow, "SETTING PROPERTIES");
 	}
 }
 
@@ -189,10 +190,13 @@ void AAstrumCharacter::CreateMyWidget()
 
 void AAstrumCharacter::MovePlayerToStartingPosition()
 {
-	if (GetWorld()->GetMapName() == "Astrum") {
+	FString mapName = GetWorld()->GetMapName();
+	mapName.RemoveFromStart(GetWorld()->StreamingLevelsPrefix);
+	if ((mapName == "Astrum" || mapName == "height_x3_y0") && owner && owner->GetProperties().Num() > 0) {
 		FLand firstOwnedLand = owner->GetProperties()[0];
 		FVector spawn = FVector((firstOwnedLand.min.X + firstOwnedLand.max.X) / 2.0, (firstOwnedLand.min.Y + firstOwnedLand.max.Y) / 2.0, 300);
 		SetCharacterLocation(spawn);
+		GEngine->AddOnScreenDebugMessage(-1, 25.0f, FColor::Yellow, spawn.ToString());
 	}
 }
 
