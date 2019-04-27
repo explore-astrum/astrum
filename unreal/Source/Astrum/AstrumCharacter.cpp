@@ -130,7 +130,7 @@ void AAstrumCharacter::CheckMusic()
 	bool farFromHome = false;
 	for (int i = 0; i < ownedLand.Num(); i++) {
 		FLand land = ownedLand[i];
-		FVector2D midpoint = FVector2D((land.max.X + land.min.X) / 2.0, (land.min.X + land.min.Y) / 2.0);
+		FVector2D midpoint = FVector2D((land.max.X + land.min.X) / 2.0, (land.max.Y + land.min.Y) / 2.0);
 		float distFromHome = midpoint.Distance(midpoint, currentLocation);
 
 		if (distFromHome > 25000) {
@@ -162,7 +162,6 @@ void AAstrumCharacter::SetupInventory()
 		GetCharacterMovement()->bOrientRotationToMovement = false;
 		CreateMyWidget();
 		owner->SetProperties();
-		GEngine->AddOnScreenDebugMessage(-1, 25.0f, FColor::Yellow, "SETTING PROPERTIES");
 	}
 }
 
