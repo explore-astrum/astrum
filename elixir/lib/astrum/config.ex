@@ -5,7 +5,9 @@ defmodule Astrum.Config do
     interceptors: [
       Astrum.Relic.Create,
       Astrum.Relic.Owner,
-      Astrum.Relic.Position
+      Astrum.Relic.Position,
+      Astrum.Plot.Create,
+      Astrum.Plot.Owner
     ],
     commands: [],
     read: {Kora.Store.Memory, directory: "data/kora.json"},
