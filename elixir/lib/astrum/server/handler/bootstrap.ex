@@ -18,6 +18,16 @@ defmodule Astrum.Server.Bootstrap do
       |> Kora.Interceptor.effect(Mutation.merge(["relic:info", key], relic), "kora-master")
     end)
 
+    ["plot:info"]
+    |> Kora.stream_path()
+    |> Enum.each(fn {key, plot} ->
+      [
+        Astrum.Plot.Create,
+        Astrum.Plot.Owner
+      ]
+      |> Kora.Interceptor.effect(Mutation.merge(["plot:info", key], plot), "kora-master")
+    end)
+
     :ok
   end
 end

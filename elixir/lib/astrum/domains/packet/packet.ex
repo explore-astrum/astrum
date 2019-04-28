@@ -31,4 +31,19 @@ defmodule Astrum.Packet do
 
   def ping(), do: <<3::unsigned-integer-size(16)>>
   def pong(), do: <<4::unsigned-integer-size(16)>>
+
+  def plot_create(x, y, plot),
+    do: <<
+      5::unsigned-integer-size(16),
+      x::signed-integer-size(16),
+      y::signed-integer-size(16),
+      plot::binary-size(8)
+    >>
+
+  def plot_owner(plot, owner),
+    do: <<
+      6::unsigned-integer-size(16),
+      plot::binary-size(8),
+      owner::binary-size(20)
+    >>
 end
