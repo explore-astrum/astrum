@@ -53,7 +53,7 @@ class ASTRUM_API AAstrumPlayerController : public APlayerController
 		TArray<FLand> properties;
 
 		UFUNCTION(BlueprintCallable)
-		void SetProperties();
+		void SetExampleProperties();
 
 		UFUNCTION(BlueprintCallable)
 		TArray<FLand> GetProperties();
@@ -72,6 +72,9 @@ class ASTRUM_API AAstrumPlayerController : public APlayerController
 
 		UPROPERTY()
 		UAstrumComponentView* ComponentView;
+
+		UFUNCTION()
+		void AddProperties(FLand land);
 
 	
 	

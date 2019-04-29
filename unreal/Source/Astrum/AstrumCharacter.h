@@ -115,6 +115,8 @@ public:
 
 	TArray<FRelic> pendingInventory;
 
+	bool moved_player = false;
+
 	
 	
 };

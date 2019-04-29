@@ -22,6 +22,8 @@ void AAstrumGameModeBase::HandleMatchHasStarted() //kick this init off from game
 	tcpConnection->ProcessedActorSpawn.AddDynamic(this, &AAstrumGameModeBase::SpawnActor);
 	tcpConnection->ProcessedChangeOwner.AddDynamic(this, &AAstrumGameModeBase::ChangeRelicOwner);
 	tcpConnection->ProcessedChangeLocation.AddDynamic(this, &AAstrumGameModeBase::MoveRelic);
+	tcpConnection->ProcessedAddPlot.AddDynamic(this, &AAstrumGameModeBase::AddPlot);
+	tcpConnection->ProcessedChangePlotOwner.AddDynamic(this, &AAstrumGameModeBase::ChangePlotOwner);
 
 	if (!ObjectLibrary)
 	{
@@ -108,7 +110,7 @@ void AAstrumGameModeBase::MoveRelic(FString relic_key, FVector location)
 {
 	for (int i = 0; i < all_relics.Num(); i++) {
 		ASpawnableActor* relic = all_relics[i];
-		if (relic->GetID() == relic_key && !relic->GetIsPlaced()) {
+		if (relic && relic->GetID() == relic_key && !relic->GetIsPlaced()) {
 			relic->SetLocation(location);
 			relic->PlaceObject(true);
 		}
@@ -158,8 +160,6 @@ void AAstrumGameModeBase::ChangeRelicOwner(FString relic_key, FString relic_owne
 			}
 		}
 	}
-
-	
 }
 
 void AAstrumGameModeBase::UpdateRelicLocation(FString relic_key, FVector location)
@@ -177,6 +177,54 @@ void AAstrumGameModeBase::PostLogin(APlayerController* NewPlayer)
 		if (!relic->GetIsPlaced() && relic->userid == player->GetUserID()) {
 			FRelic relicForInventory = relic->CreateRelicFromProperties();
 			character->PutInInventoryClient(relicForInventory);
+		}
+	}
+
+	for (int i = 0; i < all_plots.Num(); i++) {
+		FPlot plot = all_plots[i];
+		if (plot.owner == player->GetUserID()) {
+			FLand land = plot.land;
+			player->AddProperties(land);
+		}
+	}
+}
+
+void AAstrumGameModeBase::AddPlot(FString plot_id, FVector2D coords)
+{
+	FLand land;
+	land.min = FVector2D(coords.X * land_size - land_size / 2.0, coords.Y * land_size - land_size / 2.0);
+	land.max = FVector2D(coords.X * land_size + land_size / 2.0, coords.Y * land_size + land_size / 2.0);
+
+	FPlot plot;
+	plot.id = plot_id;
+	plot.coords = coords;
+	plot.land = land;
+
+	all_plots.Add(plot);
+}
+
+void AAstrumGameModeBase::ChangePlotOwner(FString plot_id, FString owner_id)
+{
+	FPlot plot;
+	bool found = false;
+	for (int i = 0; i < all_plots.Num(); i++) {
+		plot = all_plots[i];
+		if (plot.id == plot_id) {
+			plot.owner = owner_id;
+			found = true;
+		}
+	}
+	if (found) {
+		TArray<AActor*> FoundPlayers;
+		UGameplayStatics::GetAllActorsOfClass(GetWorld(), AAstrumCharacter::StaticClass(), FoundPlayers);
+		for (int i = 0; i < FoundPlayers.Num(); i++) {
+			AAstrumCharacter* actor = Cast<AAstrumCharacter>(FoundPlayers[i]);
+			if (actor) {
+				if (actor->owner->GetUserID() == owner_id) {
+					actor->owner->AddProperties(plot.land);
+					break;
+				}
+			}
 		}
 	}
 }

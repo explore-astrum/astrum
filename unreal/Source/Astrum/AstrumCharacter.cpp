@@ -63,10 +63,12 @@ void AAstrumCharacter::Tick(float DeltaTime)
 	if (!init) {
 		owner = Cast<AAstrumPlayerController>(GetController());
 		SetupInventory();
-		MovePlayerToStartingPosition();
 		UpdateInventory();
 		init = true;
 	}
+
+	if(!moved_player)
+		MovePlayerToStartingPosition();
 	
 	//play sounds if far away
 	if (init) {
@@ -161,7 +163,7 @@ void AAstrumCharacter::SetupInventory()
 	if (owner && owner->IsLocalController()) {
 		GetCharacterMovement()->bOrientRotationToMovement = false;
 		CreateMyWidget();
-		owner->SetProperties();
+		//owner->SetExampleProperties();
 	}
 }
 
@@ -192,10 +194,12 @@ void AAstrumCharacter::MovePlayerToStartingPosition()
 	FString mapName = GetWorld()->GetMapName();
 	mapName.RemoveFromStart(GetWorld()->StreamingLevelsPrefix);
 	if ((mapName == "Astrum" || mapName == "height_x3_y0") && owner && owner->GetProperties().Num() > 0) {
+		UE_LOG(LogTemp, Warning, TEXT("MOVING TO STARTING POSITION"));
 		FLand firstOwnedLand = owner->GetProperties()[0];
-		FVector spawn = FVector((firstOwnedLand.min.X + firstOwnedLand.max.X) / 2.0, (firstOwnedLand.min.Y + firstOwnedLand.max.Y) / 2.0, 300);
+		FVector spawn = FVector((firstOwnedLand.min.X + firstOwnedLand.max.X) / 2.0, (firstOwnedLand.min.Y + firstOwnedLand.max.Y) / 2.0, -1000);
 		SetCharacterLocation(spawn);
-		GEngine->AddOnScreenDebugMessage(-1, 25.0f, FColor::Yellow, spawn.ToString());
+
+		moved_player = true;
 	}
 }
 

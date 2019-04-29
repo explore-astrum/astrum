@@ -12,6 +12,8 @@
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FProcessedActorSpawn, int, type, FString, relic);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FProcessedChangeOwner, FString, relic, FString, owner);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FProcessedChangeLocation, FString, relic, FVector, location);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FProcessedAddPlot, FString, plot, FVector2D, coords);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FProcessedChangePlotOwner, FString, plot, FString, owner);
 
 UCLASS()
 class ASTRUM_API ATCPConnection : public AActor
@@ -60,6 +62,8 @@ public:
 	FProcessedActorSpawn ProcessedActorSpawn;
 	FProcessedChangeOwner ProcessedChangeOwner;
 	FProcessedChangeLocation ProcessedChangeLocation;
+	FProcessedAddPlot ProcessedAddPlot;
+	FProcessedChangePlotOwner ProcessedChangePlotOwner;
 
 	bool init = false;
 };

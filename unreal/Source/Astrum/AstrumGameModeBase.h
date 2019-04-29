@@ -14,6 +14,7 @@
 #include "Schema/StandardLibrary.h"
 #include "Interop/SpatialDispatcher.h"
 #include "TCPConnection.h"
+#include "AstrumPlayerController.h"
 
 #include "AstrumComponentView.h"
 
@@ -22,6 +23,19 @@
 #include "Engine/StreamableManager.h"
 
 #include "AstrumGameModeBase.generated.h"
+
+USTRUCT()
+struct FPlot {
+	GENERATED_BODY()
+	UPROPERTY()
+	FVector2D coords;
+	UPROPERTY()
+	FLand land;
+	UPROPERTY()
+	FString owner;
+	UPROPERTY()
+	FString id;
+};
 
 /**
  * 
@@ -54,6 +68,12 @@ public:
 	UFUNCTION()
 	void UpdateRelicLocation(FString relic_key, FVector location);
 
+	UFUNCTION()
+	void AddPlot(FString plot_id, FVector2D coords);
+
+	UFUNCTION()
+	void ChangePlotOwner(FString plot_id, FString owner_id);
+
 	UPROPERTY()
 	UAstrumComponentView* ComponentView;
 
@@ -66,4 +86,7 @@ public:
 
 	UObjectLibrary* ObjectLibrary;
 	TArray<FAssetData> actors_to_spawn;
+	TArray<FPlot> all_plots;
+
+	float land_size = 5000.0;
 };

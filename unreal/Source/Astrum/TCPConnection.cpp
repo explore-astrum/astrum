@@ -10,6 +10,12 @@ uint16 deserialize_uint16(unsigned char *buf)
 	return (buf[0] << 8) + buf[1];
 }
 
+int deserialize_int(unsigned char *buf)
+{
+	int16 *x = (int16*)buf;
+	return *x;
+}
+
 
 uint32 deserialize_uint32(unsigned char *buf)
 {
@@ -250,6 +256,31 @@ void ATCPConnection::TCPSocketListener()
 				ReadOutBinary(1);
 				break;
 			}
+			case 5: {
+				TArray<uint8> xBinary = ReadOutBinary(2);
+				int x = deserialize_int(reinterpret_cast<unsigned char*>(xBinary.GetData()));
+				TArray<uint8> yBinary = ReadOutBinary(2);
+				int y = deserialize_int(reinterpret_cast<unsigned char*>(yBinary.GetData()));
+
+				TArray<uint8> plotBinary = ReadOutBinary(8);
+				FString plot_id = StringFromBinaryArray(plotBinary);
+
+				ProcessedAddPlot.Broadcast(plot_id, FVector2D(x, y));
+
+				ReadOutBinary(1);
+				break;
+			}
+			case 6: {
+				TArray<uint8> plotBinary = ReadOutBinary(8);
+				FString plot_id = StringFromBinaryArray(plotBinary);
+				TArray<uint8> ownerBinary = ReadOutBinary(20);
+				FString owner = StringFromBinaryArray(ownerBinary);
+
+				ProcessedChangePlotOwner.Broadcast(plot_id, owner);
+				ReadOutBinary(1);
+				break;
+			}
+
 		}
 
 	}

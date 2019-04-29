@@ -5,7 +5,7 @@
 
 using namespace improbable;
 
-void AAstrumPlayerController::SetProperties() {
+void AAstrumPlayerController::SetExampleProperties() {
 	//manually set them for now
 	FLand a;
 	//a.min = FVector2D(650590-1000, 605530 - 1000);
@@ -13,6 +13,10 @@ void AAstrumPlayerController::SetProperties() {
 	a.min = FVector2D(5000, 5000);
 	a.max = FVector2D(10000, 10000);
 	properties.Add(a);
+}
+
+void AAstrumPlayerController::AddProperties(FLand land) {
+	properties.Add(land);
 }
 
 FString AAstrumPlayerController::GetUserID() {
