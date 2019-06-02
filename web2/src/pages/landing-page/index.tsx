@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Container, Image, Wrap } from '../../components'
+import Terrain from '../../structures/terrain'
 
 const IMG_STEP_0 = require('./img/step-0.png')
 const IMG_STEP_1 = require('./img/step-1.png')
@@ -70,6 +71,11 @@ export default class LandingPage extends React.Component<any, any> {
                                 <Container fg-white size-4 m-size-5 weight-5 line-8 text-center>
                                     Astrum is an experiment in building a singular world owned and operated entirely by its players. Claim your piece to engage in 100% player driven trade, exploration, politics and work together to determine this future of this new world
                                 </Container>
+                            </Container>
+                        </Container>
+                        <Container pad-b8>
+                            <Terrain />
+                            <Container flex justify-center mgn-t4>
                                 <Container mgn-t4 fg-black bg-white pad-h6 pad-v4 uppercase radius-4 weight-6 size-3-5>Browse Available Plots</Container>
                             </Container>
                         </Container>
