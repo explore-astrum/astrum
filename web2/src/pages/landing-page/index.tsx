@@ -1,7 +1,9 @@
 import * as React from 'react'
 import { Container, Image, Wrap } from '../../components'
 
-
+const IMG_STEP_0 = require('./img/step-0.png')
+const IMG_STEP_1 = require('./img/step-1.png')
+const IMG_STEP_2 = require('./img/step-2.png')
 
 
 export default class LandingPage extends React.Component<any, any> {
@@ -31,7 +33,7 @@ export default class LandingPage extends React.Component<any, any> {
             <Container style={{ background: '#1a1e17' }}>
                 {
                     LAYERS.map((item, index) => (
-                        <Container fill overflow-hidden style={{
+                        <Container key={item} fill overflow-hidden style={{
                             position: 'fixed',
                         }}>
                             <Image src={item} style={{
@@ -69,6 +71,47 @@ export default class LandingPage extends React.Component<any, any> {
                                     Astrum is an experiment in building a singular world owned and operated entirely by its players. Claim your piece to engage in 100% player driven trade, exploration, politics and work together to determine this future of this new world
                                 </Container>
                                 <Container mgn-t4 fg-black bg-white pad-h6 pad-v4 uppercase radius-4 weight-6 size-3-5>Browse Available Plots</Container>
+                            </Container>
+                        </Container>
+                        <Container mgn-v8 fg-white>
+                            <Container flex justify-center>
+                                <Container flex-5 relative pad-r4>
+                                    <Image src={IMG_STEP_2} />
+                                </Container>
+                                <Container flex-5 flex align-center pad-l4>
+                                    <Container>
+                                        <Container uppercase size-5 weight-6>Claim your piece</Container>
+                                        <Container mgn-t2 line-8 >
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam fringilla ultricies risus vel posuere. Cras in urna tincidunt lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam fringilla ultricies risus vel posuere. Cras in urna tincidunt
+                                    </Container>
+                                    </Container>
+                                </Container>
+                            </Container>
+                            <Container flex justify-center mgn-t8>
+                                <Container flex-5 flex align-center pad-r4>
+                                    <Container>
+                                        <Container uppercase size-5 weight-6>Make it yours</Container>
+                                        <Container mgn-t2 line-8 >
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam fringilla ultricies risus vel posuere. Cras in urna tincidunt lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam fringilla ultricies risus vel posuere. Cras in urna tincidunt
+                                    </Container>
+                                    </Container>
+                                </Container>
+                                <Container flex-5 relative pad-l4>
+                                    <Image src={IMG_STEP_1} />
+                                </Container>
+                            </Container>
+                            <Container flex justify-center mgn-t8>
+                                <Container flex-5 relative pad-r4>
+                                    <Image src={IMG_STEP_0} />
+                                </Container>
+                                <Container flex-5 flex align-center pad-l4>
+                                    <Container>
+                                        <Container uppercase size-5 weight-6>Explore and Trade</Container>
+                                        <Container mgn-t2 line-8 >
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam fringilla ultricies risus vel posuere. Cras in urna tincidunt lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam fringilla ultricies risus vel posuere. Cras in urna tincidunt
+                                    </Container>
+                                    </Container>
+                                </Container>
                             </Container>
                         </Container>
                     </Wrap>
