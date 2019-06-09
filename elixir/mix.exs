@@ -23,11 +23,14 @@ defmodule Astrum.MixProject do
   defp deps do
     [
       {:fig, github: "ironbay/fig"},
+      {:stripity_stripe, "~> 2.0.0"},
       {:hull, github: "ironbay/hull"},
       {:kora, github: "ironbay/kora"},
       {:gondola, github: "ironbay/gondola"},
       {:google_api_storage, "~> 0.1.0"},
-      {:poison, "~> 3.1.0", override: true}
+      {:poison, "~> 3.1.0", override: true},
+      {:joken, "~> 2.0"},
+      {:comeonin, "~> 3.0"}
     ]
   end
 end

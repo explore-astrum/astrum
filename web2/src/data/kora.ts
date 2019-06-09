@@ -4,6 +4,7 @@ import KoraRouter from '@ironbay/kora-router'
 const kora = new Kora(new MemoryStore())
 kora.connect('ws://localhost:12000/socket')
 const router = new KoraRouter(kora)
+kora.onLocalChange.add(() => console.dir(kora.local_path([])))
 
 kora.before_mutation(['plot:info', '+'], (path, mut) => {
     const { owner } = mut.merge
