@@ -65,7 +65,7 @@ export default class LandingPage extends React.Component<any, any> {
                                 <video
                                     controls
                                     style={{ width: '100%', height: 'auto' }}
-                                    src={require('./img/trailer.webm')} />
+                                    src="https://storage.googleapis.com/public.exploreastrum.com/trailer.webm" />
                             </Container>
                             <Container flex flex-column align-center pad-v8 mgn-h6>
                                 <Container fg-white size-4 m-size-5 weight-5 line-8 text-center>
