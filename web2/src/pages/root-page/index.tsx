@@ -18,8 +18,8 @@ export default class RootPage extends React.Component<any, any> {
     render() {
         return (
             <Container>
-                {router.is_match('/landing') && <LandingPage />}
-                {router.is_match('/plot/+') && <PlotPage />}
+                {router.match_prefix('/landing') && <LandingPage />}
+                {router.match_prefix('/plot/+') && <PlotPage />}
             </Container>
         )
     }
