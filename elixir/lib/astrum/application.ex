@@ -12,6 +12,7 @@ defmodule Astrum.Application do
       # Starts a worker by calling: Astrum.Worker.start_link(arg)
       # {Astrum.Worker, arg}
       {Kora.Server, [port: 12000]},
+      {Kora.Scheduler, []},
       {Astrum.Server, 16000}
     ]
 
