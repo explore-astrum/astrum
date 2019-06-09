@@ -19,7 +19,7 @@
     "chroma-js": "2.0.3",
     "chrome": "0.1.0",
     "classnames": "2.2.6",
-    "kora-router": "file:../../kora/kora-plugins/kora-router",
+    "@ironbay/kora-router": "0.0.3",
     "parcel-bundler": "1.12.2",
     "react": "16.8.4",
     "react-dom": "16.8.4",

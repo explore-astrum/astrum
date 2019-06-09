@@ -1,14 +1,14 @@
 alias Kora.Mutation
 
 defmodule Astrum.Relic do
-  use Dynamic.Macros
+  require Dynamic
 
-  get([
-    :owner,
-    :position,
-    :key,
-    :type
-  ])
+  Dynamic.schema(%{
+    "owner" => nil,
+    "position" => nil,
+    "key" => nil,
+    "type" => nil
+  })
 
   def create(type, name, count) do
     0..(count - 1)
