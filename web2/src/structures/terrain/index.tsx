@@ -7,6 +7,9 @@ import { Container, Wrap } from '../../components/'
 import Link from '../link'
 import Lego from '../../components/lego'
 
+import * as Plot from '../../data/plot'
+import { router } from '../../data/kora'
+
 const HEIGHTMAP = require('./heightmap.png')
 const SIZE = 512
 const PLOT = SIZE / (64)
@@ -14,11 +17,12 @@ const HEIGHT = 100
 const WATER = 0.03
 const BORDER = 1
 interface Props { }
+let scene = new THREE.Scene()
 export default class Terrain extends React.Component<Props, any> {
     componentDidMount() {
         const root = this.root()
         const bounds = root.getBoundingClientRect()
-        const scene = new THREE.Scene()
+        scene = new THREE.Scene()
         const camera = new THREE.PerspectiveCamera(45, bounds.width / bounds.height, 0.1, 10000)
         const scale = Chroma.scale(['lightgreen', 'white']).domain([0, HEIGHT * 0.8])
 
@@ -46,7 +50,11 @@ export default class Terrain extends React.Component<Props, any> {
         const material = new THREE.MeshBasicMaterial({ color: 0xffffff, opacity: 0.5, transparent: true })
         const box = new THREE.Mesh(geometry, material);
         box.position.set(SIZE / 2, HEIGHT / 2, SIZE / 2)
-        // scene.add(box)
+        box.name = 'highlight'
+
+        const [route, key] = router.parts()
+        if(route != "landing")
+            scene.add(box)
 
 
         function color(geometry, face) {
@@ -144,33 +152,19 @@ export default class Terrain extends React.Component<Props, any> {
             requestAnimationFrame(render)
         }
         render()
-        root.addEventListener('click', event => {
-            var raycaster = new THREE.Raycaster();
-            raycaster.setFromCamera(
-                new THREE.Vector2(
-                    (event.clientX / window.innerWidth) * 2 - 1,
-                    - (event.clientY / window.innerHeight) * 2 + 1
-                ),
-                camera
-            );
-
-            // calculate objects intersecting the picking ray
-            const intersects = raycaster.intersectObjects(scene.children).filter(i => i.object.name === 'valley')
-            console.log(intersects)
-            const vector = intersects[0].point
-            const x = Math.floor(vector.x / PLOT) * PLOT
-            const z = Math.floor(vector.z / PLOT) * PLOT
-            console.log(x / PLOT + 64, z / PLOT + 64)
-            box.position.set(x + PLOT / 2, HEIGHT / 2, z + PLOT / 2)
-            // control.target.copy(box.position)
-        })
-
     }
     private root() {
         return ReactDOM.findDOMNode(this) as HTMLElement
     }
 
     render() {
+        const [route, key] = router.parts()
+        if(route != "landing" && key) {
+            const { x, y } = Plot.key_decode(key)
+            let box = scene.children.filter(i => i.name === 'highlight')[0]
+            if(box)
+                box.position.set(x * PLOT - SIZE, HEIGHT / 2, y * PLOT - SIZE);
+        }
         return <Container style={{ height: '50rem' }} />
     }
 }

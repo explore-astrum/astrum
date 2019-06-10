@@ -23,7 +23,7 @@ export default class RootPage extends React.Component<any, any> {
             <Container>
                 {router.match_prefix('/landing') && <LandingPage />}
                 {router.match_prefix('/auth') && <AuthPage />}
-                {router.match_prefix('/plot/+') && <PlotPage />}
+                {router.match_prefix('/plot') && <PlotPage />}
             </Container>
         )
     }
