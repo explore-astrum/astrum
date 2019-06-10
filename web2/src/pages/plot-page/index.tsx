@@ -40,7 +40,8 @@ export default class PlotPage extends React.Component<Props, State> {
                         <Image src={`https://public.exploreastrum.com/iso/${key}se.jpg`} />
                     </Container>
                     <Container flex-grow style={{
-                        backgroundImage: `url(https://public.exploreastrum.com/iso/${key}${direction}.jpg)`,
+                        backgroundImage:
+                            `url(https://public.exploreastrum.com/iso/${key}${direction}.jpg)`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                     }}>
