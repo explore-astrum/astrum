@@ -163,7 +163,7 @@ export default class Terrain extends React.Component<Props, any> {
             const { x, y } = Plot.key_decode(key)
             let box = scene.children.filter(i => i.name === 'highlight')[0]
             if(box)
-                box.position.set(x * PLOT - SIZE, HEIGHT / 2, y * PLOT - SIZE);
+                box.position.set(y * PLOT - SIZE, HEIGHT / 2, (64 + 128 - x) * PLOT - SIZE);
         }
         return <Container style={{ height: '50rem' }} />
     }

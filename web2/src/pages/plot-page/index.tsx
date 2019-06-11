@@ -19,8 +19,8 @@ export default class PlotPage extends React.Component<Props, State> {
             <Container>
                 <Header />
                 <Container>
-                    <Terrain />
                     <TopDownMap />
+                    <Terrain />
                 </Container>
                 <PlotInfo />
             </Container>

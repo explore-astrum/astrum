@@ -18,12 +18,12 @@ const WATER = 0.03
 const BORDER = 1
 const DIST_FROM_CAMERA = -700
 const renderer = new THREE.WebGLRenderer()
+const scene = new THREE.Scene()
 interface Props { }
 export default class TopDownMap extends React.Component<Props, any> {
     componentDidMount() {
         const root = this.root()
         const bounds = root.getBoundingClientRect()
-        const scene = new THREE.Scene()
         const camera = new THREE.PerspectiveCamera(45, bounds.width / bounds.height, 0.1, 10000)
         const scale = Chroma.scale(['lightgreen', 'white']).domain([0, HEIGHT * 0.8])
 
@@ -154,7 +154,7 @@ export default class TopDownMap extends React.Component<Props, any> {
             let box = scene.children.filter(i => i.name === 'highlight')[0]
             box.position.set(x * PLOT, y * PLOT, DIST_FROM_CAMERA)
 
-            let key = Plot.key_encode(x + 96, y + 96)
+            let key = Plot.key_encode(x + 96, 96 - y)
             router.push('/plot/' + key)
             Plot.refresh(key)
         })
@@ -165,6 +165,13 @@ export default class TopDownMap extends React.Component<Props, any> {
     }
 
     render() {
+        const [route, key] = router.parts()
+        if(route != "landing" && key) {
+            const { x, y } = Plot.key_decode(key)
+            let box = scene.children.filter(i => i.name === 'highlight')[0]
+            if(box)
+                box.position.set((x - 96) * PLOT, (96 - y) * PLOT, DIST_FROM_CAMERA);
+        }
         return <Container style={{ height: '50rem' }} />
     }
 }
