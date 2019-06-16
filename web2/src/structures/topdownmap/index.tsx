@@ -24,7 +24,7 @@ export default class TopDownMap extends React.Component<Props, any> {
     componentDidMount() {
         const root = this.root()
         const bounds = root.getBoundingClientRect()
-        const camera = new THREE.PerspectiveCamera(45, bounds.width / bounds.height, 0.1, 10000)
+        const camera = new THREE.OrthographicCamera(- bounds.width / 2, bounds.width / 2, bounds.height / 2, - bounds.height / 2, 1, 1000)
         const scale = Chroma.scale(['lightgreen', 'white']).domain([0, HEIGHT * 0.8])
 
         renderer.setClearColor(0x1a1e17, 1.0)
