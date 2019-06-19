@@ -5,19 +5,19 @@
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
 
-#include "Interop/Connection/SpatialWorkerConnection.h"
-#include "Interop/SpatialStaticComponentView.h"
-#include "EngineClasses/SpatialGameInstance.h"
-#include "EngineClasses/SpatialNetDriver.h"
-#include "Schema/Component.h"
-#include "Schema/DynamicComponent.h"
-#include "Schema/StandardLibrary.h"
-#include "Interop/SpatialDispatcher.h"
+//#include "Interop/Connection/SpatialWorkerConnection.h"
+//#include "Interop/SpatialStaticComponentView.h"
+//#include "EngineClasses/SpatialGameInstance.h"
+//#include "EngineClasses/SpatialNetDriver.h"
+//#include "Schema/Component.h"
+//#include "Schema/DynamicComponent.h"
+//#include "Schema/StandardLibrary.h"
+//#include "Interop/SpatialDispatcher.h"
 
-#include <WorkerSDK/improbable/c_schema.h>
-#include <WorkerSDK/improbable/c_worker.h>
+//#include <WorkerSDK/improbable/c_schema.h>
+//#include <WorkerSDK/improbable/c_worker.h>
 
-#include "AstrumComponentView.h"
+//#include "AstrumComponentView.h"
 
 #include "AstrumPlayerController.generated.h"
 
@@ -37,7 +37,7 @@ struct FLand {
 	FVector2D max;
 };
 
-UCLASS(SpatialType)
+UCLASS()
 class ASTRUM_API AAstrumPlayerController : public APlayerController
 {
 	GENERATED_BODY()
@@ -61,17 +61,17 @@ class ASTRUM_API AAstrumPlayerController : public APlayerController
 		UFUNCTION(BlueprintCallable)
 		void GoToServer();
 
-		UPROPERTY()
-		USpatialNetDriver* NetDriver;
+		//UPROPERTY()
+		//USpatialNetDriver* NetDriver;
 
 		virtual void BeginPlay() override;
 		//virtual void Tick(float DeltaTime) override;
 
-		UFUNCTION()
-		void GetProcessOps(struct FOpList OpList);
+		//UFUNCTION()
+		//void GetProcessOps(struct FOpList OpList);
 
-		UPROPERTY()
-		UAstrumComponentView* ComponentView;
+		//UPROPERTY()
+		//UAstrumComponentView* ComponentView;
 
 		UFUNCTION()
 		void AddProperties(FLand land);

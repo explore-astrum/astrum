@@ -4,14 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "Engine/GameInstance.h"
-#include "SpatialGameInstance.h"
 #include "AstrumGameInstance.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class ASTRUM_API UAstrumGameInstance : public USpatialGameInstance
+class ASTRUM_API UAstrumGameInstance : public UGameInstance
 {
 	GENERATED_BODY()
 	

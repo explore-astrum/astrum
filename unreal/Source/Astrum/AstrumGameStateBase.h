@@ -9,7 +9,7 @@
 /**
  * 
  */
-UCLASS(SpatialType=Singleton)
+UCLASS()
 class ASTRUM_API AAstrumGameStateBase : public AGameState
 {
 	GENERATED_BODY()

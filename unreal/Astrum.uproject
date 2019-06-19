@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "{C5F38BEC-4246-AFAC-ECF4-669702F12452}",
+	"EngineAssociation": "4.22",
 	"Category": "",
 	"Description": "",
 	"Modules": [
@@ -14,10 +14,5 @@
 			]
 		}
 	],
-	"Plugins": [
-		{
-			"Name": "SpatialGDK",
-			"Enabled": true
-		}
-	]
+	"Plugins": []
 }

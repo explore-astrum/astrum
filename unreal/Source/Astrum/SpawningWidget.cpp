@@ -33,14 +33,14 @@ USpawningWidget::USpawningWidget(const FObjectInitializer& ObjectInitializer)
 	c.category = "thing";
 	options.Add(c);
 
-	FRelic d;
-	d.id = "2";
-	d.icon = ConstructorHelpers::FObjectFinder<UTexture2D>(TEXT("/Game/FirstPersonBP/Maps/MapTextures/Beach_Sand_Normal.Beach_Sand_Normal")).Object;
-	d.isPawn = false;
-	d.pawnClass = StaticLoadClass(UObject::StaticClass(), nullptr, TEXT("/Game/VehicleBP/Sedan/Sedan.Sedan_C"), nullptr, LOAD_None, nullptr);
-	d.blueprint = StaticLoadClass(UObject::StaticClass(), nullptr, TEXT("/Game/FirstPersonBP/AI/Sofa/PaintTry.PaintTry_C"), nullptr, LOAD_None, nullptr);
-	d.category = "paint";
-	options.Add(d);
+	// FRelic d;
+	// d.id = "2";
+	// d.icon = ConstructorHelpers::FObjectFinder<UTexture2D>(TEXT("/Game/FirstPersonBP/Maps/MapTextures/Beach_Sand_Normal.Beach_Sand_Normal")).Object;
+	// d.isPawn = false;
+	// d.pawnClass = StaticLoadClass(UObject::StaticClass(), nullptr, TEXT("/Game/VehicleBP/Sedan/Sedan.Sedan_C"), nullptr, LOAD_None, nullptr);
+	// d.blueprint = StaticLoadClass(UObject::StaticClass(), nullptr, TEXT("/Game/FirstPersonBP/AI/Sofa/SofaTry.SofaTry_C"), nullptr, LOAD_None, nullptr);
+	// d.category = "paint";
+	// options.Add(d);
 }
 bool USpawningWidget::Initialize() {
 	bool b = Super::Initialize();
