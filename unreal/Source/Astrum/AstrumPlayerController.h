@@ -44,7 +44,7 @@ class ASTRUM_API AAstrumPlayerController : public APlayerController
 
 	public:
 		UPROPERTY(EditAnywhere)
-		FString userID = "01234567890123456789";
+		FString userID = "12345678901234567890";
 
 		UFUNCTION(BlueprintCallable)
 		FString GetUserID();

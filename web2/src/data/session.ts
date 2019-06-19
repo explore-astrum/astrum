@@ -15,7 +15,5 @@ export async function upgrade(token: string) {
 }
 
 const existing = token()
-if (existing)
-    upgrade(existing).catch(() => kora.local_merge(['session', 'user'], false))
-if (!existing)
-    kora.local_merge(['session', 'user'], false)
+if (existing) upgrade(existing).catch(() => kora.local_merge(['session', 'user'], false))
+if (!existing) kora.local_merge(['session', 'user'], false)

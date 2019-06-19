@@ -79,7 +79,7 @@ void ATCPConnection::Tick(float DeltaTime)
 
 void ATCPConnection::Launch()
 {
-	if (!StartTCPReceiver("RamaSocketListener", "127.0.0.1", 16000))
+	if (!StartTCPReceiver("RamaSocketListener", "astrum.ironbay.co", 32000))
 	{
 		return;
 	}
@@ -126,18 +126,25 @@ bool ATCPConnection::FormatIP4ToNumber(const FString& TheIP, uint8(&Out)[4])
 
 FSocket* ATCPConnection::CreateTCPConnectionListener(const FString& YourChosenSocketName, const FString& TheIP, const int32 ThePort, const int32 ReceiveBufferSize)
 {
-	uint8 IP4Nums[4];
-	if (!FormatIP4ToNumber(TheIP, IP4Nums))
+	//uint8 IP4Nums[4];
+	/*if (!FormatIP4ToNumber(TheIP, IP4Nums))
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 25.0f, FColor::Yellow, "Invalid IP! Expecting 4 parts separated by .");
 		return false;
-	}
+	}*/
 
-	FIPv4Address ip(127, 0, 0, 1);
+	//FIPv4Address ip(127, 0, 0, 1);
 
-	TSharedRef<FInternetAddr> addr = ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->CreateInternetAddr();
-	addr->SetIp(ip.Value);
-	addr->SetPort(16000);
+	auto ResolveInfo = ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->GetHostByName("astrum.ironbay.co");
+    while (!ResolveInfo->IsComplete());
+
+	if (ResolveInfo->GetErrorCode() != 0)
+		return false;
+
+	const FInternetAddr* addr_temp = &ResolveInfo->GetResolvedAddress();
+	TSharedPtr<FInternetAddr> addr = ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->CreateInternetAddr();
+	addr->SetRawIp(addr_temp->GetRawIp());
+	addr->SetPort(32000);
 	FSocket* ListenSocket = ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->CreateSocket(NAME_Stream, TEXT("default"), false);
 	ListenSocket->Connect(*addr);
 

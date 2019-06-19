@@ -1,4 +1,5 @@
 %{
+  "artificery": {:hex, :artificery, "0.4.2", "3ded6e29e13113af52811c72f414d1e88f711410cac1b619ab3a2666bbd7efd4", [:mix], [], "hexpm"},
   "base64url": {:hex, :base64url, "0.0.1", "36a90125f5948e3afd7be97662a1504b934dd5dac78451ca6e9abf85a10286be", [:rebar], [], "hexpm"},
   "certifi": {:hex, :certifi, "2.3.1", "d0f424232390bf47d82da8478022301c561cf6445b5b5fb6a84d49a9e76d2639", [:rebar3], [{:parse_trans, "3.2.0", [hex: :parse_trans, repo: "hexpm", optional: false]}], "hexpm"},
   "comeonin": {:hex, :comeonin, "3.2.0", "cb10995a22aed6812667efb3856f548818c85d85394d8132bc116fbd6995c1ef", [:make, :mix], [{:elixir_make, "~> 0.4", [hex: :elixir_make, repo: "hexpm", optional: false]}], "hexpm"},
@@ -6,6 +7,7 @@
   "cowboy": {:hex, :cowboy, "2.6.3", "99aa50e94e685557cad82e704457336a453d4abcb77839ad22dbe71f311fcc06", [:rebar3], [{:cowlib, "~> 2.7.3", [hex: :cowlib, repo: "hexpm", optional: false]}, {:ranch, "~> 1.7.1", [hex: :ranch, repo: "hexpm", optional: false]}], "hexpm"},
   "cowlib": {:hex, :cowlib, "2.7.3", "a7ffcd0917e6d50b4d5fb28e9e2085a0ceb3c97dea310505f7460ff5ed764ce9", [:rebar3], [], "hexpm"},
   "db_connection": {:hex, :db_connection, "2.0.6", "bde2f85d047969c5b5800cb8f4b3ed6316c8cb11487afedac4aa5f93fd39abfa", [:mix], [{:connection, "~> 1.0.2", [hex: :connection, repo: "hexpm", optional: false]}], "hexpm"},
+  "distillery": {:hex, :distillery, "2.0.14", "25fc1cdad06282334dbf4a11b6e869cc002855c4e11825157498491df2eed594", [:mix], [{:artificery, "~> 0.2", [hex: :artificery, repo: "hexpm", optional: false]}], "hexpm"},
   "dynamic": {:git, "https://github.com/ironbay/dynamic.git", "895024908f103a2aaf74180b361e19cc6606d2e6", [sparse: "elixir"]},
   "elixir_make": {:hex, :elixir_make, "0.5.2", "96a28c79f5b8d34879cd95ebc04d2a0d678cfbbd3e74c43cb63a76adf0ee8054", [:mix], [], "hexpm"},
   "elmbb": {:git, "https://github.com/ironbay/elmdb.git", "6e2949bf4dc009313db8d9c29c1548ad97355805", []},

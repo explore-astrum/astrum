@@ -30,7 +30,8 @@ defmodule Astrum.MixProject do
       {:google_api_storage, "~> 0.1.0"},
       {:poison, "~> 3.1.0", override: true},
       {:joken, "~> 2.0"},
-      {:comeonin, "~> 3.0"}
+      {:comeonin, "~> 3.0"},
+      {:distillery, "~> 2.0"}
     ]
   end
 end

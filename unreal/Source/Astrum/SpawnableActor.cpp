@@ -111,10 +111,12 @@ void ASpawnableActor::Tick(float DeltaTime)
 				}
 			}
 
-			if (placeable && !can_place)
+			if (placeable && !can_place) {
 				MakePlaceable(true);
-			if (!placeable && can_place)
+			}
+			if (!placeable && can_place) {
 				MakePlaceable(false);
+			}
 		}
 
 		if (selected && rotating) {
