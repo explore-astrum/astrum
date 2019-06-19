@@ -1,0 +1,34 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel ./public/index.html --open",
+    "build": "parcel build ./public/index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ironbay/kora": "2.4.26",
+    "@ironbay/kora-router": "0.0.3",
+    "@ironbay/legos": "1.0.13",
+    "@types/react": "16.8.8",
+    "@types/react-dom": "16.8.2",
+    "chroma": "0.0.1",
+    "chroma-js": "2.0.3",
+    "chrome": "0.1.0",
+    "classnames": "2.2.6",
+    "moment": "2.24.0",
+    "parcel-bundler": "1.12.2",
+    "react": "16.8.4",
+    "react-dom": "16.8.4",
+    "three": "0.105.1",
+    "three-orbitcontrols-ts": "0.1.2"
+  },
+  "devDependencies": {
+    "@types/node": "11.13.0",
+    "typescript": "^3.3.3333"
+  }
+}

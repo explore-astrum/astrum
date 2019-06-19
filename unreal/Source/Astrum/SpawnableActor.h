@@ -8,7 +8,53 @@
 #include "GameFramework/Character.h"
 #include "Runtime/CoreUObject/Public/UObject/ConstructorHelpers.h"
 #include "Kismet/GameplayStatics.h"
+#include "AstrumPlayerController.h"
 #include "SpawnableActor.generated.h"
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FProcessedLocationChange, FString, relic_key, FVector, location);
+
+USTRUCT(BlueprintType)
+struct FRelic {
+	GENERATED_BODY()
+
+		UPROPERTY(BlueprintReadWrite)
+		FString id;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		UTexture2D *icon;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		UClass *pawnClass;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool isPawn;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		UClass *blueprint;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		FString category;
+};
+
+UENUM(BlueprintType)
+enum class EAction : uint8 
+{	TURN_ON UMETA(DisplayName = "Turn On"),
+	PAINT UMETA(DisplayName = "Paint"),
+	EVOLVE UMETA(DisplayName = "Evolve"),
+	CUSTOM UMETA(DisplayName = "Custom")
+}; //example of action enums for each relic
+
+UENUM(BlueprintType)
+enum class ERelicProcess : uint8 
+{	PRE UMETA(DisplayName = "Hasn't Started"),
+	DURING UMETA(DisplayName = "In Process"),
+	POST UMETA(DisplayName = "Done")
+};
+
+USTRUCT()
+struct FRelicState {
+	GENERATED_BODY()
+
+	UPROPERTY()
+	ASpawnableActor* relic;
+	UPROPERTY()
+	ERelicProcess state;
+};
 
 UCLASS()
 class ASTRUM_API ASpawnableActor : public AActor
@@ -21,25 +67,131 @@ public:
 	USphereComponent* sphere;
 	UStaticMeshComponent* SphereVisual;
 
-	UPROPERTY(EditAnywhere, Category = Mesh)
+	UPROPERTY(EditAnywhere, Replicated, Category = Mesh)
 	UStaticMesh* SphereVisualAsset;
-	UMaterial* Material;
+	UPROPERTY(EditAnywhere, ReplicatedUsing = OnRep_ChangeMaterial)
+	bool server_selected;
+	UPROPERTY(EditAnywhere, Replicated)
+	FString id;
+	UPROPERTY(EditAnywhere, Replicated, AssetRegistrySearchable)
+	FString relic_type;
+	UPROPERTY(EditAnywhere, Replicated)
+	FString userid;
+	UPROPERTY(EditAnywhere)
+	UTexture2D *icon;
+	UPROPERTY(EditAnywhere)
+	UClass *blueprint;
 
-	void SetMesh(int type);
+	UPROPERTY(EditAnywhere, Replicated)
+	bool placed = false;
+
+	UPROPERTY(EditAnywhere, Replicated)
+	UClass* pawnClass;
+	UPROPERTY(EditAnywhere, Replicated)
+	bool isPawn;
+
+	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
+	void PlaceObject(bool _placed);
+	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
+	void SetID(const FString &_id);
+
+	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
+	void SetPawnClass(UClass* type);
+	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
+	void SetIsPawn(const bool is_pawn);
 	UFUNCTION(BlueprintCallable)
-	void SetMesh(FString type);
+	bool GetIsPawn();
 	UFUNCTION(BlueprintCallable)
-	void SetIntermediateMaterial();
+	UClass* GetPawn();
+
 	UFUNCTION(BlueprintCallable)
-	void SetMaterial(FString type);
+	bool GetIsPlaced();
+
+	UFUNCTION(BlueprintCallable)
+	void AssignToPlayer();
 
 	ACharacter* MainCharacter;
 	APlayerController* controller;
 	bool selected;
 	bool rotating;
+	bool assigned = false;
 
 	UFUNCTION(BlueprintCallable)
 	bool isSelected();
+
+	UFUNCTION()
+	virtual void OnRep_ChangeMaterial();
+
+	UFUNCTION()
+	virtual void OnRep_ChangeCombinations();
+
+	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
+	void SetLocation(FVector location);
+
+	UFUNCTION(NetMulticast, Unreliable)
+	void SetLocationMulticast(FVector location);
+
+	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
+	void SetServerSelected(bool _selected);
+
+	UFUNCTION(BlueprintCallable)
+	void SetSelected(bool _selected);
+
+	UFUNCTION(BlueprintCallable)
+	bool GetServerSelected();
+
+	UFUNCTION(BlueprintCallable)
+	FString GetID();
+
+	UFUNCTION(BlueprintCallable)
+	FString GetUserID();
+
+	UFUNCTION(BlueprintCallable)
+	void MakePlaceable(bool place);
+
+	//combined actions
+	UFUNCTION()
+	void TurnMeOn();
+
+	UFUNCTION()
+	void PaintMe(ASpawnableActor* actor);
+
+	UFUNCTION()
+	void EvolveMe(ASpawnableActor* actor);
+
+	UFUNCTION()
+	void StartEvolution();
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void CustomComboAction(ASpawnableActor* actor);
+
+	UPROPERTY()
+	float last_seen_time = -1;
+	UPROPERTY()
+	FVector last_seen_location;
+	UPROPERTY()
+	FVector velocity;
+	UPROPERTY()
+	bool can_place;
+
+
+	UPROPERTY(EditAnywhere)
+	TMap<FString, EAction> possibleCombinationTypes;
+	UPROPERTY(EditAnywhere, ReplicatedUsing = OnRep_ChangeCombinations)
+	TArray<FRelicState> combinedRelics;
+
+	UPROPERTY(EditAnywhere, Replicated)
+	FString category;
+	UPROPERTY(Replicated)
+	bool turnedOn = false; // can use pawn
+
+	UFUNCTION()
+	void OnOverlap(AActor* OverlappedActor, AActor* OtherActor);
+	UFUNCTION(Server, Reliable, WithValidation)
+	void AddCombinationRelic(FRelicState relicState);
+
+	UFUNCTION()
+	FRelic CreateRelicFromProperties();
 
 protected:
 	// Called when the game starts or when spawned
@@ -50,6 +202,8 @@ public:
 	virtual void Tick(float DeltaTime) override;
 	void RotateX();
 	void PickUp();
+
+	FProcessedLocationChange ProcessedLocationChange;
 
 	
 	

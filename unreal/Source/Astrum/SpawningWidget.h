@@ -16,18 +16,6 @@
  * 
  */
 
-USTRUCT(BlueprintType)
-struct FRelic {
-	GENERATED_BODY()
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FString mesh;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FString material;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UTexture2D *icon;
-};
-
 UCLASS()
 class ASTRUM_API USpawningWidget : public UUserWidget
 {
@@ -36,7 +24,7 @@ class ASTRUM_API USpawningWidget : public UUserWidget
 public:
 	USpawningWidget(const FObjectInitializer& ObjectInitializer);
 	bool Initialize() override;
-	void ButtonClick();
+	//void ButtonClick();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ExtendedWidget")
 	FString ExtendedWidget;
@@ -46,7 +34,45 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	TArray<FRelic> GetOptions();
+
+	UFUNCTION(BlueprintCallable)
+	void AddToOptions(FRelic relic);
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void GetNewOptions();
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void ScrollLeft();
 	
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void ScrollRight();
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void ToggleInventory();
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void PlaceObject();
+
+	UFUNCTION(BlueprintCallable)
+	void SetValidCombos(TMap<FString, EAction> pct);
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void ShowValidCombos();
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void ClearValidCombos();
+
+	UPROPERTY(BlueprintReadWrite)
+	TArray<FString> possibleCombos;
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void BringBackButton();
+
+	UPROPERTY(EditAnywhere)
+	FString button_to_bring_back;
+
+	UFUNCTION(BlueprintCallable)
+	FString GetButtonToBringBack();
 	
 	
 	

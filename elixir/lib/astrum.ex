@@ -8,7 +8,7 @@ defmodule Astrum do
 
   ## Examples
 
-      iex> Astrum.hello
+      iex> Astrum.hello()
       :world
 
   """

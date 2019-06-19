@@ -13,11 +13,11 @@
 class LoadedObj
 {
 public:
-	FString filename;
-	FVector translation;
-	float scale;
-	ASpawnableActor* actor;
-	LoadedObj(FString _filename, FVector _translation) : translation(_translation), filename(_filename) {}
+	//FString filename;
+	//FVector translation;
+	//float scale;
+	//ASpawnableActor* actor;
+	//LoadedObj(FString _filename, FVector _translation) : translation(_translation), filename(_filename) {}
 };
 
 UCLASS()
@@ -25,8 +25,8 @@ class ASTRUM_API ALoadLevelActor : public ALevelScriptActor
 {
 	GENERATED_UCLASS_BODY()
 public:
-	TArray<LoadedObj> SpawnedActors;
-	UFUNCTION(BlueprintCallable)
+	//TArray<LoadedObj> SpawnedActors;
+	//UFUNCTION(BlueprintCallable)
 	void LoadObjects();
 protected:
 };

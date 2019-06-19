@@ -1,43 +1,41 @@
 defmodule Astrum.Config do
-	use Fig
+  use Fig
 
-	config :logger, %{
-		level: :error
-	}
+  config :kora, %{
+    interceptors: [
+      Astrum.Relic.Create,
+      Astrum.Relic.Owner,
+      Astrum.Relic.Position,
+      Astrum.Plot.Create,
+      Astrum.Plot.Owner,
+      Astrum.User.Stripe.Customer,
+      Astrum.User.Email.Duplicate,
+      Astrum.User.Email.Index,
+      Astrum.User.Username.Duplicate,
+      Astrum.User.Username.Index
+    ],
+    commands: [
+      Astrum.Command.Auth
+    ],
+    read: {Kora.Store.Memory, directory: "data/kora.json"},
+    writes: [{Kora.Store.Memory, directory: "data/kora.json"}],
+    scheduler: true,
+    format: nil
+  }
 
-	config :kora, %{
-		interceptors: [
-			Astrum.Relic.Balance,
-			Astrum.Relic.Plot,
-			Astrum.Email.Token,
+  config :stripity_stripe, %{
+    api_key: "sk_test_6xDuznjQsIJJ7ig74W9zEwZq00jP0hDgV6"
+  }
 
-			Astrum.User.Email,
-			Astrum.User.Bootstrap,
-		],
-		commands: [
-			Astrum.Auth.Command
-		],
-		read: {Kora.Store.Level, directory: "kora.db"},
-		writes: [{Kora.Store.Level, directory: "kora.db"}],
-	}
+  config :joken, %{
+    default_signer: "secret"
+  }
 
-	config :mailgun, %{
-		api_key: nil,
-		domain: nil
-	}
-
-	config :astrum, %{
-		url: "http://localhost:3000",
-		bootstrap: "http://localhost:8000"
-	}
-
-	config :postgres, %{
-		hostname: nil,
-		port: nil,
-		username: nil,
-		password: nil,
-		database: nil,
-		ssl: true,
-	}
-
+  config :astrum, %{
+    handlers: [
+      Astrum.Server.Bootstrap,
+      Astrum.Server.Ping,
+      Astrum.Server.Relic.Position
+    ]
+  }
 end

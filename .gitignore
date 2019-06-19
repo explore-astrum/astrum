@@ -261,3 +261,9 @@ __pycache__/
 *.pyc
 
 env
+
+spatial/build/*
+unreal/Source/Astrum/Generated/*
+unreal/Source/SpatialGDK
+unreal/Plugins/SpatialGDK
+spatial/schema/improbable/unreal/generated

@@ -1,29 +1,37 @@
-FROM elixir:1.5.2-alpine
-
-RUN apk add --no-cache git
+# Elixir
+FROM elixir:1.8.1-alpine
+ENV MIX_ENV=prod
+ENV REPLACE_OS_VARS=true
 RUN apk add --no-cache alpine-sdk
+RUN apk add --no-cache bash
+RUN apk add --no-cache git
 
 RUN yes | mix local.hex
 RUN yes | mix local.rebar
 
-ENV MIX_ENV=prod
-
 WORKDIR /tmp
-ADD mix.exs mix.exs
-ADD mix.lock mix.lock
-ADD config config
-RUN mix deps.clean --all
+ADD mix.exs .
+ADD mix.lock .
 RUN mix deps.get
 RUN mix deps.compile
+RUN ls
 
 WORKDIR /app
 ADD . .
-RUN cp -a /tmp/deps .
-RUN cp -a /tmp/_build .
 RUN ls -lah
+RUN rm -rf deps
+RUN rm -rf _build
+RUN mv /tmp/deps .
+RUN mv /tmp/_build .
 
-EXPOSE 12000
-EXPOSE 13000
-EXPOSE 14000
+# RUN mix test
+RUN mix release
+RUN chmod +x "_build/prod/rel/astrum/bin/astrum"
 
-CMD mix run --no-halt
+FROM elixir:1.8.1-alpine
+RUN apk add --no-cache bash
+WORKDIR /app
+COPY --from=0 /app/_build/prod/rel/astrum /app
+RUN find .
+
+CMD ["bin/astrum",  "foreground"]

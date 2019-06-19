@@ -7,11 +7,11 @@ ALoadLevelActor::ALoadLevelActor(const FObjectInitializer &fobj) : Super(fobj) {
 }
 
 void ALoadLevelActor::LoadObjects() {
-	for (auto sa : SpawnedActors) {
+	/*for (auto sa : SpawnedActors) {
 		FRotator Rotation(0.0f, 0.0f, 0.0f);
 		FActorSpawnParameters SpawnInfo;
 		auto actor = GetWorld()->SpawnActor<ASpawnableActor>(sa.translation, Rotation, SpawnInfo);
 		actor->SetMesh(sa.filename);
 		sa.actor = actor;
-	}
+	}*/
 }
