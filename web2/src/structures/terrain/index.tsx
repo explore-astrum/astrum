@@ -36,7 +36,7 @@ export default class Terrain extends React.Component<Props, any> {
 
         camera.position.x = SIZE * -0.4
         camera.position.y = 500
-        camera.position.z = SIZE * -0.4
+        camera.position.z = SIZE * -0.6
         // camera.lookAt(new THREE.Vector3(SIZE / 2, 0, SIZE / 2))
 
         this.root().appendChild(renderer.domElement)
@@ -165,6 +165,6 @@ export default class Terrain extends React.Component<Props, any> {
             if(box)
                 box.position.set(y * PLOT - SIZE, HEIGHT / 2, (64 + 128 - x) * PLOT - SIZE);
         }
-        return <Container style={{ height: '50rem' }} />
+        return <Container style={{ height: '50rem', width: route == "landing" ? '100%' : '50%' }} />
     }
 }

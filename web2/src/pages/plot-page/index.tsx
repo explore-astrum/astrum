@@ -18,7 +18,7 @@ export default class PlotPage extends React.Component<Props, State> {
         return (
             <Container>
                 <Header />
-                <Container>
+                <Container style={{display: "flex", width: "100%"}}>
                     <TopDownMap />
                     <Terrain />
                 </Container>

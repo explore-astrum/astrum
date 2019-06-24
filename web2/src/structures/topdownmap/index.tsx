@@ -172,6 +172,6 @@ export default class TopDownMap extends React.Component<Props, any> {
             if(box)
                 box.position.set((x - 96) * PLOT, (96 - y) * PLOT, DIST_FROM_CAMERA);
         }
-        return <Container style={{ height: '50rem' }} />
+        return <Container style={{ height: '50rem', width: '50%' }} />
     }
 }
