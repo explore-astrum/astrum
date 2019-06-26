@@ -1,10 +1,13 @@
 import * as React from 'react'
 import { Container, Image, Wrap } from '../../components'
 import Terrain from '../../structures/terrain'
+import { formatWithOptions } from 'util';
 
 const IMG_STEP_0 = require('./img/step-0.png')
 const IMG_STEP_1 = require('./img/step-1.png')
 const IMG_STEP_2 = require('./img/step-2.png')
+
+let faq = [];
 
 
 export default class LandingPage extends React.Component<any, any> {
@@ -15,7 +18,21 @@ export default class LandingPage extends React.Component<any, any> {
     componentWillMount() {
         window.addEventListener('scroll', this.handle_scroll)
     }
-    componentDidMount() { }
+    componentDidMount() { 
+        faq.push({question: "How do I buy or sell on the marketplace?", answer: "The marketplace can be found here."});
+        faq.push({question: "How much does the game cost?", answer: "The game is free to play. But to participate in the marketplace and manage an inventory, you must purchase a plot of land here."});
+        faq.push({question: "What happens when all of the land is sold", answer: "We will be releasing new, continuous landscape to grow Astrum in the future."});
+        faq.push({question: "Can I participate if I don't have a way to play the game?", answer: "Yes! You can still buy, trade, sell, manage your inventory, and cash out without ever opening the game."});
+        faq.push({question: "How do I upload my own assets / relics?", answer: "We will add this shortly. Stay tuned."});
+        faq.push({question: "When will the game be released?", answer: "This fall."});
+        faq.push({question: "What platforms will you support?", answer: "PC at first."});
+        faq.push({question: "Can I cash out to a real-world currency?", answer: "Yes! At any point, you can trade your dust (in-game currency) for cash."});
+        faq.push({question: "What do I start with?", answer: "TBD"});
+        faq.push({question: "Can I grow my inventory without spending more money?", answer: "Yes! You can always trade to get what you want. But also, there will be a drop of random relics every month to each player, to provide players with a new fresh set of goods."});
+        faq.push({question: "As a creator, what file types do you accept?", answer: "We will accept .fbx files. The asset itself will be vetted by a team of curators to make sure that it doesn’t resemble any current relics and is a viable asset for the game."});
+        faq.push({question: "How do I combine my relics?", answer: "Only certain relics can be combined. Some are purely aesthetic combinations (paint on your house). And others are necessary (oil in your vehicle to drive it, or water on your garden to make it grow)."});
+        faq.push({question: "What does persistent mean?", answer: "This means that every player in Astrum will witness any additions or changes to your land. If you place a house, then any other landowner can come to your property and take notice, even when you're logged off."});
+    }
     render() {
         const scroll = this.state.scroll
 
@@ -88,7 +105,7 @@ export default class LandingPage extends React.Component<any, any> {
                                     <Container>
                                         <Container uppercase size-5 weight-6>Claim your piece</Container>
                                         <Container mgn-t2 line-8 >
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam fringilla ultricies risus vel posuere. Cras in urna tincidunt lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam fringilla ultricies risus vel posuere. Cras in urna tincidunt
+                                        Astrum is a single, persistent landscape that the players completely own. Every rock and tree is hand-crafted by our artists to create a bespoke, unique property for every land owner. After purchasing a plot of land, you and only you are able to build on top of it. No one will be able to claim any part of your land until you sell or trade it yourself.
                                     </Container>
                                     </Container>
                                 </Container>
@@ -98,7 +115,7 @@ export default class LandingPage extends React.Component<any, any> {
                                     <Container>
                                         <Container uppercase size-5 weight-6>Make it yours</Container>
                                         <Container mgn-t2 line-8 >
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam fringilla ultricies risus vel posuere. Cras in urna tincidunt lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam fringilla ultricies risus vel posuere. Cras in urna tincidunt
+                                        Every relic found in-game and on someone’s property has been bought, traded, or sold on the marketplace. Every item is scarce, so there’s a limit to the amount of houses, vehicles, artwork, etc. You can travel to an water-side property to admire their dock and barter with the owner to improve what’s in your inventory and on your land.
                                     </Container>
                                     </Container>
                                 </Container>
@@ -114,13 +131,26 @@ export default class LandingPage extends React.Component<any, any> {
                                     <Container>
                                         <Container uppercase size-5 weight-6>Explore and Trade</Container>
                                         <Container mgn-t2 line-8 >
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam fringilla ultricies risus vel posuere. Cras in urna tincidunt lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam fringilla ultricies risus vel posuere. Cras in urna tincidunt
+                                        Any relics (assets) that you own can be placed on your land or combined with another relic. Make the castle or starship port of your dreams. As a creator, you can upload your own relics, set an amount and price, and release them on the marketplace.
                                     </Container>
                                     </Container>
                                 </Container>
                             </Container>
                         </Container>
                     </Wrap>
+                    <Container>
+                        <Container
+                            pad-v8
+                            m-mgn-v8
+                            fg-white
+                            size-6
+                            s-size-8
+                            m-size-10
+                            text-center>
+                            FAQ
+                        {faq.map(qa => <Container><Container size-5 pad-v8 weight-4 pad-l4 line-6 weight-6>{qa.question}</Container><Container size-4 pad-l4 line-6>{qa.answer}</Container></Container>)}
+                    </Container>
+                </Container>
                 </Container>
             </Container>
         )
