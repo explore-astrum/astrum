@@ -73,7 +73,7 @@ export default class LandingPage extends React.Component<any, any> {
                 <Container>
                     <Image src={FRONT} relative />
                 </Container>
-                <Container bg-black relative style={{ zIndex: 1000 }}>
+                <Container relative style={{ zIndex: 1000, background: '#212529' }}>
                     <Wrap>
                         <Container >
                             <Container
@@ -175,7 +175,7 @@ export default class LandingPage extends React.Component<any, any> {
                             <Container>
                                 {
                                     FAQ.map(qa => (
-                                        <Container mgn-t8>
+                                        <Container mgn-t8 key={qa.question}>
                                             <Container size-5 weight-4 line-6 weight-6>
                                                 {qa.question}
                                             </Container>

@@ -21,7 +21,7 @@ export default class Terrain extends React.Component<Props, any> {
         const scale = Chroma.scale(['lightgreen', 'white']).domain([0, HEIGHT * 0.8])
 
         const renderer = new THREE.WebGLRenderer()
-        // renderer.setClearColor(0x1a1e17, 1.0)
+        renderer.setClearColor(0x212529, 1.0)
         renderer.setSize(bounds.width, bounds.height)
 
         const light = new THREE.DirectionalLight()
