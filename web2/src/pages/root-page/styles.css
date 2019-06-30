@@ -59,7 +59,7 @@ img {
 }
 
 html {
-	font-family: 'Roboto Slab';
+	font-family: 'M PLUS 1p';
 }
 
 :root {
@@ -67,6 +67,7 @@ html {
 	--green: #afaf64;
 	--blue: #2364a0;
 	--pink: #E6C8B4;
+	--yellow: #ffcc00;
 }
 
 a:link, a:visited, a:active {
