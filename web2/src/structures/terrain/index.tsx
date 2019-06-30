@@ -3,12 +3,7 @@ import * as ReactDOM from 'react-dom'
 import * as THREE from 'three'
 import * as Chroma from 'chroma-js'
 import { OrbitControls } from 'three-orbitcontrols-ts'
-import { Container, Wrap } from '../../components/'
-import Link from '../link'
-import Lego from '../../components/lego'
-
-import * as Plot from '../../data/plot'
-import { router } from '../../data/kora'
+import { Container } from '../../components/'
 
 const HEIGHTMAP = require('./heightmap.png')
 const SIZE = 512
@@ -17,17 +12,16 @@ const HEIGHT = 100
 const WATER = 0.03
 const BORDER = 1
 interface Props { }
-let scene = new THREE.Scene()
 export default class Terrain extends React.Component<Props, any> {
     componentDidMount() {
         const root = this.root()
         const bounds = root.getBoundingClientRect()
-        scene = new THREE.Scene()
+        const scene = new THREE.Scene()
         const camera = new THREE.PerspectiveCamera(45, bounds.width / bounds.height, 0.1, 10000)
         const scale = Chroma.scale(['lightgreen', 'white']).domain([0, HEIGHT * 0.8])
 
         const renderer = new THREE.WebGLRenderer()
-        renderer.setClearColor(0x1a1e17, 1.0)
+        // renderer.setClearColor(0x1a1e17, 1.0)
         renderer.setSize(bounds.width, bounds.height)
 
         const light = new THREE.DirectionalLight()
@@ -36,7 +30,7 @@ export default class Terrain extends React.Component<Props, any> {
 
         camera.position.x = SIZE * -0.4
         camera.position.y = 500
-        camera.position.z = SIZE * -0.6
+        camera.position.z = SIZE * -0.4
         // camera.lookAt(new THREE.Vector3(SIZE / 2, 0, SIZE / 2))
 
         this.root().appendChild(renderer.domElement)
@@ -50,11 +44,7 @@ export default class Terrain extends React.Component<Props, any> {
         const material = new THREE.MeshBasicMaterial({ color: 0xffffff, opacity: 0.5, transparent: true })
         const box = new THREE.Mesh(geometry, material);
         box.position.set(SIZE / 2, HEIGHT / 2, SIZE / 2)
-        box.name = 'highlight'
-
-        const [route, key] = router.parts()
-        if(route != "landing")
-            scene.add(box)
+        // scene.add(box)
 
 
         function color(geometry, face) {
@@ -70,7 +60,6 @@ export default class Terrain extends React.Component<Props, any> {
         var width = SIZE + BORDER * 2
         var spacingX = 1;
         var spacingZ = 1;
-        var heightOffset = 1;
         var canvas = document.createElement('canvas');
         canvas.width = depth;
         canvas.height = width;
@@ -132,8 +121,6 @@ export default class Terrain extends React.Component<Props, any> {
             geom.computeVertexNormals(true);
             geom.computeFaceNormals();
             geom.computeBoundingBox();
-            var zMax = geom.boundingBox.max.z;
-            var xMax = geom.boundingBox.max.x;
             var mesh = new THREE.Mesh(geom, new THREE.MeshLambertMaterial({
                 vertexColors: THREE.FaceColors,
                 color: 0x666666,
@@ -152,19 +139,33 @@ export default class Terrain extends React.Component<Props, any> {
             requestAnimationFrame(render)
         }
         render()
+        root.addEventListener('click', event => {
+            var raycaster = new THREE.Raycaster();
+            raycaster.setFromCamera(
+                new THREE.Vector2(
+                    (event.clientX / window.innerWidth) * 2 - 1,
+                    - (event.clientY / window.innerHeight) * 2 + 1
+                ),
+                camera
+            );
+
+            // calculate objects intersecting the picking ray
+            const intersects = raycaster.intersectObjects(scene.children).filter(i => i.object.name === 'valley')
+            console.log(intersects)
+            const vector = intersects[0].point
+            const x = Math.floor(vector.x / PLOT) * PLOT
+            const z = Math.floor(vector.z / PLOT) * PLOT
+            console.log(x / PLOT + 64, z / PLOT + 64)
+            box.position.set(x + PLOT / 2, HEIGHT / 2, z + PLOT / 2)
+            // control.target.copy(box.position)
+        })
+
     }
     private root() {
         return ReactDOM.findDOMNode(this) as HTMLElement
     }
 
     render() {
-        const [route, key] = router.parts()
-        if(route != "landing" && key) {
-            const { x, y } = Plot.key_decode(key)
-            let box = scene.children.filter(i => i.name === 'highlight')[0]
-            if(box)
-                box.position.set(y * PLOT - SIZE, HEIGHT / 2, (64 + 128 - x) * PLOT - SIZE);
-        }
-        return <Container style={{ height: '50rem', width: route == "landing" ? '100%' : '50%' }} />
+        return <Container style={{ height: '50rem' }} />
     }
 }
