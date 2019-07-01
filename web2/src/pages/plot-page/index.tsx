@@ -18,6 +18,7 @@ export default class PlotPage extends React.Component<Props, State> {
         x: 0,
         y: 0,
     }
+    ref_canvas: HTMLCanvasElement
     render() {
         const [_, plot] = router.parts()
         return (
@@ -46,6 +47,9 @@ export default class PlotPage extends React.Component<Props, State> {
                             relative>
                             <Image
                                 src={require('./map.png')} />
+                            <Container fill>
+                                <canvas ref={r => this.ref_canvas = r} style={{ width: '100%', height: '100%' }} />
+                            </Container>
                             <Link href={`/plots/${Plot.key_encode(this.state.x + REGION_OFFSET, this.state.y + REGION_OFFSET)}`}>
                                 <Container bg-yellow cursor-pointer style={{
                                     width: 100 / 64 + '%',
@@ -60,5 +64,12 @@ export default class PlotPage extends React.Component<Props, State> {
                 </Container>
             </Container >
         )
+    }
+
+    componentDidMount() {
+        this.ref_canvas.width = 64 * 10
+        this.ref_canvas.height = 64 * 10
+        const ctx = this.ref_canvas.getContext('2d')
+        ctx.fillRect(0, 0, 10, 10)
     }
 }
