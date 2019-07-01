@@ -24,6 +24,7 @@
     "parcel-bundler": "1.12.2",
     "react": "16.8.4",
     "react-dom": "16.8.4",
+    "react-easy-panzoom": "0.4.0",
     "three": "0.105.1",
     "three-orbitcontrols-ts": "0.1.2"
   },

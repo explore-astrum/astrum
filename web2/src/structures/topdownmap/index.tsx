@@ -155,7 +155,7 @@ export default class TopDownMap extends React.Component<Props, any> {
             box.position.set(x * PLOT, y * PLOT, DIST_FROM_CAMERA)
 
             let key = Plot.key_encode(x + 96, 96 - y)
-            router.push('/plot/' + key)
+            router.push('/plots/' + key)
             Plot.refresh(key)
         })
 

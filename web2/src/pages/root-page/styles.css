@@ -60,6 +60,7 @@ img {
 
 html {
 	font-family: 'M PLUS 1p';
+	background: black;
 }
 
 :root {
@@ -68,6 +69,7 @@ html {
 	--blue: #2364a0;
 	--pink: #E6C8B4;
 	--yellow: #ffcc00;
+	--highlight: #ffcc00;
 }
 
 a:link, a:visited, a:active {

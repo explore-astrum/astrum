@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { Container, Image, Wrap } from '../../components'
-import Terrain from '../../structures/terrain'
-import { formatWithOptions } from 'util';
+import Link from '../../structures/link'
 
 const IMG_STEP_0 = require('./img/step-0.png')
 const IMG_STEP_1 = require('./img/step-1.png')
@@ -85,7 +84,7 @@ export default class LandingPage extends React.Component<any, any> {
                                     A new world to conquer
                                 </Container>
                                 <Container text-center size-10 weight-8 mgn-t4>
-                                    Welcome to Astrum
+                                    Welcome to <Container inline fg-yellow style={{ fontFamily: 'Thruster', letterSpacing: '4px' }}>ASTRUM</Container>
                                 </Container>
                             </Container>
                             <Container relative cursor-pointer>
@@ -124,15 +123,17 @@ export default class LandingPage extends React.Component<any, any> {
                             </Container>
                         </Container>
                         <Container flex justify-center pad-t8>
-                            <Container
-                                fg-black
-                                bg-yellow
-                                pad-h6
-                                pad-v6
-                                cursor-pointer
-                                uppercase
-                                weight-8
-                            >Browse Available Plots →</Container>
+                            <Link href="/plots">
+                                <Container
+                                    fg-black
+                                    bg-yellow
+                                    pad-h6
+                                    pad-v6
+                                    cursor-pointer
+                                    uppercase
+                                    weight-8
+                                >Browse Available Plots →</Container>
+                            </Link>
                         </Container>
                         <Container fg-white mgn-t8>
                             <Container flex align-center pad-t4>
@@ -146,7 +147,7 @@ export default class LandingPage extends React.Component<any, any> {
                                     <Container weight-6 mgn-t8 size-5 >
                                         Claim your piece
                                     </Container>
-                                    <Container line-8 mgn-t8>
+                                    <Container line-8 mgn-t8 style={{ borderLeft: '4px solid #fc0' }} pad-l4>
                                         <Container>
                                             Astrum is a single, persistent landscape that the players completely own. Every rock and tree is hand-crafted by our artists to create a bespoke, unique property for every land owner.
                                         </Container>
@@ -173,7 +174,7 @@ export default class LandingPage extends React.Component<any, any> {
                                     <Container weight-6 mgn-t8 size-5>
                                         Make it your own
                                     </Container>
-                                    <Container line-8 mgn-t8>
+                                    <Container line-8 mgn-t8 style={{ borderLeft: '4px solid #fc0' }} pad-l4>
                                         <Container>
                                             Astrum is a single, persistent landscape that the players completely own. Every rock and tree is hand-crafted by our artists to create a bespoke, unique property for every land owner.
                                         </Container>
@@ -194,7 +195,7 @@ export default class LandingPage extends React.Component<any, any> {
                                     <Container weight-6 mgn-t8 size-5>
                                         Explore and trade
                                     </Container>
-                                    <Container line-8 mgn-t8>
+                                    <Container line-8 mgn-t8 style={{ borderLeft: '4px solid #fc0' }} pad-l4>
                                         <Container>
                                             Astrum is a single, persistent landscape that the players completely own. Every rock and tree is hand-crafted by our artists to create a bespoke, unique property for every land owner.
                                         </Container>
@@ -229,22 +230,36 @@ export default class LandingPage extends React.Component<any, any> {
                         </Container>
                     </Wrap>
                 </Container>
+                <Container mgn-t8 pad-t8>
+                    <Wrap>
+                        {/* <Container flex style={{ height: '1.5rem' }}>
+                            <Container flex-7 />
+                            <Container flex-3 bg-yellow />
+                        </Container> */}
+                        <Container flex pad-v8>
+                            <Container
+                                size-8
+                                weight-8
+                                style={{ fontFamily: 'Thruster', letterSpacing: '4px' }}
+                                fg-yellow>
+                                ASTRUM
+                            </Container>
+                            <Container
+                                size-5
+                                flex-grow
+                                flex
+                                justify-end
+                                align-center>
+                                hello@exploreastrum.com
+                            </Container>
+                        </Container>
+                    </Wrap>
+                </Container>
             </Container>
         )
     }
     private handle_scroll = () => {
         this.setState({ scroll: window.scrollY })
-    }
-    private scroll(direction: number) {
-        if (this.state.active) return
-        const next = this.state.scroll + Math.sign(direction)
-        if (next > 0) return
-        this.setState({
-            scroll: next,
-            active: true,
-        })
-        setTimeout(() => this.setState({ active: false }), 1000)
-
     }
 
 }

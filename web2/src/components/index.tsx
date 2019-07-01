@@ -16,7 +16,7 @@ export function Wrap(props: React.AnchorHTMLAttributes<HTMLDivElement>) {
     const { children, ...rest } = props
     return (
         <Container flex justify-center {...rest}>
-            <Container style={{ width: '68rem', maxWidth: '100%' }}>
+            <Container style={{ width: '70rem', maxWidth: '100%' }} pad-h6>
                 {children}
             </Container>
         </Container>
