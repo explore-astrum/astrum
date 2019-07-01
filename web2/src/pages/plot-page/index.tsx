@@ -2,7 +2,8 @@ import * as React from 'react'
 import { Container, Image } from '../../components'
 import Header from '../../structures/header'
 import Link from '../../structures/link'
-import PlotSlider, * as PlotSLider from '../../structures/plot-slider'
+import PlotSlider from '../../structures/plot-slider'
+import PlotSliderEmpty from '../../structures/plot-slider-empty'
 import * as Plot from '../../data/plot'
 import { router } from '../../data/kora'
 
@@ -24,8 +25,8 @@ export default class PlotPage extends React.Component<Props, State> {
                 <Header />
                 <Container flex-grow flex overflow-hidden>
                     {
-                        router.match_exact('/plots/+') &&
-                        <PlotSlider plot={plot} />
+                        router.match_exact('/plots/+') ?
+                            <PlotSlider plot={plot} /> : <PlotSliderEmpty />
                     }
                     <Container overflow-scroll-y flex-grow>
                         <Container
@@ -44,7 +45,7 @@ export default class PlotPage extends React.Component<Props, State> {
                             }}
                             relative>
                             <Image
-                                src={require('../../structures/topdownmap/heightmap.png')} />
+                                src={require('./map.png')} />
                             <Link href={`/plots/${Plot.key_encode(this.state.x + REGION_OFFSET, this.state.y + REGION_OFFSET)}`}>
                                 <Container bg-yellow cursor-pointer style={{
                                     width: 100 / 64 + '%',

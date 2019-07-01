@@ -166,6 +166,6 @@ export default class Terrain extends React.Component<Props, any> {
     }
 
     render() {
-        return <Container style={{ height: '50rem' }} />
+        return <Container style={{ height: '25rem' }} />
     }
 }
