@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Container, Image } from '../../components'
 import * as Plot from '../../data/plot'
 import Terrain from '../../structures/terrain'
+import { kora } from '../../data/kora'
 
 interface Props {
     plot: string
@@ -13,10 +14,11 @@ export default class PlotSlider extends React.Component<Props, any> {
         image: 0
     }
     componentDidMount() {
-
+        kora.query_path(['plot:activity', this.props.plot])
     }
     render() {
         const { plot } = this.props
+        const plot_info = Plot.info(plot)
         const { x, y } = Plot.key_decode(plot)
         const images =
             [
@@ -42,10 +44,29 @@ export default class PlotSlider extends React.Component<Props, any> {
                     Plot {x}x{y}
                 </Container>
                 <Container mgn-t6 line-6 weight-5>
-                    This plot named <Container inline fg-yellow weight-6>Astrum HQ</Container>, is owned by <Container inline fg-yellow weight-6>@astrum</Container>. It does not have a list price but you may make an offer.
+                    This plot named <Container inline fg-yellow weight-6>Astrum HQ</Container>, is owned by <Container inline fg-yellow weight-6>@{plot_info.owner}</Container>.&nbsp;
+                    {
+                        !plot_info.prices.list ?
+                            'It does not have a list price but you may make an offer.' :
+                            <Container inline>
+                                It is currently on sale for <Container inline fg-yellow>${plot_info.prices.list}</Container>
+                            </Container>
+                    }
                 </Container>
                 <Container mgn-t6 flex justify-end>
-                    <Container cursor-pointer bg-yellow fg-black pad-v3 pad-h4 weight-6>Make an offer →</Container>
+                    <Container
+                        cursor-pointer
+                        bg-yellow
+                        fg-black
+                        pad-v3
+                        pad-h4
+                        weight-6>
+                        {
+                            !plot_info.prices.list ?
+                                'Make an offer →' :
+                                `Purchase for $${plot_info.prices.list} →`
+                        }
+                    </Container>
                 </Container>
                 {/* <Container mgn-t6>
                     <Terrain />
@@ -77,44 +98,45 @@ export default class PlotSlider extends React.Component<Props, any> {
                 <Container mgn-t6>
                     <Container weight-6>Activity</Container>
                     <Container>
-                        <Container mgn-t4>
-                            {/* <Container flex justify-end>
+                        {
+                            Plot
+                                .activity(this.props.plot)
+                                .sort((a, b) => a > b ? -1 : 1)
+                                .map(item => (
+                                    <Container mgn-t4>
+                                        {/* <Container flex justify-end>
                             <Container pad-v2 size-3-5 weight-6>5:20pm Feb 23</Container>
                         </Container> */}
-                            <Container
-                                flex
-                                fg-black
-                                weight-6
-                                bg-yellow
-                                align-center
-                                pad-4 >
-                                <Container style={{ width: '50px', flex: '0 0 50px' }} radius-max overflow-hidden>
-                                    <Image src="http://identicon.net/img/identicon.png" />
-                                </Container>
-                                <Container pad-l4 line-6>@astrum has renamed this plot Astrum HQ</Container>
-                            </Container>
-                        </Container>
-                        <Container mgn-t4>
-                            {/* <Container flex justify-end>
-                            <Container pad-v2 size-3-5 weight-6>5:20pm Feb 23</Container>
-                        </Container> */}
-                            <Container
-                                flex
-                                fg-black
-                                weight-6
-                                bg-yellow
-                                align-center
-                                pad-4 >
-                                <Container style={{ width: '50px', flex: '0 0 50px' }} radius-max overflow-hidden>
-                                    <Image src="http://identicon.net/img/identicon.png" />
-                                </Container>
-                                <Container pad-l4 line-6>@astrum purchased this plot for $50</Container>
-                            </Container>
-                        </Container>
+                                        <Container
+                                            flex
+                                            fg-black
+                                            weight-6
+                                            bg-yellow
+                                            align-center
+                                            pad-4 >
+                                            <Container bg-white style={{ width: '50px', flex: '0 0 50px' }} radius-max overflow-hidden>
+                                                <Image src={`https://avatars.dicebear.com/v2/male/${item.sender}.svg`} />
+                                            </Container>
+                                            <Container pad-l4 line-6>
+                                                {copy(item)}
+                                            </Container>
+                                        </Container>
+                                    </Container>
+                                ))
+                        }
                     </Container>
                 </Container>
             </Container>
         )
 
+    }
+}
+
+function copy(item: PlotActivity) {
+    switch (item.type) {
+        case 'plot.sold':
+            return `@${item.sender} bought this plot for $${item.data.price}`
+        case 'plot.list':
+            return `@${item.sender} put this plot on sale for $${item.data.price}`
     }
 }

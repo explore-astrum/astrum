@@ -8,6 +8,7 @@ defmodule Astrum.Config do
       Astrum.Relic.Position,
       Astrum.Plot.Create,
       Astrum.Plot.Owner,
+      Astrum.Plot.Activity,
       Astrum.User.Stripe.Customer,
       Astrum.User.Email.Duplicate,
       Astrum.User.Email.Index,

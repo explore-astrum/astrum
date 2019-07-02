@@ -5,7 +5,7 @@ import Link from '../../structures/link'
 import PlotSlider from '../../structures/plot-slider'
 import PlotSliderEmpty from '../../structures/plot-slider-empty'
 import * as Plot from '../../data/plot'
-import { router } from '../../data/kora'
+import { router, kora } from '../../data/kora'
 
 interface Props { }
 interface State {
@@ -19,6 +19,9 @@ export default class PlotPage extends React.Component<Props, State> {
         y: 0,
     }
     ref_canvas: HTMLCanvasElement
+    componentWillMount() {
+        kora.query_path(['plot:info'])
+    }
     render() {
         const [_, plot] = router.parts()
         return (
@@ -27,7 +30,7 @@ export default class PlotPage extends React.Component<Props, State> {
                 <Container flex-grow flex overflow-hidden>
                     {
                         router.match_exact('/plots/+') ?
-                            <PlotSlider plot={plot} /> : <PlotSliderEmpty />
+                            <PlotSlider key={plot} plot={plot} /> : <PlotSliderEmpty />
                     }
                     <Container overflow-scroll-y flex-grow>
                         <Container

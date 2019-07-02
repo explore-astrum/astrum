@@ -12,4 +12,8 @@ kora.before_mutation(['plot:info', '+'], (path, mut) => {
     kora.query_path(['user:info', owner])
 })
 
+kora.before_mutation(['connection'], async (_path, mut) => {
+    if (mut.merge.status !== 'ready') return
+})
+
 export { kora, router }

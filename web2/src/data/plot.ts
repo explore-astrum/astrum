@@ -12,6 +12,7 @@ export async function refresh(key: string) {
 
 export function schema(plot: PlotInfo) {
     plot = plot || {}
+    plot.prices = plot.prices || {}
     return plot
 }
 
@@ -26,4 +27,8 @@ export function key_decode(key: string) {
 
 export function key_encode(x: number, y: number) {
     return ("0000" + x.toString(16)).substr(-4).toUpperCase() + ("0000" + y.toString(16)).substr(-4).toUpperCase()
+}
+
+export function activity(key: string) {
+    return kora.local_values<PlotActivity>(['plot:activity', key])
 }
