@@ -11,7 +11,7 @@ interface PlotInfo {
 
 interface PlotActivity {
     key?: string
-    type?: 'plot.list' | 'plot.sold'
+    type?: 'plot.list' | 'plot.sold' | 'plot.prices.sale'
     created?: number
     sender?: string
     data?: any
@@ -27,4 +27,9 @@ interface Activity {
 interface RelicType {
     key?: string
     name?: string
+}
+
+interface UserInfo {
+    key?: string
+    username?: string
 }

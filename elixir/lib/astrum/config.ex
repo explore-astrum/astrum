@@ -3,6 +3,7 @@ defmodule Astrum.Config do
 
   config :kora, %{
     interceptors: [
+      Astrum.Auth,
       Astrum.Relic.Create,
       Astrum.Relic.Owner,
       Astrum.Relic.Position,

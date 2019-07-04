@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Container, Image } from '../../components'
 import * as Plot from '../../data/plot'
-import Terrain from '../../structures/terrain'
+import * as User from '../../data/user'
 import { kora } from '../../data/kora'
 
 interface Props {
@@ -19,6 +19,23 @@ export default class PlotSlider extends React.Component<Props, any> {
     render() {
         const { plot } = this.props
         const plot_info = Plot.info(plot)
+        const owner_info = User.info(plot_info.owner)
+        if (!plot_info.key || !owner_info.key) {
+            return (
+                <Container
+                    fg-white
+                    bg-black
+                    pad-8
+                    style={{
+                        flexBasis: '30rem',
+                        overflowY: 'auto',
+                        right: 0,
+                        top: 0,
+                        height: '100%',
+                        borderTop: '4px solid #ffcc00'
+                    }} />
+            )
+        }
         const { x, y } = Plot.key_decode(plot)
         const images =
             [
@@ -44,7 +61,8 @@ export default class PlotSlider extends React.Component<Props, any> {
                     Plot {x}x{y}
                 </Container>
                 <Container mgn-t6 line-6 weight-5>
-                    This plot named <Container inline fg-yellow weight-6>Astrum HQ</Container>, is owned by <Container inline fg-yellow weight-6>@{plot_info.owner}</Container>.&nbsp;
+                    This plot {plot_info.name && <Container inline>named <Container inline fg-yellow weight-6>Astrum HQ</Container>,</Container>}
+                    is owned by <Container inline fg-yellow weight-6>@{owner_info.username}</Container>.&nbsp;
                     {
                         !plot_info.prices.list ?
                             'It does not have a list price but you may make an offer.' :

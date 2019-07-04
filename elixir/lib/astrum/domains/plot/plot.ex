@@ -2,8 +2,12 @@ defmodule Astrum.Plot do
   require Dynamic
 
   Dynamic.schema(%{
+    "key" => nil,
     "owner" => nil,
-    "key" => nil
+    "name" => nil,
+    "prices" => %{
+      "list" => nil
+    }
   })
 
   def generate(x_range, y_range) do
@@ -14,23 +18,17 @@ defmodule Astrum.Plot do
     |> Kora.Mutation.combine()
   end
 
-  def buy(key, owner, price) do
-    Kora.Mutation.merge(["plot:info", key], %{
-      "owner" => owner,
-      "prices" => %{
-        "sold" => price,
-        "list" => 0
-      }
-    })
-  end
-
   def info(key) do
     Kora.query_path!(["plot:info", key])
   end
 
   def create(x, y) do
     key = key_encode(x, y)
-    Kora.Mutation.merge(["plot:info", key, "key"], key)
+
+    Kora.Mutation.merge(["plot:info", key], %{
+      "key" => key,
+      "owner" => "USR00000000000000000000"
+    })
   end
 
   @spec key_decode(binary) :: {integer, integer}
