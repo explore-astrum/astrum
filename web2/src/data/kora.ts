@@ -18,6 +18,16 @@ kora.before_mutation(['connection'], async (_path, mut) => {
     kora.send('kora.subscribe', 1, 0)
 })
 
+kora.before_mutation(['session'], async (_path, mut) => {
+    const user = mut.merge.user
+    if (!user) return
+    kora.query({
+        'user:info': {
+            [user]: {}
+        }
+    })
+})
+
 kora.before_mutation(['plot:activity', '+', '+'], async (_path, mut) => {
     const sender = mut.merge.sender
     if (!sender) return

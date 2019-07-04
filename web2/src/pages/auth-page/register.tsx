@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { Container, Wrap } from '../../components'
 import * as Form from '../../components/form'
+import Link from '../../structures/link'
+import * as Session from '../../data/session'
 import { kora, router } from '../../data/kora'
 
 interface Props {
@@ -20,50 +22,53 @@ export default class Register extends React.Component<Props, State> {
     }
     render() {
         return (
-            <Container flex justify-center align-center fill>
-                <Wrap style={{ width: '100%' }}>
+            <Container flex justify-center align-center fill fg-white>
+                <Wrap>
                     <Container flex justify-center>
                         <Container m-flex-5>
-                            <Container size-6>Register</Container>
-                            <Container mgn-t2 fg-gray>
-                                Create an account to claim your piece of Astrum
+                            <Container size-8 weight-6>Register</Container>
+                            <Container weight-6 mgn-t3 line-6>
+                                Create an account to claim your piece of Astrum. Already have an account? <Container inline fg-yellow><Link href="/auth/login">Login now →</Link></Container>
                             </Container>
-                            <Container mgn-t2>
+                            <Container mgn-t8>
                                 <Form.Input
-                                    pad-v2
                                     value={this.state.email}
                                     placeholder="Email"
+                                    autoComplete="email"
                                     onChange={e => this.setState({
                                         email: e.target.value
                                     })} />
                                 <Form.Input
-                                    pad-v2
+                                    mgn-t6
                                     value={this.state.username}
+                                    autoComplete="username"
                                     placeholder="Username"
                                     onChange={e => this.setState({
                                         username: e.target.value
                                     })} />
                                 <Form.Input
-                                    pad-v2
+                                    mgn-t6
                                     value={this.state.password}
+                                    autoComplete="password"
+                                    type="password"
+                                    placeholder="Password"
                                     onChange={e => this.setState({
                                         password: e.target.value
-                                    })}
-                                    placeholder="Password"
-                                    type="password" />
+                                    })} />
                             </Container>
                             <Container
-                                onClick={() => this.handle_signup()}
-                                mgn-t4
-                                bg-black
-                                text-center
-                                pad-v4
-                                size-3-5
-                                radius-4
-                                weight-5
-                                cursor-pointer
-                                fg-white>
-                                Register
+                                mgn-t8
+                                flex
+                                justify-center
+                                onClick={() => this.handle_register()}>
+                                <Container
+                                    fg-black
+                                    fg-yellow
+                                    cursor-pointer
+                                    uppercase
+                                    weight-8
+                                    text-center
+                                >Register →</Container>
                             </Container>
                         </Container>
                     </Container>
@@ -71,9 +76,12 @@ export default class Register extends React.Component<Props, State> {
             </Container>
         )
     }
-    private async handle_signup() {
-        kora.send('auth.register', this.state, 1)
-            .then()
-            .catch(ex => alert(ex))
+    private async handle_register() {
+        Session.lock(async () => {
+            await kora.send('auth.register', this.state, 1)
+            const token = await kora.send<string>('auth.login', this.state, 1)
+            await Session.upgrade(token)
+            router.push('/plots')
+        })
     }
 }

@@ -18,7 +18,7 @@ defmodule Astrum.User.Stripe.Customer do
         }
       })
 
-    Kora.merge!(["user:info", key, "stripe", "customer"], result.id)
+    Kora.merge!(["user:data", key, "stripe", "customer"], result.id)
 
     :ok
   end

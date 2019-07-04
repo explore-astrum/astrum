@@ -120,27 +120,30 @@ export default class PlotSlider extends React.Component<Props, any> {
                             Plot
                                 .activity(this.props.plot)
                                 .sort((a, b) => a > b ? -1 : 1)
-                                .map(item => (
-                                    <Container mgn-t4>
-                                        {/* <Container flex justify-end>
+                                .map(item => {
+                                    const user_info = User.info(item.sender)
+                                    return (
+                                        <Container mgn-t4>
+                                            {/* <Container flex justify-end>
                             <Container pad-v2 size-3-5 weight-6>5:20pm Feb 23</Container>
                         </Container> */}
-                                        <Container
-                                            flex
-                                            fg-black
-                                            weight-6
-                                            bg-yellow
-                                            align-center
-                                            pad-4 >
-                                            <Container bg-white style={{ width: '50px', flex: '0 0 50px' }} radius-max overflow-hidden>
-                                                <Image src={`https://avatars.dicebear.com/v2/male/${item.sender}.svg`} />
-                                            </Container>
-                                            <Container pad-l4 line-6>
-                                                {copy(item)}
+                                            <Container
+                                                flex
+                                                fg-black
+                                                weight-6
+                                                bg-yellow
+                                                align-center
+                                                pad-4 >
+                                                <Container bg-white style={{ width: '50px', flex: '0 0 50px' }} radius-max overflow-hidden>
+                                                    <Image src={`https://avatars.dicebear.com/v2/male/${item.sender}.svg`} />
+                                                </Container>
+                                                <Container pad-l4 line-6>
+                                                    {copy(item, user_info)}
+                                                </Container>
                                             </Container>
                                         </Container>
-                                    </Container>
-                                ))
+                                    )
+                                })
                         }
                     </Container>
                 </Container>
@@ -150,11 +153,11 @@ export default class PlotSlider extends React.Component<Props, any> {
     }
 }
 
-function copy(item: PlotActivity) {
+function copy(item: PlotActivity, user_info: UserInfo) {
     switch (item.type) {
         case 'plot.sold':
-            return `@${item.sender} bought this plot for $${item.data.price}`
+            return `@${user_info.username} bought this plot for $${item.data.price}`
         case 'plot.list':
-            return `@${item.sender} put this plot on sale for $${item.data.price}`
+            return `@${user_info.username} put this plot on sale for $${item.data.price}`
     }
 }

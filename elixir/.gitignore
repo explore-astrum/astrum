@@ -22,5 +22,5 @@ erl_crash.dump
 # Ignore package tarball (built via "mix hex.build").
 astrum-*.tar
 
-data
+data/kora.json
 .elixir_ls

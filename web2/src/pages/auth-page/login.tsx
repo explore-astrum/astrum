@@ -1,6 +1,7 @@
 import * as React from 'react'
-import { Container, Wrap } from '../../components'
+import { Container, Wrap, Anchor } from '../../components'
 import * as Form from '../../components/form'
+import Link from '../../structures/link'
 import * as Session from '../../data/session'
 import { kora, router } from '../../data/kora'
 
@@ -19,43 +20,45 @@ export default class Login extends React.Component<Props, State> {
     }
     render() {
         return (
-            <Container flex justify-center align-center fill>
-                <Wrap style={{ width: '100%' }}>
+            <Container flex justify-center align-center fill fg-white>
+                <Wrap>
                     <Container flex justify-center>
                         <Container m-flex-5>
-                            <Container size-6>Welcome Back</Container>
-                            <Container mgn-t2 fg-gray>
-                                Enter your credentials to access your account
+                            <Container size-8 weight-6>Welcome Back</Container>
+                            <Container weight-6 mgn-t3 line-6>
+                                Enter your credentials to access your account. Don't have an account? <Container inline fg-yellow><Link href="/auth/register">Register now →</Link></Container>
                             </Container>
-                            <Container mgn-t2>
+                            <Container mgn-t8>
                                 <Form.Input
-                                    pad-v2
                                     value={this.state.email}
+                                    name="email"
                                     placeholder="Email"
                                     onChange={e => this.setState({
                                         email: e.target.value
                                     })} />
                                 <Form.Input
-                                    pad-v2
+                                    mgn-t6
                                     value={this.state.password}
+                                    type="password"
+                                    name="password"
+                                    placeholder="Password"
                                     onChange={e => this.setState({
                                         password: e.target.value
-                                    })}
-                                    placeholder="Password"
-                                    type="password" />
+                                    })} />
                             </Container>
                             <Container
-                                onClick={() => this.handle_login()}
-                                mgn-t4
-                                bg-black
-                                text-center
-                                pad-v4
-                                size-3-5
-                                radius-4
-                                weight-5
-                                cursor-pointer
-                                fg-white>
-                                Login
+                                mgn-t8
+                                flex
+                                justify-center
+                                onClick={() => this.handle_login()}>
+                                <Container
+                                    fg-black
+                                    fg-yellow
+                                    cursor-pointer
+                                    uppercase
+                                    weight-8
+                                    text-center
+                                >Login →</Container>
                             </Container>
                         </Container>
                     </Container>
@@ -67,6 +70,7 @@ export default class Login extends React.Component<Props, State> {
         try {
             const token = await kora.send<string>('auth.login', this.state, 1)
             await Session.upgrade(token)
+            router.push('/plots')
         } catch (ex) {
             alert(ex)
         }

@@ -18,10 +18,10 @@ interface State {
 }
 export default class RootPage extends React.Component<any, any> {
     render() {
-        // if (Session.user() == null) return false
+        if (Session.user() == null) return false
         return (
             <Container>
-                {router.match_prefix('/landing') && <LandingPage />}
+                {router.match_exact('/') && <LandingPage />}
                 {router.match_prefix('/auth') && <AuthPage />}
                 {router.match_prefix('/plots') && <PlotPage />}
             </Container>

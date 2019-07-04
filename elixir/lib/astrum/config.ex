@@ -10,6 +10,7 @@ defmodule Astrum.Config do
       Astrum.Plot.Create,
       Astrum.Plot.Owner,
       Astrum.Plot.Activity,
+      Astrum.User.Master,
       Astrum.User.Stripe.Customer,
       Astrum.User.Email.Duplicate,
       Astrum.User.Email.Index,

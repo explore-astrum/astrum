@@ -14,6 +14,7 @@ defmodule Astrum.Plot do
     for x <- x_range,
         y <- y_range do
       create(x, y)
+      |> Kora.Mutation.merge(["plot:info", key_encode(x, y), "prices", "list"], 30)
     end
     |> Kora.Mutation.combine()
   end

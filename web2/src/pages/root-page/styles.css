@@ -72,6 +72,13 @@ html {
 	--highlight: #ffcc00;
 }
 
-a:link, a:visited, a:active {
+a:visited, a:active {
 	color: inherit;
+}
+.u-focus-highlight {
+	transition: all 400ms;
+}
+.u-focus-highlight:focus {
+	color: var(--yellow);
+	border-color: var(--yellow) !important;
 }
