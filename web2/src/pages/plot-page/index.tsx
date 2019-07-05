@@ -68,11 +68,27 @@ export default class PlotPage extends React.Component<Props, State> {
             </Container >
         )
     }
-
     componentDidMount() {
+        let debounce = null
+        kora.before_mutation(['plot:info', '+', 'prices'], () => {
+            clearTimeout(debounce)
+            debounce = setTimeout(() => this.render_canvas(), 100)
+        })
+    }
+
+    render_canvas() {
         this.ref_canvas.width = 64 * 10
         this.ref_canvas.height = 64 * 10
         const ctx = this.ref_canvas.getContext('2d')
-        ctx.fillRect(0, 0, 10, 10)
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.6)'
+        for (let x = 0; x < 64; x++) {
+            for (let y = 0; y < 64; y++) {
+                const plot = Plot.key_encode(x + 64, y + 64)
+                const plot_info = Plot.info(plot)
+                if (!plot_info.prices.list) {
+                    ctx.fillRect(x * 10, y * 10, 10, 10)
+                }
+            }
+        }
     }
 }

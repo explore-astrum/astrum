@@ -11,8 +11,18 @@ defmodule Astrum.Plot.Activity do
     "data" => nil
   })
 
-  def before_mutation(["plot:info", plot, "prices"], %{merge: %{"list" => price}}, _mut, user) do
+  def before_mutation(["plot:info", plot, "prices"], %{merge: %{"list" => price}}, _mut, user)
+      when price > 0 do
     {:combine, create(plot, user, "plot.list", %{"price" => price})}
+  end
+
+  def before_mutation(
+        ["plot:info", plot],
+        %{merge: %{"owner" => owner, "prices" => %{"sold" => price}}},
+        _mut,
+        _user
+      ) do
+    {:combine, create(plot, owner, "plot.sold", %{"price" => price})}
   end
 
   def before_mutation(["plot:info", plot], %{merge: %{"name" => name}}, _mut, user) do

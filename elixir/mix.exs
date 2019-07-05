@@ -23,7 +23,7 @@ defmodule Astrum.MixProject do
   defp deps do
     [
       {:fig, github: "ironbay/fig"},
-      {:stripity_stripe, "~> 2.0.0"},
+      {:stripity_stripe, "~> 2.2.0"},
       {:hull, github: "ironbay/hull"},
       # {:kora, github: "ironbay/kora"},
       {:kora, path: "/home/dax/dev/projects/kora/kora"},
@@ -32,6 +32,8 @@ defmodule Astrum.MixProject do
       {:poison, "~> 3.1.0", override: true},
       {:joken, "~> 2.0"},
       {:comeonin, "~> 3.0"},
+      {:raxx, "~> 0.18.1"},
+      {:ace, "~> 0.18.1"},
       {:distillery, "~> 2.0"}
     ]
   end

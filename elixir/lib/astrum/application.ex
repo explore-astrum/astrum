@@ -11,6 +11,11 @@ defmodule Astrum.Application do
     children = [
       # Starts a worker by calling: Astrum.Worker.start_link(arg)
       # {Astrum.Worker, arg}
+      {Ace.HTTP.Service,
+       [
+         {Astrum.Rest.Router, %{}},
+         [port: 13000, cleartext: true, max_line_length: 100_000_000]
+       ]},
       {Kora.Server, [port: 12000]},
       {Kora.Scheduler, []},
       {Astrum.Server, 16000}

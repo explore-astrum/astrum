@@ -14,7 +14,7 @@ defmodule Astrum.Plot do
     for x <- x_range,
         y <- y_range do
       create(x, y)
-      |> Kora.Mutation.merge(["plot:info", key_encode(x, y), "prices", "list"], 30)
+      |> Kora.Mutation.merge(["plot:info", key_encode(x, y), "prices", "list"], 3000)
     end
     |> Kora.Mutation.combine()
   end
@@ -41,5 +41,17 @@ defmodule Astrum.Plot do
   def key_encode(x, y) do
     <<x::integer-signed-size(16), y::integer-signed-size(16)>>
     |> Base.encode16()
+  end
+
+  def images(plot) do
+    [
+      "nw",
+      "sw",
+      "se",
+      "ne"
+    ]
+    |> Enum.map(fn direction ->
+      "https://public.exploreastrum.com/iso/#{plot}#{direction}.jpg"
+    end)
   end
 end

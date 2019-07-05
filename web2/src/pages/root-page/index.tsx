@@ -18,12 +18,17 @@ interface State {
 }
 export default class RootPage extends React.Component<any, any> {
     render() {
-        if (Session.user() == null) return false
+        if (kora.local_path(['router']) == null) return false
         return (
             <Container>
                 {router.match_exact('/') && <LandingPage />}
-                {router.match_prefix('/auth') && <AuthPage />}
-                {router.match_prefix('/plots') && <PlotPage />}
+                {
+                    Session.user() != null &&
+                    <React.Fragment>
+                        {router.match_prefix('/auth') && <AuthPage />}
+                        {router.match_prefix('/plots') && <PlotPage />}
+                    </React.Fragment>
+                }
             </Container>
         )
     }

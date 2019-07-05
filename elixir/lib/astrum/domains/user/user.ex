@@ -41,3 +41,18 @@ defmodule Astrum.User do
     Comeonin.Bcrypt.checkpw(password, hash)
   end
 end
+
+defmodule Astrum.User.Data do
+  require Dynamic
+
+  Dynamic.schema(%{
+    "key" => nil,
+    "stripe" => %{
+      "customer" => nil
+    }
+  })
+
+  def get(user) do
+    Kora.query_path!(["user:data", user])
+  end
+end

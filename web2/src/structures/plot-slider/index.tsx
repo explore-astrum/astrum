@@ -3,6 +3,7 @@ import { Container, Image } from '../../components'
 import * as Plot from '../../data/plot'
 import * as User from '../../data/user'
 import { kora } from '../../data/kora'
+import Stripe from '../../data/stripe'
 
 interface Props {
     plot: string
@@ -14,7 +15,13 @@ export default class PlotSlider extends React.Component<Props, any> {
         image: 0
     }
     componentDidMount() {
-        kora.query_path(['plot:activity', this.props.plot])
+        const plot_info = Plot.info(this.props.plot)
+        kora.query({
+            'plot:activity': { [this.props.plot]: {} },
+            'user:info': {
+                [plot_info.owner]: {}
+            }
+        })
     }
     render() {
         const { plot } = this.props
@@ -73,6 +80,12 @@ export default class PlotSlider extends React.Component<Props, any> {
                 </Container>
                 <Container mgn-t6 flex justify-end>
                     <Container
+                        onClick={async () => {
+                            const id = await kora.send<string>('stripe.plot', plot, 1)
+                            Stripe.redirectToCheckout({
+                                sessionId: id
+                            } as any).then(ex => alert(ex))
+                        }}
                         cursor-pointer
                         bg-yellow
                         fg-black
@@ -106,7 +119,7 @@ export default class PlotSlider extends React.Component<Props, any> {
                         <Container flex justify-between>
                             {
                                 images.map((item, index) => (
-                                    <Container style={{ width: '7px', height: '7px' }} radius-max bg-gray bg-white={index === this.state.image} mgn-h1 onClick={() => this.setState({ image: index })} />
+                                    <Container key={index} style={{ width: '7px', height: '7px' }} radius-max bg-gray bg-white={index === this.state.image} mgn-h1 onClick={() => this.setState({ image: index })} />
                                 ))
                             }
 
@@ -123,7 +136,7 @@ export default class PlotSlider extends React.Component<Props, any> {
                                 .map(item => {
                                     const user_info = User.info(item.sender)
                                     return (
-                                        <Container mgn-t4>
+                                        <Container key={item.key} mgn-t4>
                                             {/* <Container flex justify-end>
                             <Container pad-v2 size-3-5 weight-6>5:20pm Feb 23</Container>
                         </Container> */}

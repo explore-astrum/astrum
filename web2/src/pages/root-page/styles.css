@@ -72,7 +72,8 @@ html {
 	--highlight: #ffcc00;
 }
 
-a:visited, a:active {
+a:hover, a:focus, a:active, a {
+	text-decoration: none;
 	color: inherit;
 }
 .u-focus-highlight {

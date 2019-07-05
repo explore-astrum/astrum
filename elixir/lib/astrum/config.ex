@@ -18,7 +18,8 @@ defmodule Astrum.Config do
       Astrum.User.Username.Index
     ],
     commands: [
-      Astrum.Command.Auth
+      Astrum.Command.Auth,
+      Astrum.Command.Stripe
     ],
     read: {Kora.Store.Memory, directory: "data/kora.json"},
     writes: [{Kora.Store.Memory, directory: "data/kora.json"}],
