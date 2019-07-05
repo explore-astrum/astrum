@@ -1,40 +1,46 @@
+alias Astrum.Ledger
+
 defmodule Astrum.Rest.Stripe do
   use Astrum.Rest
   middleware(Astrum.Rest.Middleware.Decode)
   middleware(Astrum.Rest.Middleware.Encode)
 
   def handle(%{path: ["hook" | _], body: body}, state) do
-    case body do
-      %{
-        "data" => %{
-          "object" => %{
-            "payment_intent" => payment_intent
-          }
-        }
-      } ->
-        payment_intent
-        |> Stripe.PaymentIntent.retrieve(%{})
-        |> case do
-          {:ok,
-           %{
-             amount_received: price,
-             metadata: %{
-               "type" => "plot",
-               "user" => user,
-               "target" => target
-             }
-           }} ->
-            Kora.Mutation.merge(["plot:info", target], %{
-              "owner" => user,
-              "prices" => %{
-                "sold" => price / 100,
-                "list" => 0
-              }
-            })
-            |> Kora.mutation!()
+    customer = Dynamic.get(body, ["data", "object", "customer"])
 
-            {:ok, "plot.sold"}
-        end
-    end
+    {:ok,
+     %{
+       metadata: %{
+         "key" => user
+       }
+     }} = Stripe.Customer.retrieve(customer)
+
+    body
+    |> Dynamic.get(["data", "object", "display_items"], [])
+    |> Stream.map(fn item ->
+      {sku(item), item}
+    end)
+    |> Stream.map(fn
+      {"dust", %{"quantity" => quantity}} ->
+        Ledger.create(user, quantity, Astrum.User.root(), %{})
+
+      {"plot." <> plot, %{"amount" => amount}} ->
+        Kora.Mutation.merge(["plot:info", plot], %{
+          "owner" => user,
+          "prices" => %{
+            "sold" => amount,
+            "list" => 0
+          }
+        })
+    end)
+    |> Kora.Mutation.combine()
+    |> Kora.mutation!()
+
+    {:ok, true}
+  end
+
+  def sku(%{"custom" => %{"description" => description}}) do
+    [_, type] = Regex.run(~r/sku:(.+)/, description)
+    type
   end
 end

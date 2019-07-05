@@ -74,14 +74,16 @@ export default class PlotSlider extends React.Component<Props, any> {
                         !plot_info.prices.list ?
                             'It does not have a list price but you may make an offer.' :
                             <Container inline>
-                                It is currently on sale for <Container inline fg-yellow>${plot_info.prices.list}</Container>
+                                It is currently on sale for <Container inline fg-yellow>${plot_info.prices.list / 100}</Container>
                             </Container>
                     }
                 </Container>
                 <Container mgn-t6 flex justify-end>
                     <Container
                         onClick={async () => {
-                            const id = await kora.send<string>('stripe.plot', plot, 1)
+                            const id = await kora.send<string>('stripe.checkout', [
+                                { target: plot, type: 'plot' }
+                            ], 1)
                             Stripe.redirectToCheckout({
                                 sessionId: id
                             } as any).then(ex => alert(ex))
@@ -95,7 +97,7 @@ export default class PlotSlider extends React.Component<Props, any> {
                         {
                             !plot_info.prices.list ?
                                 'Make an offer →' :
-                                `Purchase for $${plot_info.prices.list} →`
+                                `Purchase for $${plot_info.prices.list / 100} →`
                         }
                     </Container>
                 </Container>
@@ -171,6 +173,6 @@ function copy(item: PlotActivity, user_info: UserInfo) {
         case 'plot.sold':
             return `@${user_info.username} bought this plot for $${item.data.price}`
         case 'plot.list':
-            return `@${user_info.username} put this plot on sale for $${item.data.price}`
+            return `@${user_info.username} put this plot on sale for $${item.data.price / 100}`
     }
 }

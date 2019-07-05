@@ -40,6 +40,8 @@ defmodule Astrum.User do
     hash = Kora.query_path!(["user:data", key, "hash"])
     Comeonin.Bcrypt.checkpw(password, hash)
   end
+
+  def root(), do: "USR00000000000000000000"
 end
 
 defmodule Astrum.User.Data do
